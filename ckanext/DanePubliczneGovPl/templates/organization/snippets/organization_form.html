@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{% block custom_fields %}
+ {{ form.input('project_leader', label=_('Project Leader'), id='field-project_leader', placeholder=_('Leader'), value=data.project_leader, error=errors.project_leader, classes=['control-medium']) }}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+{% block package_metadata_fields %}
+  {# Override #}
+  {% block package_metadata_fields_url %}
+    {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
+  {% endblock %}
+  <div class="control-group">
+    <label class="control-label" for="field-update_frequency">{{ _("Update frequency") }}</label>
+    <div class="controls">
+      <select id="field-update_frequency" name="update_frequency" data-module="autocomplete">
+        {% for freq in h.update_frequencies()  %}
+          <option value="{{ freq }}" {% if freq in data.get('update_frequency', []) %}selected="selected"{% endif %}>{{ freq }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>  
+  
+  {{ form.textarea('license_restrictions', label=_('License restrictions'), id='field-license_restrictions', value=data.license_restrictions, error=errors.license_restrictions) }}
+
+  {% block dataset_fields %}
+  {% endblock %}
+
+{% endblock %}
+  
