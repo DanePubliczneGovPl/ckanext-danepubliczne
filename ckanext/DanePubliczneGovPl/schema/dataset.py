@@ -53,9 +53,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [from_extras, optional],
-
-            'license_restrictions': [from_extras, optional]  #TODO del
+            'license_condition_responsibilities': [from_extras, optional]
         })
         return schema        
         
@@ -74,9 +72,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [optional, to_extras],
-
-            'license_restrictions': [optional, to_extras],  #TODO del
+            'license_condition_responsibilities': [optional, to_extras]
         })
         # Add our custom_resource_text metadata field to the schema
 #         schema['resources'].update({

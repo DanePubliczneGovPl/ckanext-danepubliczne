@@ -33,9 +33,6 @@
             {{ form.checkbox('license_condition_original', label=_('Odbiorca powinien zawrzeć kopię informacji w pierwotnie pozyskanej formie udostępniając przetworzoną informację'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
             {{ form.checkbox('license_condition_modification', label=_('Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją jakkolwiek modyfikuje'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
             {{ form.textarea('license_condition_responsibilities', label=_('Zakres odpowiedzialności dostawcy za przekazywane informacje'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
-
-            {{ form.textarea('license_restrictions', label=_('License restrictions'), id='field-license_restrictions', value=data.license_restrictions, error=errors.license_restrictions, attrs={'disabled':'disabled'}) }}
-
         </div>
     TODO panel --- !
     </div>
