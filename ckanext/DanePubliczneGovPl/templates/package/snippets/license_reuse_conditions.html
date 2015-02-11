@@ -1,0 +1,25 @@
+{# Warunki ponownego wykorzystywania informacji  #}
+
+Warunki ponownego wykorzystywania informacji:
+<ul>
+  {% if pkg_dict.license_condition_source %}
+    <li>{{ _('Odbiorca powinien poinformować o źródle pozyskania informacji') }}</li>
+  {% endif %}
+
+  {% if pkg_dict.license_condition_timestamp %}
+    <li>{{ _('Odbiorca powinien poinformować o czasie wytworzenia i pozyskania informacji od dostawcy') }}</li>
+  {% endif %}
+
+  {% if pkg_dict.license_condition_original %}
+    <li>{{ _('Odbiorca powinien zawrzeć kopię informacji w pierwotnie pozyskanej formie udostępniając przetworzoną informację') }}
+    </li>
+  {% endif %}
+
+  {% if pkg_dict.license_condition_modification %}
+    <li>{{ _('Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją jakkolwiek modyfikuje') }}</li>
+  {% endif %}
+
+  {% if pkg_dict.license_condition_responsibilities %}
+    <li>{{ pkg_dict.license_condition_responsibilities }}</li>
+  {% endif %}
+</ul>

@@ -10,9 +10,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers) # Helpers for templates
 
     def get_helpers(self):
-        # TODO prefix helpers with dp_
-        return {'categories': self.categories,
-                'update_frequencies': self.update_frequencies}
+        return {'dp_categories': self.categories,
+                'dp_update_frequencies': self.update_frequencies,
+                'dp_update_frequencies_options': self.update_frequencies_options}
     
     def categories(self):
         try: 
@@ -32,19 +32,30 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         except tk.ObjectNotFound:
             return None
 
-    
+    def update_frequencies_options(self):
+        return ({'value': freq, 'text': freq} for freq in self.update_frequencies())
+
     def show_package_schema(self):
         schema = super(DatasetForm, self).show_package_schema()
         
         optional = tk.get_validator('ignore_missing')
         from_extras = tk.get_converter('convert_from_extras')
         from_tags = tk.get_converter('convert_from_tags')
-        
+        checkboxes = [from_extras, optional, tk.get_validator('boolean_validator')]
+
         schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
         schema.update({
             'category': [from_tags('categories')],
             'update_frequency': [from_tags('update_frequencies')],
-            'license_restrictions': [from_extras, optional]
+
+            # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
+            'license_condition_source': checkboxes,
+            'license_condition_timestamp': checkboxes,
+            'license_condition_original': checkboxes,
+            'license_condition_modification': checkboxes,
+            'license_condition_responsibilities': [from_extras, optional],
+
+            'license_restrictions': [from_extras, optional]  #TODO del
         })
         return schema        
         
@@ -52,11 +63,20 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         to_extras = tk.get_converter('convert_to_extras')
         to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
+        checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
         
         schema.update({
-            'category': [to_tags('categories')], # TODO
+            'category': [to_tags('categories')],
             'update_frequency': [to_tags('update_frequencies')],
-            'license_restrictions': [optional, to_extras],
+
+            # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
+            'license_condition_source': checkboxes,
+            'license_condition_timestamp': checkboxes,
+            'license_condition_original': checkboxes,
+            'license_condition_modification': checkboxes,
+            'license_condition_responsibilities': [optional, to_extras],
+
+            'license_restrictions': [optional, to_extras],  #TODO del
         })
         # Add our custom_resource_text metadata field to the schema
 #         schema['resources'].update({
