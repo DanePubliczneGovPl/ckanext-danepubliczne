@@ -21,7 +21,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             
             return tags
         except tk.ObjectNotFound:
-            return None
+            return []
 
     def update_frequencies(self):
         try: 
@@ -30,7 +30,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             
             return tags
         except tk.ObjectNotFound:
-            return None
+            return []
 
     def update_frequencies_options(self):
         return ({'value': freq, 'text': freq} for freq in self.update_frequencies())

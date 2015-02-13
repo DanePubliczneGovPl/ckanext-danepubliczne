@@ -19,12 +19,31 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
                        })
         return schema
 
+    # delete in CKAN 2.3
+    def _default_show_group_schema(self):
+        schema = ckan.logic.schema.default_group_schema()
+
+        # make default show schema behave like when run with no validation
+        schema['num_followers'] = []
+        schema['created'] = []
+        schema['display_name'] = []
+        schema['extras'] = {'__extras': [ckan.lib.navl.validators.keep_extras]}
+        schema['package_count'] = []
+        schema['packages'] = {'__extras': [ckan.lib.navl.validators.keep_extras]}
+        schema['revision_id'] = []
+        schema['state'] = []
+        schema['users'] = {'__extras': [ckan.lib.navl.validators.keep_extras]}
+
+        return schema
+
+
     def db_to_form_schema(self):
-        #schema = super(OrganizationForm, self).form_to_db_schema()
-        schema = ckan.logic.schema.default_show_group_schema()
-        # should be called by ckan.lib.plugins.DefaultGroupForm.db_to_form_schema
+        # in CKAN 2.3: schema = ckan.logic.schema.default_show_group_schema()
+        # TODO should be called by ckan.lib.plugins.DefaultGroupForm.db_to_form_schema
         # or return {}
-        #schema = super(OrganizationForm, self).db_to_form_schema()
+
+        # CKAN 2.2
+        schema = self._default_show_group_schema()
           
         from_extras = tk.get_converter('convert_from_extras')
         optional = tk.get_validator('ignore_missing')
