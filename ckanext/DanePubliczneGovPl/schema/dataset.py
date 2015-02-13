@@ -1,6 +1,7 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.plugins
+import ckan.lib.navl.dictization_functions as df
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -62,10 +63,16 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
+
+        # License is fixed to Open (Public Domain)
+        def fixed_license(value, context):
+            return 'other-pd'
         
         schema.update({
             'category': [to_tags('categories')],
             'update_frequency': [to_tags('update_frequencies')],
+
+            'license_id': [fixed_license, unicode],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
