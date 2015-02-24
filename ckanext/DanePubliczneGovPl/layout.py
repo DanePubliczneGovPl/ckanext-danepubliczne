@@ -1,17 +1,15 @@
-import ckan.plugins as p
-import ckan.plugins.toolkit as tk
 import mimetypes
 
-class Layout(p.SingletonPlugin):
-    p.implements(p.IConfigurer)
-    
-    def update_config(self, config_):
-        tk.add_template_directory(config_, 'templates')
-        tk.add_public_directory(config_, 'public')  
-        tk.add_resource('fanstatic', 'dane_publiczne')
-        
-        # Specify exotic extensions
-        mimetypes.add_type('application/json', '.geojson')
+import ckan.plugins as plugins
+import ckan.plugins.toolkit as toolkit
 
-    
-    
+
+class Layout(plugins.SingletonPlugin):
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config):
+        toolkit.add_template_directory(config, 'templates')
+        toolkit.add_public_directory(config, 'public')
+        toolkit.add_resource('fanstatic', 'dane_publiczne')
+
+        mimetypes.add_type('application/json', '.geojson')

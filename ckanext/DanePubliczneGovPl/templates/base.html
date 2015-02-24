@@ -1,13 +1,7 @@
 {% ckan_extends %}
 
 {% block styles %}
-  {{ super() }}
+    {{ super() }}
 
-  {% resource 'dane_publiczne/main.css' %}
-{% endblock %}
-
-{% block header_logo %}
-    adasd
-    <a class="logo" href="{{ h.url('home') }}"><img src="/dane_publiczne_logo.png" alt="{{ g.site_title }} Logo"
-                                                    title="{{ g.site_title }} Logo"/></a>
+    {% resource 'dane_publiczne/main.css' %}
 {% endblock %}
