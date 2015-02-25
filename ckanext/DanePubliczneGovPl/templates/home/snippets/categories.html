@@ -1,5 +1,12 @@
 {% block categories_list %}
-  {% for category in h.dp_categories() %}
-    <div class="{{ category }}">{{ category }}</div>
-  {% endfor %}
+    <div class="module-content categories">
+        <h1></h1>
+        {% for category in h.dp_categories() %}
+            <a href="_self" class="category span3" title="{{ category }}">
+                <img src="" alt=""/>
+
+                <h2>{{ category }}</h2>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

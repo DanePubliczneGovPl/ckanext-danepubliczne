@@ -4,11 +4,20 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 body {
-    background: url('/template.png') top center no-repeat;
+    background: url('/template.png') top center no-repeat #ffffff;
     /*background: #ffffff;*/
     border-top: 4px solid #539ecf;
     font-family: 'Montserrat', sans-serif;
 }
+
+/* =====================================================
+   Debug
+   ===================================================== */
+
+.masthead .debug {
+    color: rgba(0, 0, 0, .5);
+}
+
 
 /* =====================================================
    The "account masthead" bar across the top of the site
@@ -17,6 +26,7 @@ body {
 .account-masthead {
     background: #ffffff;
     color: #24485f;
+    margin-top: 6px;
 }
 
 .account-masthead .account ul li {
@@ -41,6 +51,7 @@ body {
     background: #ffffff;
     color: #000000;
     font-size: 16px;
+    margin-top: 3px;
 }
 
 .masthead a {
@@ -56,7 +67,7 @@ body {
 }
 
 .masthead .navigation {
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
@@ -65,8 +76,12 @@ body {
     font-weight: normal;
 }
 
+.masthead .site-search {
+    margin: 5px 8px 2px 0;
+}
+
 .masthead .site-search input {
-    padding: 10px;
+    padding: 6px 10px;
     font-size: 16px;
     font-weight: normal;
 }

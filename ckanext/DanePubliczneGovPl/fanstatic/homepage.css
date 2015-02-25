@@ -1,5 +1,78 @@
-.homepage.layout-1 .row1 .col2 {
-    position: relative;
-    top: 0;
-    left: 0;
+.homepage [role="main"] {
+    padding: 0;
+}
+
+.homepage .hero {
+    padding: 0;
+}
+
+.homepage .hero .module-content:first-child {
+    padding-top: 0;
+}
+
+.homepage .hero .module-content.info {
+    padding: 75px 0 0;
+}
+
+.homepage .hero .module-content.info header h1 {
+    color: #157abe;
+    font-size: 40px;
+    margin-bottom: 28px;
+}
+
+.homepage .hero .module-content.info header p {
+    color: #434343;
+    font-size: 18px;
+    line-height: 1.3em;
+}
+
+.homepage .hero .module-content.info .module-search {
+    background: none;
+    padding: 0;
+    margin-top: 55px;
+}
+
+.homepage .hero .module-content.info .module-search .module-content {
+    background: none;
+    padding: 0;
+}
+
+.homepage .hero .module-content.info .module-search .module-content input {
+    font-size: 18px;
+    color: #535353;
+    border-color: #157abe;
+    padding: 15px 22px;
+    font-weight: 300;
+}
+
+.homepage .hero .module-content.info .module-search .module-content button i {
+    font-size: 22px;
+    color: #157abe;
+}
+
+.homepage .main {
+    background: #efefef;
+    padding: 55px 0;
+}
+
+.homepage .main .categories {
+    width: 100%;
+    float: left;
+}
+
+.homepage .main .categories h1 {
+    font-size: 36px;
+    color: #434343;
+}
+
+.homepage .main .categories .category {
+    height: 250px;
+    margin-left: 0;
+    padding: 30px 25px;
+    text-decoration: none;
+}
+
+.homepage .main .categories .category h2 {
+    font-size: 24px;
+    color: #ffffff;
 }
