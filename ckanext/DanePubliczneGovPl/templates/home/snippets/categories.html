@@ -1,0 +1,5 @@
+{% block categories_list %}
+  {% for category in h.dp_categories() %}
+    <div class="{{ category }}">{{ category }}</div>
+  {% endfor %}
+{% endblock %}
