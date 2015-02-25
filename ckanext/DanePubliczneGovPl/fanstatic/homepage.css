@@ -17,12 +17,14 @@
 .homepage .hero .module-content.info header h1 {
     color: #157abe;
     font-size: 40px;
+    font-weight: 700;
     margin-bottom: 28px;
 }
 
 .homepage .hero .module-content.info header p {
     color: #434343;
     font-size: 18px;
+    font-weight: normal;
     line-height: 1.3em;
 }
 
@@ -39,10 +41,10 @@
 
 .homepage .hero .module-content.info .module-search .module-content input {
     font-size: 18px;
+    font-weight: normal;
     color: #535353;
     border-color: #157abe;
     padding: 15px 22px;
-    font-weight: 300;
 }
 
 .homepage .hero .module-content.info .module-search .module-content button i {
@@ -50,29 +52,128 @@
     color: #157abe;
 }
 
-.homepage .main {
+.homepage .categoriesBox {
     background: #efefef;
     padding: 55px 0;
 }
 
-.homepage .main .categories {
+.homepage .categoriesBox .categories {
     width: 100%;
     float: left;
+    padding: 0;
 }
 
-.homepage .main .categories h1 {
+.homepage .categoriesBox .categories h1 {
     font-size: 36px;
+    font-weight: 300;
     color: #434343;
 }
 
-.homepage .main .categories .category {
-    height: 250px;
+.homepage .categoriesBox .categories .box {
     margin-left: 0;
+    border-width: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.homepage .categoriesBox .categories .category {
+    display: block;
+    height: 250px;
     padding: 30px 25px;
     text-decoration: none;
 }
 
-.homepage .main .categories .category h2 {
+.homepage .categoriesBox .categories .category .img {
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+.homepage .categoriesBox .categories .category h2 {
     font-size: 24px;
+    font-weight: normal;
     color: #ffffff;
+}
+
+/*TEMPORARY COLORS*/
+.homepage .categoriesBox .categories .box:nth-child(9n) {
+    background-color: #4b77be;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+1) {
+    background-color: #24485f;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+2) {
+    background-color: #6c7a89;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+3) {
+    background-color: #674172;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+4) {
+    background-color: #bf3607;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+5) {
+    background-color: #3a539b;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+6) {
+    background-color: #d35400;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+7) {
+    background-color: #2574a9;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+8) {
+    background-color: #138435;
+}
+
+.homepage .articlesBox {
+    border-top: 5px solid #009ae0;
+    background: #ffffff;
+    padding: 55px 0;
+}
+
+.homepage .articlesBox .articles {
+    width: 100%;
+    float: left;
+    padding: 0;
+}
+
+.homepage .articlesBox .articles h1 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #434343;
+    margin-bottom: 40px;
+}
+
+.homepage .articlesBox .articles .article {
+    margin-left: 0;
+    margin-right: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #010101;
+}
+
+.homepage .articlesBox .articles .article h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.homepage .articlesBox .articles .article p {
+    line-height: 1.2em;
+    margin-bottom: 12px;
+}
+
+.homepage .articlesBox .articles .article .btn {
+    color: #ffffff;
+    background: #157abe;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 2px 16px;
 }

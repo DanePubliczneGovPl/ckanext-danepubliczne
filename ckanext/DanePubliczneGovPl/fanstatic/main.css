@@ -1,13 +1,56 @@
 /* =====================================================
+   Font-face
+   ===================================================== */
+
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: 100;
+    src: url(/fonts/proxima-nova/ProximaNova-Thin.eot);
+    src: url(/fonts/proxima-nova/ProximaNova-Thin.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/proxima-nova/ProximaNova-Thin.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: 300;
+    src: url(/fonts/proxima-nova/ProximaNova-Light.eot);
+    src: url(/fonts/proxima-nova/ProximaNova-Light.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/proxima-nova/ProximaNova-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: 400;
+    src: url(/fonts/proxima-nova/ProximaNova-Reg.eot);
+    src: url(/fonts/proxima-nova/ProximaNova-Reg.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/proxima-nova/ProximaNova-Reg.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: 600;
+    src: url(/fonts/proxima-nova/ProximaNova-Sbold.eot);
+    src: url(/fonts/proxima-nova/ProximaNova-Sbold.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/proxima-nova/ProximaNova-Sbold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: 700;
+    src: url(/fonts/proxima-nova/ProximaNova-Bold.eot);
+    src: url(/fonts/proxima-nova/ProximaNova-Bold.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/proxima-nova/ProximaNova-Bold.ttf) format('truetype');
+}
+
+/* =====================================================
    The general setup of the site
    ===================================================== */
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 body {
-    background: url('/template.png') top center no-repeat #ffffff;
+    background: url(/dane.png) top center no-repeat #ffffff;
     /*background: #ffffff;*/
     border-top: 4px solid #539ecf;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Proxima Nova', Arial, sans-serif;
 }
 
 /* =====================================================
@@ -17,7 +60,6 @@ body {
 .masthead .debug {
     color: rgba(0, 0, 0, .5);
 }
-
 
 /* =====================================================
    The "account masthead" bar across the top of the site
@@ -35,6 +77,7 @@ body {
 
 .account-masthead .account ul li a {
     font-size: 12px;
+    font-weight: 600;
 }
 
 .account-masthead .account ul li a,
@@ -51,6 +94,7 @@ body {
     background: #ffffff;
     color: #000000;
     font-size: 16px;
+    font-weight: normal;
     margin-top: 3px;
 }
 
@@ -115,4 +159,34 @@ body {
 .site-footer {
     background: #1d1d1d;
     color: #ffffff;
+    padding: 70px 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.site-footer a {
+    font-size: 14px;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+    text-decoration: none;
+    color: #bebebe;
+}
+
+.site-footer .attribution h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.site-footer .attribution p,
+.site-footer .attribution .btn-link {
+    font-size: 14px;
+    font-weight: normal;
+    color: #bebebe;
 }

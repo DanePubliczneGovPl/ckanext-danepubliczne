@@ -1,12 +1,14 @@
 {% block categories_list %}
     <div class="module-content categories">
-        <h1></h1>
+        <h1>{{ _('Wybierz interesujący Cię dział zasobów informacyjnych') }}</h1>
         {% for category in h.dp_categories() %}
-            <a href="_self" class="category span3" title="{{ category }}">
-                <img src="" alt=""/>
+            <div class="box span3">
+                <a href="#" target="_self" class="category" title="{{ category }}">
+                    <img src="" alt=""/>
 
-                <h2>{{ category }}</h2>
-            </a>
+                    <h2>{{ category }}</h2>
+                </a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

@@ -1,0 +1,23 @@
+msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
+msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
+
+msgid "Articles"
+msgstr "Artykuły"
+
+msgid "read more"
+msgstr "czytaj więcej"
+
+msgid "API"
+msgstr "API"
+
+msgid "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
+msgstr "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
+
+msgid "read more about API"
+msgstr "czytaj więcej o API"
+
+msgid "Nie znalazłeś interesujących Cię danych? Zaproponuj dataset"
+msgstr "Nie znalazłeś interesujących Cię danych? Zaproponuj dataset"
+
+msgid "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
+msgstr "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
