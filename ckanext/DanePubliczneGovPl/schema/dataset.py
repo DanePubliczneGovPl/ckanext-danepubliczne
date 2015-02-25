@@ -1,34 +1,33 @@
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
-import ckan.lib.plugins
-import ckan.lib.navl.dictization_functions as df
+
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Modifies fields and appearance of datasets
     '''
     p.implements(p.IDatasetForm)
-    p.implements(p.ITemplateHelpers) # Helpers for templates
+    p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
         return {'dp_categories': self.categories,
                 'dp_update_frequencies': self.update_frequencies,
                 'dp_update_frequencies_options': self.update_frequencies_options}
-    
+
     def categories(self):
-        try: 
+        try:
             tags = tk.get_action('tag_list')(
                 data_dict={'vocabulary_id': 'categories'})
-            
+
             return tags
         except tk.ObjectNotFound:
             return []
 
     def update_frequencies(self):
-        try: 
+        try:
             tags = tk.get_action('tag_list')(
                 data_dict={'vocabulary_id': 'update_frequencies'})
-            
+
             return tags
         except tk.ObjectNotFound:
             return []
@@ -38,7 +37,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def show_package_schema(self):
         schema = super(DatasetForm, self).show_package_schema()
-        
+
         optional = tk.get_validator('ignore_missing')
         from_extras = tk.get_converter('convert_from_extras')
         from_tags = tk.get_converter('convert_from_tags')
@@ -56,8 +55,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_modification': checkboxes,
             'license_condition_responsibilities': [from_extras, optional]
         })
-        return schema        
-        
+        return schema
+
     def _modify_package_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
         to_tags = tk.get_converter('convert_to_tags')
@@ -67,7 +66,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         # License is fixed to Open (Public Domain)
         def fixed_license(value, context):
             return 'other-pd'
-        
+
         schema.update({
             'category': [to_tags('categories')],
             'update_frequency': [to_tags('update_frequencies')],
@@ -82,18 +81,18 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_responsibilities': [optional, to_extras]
         })
         # Add our custom_resource_text metadata field to the schema
-#         schema['resources'].update({
-#                 'custom_resource_text' : [ tk.get_validator('ignore_missing') ]
-#                 })
-        
+        # schema['resources'].update({
+        # 'custom_resource_text' : [ tk.get_validator('ignore_missing') ]
+        #                 })
+
         return schema
 
     ############################
     # Below not interesting code
-    
+
     def package_types(self):
-        return [] # handle all dataset types
-    
+        return []  # handle all dataset types
+
     def is_fallback(self):
         # Overrides all 
         return True
