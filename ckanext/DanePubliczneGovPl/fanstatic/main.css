@@ -47,8 +47,7 @@
    ===================================================== */
 
 body {
-    background: url(/dane.png) top center no-repeat #ffffff;
-    /*background: #ffffff;*/
+    background: #ffffff;
     border-top: 4px solid #539ecf;
     font-family: 'Proxima Nova', Arial, sans-serif;
 }
