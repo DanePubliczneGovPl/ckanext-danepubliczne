@@ -1,3 +1,6 @@
+msgid "Home page"
+msgstr "Strona główna"
+
 msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
 msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
 
@@ -6,6 +9,9 @@ msgstr "Artykuły"
 
 msgid "read more"
 msgstr "czytaj więcej"
+
+msgid "Additional info about service"
+msgstr "Dodatkowe informacje o serwisie"
 
 msgid "API"
 msgstr "API"

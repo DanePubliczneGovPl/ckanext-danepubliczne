@@ -63,10 +63,16 @@
     padding: 0;
 }
 
-.homepage .categoriesBox .categories h1 {
+.homepage .categoriesBox .categories h2 {
     font-size: 36px;
     font-weight: 300;
     color: #434343;
+}
+
+.homepage .categoriesBox .categories .list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .homepage .categoriesBox .categories .box {
@@ -89,7 +95,7 @@
     filter: alpha(opacity=50);
 }
 
-.homepage .categoriesBox .categories .category h2 {
+.homepage .categoriesBox .categories .category h3 {
     font-size: 24px;
     font-weight: normal;
     color: #ffffff;
@@ -144,7 +150,7 @@
     padding: 0;
 }
 
-.homepage .articlesBox .articles h1 {
+.homepage .articlesBox .articles h2 {
     font-size: 36px;
     font-weight: 300;
     color: #434343;
@@ -153,16 +159,20 @@
 
 .homepage .articlesBox .articles .article {
     margin-left: 0;
-    margin-right: 30px;
+    margin-right: 20px;
     font-size: 14px;
     font-weight: normal;
     color: #010101;
 }
 
-.homepage .articlesBox .articles .article h2 {
+.homepage .articlesBox .articles .article h3 {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 18px;
+}
+
+.homepage .articlesBox .articles .article h3 a {
+    color: #010101;
 }
 
 .homepage .articlesBox .articles .article p {
