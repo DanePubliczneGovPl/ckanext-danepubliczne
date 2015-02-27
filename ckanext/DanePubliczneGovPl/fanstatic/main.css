@@ -3,44 +3,57 @@
    ===================================================== */
 
 @font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 100;
-    src: url(/fonts/proxima-nova/ProximaNova-Thin.eot);
-    src: url(/fonts/proxima-nova/ProximaNova-Thin.eot?#iefix) format('embedded-opentype'),
-    url(/fonts/proxima-nova/ProximaNova-Thin.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
+    font-family: 'Open Sans';
+    font-style: normal;
     font-weight: 300;
-    src: url(/fonts/proxima-nova/ProximaNova-Light.eot);
-    src: url(/fonts/proxima-nova/ProximaNova-Light.eot?#iefix) format('embedded-opentype'),
-    url(/fonts/proxima-nova/ProximaNova-Light.ttf) format('truetype');
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
 }
-
 @font-face {
-    font-family: 'Proxima Nova';
+    font-family: 'Open Sans';
+    font-style: normal;
     font-weight: 400;
-    src: url(/fonts/proxima-nova/ProximaNova-Reg.eot);
-    src: url(/fonts/proxima-nova/ProximaNova-Reg.eot?#iefix) format('embedded-opentype'),
-    url(/fonts/proxima-nova/ProximaNova-Reg.ttf) format('truetype');
+    src: local('Open Sans'), local('OpenSans'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
-
 @font-face {
-    font-family: 'Proxima Nova';
+    font-family: 'Open Sans';
+    font-style: normal;
     font-weight: 600;
-    src: url(/fonts/proxima-nova/ProximaNova-Sbold.eot);
-    src: url(/fonts/proxima-nova/ProximaNova-Sbold.eot?#iefix) format('embedded-opentype'),
-    url(/fonts/proxima-nova/ProximaNova-Sbold.ttf) format('truetype');
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNShUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNSha1RVmPjeKy21_GQJaLlJI.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxo05NJhCxBV64hQBJiatqx0.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxrsuoFAk0leveMLeqYtnfAY.woff) format('woff');
 }
 
 @font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 700;
-    src: url(/fonts/proxima-nova/ProximaNova-Bold.eot);
-    src: url(/fonts/proxima-nova/ProximaNova-Bold.eot?#iefix) format('embedded-opentype'),
-    url(/fonts/proxima-nova/ProximaNova-Bold.ttf) format('truetype');
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Open Sans Italic'), local('OpenSans-Italic'), url(/fonts/open-sans/xjAJXh38I15wypJXxuGMBqg5eI2G47JWe0-AuFtD150.woff2) format('woff2'), url(/fonts/open-sans/xjAJXh38I15wypJXxuGMBtIh4imgI8P11RFo6YPCPC0.woff) format('woff');
 }
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 600;
+    src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxt5wBDjbAC_0C3a56xIGvxo.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxmWeb5PoA5ztb49yLyUzH1A.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxqsA81DAeuqoeYxDcSOJPMY.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxoUt79146ZFaIJxILcpzmhI.woff) format('woff');
+}
+
 
 /* =====================================================
    The general setup of the site
@@ -49,7 +62,7 @@
 body {
     background: #ffffff;
     border-top: 4px solid #539ecf;
-    font-family: 'Proxima Nova', Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
 }
 
 /* =====================================================
