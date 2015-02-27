@@ -1,6 +1,32 @@
 {% ckan_extends %}
 
+{% block header_account_notlogged %}
+    <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+{% endblock %}
+
 {% block header_logo %}
     <a class="logo" href="{{ h.url('home') }}"><img src="/dane_publiczne_logo.png" alt="{{ g.site_title }} Logo"
                                                     title="{{ _('Home page') }}"/></a>
+{% endblock %}
+
+{% block header_site_search %}
+    <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}"
+          method="get">
+        <div class="field">
+            <label for="field-sitewide-search">{{ _('Search Datasets') }}</label>
+            <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}"/>
+            <button class="btn-search" type="submit"><i class="icon-search"></i></button>
+        </div>
+    </form>
+
+    <div class="section site-language">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#" target="_self" alt="{{ _('Polish version') }}">PL</a>
+            </li>
+            <li>
+                <a href="#" target="_self" alt="{{ _('English version') }}">EN</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

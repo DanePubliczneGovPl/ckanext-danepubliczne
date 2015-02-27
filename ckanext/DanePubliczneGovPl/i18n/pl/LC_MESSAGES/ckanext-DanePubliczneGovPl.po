@@ -1,6 +1,15 @@
 msgid "Home page"
 msgstr "Strona główna"
 
+msgid "Polish version"
+msgstr "Wersja polska"
+
+msgid "English version"
+msgstr "Wersja angielska"
+
+msgid "Home page"
+msgstr "Strona główna"
+
 msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
 msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
 

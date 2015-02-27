@@ -109,7 +109,8 @@ body {
     margin-top: 4px;
 }
 
-.masthead .navigation {
+.masthead .navigation,
+.masthead .section.site-language {
     margin-top: 5px;
 }
 
@@ -127,6 +128,17 @@ body {
     padding: 6px 10px;
     font-size: 16px;
     font-weight: normal;
+}
+
+.masthead .section.site-language {
+    margin-left: 150px;
+}
+
+.masthead .section.site-language ul li a {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    padding: 8px 6px;
 }
 
 .nav-pills > li > a {
