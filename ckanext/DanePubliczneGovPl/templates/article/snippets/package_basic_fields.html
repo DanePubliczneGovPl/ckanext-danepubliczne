@@ -13,6 +13,10 @@
   {{ form.prepend('name', id='field-name', label=_('URL'), prepend=prefix, placeholder=_('eg. my-dataset'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
 {% endblock %}
 
+{% block package_basic_fields_author %}
+  {{ form.input('author', id='field-author', label=_('Author'), value=data.author, error=errors.author, classes=['control-full']) }}
+{% endblock %}
+
 {% block package_basic_fields_custom %}{% endblock %}
 
 {% block package_basic_fields_description %}

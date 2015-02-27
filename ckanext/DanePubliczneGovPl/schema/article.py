@@ -2,6 +2,7 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.plugins
 import ckan.lib.navl.dictization_functions as df
+import re
 
 class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -13,7 +14,35 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     _PACKAGE_TYPE = 'article'
 
     def get_helpers(self):
-        return {} # TODO
+        return {
+            'dp_recent_articles': self.h_recent_articles,
+            'dp_shorten_article': self.h_shorten_article
+        }
+
+    def h_recent_articles(self, count=4):
+        search = tk.get_action('package_search')(data_dict={
+            'rows': count,
+            'sort': 'metadata_created desc',
+            'fq': '+type:' + Article._PACKAGE_TYPE,
+            'facet': 'false'
+        })
+
+        if search['count'] == 0:
+            return []
+
+        return search['results']
+
+    def h_shorten_article(self, markdown, length = 140, trail='...'):
+        # Try to return first paragraph (two consecutive \n disregarding white characters)
+        paragraph = markdown
+        m = re.search('([ \t\r\f\v]*\n){2}', markdown)
+        if m:
+            paragraph = paragraph[0:m.regs[0][0]]
+
+        if len(paragraph) > length:
+            paragraph = paragraph[0:(length - len(trail))] + trail
+
+        return paragraph
 
     def package_types(self):
         return [Article._PACKAGE_TYPE]
