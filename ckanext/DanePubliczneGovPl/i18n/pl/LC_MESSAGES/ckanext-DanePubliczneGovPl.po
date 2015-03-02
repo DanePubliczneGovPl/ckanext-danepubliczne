@@ -1,14 +1,20 @@
 msgid "Home page"
 msgstr "Strona główna"
 
+msgid "My account"
+msgstr "Moje konto"
+
+msgid "Log in"
+msgstr "Zaloguj się"
+
+msgid "Log out"
+msgstr "Wyloguj się"
+
 msgid "Polish version"
 msgstr "Wersja polska"
 
 msgid "English version"
 msgstr "Wersja angielska"
-
-msgid "Home page"
-msgstr "Strona główna"
 
 msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
 msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
@@ -36,3 +42,6 @@ msgstr "Nie znalazłeś interesujących Cię danych? Zaproponuj dataset"
 
 msgid "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
 msgstr "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna."
+
+msgid "Filters"
+msgstr "Filtruj"

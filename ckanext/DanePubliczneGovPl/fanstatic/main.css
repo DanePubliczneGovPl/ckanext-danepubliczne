@@ -130,10 +130,22 @@ body {
     margin-top: 5px;
 }
 
-.masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
+.masthead .navigation .nav-pills li a {
+    border: 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li.active a {
+    color: #157abe;
     background: none;
     border: 0;
     font-weight: normal;
+}
+
+.masthead .navigation .nav-pills li.active a {
+    font-weight: bold;
 }
 
 .masthead .site-search {
@@ -155,12 +167,6 @@ body {
     -moz-border-radius: 0;
     border-radius: 0;
     padding: 8px 6px;
-}
-
-.nav-pills > li > a {
-    border: 0;
-    font-size: 16px;
-    font-weight: normal;
 }
 
 /* ===========================================
