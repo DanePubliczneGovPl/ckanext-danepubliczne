@@ -22,7 +22,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             return tags
         except tk.ObjectNotFound:
             # TODO production delete
-            return ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'category8', 'category9']
+            return ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7',
+                    'category8', 'category9']
 
     def update_frequencies(self):
         try:
@@ -84,7 +85,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         # Add our custom_resource_text metadata field to the schema
         # schema['resources'].update({
         # 'custom_resource_text' : [ tk.get_validator('ignore_missing') ]
-        #                 })
+        # })
 
         return schema
 

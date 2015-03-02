@@ -54,7 +54,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
             # If i don't put these 'extras' entries in schema
             # dictization_functions.augment_data converts ('extras', '0', 'key') -> string
             # to ('extras', '0', '__extras') -> dict
-            #  and from_extras is cannot match ('extras', '0', 'key') and does nothing
+            # and from_extras is cannot match ('extras', '0', 'key') and does nothing
             'extras': {'value': [], 'key': []},
             'project_leader': default_validators
         })

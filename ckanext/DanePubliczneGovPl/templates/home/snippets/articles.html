@@ -2,15 +2,13 @@
     <div class="module-content articles">
         <h2>{{ _('Articles') }}</h2>
 
-        <div class="article span3">
-            <h3><a href="#" target="_self">Lorem ipsum dolor</a></h3>
-
-            <p>Lorem ipsum dolor sit amet enim. Etiam
-                ullamcorper. Suspendisse a pellentesque
-                dui, non felis. Maecenas malesuada elit
-                lectus felis, malesuada ultricies. Curabitur
-                et ligula. Ut molestie a, ultricies porta urna.</p>
-            <a href="#" target="_self" class="btn btn-primary">{{ _('read more') }}</a>
-        </div>
+        {% for a in h.dp_recent_articles() %}
+            <div class="article span3">
+                <h3><a href="#" target="_self">{{ a.title }}</a></h3>
+                <small>{{ h.render_datetime(h.date_str_to_datetime(a.metadata_created)) }}</small>
+                <p>{{ h.dp_shorten_article(a.notes, 200) }}</p>
+                <a href="#" target="_self" class="btn btn-primary">{{ _('read more') }}</a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

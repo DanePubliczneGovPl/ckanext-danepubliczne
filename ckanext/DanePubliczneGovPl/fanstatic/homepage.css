@@ -88,17 +88,24 @@
     height: 250px;
     padding: 30px 25px;
     text-decoration: none;
+    position: relative;
 }
 
-.homepage .categoriesBox .categories .category .img {
-    opacity: .5;
-    filter: alpha(opacity=50);
+.homepage .categoriesBox .categories .category .category-img {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
 }
 
 .homepage .categoriesBox .categories .category h3 {
     font-size: 24px;
     font-weight: normal;
+    line-height: 1.2em;
     color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 25px 30px;
 }
 
 /*TEMPORARY COLORS*/
@@ -168,11 +175,17 @@
 .homepage .articlesBox .articles .article h3 {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 18px;
+    margin-bottom: 0;
 }
 
 .homepage .articlesBox .articles .article h3 a {
     color: #010101;
+}
+
+.homepage .articlesBox .articles .article > small {
+    margin-bottom: 18px;
+    display: block;
+    width: 100%;
 }
 
 .homepage .articlesBox .articles .article p {

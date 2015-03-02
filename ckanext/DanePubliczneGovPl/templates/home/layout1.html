@@ -17,8 +17,10 @@
         </div>
     </div>
 </div>
-<div role="main" class="articlesBox">
-    <div class="container">
-        {% snippet "home/snippets/articles.html" %}
+{% if h.dp_recent_articles() %}
+    <div role="main" class="articlesBox">
+        <div class="container">
+            {% snippet "home/snippets/articles.html" %}
+        </div>
     </div>
-</div>
+{% endif %}

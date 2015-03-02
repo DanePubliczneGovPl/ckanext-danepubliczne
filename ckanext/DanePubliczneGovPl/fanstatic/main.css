@@ -8,24 +8,28 @@
     font-weight: 300;
     src: local('Open Sans Light'), local('OpenSans-Light'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
     src: local('Open Sans'), local('OpenSans'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
     src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNShUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNSha1RVmPjeKy21_GQJaLlJI.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
     src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Open Sans';
     font-style: italic;
@@ -53,7 +57,6 @@
     font-weight: 700;
     src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxqsA81DAeuqoeYxDcSOJPMY.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxoUt79146ZFaIJxILcpzmhI.woff) format('woff');
 }
-
 
 /* =====================================================
    The general setup of the site
