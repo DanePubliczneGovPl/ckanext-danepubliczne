@@ -175,8 +175,7 @@ body {
     font-weight: normal;
 }
 
-.masthead .navigation .nav-pills li a:hover,
-.masthead .navigation .nav-pills li.active a {
+.masthead .navigation .nav-pills li a:hover {
     color: #157abe;
     background: none;
     border: 0;
@@ -184,7 +183,13 @@ body {
 }
 
 .masthead .navigation .nav-pills li.active a {
+    color: #ffffff;
+    border: 0;
     font-weight: bold;
+    background-color: #157abe;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
 }
 
 .masthead .site-search {
