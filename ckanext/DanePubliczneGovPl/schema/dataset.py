@@ -10,20 +10,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
-        return {'dp_categories': self.categories,
-                'dp_update_frequencies': self.update_frequencies,
+        return {'dp_update_frequencies': self.update_frequencies,
                 'dp_update_frequencies_options': self.update_frequencies_options}
-
-    def categories(self):
-        try:
-            tags = tk.get_action('tag_list')(
-                data_dict={'vocabulary_id': 'categories'})
-
-            return tags
-        except tk.ObjectNotFound:
-            # TODO production delete
-            return ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7',
-                    'category8', 'category9']
 
     def update_frequencies(self):
         try:

@@ -75,6 +75,7 @@ setup(
         dane_publiczne=ckanext.DanePubliczneGovPl.layout:Layout
         dane_publiczne_organization=ckanext.DanePubliczneGovPl.schema.organization:OrganizationForm
         dane_publiczne_dataset=ckanext.DanePubliczneGovPl.schema.dataset:DatasetForm
+        dane_publiczne_categories=ckanext.DanePubliczneGovPl.schema.category:Category
         dane_publiczne_articles=ckanext.DanePubliczneGovPl.schema.article:Article
     ''',
 )

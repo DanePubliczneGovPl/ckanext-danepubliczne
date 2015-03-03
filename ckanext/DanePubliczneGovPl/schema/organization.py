@@ -65,7 +65,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
 
     def is_fallback(self):
         # Overrides all 
-        return True
+        return False
 
     def group_types(self):
         return ['organization']
