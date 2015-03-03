@@ -93,6 +93,8 @@
 }
 
 .homepage .categoriesBox .categories .category .category-img {
+    max-width: 100px;
+    max-height: 80px;
     opacity: 0.2;
     filter: alpha(opacity=20);
 }
