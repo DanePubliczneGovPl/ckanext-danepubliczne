@@ -1,15 +1,15 @@
+import re
+
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
-import ckan.lib.plugins
-import ckan.lib.navl.dictization_functions as df
-import re
+
 
 class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Dataset type handling articles
     '''
     p.implements(p.IDatasetForm)
-    p.implements(p.ITemplateHelpers) # Helpers for templates
+    p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     _PACKAGE_TYPE = 'article'
 
@@ -32,7 +32,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         return search['results']
 
-    def h_shorten_article(self, markdown, length = 140, trail='...'):
+    def h_shorten_article(self, markdown, length=140, trail='...'):
         # Try to return first paragraph (two consecutive \n disregarding white characters)
         paragraph = markdown
         m = re.search('([ \t\r\f\v]*\n){2}', markdown)
@@ -60,6 +60,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         # License is fixed to Creative Commons Share-Alike
         def fixed_license(value, context):
             return 'cc-by-sa'
+
         def fixed_type(value, context):
             return Article._PACKAGE_TYPE
 
@@ -68,10 +69,10 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'name': schema['name'],
             'title': schema['title'],
             'author': schema['author'],
-            'notes': [not_empty, unicode], # notes [content] is obligatory
+            'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
             'license_id': [fixed_license, unicode],
-            }
+        }
 
         return schema
 
@@ -80,7 +81,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema = super(Article, self).show_package_schema()
         schema.update({
-            'notes': [not_empty, unicode], # notes [content] is obligatory
+            'notes': [not_empty, unicode],  # notes [content] is obligatory
         })
         return schema
 
@@ -102,9 +103,10 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def edit_template(self):
         return 'article/edit.html'
+
     #
     # def search_template(self):
-    #     return 'article/search.html'
+    # return 'article/search.html'
     #
     # def history_template(self):
     #     return 'article/history.html'

@@ -1,17 +1,17 @@
 {% block categories_list %}
-    <div class="module-content categories">
-        <h2>{{ _('Wybierz interesujący Cię dział zasobów informacyjnych') }}</h2>
+  <div class="module-content categories">
+    <h2>{{ _('Wybierz interesujący Cię dział zasobów informacyjnych') }}</h2>
 
-        <ul class="list">
-            {% for category in h.dp_categories() %}
-                <li class="box span3">
-                    <a href="#" target="_self" class="category" title="{{ category }}">
-                        <img class="category-img" src="/categories/srodowisko.png" alt=""/>
+    <ul class="list">
+      {% for category in h.dp_categories() %}
+        <li class="box span3">
+          <a href="#" target="_self" class="category" title="{{ category }}">
+            <img class="category-img" src="/categories/srodowisko.png" alt=""/>
 
-                        <h3>{{ category }}</h3>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+            <h3>{{ category }}</h3>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}

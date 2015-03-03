@@ -66,7 +66,7 @@
     font-size: 20px;
     font-weight: bold;
     color: #1d1d1d;
-    padding: 50px 0 0;
+    padding: 50px 15px 0;
     margin: 0;
 }
 
@@ -75,9 +75,11 @@
     font-weight: bold;
     position: relative;
     color: #1d1d1d;
+    border-color: #d1d9e2;
     border-bottom-width: 0;
-    padding: 20px 0;
+    padding: 20px 15px;
     margin: 0;
+    background: none;
 }
 
 .wrapper .dataset-filters .read-more,
@@ -178,7 +180,7 @@
 }
 
 .wrapper .dataset-result .control-order-by {
-    margin-top: 10px;
+    margin-top: 14px;
 }
 
 .wrapper .dataset-result .control-order-by label {

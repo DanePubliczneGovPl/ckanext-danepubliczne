@@ -1,27 +1,27 @@
 {% ckan_extends %}
 
 {% block footer_content %}
-    <nav class="footer-links span3">
-        <h2 class="hide">{{ _('Additional info about service') }}</h2>
-        {% block footer_nav %}
-            <ul class="unstyled">
-                {% block footer_links %}
-                    <li>
-                        <a href="{{ h.url_for(controller='home', action='about') }}">{{ _('About {0}').format(g.site_title) }}</a>
-                    </li>
-                {% endblock %}
-            </ul>
+  <nav class="footer-links span3">
+    <h2 class="hide">{{ _('Additional info about service') }}</h2>
+    {% block footer_nav %}
+      <ul class="unstyled">
+        {% block footer_links %}
+          <li>
+            <a href="{{ h.url_for(controller='home', action='about') }}">{{ _('About {0}').format(g.site_title) }}</a>
+          </li>
         {% endblock %}
-    </nav>
-    <div class="attribution span3">
-        <h2>{{ _('API') }}</h2>
+      </ul>
+    {% endblock %}
+  </nav>
+  <div class="attribution span3">
+    <h2>{{ _('API') }}</h2>
 
-        <p>{{ _('Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.') }}</p>
-        <a class="btn btn-link" href="#" target="_self">{{ _('read more about API') }}</a>
-    </div>
-    <div class="attribution span5">
-        <h2>{{ _('Nie znalazłeś interesujących Cię danych? Zaproponuj dataset') }}</h2>
+    <p>{{ _('Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.') }}</p>
+    <a class="btn btn-link" href="#" target="_self">{{ _('read more about API') }}</a>
+  </div>
+  <div class="attribution span5">
+    <h2>{{ _('Nie znalazłeś interesujących Cię danych? Zaproponuj dataset') }}</h2>
 
-        <p>{{ _('Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.') }}</p>
-    </div>
+    <p>{{ _('Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.') }}</p>
+  </div>
 {% endblock %}

@@ -1,26 +1,26 @@
 <div role="main" class="hero">
-    <div class="container">
-        <div class="row">
-            <div class="span6">
-                {% snippet 'home/snippets/search.html' %}
-            </div>
-            <div class="span6">
-                {% snippet 'home/snippets/promoted.html' %}
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        {% snippet 'home/snippets/search.html' %}
+      </div>
+      <div class="span6">
+        {% snippet 'home/snippets/promoted.html' %}
+      </div>
     </div>
+  </div>
 </div>
 <div role="main" class="categoriesBox">
-    <div class="container">
-        <div class="row">
-            {% snippet "home/snippets/categories.html" %}
-        </div>
+  <div class="container">
+    <div class="row">
+      {% snippet "home/snippets/categories.html" %}
     </div>
+  </div>
 </div>
 {% if h.dp_recent_articles() %}
-    <div role="main" class="articlesBox">
-        <div class="container">
-            {% snippet "home/snippets/articles.html" %}
-        </div>
+  <div role="main" class="articlesBox">
+    <div class="container">
+      {% snippet "home/snippets/articles.html" %}
     </div>
+  </div>
 {% endif %}

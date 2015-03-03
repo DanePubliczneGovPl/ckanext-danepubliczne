@@ -1,67 +1,67 @@
 {% ckan_extends %}
 
 {% block header_account_logged %}
+  <li>
+    <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}"
+       class="image" title="{{ _('View profile') }}">
+      <span class="username">{{ _('My account') }}</span>
+    </a>
+  </li>
+  {% block header_account_log_out_link %}
     <li>
-        <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}"
-           class="image" title="{{ _('View profile') }}">
-            <span class="username">{{ _('My account') }}</span>
-        </a>
+      <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+        <span class="signout">{{ _('Log out') }}</span>
+      </a>
     </li>
-    {% block header_account_log_out_link %}
-        <li>
-            <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
-                <span class="signout">{{ _('Log out') }}</span>
-            </a>
-        </li>
-    {% endblock %}
+  {% endblock %}
 {% endblock %}
 
 {% block header_account_notlogged %}
-    <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+  <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
 {% endblock %}
 
 {% block header_debug %}
-    {% block flash %}
-        {% set flash_messages = h.flash.pop_messages() | list %}
-        <div class="flash-messages">
-            {% for message in flash_messages %}
-                <div class="container">
-                    <div class="alert fade in {{ message.category }}">
-                        {{ h.literal(message) }}
-                    </div>
-                </div>
-            {% endfor %}
+  {% block flash %}
+    {% set flash_messages = h.flash.pop_messages() | list %}
+    <div class="flash-messages">
+      {% for message in flash_messages %}
+        <div class="container">
+          <div class="alert fade in {{ message.category }}">
+            {{ h.literal(message) }}
+          </div>
         </div>
-    {% endblock %}
+      {% endfor %}
+    </div>
+  {% endblock %}
 
-    {% if g.debug and not g.debug_supress_header %}
-        <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
-    {% endif %}
+  {% if g.debug and not g.debug_supress_header %}
+    <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+  {% endif %}
 {% endblock %}
 
 {% block header_logo %}
-    <a class="logo" href="{{ h.url('home') }}"><img src="/dane_publiczne_logo.png" alt="{{ g.site_title }} Logo"
-                                                    title="{{ _('Home page') }}"/></a>
+  <a class="logo" href="{{ h.url('home') }}"><img src="/dane_publiczne_logo.png" alt="{{ g.site_title }} Logo"
+                                                  title="{{ _('Home page') }}"/></a>
 {% endblock %}
 
 {% block header_site_search %}
-    <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}"
-          method="get">
-        <div class="field">
-            <label for="field-sitewide-search">{{ _('Search Datasets') }}</label>
-            <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}"/>
-            <button class="btn-search" type="submit"><i class="icon-search"></i></button>
-        </div>
-    </form>
-
-    <div class="section site-language">
-        <ul class="nav nav-pills">
-            <li class="active">
-                <a href="#" target="_self" alt="{{ _('Polish version') }}">PL</a>
-            </li>
-            <li>
-                <a href="#" target="_self" alt="{{ _('English version') }}">EN</a>
-            </li>
-        </ul>
+  <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}"
+        method="get">
+    <div class="field">
+      <label for="field-sitewide-search">{{ _('Search Datasets') }}</label>
+      <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}"/>
+      <button class="btn-search" type="submit"><i class="icon-search"></i></button>
     </div>
+  </form>
+
+  <div class="section site-language">
+    <ul class="nav nav-pills">
+      <li class="active">
+        <a href="#" target="_self" alt="{{ _('Polish version') }}">PL</a>
+      </li>
+      <li>
+        <a href="#" target="_self" alt="{{ _('English version') }}">EN</a>
+      </li>
+    </ul>
+  </div>
 {% endblock %}
