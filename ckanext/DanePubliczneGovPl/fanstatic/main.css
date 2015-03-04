@@ -267,4 +267,6 @@ body {
     font-size: 14px;
     font-weight: normal;
     color: #bebebe;
+    padding-left: 0;
+    padding-right: 0;
 }

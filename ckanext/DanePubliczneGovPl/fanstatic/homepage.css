@@ -86,7 +86,7 @@
 
 .homepage .categoriesBox .categories .category {
     display: block;
-    height: 250px;
+    height: 242px;
     padding: 30px 25px;
     text-decoration: none;
     position: relative;
@@ -168,8 +168,6 @@
 }
 
 .homepage .articlesBox .articles .article {
-    margin-left: 0;
-    margin-right: 20px;
     font-size: 14px;
     font-weight: normal;
     color: #010101;
@@ -202,4 +200,16 @@
     font-size: 14px;
     font-weight: normal;
     padding: 2px 16px;
+}
+
+@media (min-width: 768px) {
+    .homepage .categoriesBox .categories .box {
+        width: 50%;
+    }
+}
+
+@media (min-width: 978px) {
+    .homepage .categoriesBox .categories .box {
+        width: 25%;
+    }
 }
