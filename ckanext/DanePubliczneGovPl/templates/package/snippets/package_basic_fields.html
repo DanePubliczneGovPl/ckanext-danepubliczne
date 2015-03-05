@@ -2,13 +2,13 @@
 
 {% block package_basic_fields_custom %}
     <div class="control-group">
-        <label class="control-label" for="field-country_code">{{ _("Category") }}</label>
+        <label class="control-label" for="field-category">{{ _("Category") }}</label>
 
         <div class="controls">
-            <select id="field-country_code" name="country_code" data-module="autocomplete">
+            <select id="field-category" name="category">
                 {% for category in h.dp_categories() %}
-                    <option value="{{ category }}"
-                            {% if category in data.get('category', []) %}selected="selected"{% endif %}>{{ category }}</option>
+                    <option value="{{ category.id }}"
+                            {% if category.id in data.get('category', []) %}selected="selected"{% endif %}>{{ category.title }}</option>
                 {% endfor %}
             </select>
         </div>
