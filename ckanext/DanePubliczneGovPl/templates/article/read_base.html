@@ -2,6 +2,12 @@
 
 {% block subtitle %}{{ pkg.title or pkg.name }} - {{ super() }}{% endblock %}
 
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'dane_publiczne/article.css' %}
+{% endblock %}
+
 {% block links -%}
   {{ super() }}
   <link rel="alternate" type="application/rdf+xml"
@@ -54,7 +60,7 @@
   {% endblock %}
 
   {% block package_social %}
-    {% snippet "snippets/social.html" %}
+    {#{% snippet "snippets/social.html" %}#}
   {% endblock %}
 
   {% block package_license %}
