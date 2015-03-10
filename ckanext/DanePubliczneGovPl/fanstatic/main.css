@@ -251,6 +251,18 @@ body {
    The content in the middle of the front page
    =========================================== */
 
+.wrapper {
+    background: none;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+
 [role=main], .main {
     background: #ffffff;
 }

@@ -1,14 +1,5 @@
 .wrapper {
     display: inline-block;
-    background: none;
-    border: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
 }
 
 [role=main] .primary {
@@ -56,6 +47,16 @@
     margin-top: 5px;
 }
 
+.module-heading {
+    padding-top: 20px;
+    background: none;
+    border-bottom: none;
+}
+
+.secondary .module-narrow .module-heading, .secondary .module-narrow .module-content, .secondary .module-narrow .module-footer {
+    padding-left: 0;
+}
+
 .context-info .nums {
     margin-top: 0;
     padding-top: 0;
@@ -89,10 +90,4 @@
 
 .context-info .follow_button a.btn-success:hover, .context-info .follow_button a.btn-success:active {
     background: #105d90;
-}
-
-.module-heading {
-    padding-top: 20px;
-    background: none;
-    border-bottom: none;
 }
