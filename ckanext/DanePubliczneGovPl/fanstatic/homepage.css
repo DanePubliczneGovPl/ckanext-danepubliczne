@@ -86,13 +86,15 @@
 
 .homepage .categoriesBox .categories .category {
     display: block;
-    height: 250px;
+    height: 242px;
     padding: 30px 25px;
     text-decoration: none;
     position: relative;
 }
 
 .homepage .categoriesBox .categories .category .category-img {
+    max-width: 100px;
+    max-height: 80px;
     opacity: 0.2;
     filter: alpha(opacity=20);
 }
@@ -114,36 +116,72 @@
     background-color: #4b77be;
 }
 
+.homepage .categoriesBox .categories .box:nth-child(9n):hover {
+    background-color: #2959a6;
+}
+
 .homepage .categoriesBox .categories .box:nth-child(9n+1) {
     background-color: #24485f;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+1):hover {
+    background-color: #123246;
 }
 
 .homepage .categoriesBox .categories .box:nth-child(9n+2) {
     background-color: #6c7a89;
 }
 
+.homepage .categoriesBox .categories .box:nth-child(9n+2):hover {
+    background-color: #4b5f74;
+}
+
 .homepage .categoriesBox .categories .box:nth-child(9n+3) {
     background-color: #674172;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+3):hover {
+    background-color: #482054;
 }
 
 .homepage .categoriesBox .categories .box:nth-child(9n+4) {
     background-color: #bf3607;
 }
 
+.homepage .categoriesBox .categories .box:nth-child(9n+4):hover {
+    background-color: #962701;
+}
+
 .homepage .categoriesBox .categories .box:nth-child(9n+5) {
     background-color: #3a539b;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+5):hover {
+    background-color: #213c89;
 }
 
 .homepage .categoriesBox .categories .box:nth-child(9n+6) {
     background-color: #d35400;
 }
 
+.homepage .categoriesBox .categories .box:nth-child(9n+6):hover {
+    background-color: #b14600;
+}
+
 .homepage .categoriesBox .categories .box:nth-child(9n+7) {
     background-color: #2574a9;
 }
 
+.homepage .categoriesBox .categories .box:nth-child(9n+7):hover {
+    background-color: #095b92;
+}
+
 .homepage .categoriesBox .categories .box:nth-child(9n+8) {
     background-color: #138435;
+}
+
+.homepage .categoriesBox .categories .box:nth-child(9n+8):hover {
+    background-color: #066623;
 }
 
 .homepage .articlesBox {
@@ -166,8 +204,6 @@
 }
 
 .homepage .articlesBox .articles .article {
-    margin-left: 0;
-    margin-right: 20px;
     font-size: 14px;
     font-weight: normal;
     color: #010101;
@@ -200,4 +236,16 @@
     font-size: 14px;
     font-weight: normal;
     padding: 2px 16px;
+}
+
+@media (min-width: 768px) {
+    .homepage .categoriesBox .categories .box {
+        width: 50%;
+    }
+}
+
+@media (min-width: 978px) {
+    .homepage .categoriesBox .categories .box {
+        width: 25%;
+    }
 }

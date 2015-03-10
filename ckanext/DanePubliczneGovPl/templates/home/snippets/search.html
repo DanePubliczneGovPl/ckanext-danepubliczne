@@ -3,28 +3,28 @@
 
 
 <div class="module-content box info">
-    <header>
-        {% if intro %}
-            {{ h.render_markdown(intro) }}
-        {% else %}
-            <h1 class="page-heading">{{ _("Welcome to CKAN") }}</h1>
-            <p>
-                {% trans %}This is a nice introductory paragraph about CKAN or the site
-                    in general. We don't have any copy to go here yet but soon we will
-                {% endtrans %}
-            </p>
-        {% endif %}
-    </header>
-    <section class="module module-search">
-        <form class="module-content search-form" method="get"
-              action="{% url_for controller='package', action='search' %}">
-            <div class="search-input control-group search-giant">
-                <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ placeholder }}"/>
-                <button type="submit">
-                    <i class="icon-search"></i>
-                    <span>{{ _('Search') }}</span>
-                </button>
-            </div>
-        </form>
-    </section>
+  <header>
+    {% if intro %}
+      {{ h.render_markdown(intro) }}
+    {% else %}
+      <h1 class="page-heading">{{ _("Welcome to CKAN") }}</h1>
+      <p>
+        {% trans %}This is a nice introductory paragraph about CKAN or the site
+          in general. We don't have any copy to go here yet but soon we will
+        {% endtrans %}
+      </p>
+    {% endif %}
+  </header>
+  <section class="module module-search">
+    <form class="module-content search-form" method="get"
+          action="{% url_for controller='package', action='search' %}">
+      <div class="search-input control-group search-giant">
+        <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ placeholder }}"/>
+        <button type="submit">
+          <i class="icon-search"></i>
+          <span>{{ _('Search') }}</span>
+        </button>
+      </div>
+    </form>
+  </section>
 </div>

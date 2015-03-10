@@ -1,0 +1,160 @@
+.content {
+
+}
+
+.wrapper {
+    border: 4px solid #e3e3e3;
+    background: #ffffff;
+    margin: 0 auto;
+    display: inline-block;
+
+    position: relative;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+[role=main] .primary {
+    width: 550px;
+    margin-left: 260px;
+    padding: 40px 28px;
+}
+
+[role=main] .secondary {
+    width: 260px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+}
+
+[role=main] .secondary .module {
+    padding: 40px 28px;
+}
+
+.page-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1d1d1d;
+}
+
+.module-content .action .btn {
+    position: absolute;
+}
+
+.form-horizontal .control-label {
+    width: 100px;
+}
+
+.form-horizontal .control-label:after {
+    content: ' ';
+}
+
+.form-horizontal .controls {
+    margin-left: 130px;
+}
+
+.form-horizontal .control-medium .controls input {
+    width: 340px;
+}
+
+.radio, .checkbox {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 18px;
+}
+
+.radio:before, .checkbox:before {
+    content: " ";
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: -15px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+
+}
+
+input[type="radio"], input[type="checkbox"] {
+    visibility: hidden;
+}
+
+input[type="radio"]:checked + .radio:before {
+    content: "\2022";
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    line-height: 18px;
+}
+
+input[type=checkbox]:checked + .checkbox:before {
+    content: "\2713";
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+    line-height: 18px;
+}
+
+.form-actions {
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+.form-horizontal .form-actions {
+    padding-left: 120px;
+    padding-right: 65px;
+    padding-bottom: 0;
+}
+
+.secondary {
+    background: #f9f9f9;
+}
+
+.module-heading {
+    background: none;
+    border-width: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1d1d1d;
+    line-height: 1.2em;
+}
+
+.module-narrow .module-heading, .module-narrow .module-content, .module-narrow .module-footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.module-content {
+    margin: 0;
+}
+
+.module-content:first-child,
+.module-content:last-child {
+    margin: 0;
+    padding: 0;
+}
+
+.module-content p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.module-content .action {
+    position: absolute;
+    bottom: 40px;
+    left: 28px;
+    width: 100%;
+    height: 44px;
+}

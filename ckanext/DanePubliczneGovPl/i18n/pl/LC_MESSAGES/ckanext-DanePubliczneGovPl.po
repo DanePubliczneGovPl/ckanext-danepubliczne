@@ -45,3 +45,6 @@ msgstr "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellen
 
 msgid "Filters"
 msgstr "Filtruj"
+
+msgid "Login"
+msgstr "Login"

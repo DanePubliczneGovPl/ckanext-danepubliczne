@@ -1,0 +1,93 @@
+.wrapper {
+    display: inline-block;
+}
+
+[role=main] .primary {
+    width: 790px;
+    margin-left: 275px;
+}
+
+.page-header,
+.module-content,
+.module-content:first-child {
+    background: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+}
+
+.module h1 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #191a1a;
+}
+
+.notes {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+}
+
+[role=main] .secondary {
+    width: 275px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+}
+
+.secondary {
+    border-right: 4px solid #d1d9e2;
+}
+
+.secondary .module:first-child, .primary .module:first-child {
+    margin-top: 5px;
+}
+
+.module-heading {
+    padding-top: 20px;
+    background: none;
+    border-bottom: none;
+}
+
+.secondary .module-narrow .module-heading, .secondary .module-narrow .module-content, .secondary .module-narrow .module-footer {
+    padding-left: 0;
+}
+
+.context-info .nums {
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+}
+
+.context-info .nums dl dt {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.context-info .nums dl dd {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 15px;
+}
+
+.context-info .follow_button {
+    margin-top: 35px;
+}
+
+.context-info .follow_button a i {
+    display: none;
+}
+
+.context-info .follow_button a.btn-success {
+    background: #157abe;
+}
+
+.context-info .follow_button a.btn-success:hover, .context-info .follow_button a.btn-success:active {
+    background: #105d90;
+}
