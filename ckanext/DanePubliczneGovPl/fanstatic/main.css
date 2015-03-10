@@ -267,16 +267,41 @@ body {
     border: none;
 }
 
-.btn-primary {
+.btn {
     font-size: 16px;
     font-weight: bold;
-    color: #ffffff;
-    padding: 12px 16px;
-    background: #157abe;
+    padding: 8px 12px;
     border-width: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+}
+
+.btn-primary {
+    background: #157abe;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background: #105d90;
+}
+
+.btn-success {
+    background: #5bb75b;
+    color: #ffffff;
+}
+
+.btn-success:hover, .btn-success:active {
+    background: #449b44;
+}
+
+.btn-danger {
+    background: #da4f49;
+    color: #ffffff;
+}
+
+.btn-danger:hover, .btn-danger:active {
+    background: #c72f29;
 }
 
 /* ====================================
