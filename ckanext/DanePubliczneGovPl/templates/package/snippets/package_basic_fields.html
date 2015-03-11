@@ -7,8 +7,8 @@
         <div class="controls">
             <select id="field-category" name="category">
                 {% for category in h.dp_categories() %}
-                    <option value="{{ category.id }}"
-                            {% if category.id in data.get('category', []) %}selected="selected"{% endif %}>{{ category.title }}</option>
+                    <option value="{{ category.name }}"
+                            {% if category.name in (data.get('category') or []) %}selected="selected"{% endif %}>{{ category.title }}</option>
                 {% endfor %}
             </select>
         </div>
