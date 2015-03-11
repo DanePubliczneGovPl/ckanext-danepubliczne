@@ -134,7 +134,7 @@ def category_from_group(key, data, errors, context):
     category = None
     for k in data.keys():
         if k[0] == 'groups':
-            if category == None and k[2] == 'id':
+            if category == None and k[2] == 'name':
                 category = data[k]
             # data.pop(k) # won't be shown in groups
 
@@ -143,7 +143,7 @@ def category_from_group(key, data, errors, context):
 def category_to_group(key, data, errors, context):
     category = data.pop(('category',))
 
-    data[('groups', 0, 'id')] = category
+    data[('groups', 0, 'name')] = category
 
 
 def member_create(context, data_dict):
