@@ -3,8 +3,8 @@
         <h2>{{ _('Wybierz interesujący Cię dział zasobów informacyjnych') }}</h2>
 
         <ul class="list">
-            {% for c in h.dp_categories() %}
-                <li class="box span3">
+            {% for c in h.dp_categories_home() %}
+                <li class="box span3" style="background-color: {{ c.color }};">
                     <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self" class="category" title="{{ c.display_name }}">
                         <img class="category-img" src="{{ c.image_display_url }}" alt=""/>
 

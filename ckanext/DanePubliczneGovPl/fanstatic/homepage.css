@@ -109,43 +109,6 @@
     padding: 0 25px 30px;
 }
 
-/*TEMPORARY COLORS*/
-.homepage .categoriesBox .categories .box:nth-child(9n) {
-    background-color: #4b77be;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+1) {
-    background-color: #24485f;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+2) {
-    background-color: #6c7a89;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+3) {
-    background-color: #674172;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+4) {
-    background-color: #bf3607;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+5) {
-    background-color: #3a539b;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+6) {
-    background-color: #d35400;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+7) {
-    background-color: #2574a9;
-}
-
-.homepage .categoriesBox .categories .box:nth-child(9n+8) {
-    background-color: #138435;
-}
-
 .homepage .articlesBox {
     border-top: 5px solid #009ae0;
     background: #ffffff;

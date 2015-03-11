@@ -14,7 +14,7 @@ overriding the form blocks depending on the current context
     <div class="controls">
 
       {% for cl in h.dp_category_colors() %}
-      <input type="radio" name="color" value="{{ cl }}"/><span class='sample' style="background-color: {{ cl }}"></span>{{ cl }}<br/>
+      <input type="radio" name="color" value="{{ cl }}" {% if data.color %}checked="checked"{% endif %}/><span class='sample' style="background-color: {{ cl }}"></span>{{ cl }}<br/>
       {% endfor %}
     </div>
   </div>
