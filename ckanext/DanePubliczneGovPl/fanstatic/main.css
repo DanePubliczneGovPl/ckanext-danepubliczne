@@ -183,20 +183,28 @@ body {
     margin-top: 5px;
 }
 
-.masthead .navigation .nav-pills li a {
+.masthead .section.site-language ul {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.masthead .navigation .nav-pills li a,
+.masthead .section.site-language li a {
     border: 0;
     font-size: 16px;
     font-weight: normal;
 }
 
-.masthead .navigation .nav-pills li a:hover {
+.masthead .navigation .nav-pills li a:hover,
+.masthead .section.site-language li a:hover {
     color: #157abe;
     background: none;
     border: 0;
     font-weight: normal;
 }
 
-.masthead .navigation .nav-pills li.active a {
+.masthead .navigation .nav-pills li.active a,
+.masthead .section.site-language li.active a {
     color: #ffffff;
     border: 0;
     font-weight: bold;
