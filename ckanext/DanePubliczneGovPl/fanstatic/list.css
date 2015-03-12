@@ -90,6 +90,14 @@
 .search-form .search-input.search-giant input {
     height: 50px;
     padding: 15px 70px 15px 15px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #060300;
+}
+
+.search-form .search-input.search-giant button i {
+    font-size: 24px;
+    width: 24px;
 }
 
 .search-form .search-input button[type="submit"] {
@@ -191,6 +199,9 @@
 .wrapper .dataset-filters .nav-item > a,
 .wrapper .dataset-filters .nav-aside li a {
     margin: 0 -4px 0 0;
+    font-size: 14px;
+    font-weight: normal;
+    color: #1d1d1d;
 }
 
 .wrapper .dataset-filters .nav-item > a:hover,
@@ -239,7 +250,7 @@
 
 .wrapper .dataset-result .results-total {
     font-size: 30px;
-    font-weight: 300;
+    font-weight: normal;
     color: #157abe;
     margin-top: 5px;
 }
@@ -295,8 +306,10 @@
 }
 
 .wrapper .dataset-result .dataset-list .dataset-content .notes {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: normal;
+    color: #000000;
+    line-height: 1.2em;
 }
 
 .wrapper .dataset-result .dataset-list .dataset-resources {
@@ -339,6 +352,7 @@
     font-weight: normal;
     color: #0d67a3;
     border: 0;
+    padding: 12px 6px;
 }
 
 .wrapper .dataset-result .pagination li.active a {

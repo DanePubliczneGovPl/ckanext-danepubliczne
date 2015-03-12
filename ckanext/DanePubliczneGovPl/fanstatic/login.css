@@ -130,6 +130,10 @@ input[type=checkbox]:checked + .checkbox:before {
     line-height: 1.2em;
 }
 
+.module:first-child .module-heading {
+    padding-top: 8px;
+}
+
 .module-narrow .module-heading, .module-narrow .module-content, .module-narrow .module-footer {
     padding-left: 0;
     padding-right: 0;
@@ -153,7 +157,7 @@ input[type=checkbox]:checked + .checkbox:before {
 
 .module-content .action {
     position: absolute;
-    bottom: 40px;
+    bottom: 32px;
     left: 28px;
     width: 100%;
     height: 44px;
