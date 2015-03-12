@@ -279,6 +279,11 @@ body {
     width: 75%;
 }
 
+[role="main"] .secondary {
+    width: 25%;
+    float: left;
+}
+
 .module-narrow .module-heading, .module-narrow .module-content, .module-narrow .module-footer {
     padding: 20px 25px;
 }
