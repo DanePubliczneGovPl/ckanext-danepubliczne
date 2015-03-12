@@ -2,13 +2,13 @@ import re
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
-
+import ckan.logic.auth as auth
+from ckan.common import _
 
 class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Dataset type handling articles
     '''
-    p.implements(p.IDatasetForm)
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     _PACKAGE_TYPE = 'article'
@@ -44,6 +44,10 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         return paragraph
 
+
+
+    p.implements(p.IDatasetForm)
+
     def package_types(self):
         return [Article._PACKAGE_TYPE]
 
@@ -67,7 +71,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = {
             'id': schema['id'],
             'name': schema['name'],
-            'title': schema['title'],
+            'title': [not_empty, unicode],
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
@@ -113,3 +117,40 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     #
     def package_form(self):
         return 'article/new_package_form.html'
+
+
+    p.implements(p.IAuthFunctions)
+    def get_auth_functions(self):
+        return {
+            'package_create': _package_create,   # new = context.get('package') == None
+            'package_delete': _package_delete,  # data_dict['id]
+            'package_update': _package_update, # context['package'].type
+        }
+
+def _package_create(context, data_dict=None):
+    user = context['user']
+    package = context.get('package') # None for new
+
+    if package and package['type'] == 'article':
+        return {'success': False, 'msg': _('User %s not authorized to create articles') % user}
+
+    return auth.create.package_create(context, data_dict)
+
+def _package_delete(context, data_dict=None):
+    user = context['user']
+    package = auth.get_package_object(context, data_dict)
+
+    if package and package.type == 'article':
+        return {'success': False, 'msg': _('User %s not authorized to delete articles') % user}
+
+    return auth.delete.package_delete(context, data_dict)
+
+def _package_update(context, data_dict=None):
+    user = context['user']
+    package = auth.get_package_object(context, data_dict)
+
+    if package and package.type == 'article':
+        return {'success': False, 'msg': _('User %s not authorized to update articles') % user}
+
+    return auth.update.package_update(context, data_dict)
+
