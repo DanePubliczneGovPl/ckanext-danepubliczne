@@ -275,6 +275,14 @@ body {
     background: #ffffff;
 }
 
+[role="main"] .primary {
+    width: 75%;
+}
+
+.module-narrow .module-heading, .module-narrow .module-content, .module-narrow .module-footer {
+    padding: 20px 25px;
+}
+
 .box {
     box-shadow: none;
 }
