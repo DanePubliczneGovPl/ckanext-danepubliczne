@@ -1,29 +1,19 @@
+import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
-
+import ckan.lib.navl.dictization_functions as df
+from ckan.common import _
+from ckan import logic
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Modifies fields and appearance of datasets
     '''
-    p.implements(p.IDatasetForm)
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
-        return {'dp_categories': self.categories,
-                'dp_update_frequencies': self.update_frequencies,
+        return {'dp_update_frequencies': self.update_frequencies,
                 'dp_update_frequencies_options': self.update_frequencies_options}
-
-    def categories(self):
-        try:
-            tags = tk.get_action('tag_list')(
-                data_dict={'vocabulary_id': 'categories'})
-
-            return tags
-        except tk.ObjectNotFound:
-            # TODO production delete
-            return ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7',
-                    'category8', 'category9']
 
     def update_frequencies(self):
         try:
@@ -37,6 +27,32 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def update_frequencies_options(self):
         return ({'value': freq, 'text': freq} for freq in self.update_frequencies())
 
+
+    p.implements(p.IAuthFunctions)
+    def get_auth_functions(self):
+        return {
+            # 'member_create': member_create,
+            # 'member_delete': member_delete,
+        }
+
+
+
+    #
+    # p.implements(p.IPackageController, inherit=True)
+    # def after_create(self, context, pkg_dict):
+    #     group = pkg_dict['category']
+    #
+    #
+    #     r = tk.get_action('member_create')(context, data_dict={
+    #         'id': group,
+    #         'object': pkg_dict['id'],
+    #         'object_type': 'package',
+    #         'capacity': 'public'
+    #     })
+    #
+
+
+    p.implements(p.IDatasetForm)
     def show_package_schema(self):
         schema = super(DatasetForm, self).show_package_schema()
 
@@ -47,7 +63,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
         schema.update({
-            'category': [from_tags('categories')],
+            'category': [category_from_group],
             'update_frequency': [from_tags('update_frequencies')],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
@@ -70,7 +86,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             return 'other-pd'
 
         schema.update({
-            'category': [to_tags('categories')],
+            'category': [category_exists, category_to_group],
             'update_frequency': [to_tags('update_frequencies')],
 
             'license_id': [fixed_license, unicode],
@@ -89,9 +105,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         return schema
 
-    ############################
-    # Below not interesting code
-
     def package_types(self):
         return []  # handle all dataset types
 
@@ -107,5 +120,54 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def update_package_schema(self):
         schema = super(DatasetForm, self).update_package_schema()
         schema = self._modify_package_schema(schema)
-        return schema    
+        return schema
 
+
+def category_exists(value, context):
+    categories = tk.get_action('group_list')(context, {})
+
+    if not value in categories:
+        raise df.Invalid(_("Category '{0}' doesn't exist").format(value))
+    return value
+
+def category_from_group(key, data, errors, context):
+    category = None
+    for k in data.keys():
+        if k[0] == 'groups':
+            if category == None and k[2] == 'name':
+                category = data[k]
+            # data.pop(k) # won't be shown in groups
+
+    data[('category',)] = category
+
+def category_to_group(key, data, errors, context):
+    category = data.pop(('category',))
+
+    data[('groups', 0, 'name')] = category
+
+
+def member_create(context, data_dict):
+    user = context['user']
+
+    is_admin_somewhere = new_authz.has_user_permission_for_some_org(user, 'admin')
+
+    # Allow organization admins to add and remove packages from groups (categories)
+    if is_admin_somewhere and data_dict['object_type'] == 'package' and data_dict['capacity'] == 'public':
+        return {'success': True}
+
+    # if not call super
+    import ckan.logic.auth.create as ac
+    ac.member_create(context, data_dict)
+
+def member_delete(context, data_dict):
+    user = context['user']
+
+    is_admin_somewhere = new_authz.has_user_permission_for_some_org(user, 'admin')
+
+    # Allow organization admins to add and remove packages from groups (categories)
+    if is_admin_somewhere and data_dict['object_type'] == 'package' and data_dict['capacity'] == 'public':
+        return {'success': True}
+
+    # if not call super
+    import ckan.logic.auth.create as ad
+    ad.member_delete(context, data_dict)

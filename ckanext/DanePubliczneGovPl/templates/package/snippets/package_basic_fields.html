@@ -5,12 +5,12 @@
     <label class="control-label" for="field-country_code">{{ _("Category") }}</label>
 
     <div class="controls">
-      <select id="field-country_code" name="country_code" data-module="autocomplete">
-        {% for category in h.dp_categories() %}
-          <option value="{{ category }}"
-                  {% if category in data.get('category', []) %}selected="selected"{% endif %}>{{ category }}</option>
-        {% endfor %}
-      </select>
+        <select id="field-category" name="category">
+            {% for category in h.dp_categories() %}
+                <option value="{{ category.name }}"
+                        {% if category.name in (data.get('category') or []) %}selected="selected"{% endif %}>{{ category.title }}</option>
+            {% endfor %}
+        </select>
     </div>
   </div>
 
