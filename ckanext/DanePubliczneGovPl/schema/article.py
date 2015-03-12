@@ -67,7 +67,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = {
             'id': schema['id'],
             'name': schema['name'],
-            'title': schema['title'],
+            'title': [not_empty, unicode],
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
