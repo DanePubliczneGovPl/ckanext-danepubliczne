@@ -30,22 +30,7 @@
           {% block form %}
             <div class="dataset-search">
               <div class="container">
-                {% block search_input %}
-                  <div class="search-input control-group search-giant">
-                    <input type="text" class="search" name="q" value="{{ c.q }}"
-                           autocomplete="off" placeholder="{{ _('Search datasets...') }}">
-                    <button type="submit" value="search">
-                      <i class="icon-search"></i>
-                      <span>{{ _('Submit') }}</span>
-                    </button>
-                  </div>
-                {% endblock %}
-
-                {% block search_search_fields %}
-                  {% if c.fields -%}
-                    <span>{{ form.hidden_from_list(fields=c.fields) }}</span>
-                  {%- endif %}
-                {% endblock %}
+                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
               </div>
             </div>
           {% endblock %}

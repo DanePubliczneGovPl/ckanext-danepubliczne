@@ -193,6 +193,7 @@ body {
     border: 0;
     font-size: 16px;
     font-weight: normal;
+    color: #000000;
 }
 
 .masthead .navigation .nav-pills li a:hover,
@@ -215,13 +216,14 @@ body {
 }
 
 .masthead .site-search {
-    margin: 5px 8px 2px 0;
+    margin: 8px 8px 2px 0;
 }
 
 .masthead .site-search input {
     padding: 6px 10px;
     font-size: 16px;
     font-weight: normal;
+    color: #000000;
 }
 
 .masthead .section.site-language {
@@ -273,6 +275,19 @@ body {
 
 [role=main], .main {
     background: #ffffff;
+}
+
+[role="main"] .primary {
+    width: 75%;
+}
+
+[role="main"] .secondary {
+    width: 25%;
+    float: left;
+}
+
+.module-narrow .module-heading, .module-narrow .module-content, .module-narrow .module-footer {
+    padding: 20px 25px;
 }
 
 .box {
@@ -353,7 +368,7 @@ body {
 .site-footer .attribution h2 {
     font-size: 24px;
     font-weight: 600;
-    line-height: 1em;
+    line-height: 1.2em;
     color: #ffffff;
 }
 
@@ -364,4 +379,5 @@ body {
     color: #bebebe;
     padding-left: 0;
     padding-right: 0;
+    text-shadow: none;
 }

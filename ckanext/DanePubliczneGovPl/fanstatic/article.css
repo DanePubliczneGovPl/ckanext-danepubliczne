@@ -31,6 +31,20 @@
     color: #000000;
 }
 
+.notes p {
+    padding-bottom: 28px;
+}
+
+.notes ul,
+.notes ol {
+    padding-left: 50px;
+}
+
+.notes ul li,
+.notes ol li {
+    padding-left: 18px;
+}
+
 [role=main] .secondary {
     width: 275px;
     position: absolute;
