@@ -6,6 +6,7 @@ import pylons.config as config
 import webtest
 
 import nose.tools
+
 assert_equals = nose.tools.assert_equals
 assert_raises = nose.tools.assert_raises
 
@@ -18,13 +19,20 @@ import ckan.new_tests.helpers as helpers
 
 import ckan.logic.auth.create as auth_create
 
-def _make_article():
-    return {
+
+def _make_article(apikey = None):
+    article = {
         'title': u'Article title',
         'name': 'article_name',
         'notes': 'Content',
         'type': 'article'
     }
+
+    if apikey:
+        article['apikey'] = apikey
+
+    return article
+
 
 plugins_to_load = [
     'dane_publiczne_articles',
@@ -34,6 +42,7 @@ plugins_to_load = [
     'dane_publiczne'
 ]
 
+
 class TestAuth(helpers.FunctionalTestBase):
     @classmethod
     def setup_class(cls):
@@ -41,42 +50,50 @@ class TestAuth(helpers.FunctionalTestBase):
 
         ckan.plugins.load(*plugins_to_load)
 
-    @classmethod
-    def teardown_class(cls):
-        super(TestAuth, cls).teardown_class()
+    # @classmethod
+    # def teardown_class(cls):
+    #     super(TestAuth, cls).teardown_class()
+    #
+    #     ckan.plugins.unload(*plugins_to_load)
 
-        ckan.plugins.unload(*plugins_to_load)
-
+    # Old style tests becacuse otherwise one cannot test implementing IAuthFunctions
     def test_auth_sysadmin_can_create_article(self):
         sysadmin = factories.Sysadmin()
-        article = _make_article()
+        article = _make_article(apikey=sysadmin['apikey'])
+        app = helpers._get_test_app()
 
-        response = auth_create.package_create({'user': sysadmin['name'], 'model': model}, article)
-        assert_equals(response['success'], True)
+        tests.call_action_api(TestAuth._test_app, 'package_create', **article)
 
     def test_auth_user_cannot_create_article(self):
         user = factories.User()
-        article = _make_article()
+        article = _make_article(apikey=user['apikey'])
 
-        response = auth_create.package_create({'user': user['name'], 'model': model}, article)
-        assert_equals(response['success'], False)
+        # app = helpers._get_test_app()
+        app = paste.fixture.TestApp(pylons.test.pylonsapp)
+        ckan.plugins.load(*plugins_to_load)
+
+        tests.call_action_api(app, 'package_create', status=403, **article)
 
     def test_auth_organization_user_cannot_create_article(self):
         user = factories.User()
-        org = factories.Organization(users=[{
+        org = factories.Organization(users=[
+            {
                 'name': user['name'],
                 'capacity': 'admin'
             }])
-        article = _make_article()
+        article = _make_article(apikey=user['apikey'])
 
-        response = auth_create.package_create({'user': user['name'], 'model': model}, article)
-        assert_equals(response['success'], False)
+        # TODO reply that IAuthFunction cannot be tested that way response = auth_create.package_create({'user': None, 'model': model}, article)
+        # assert_equals(response['success'], True)
+
+        # TODO This way doesn't work as well, doesn't load plugins :/
+        tests.call_action_api(TestAuth._test_app, 'package_create', status=403, **article)
 
     def test_auth_visitor_cannot_create_article(self):
         article = _make_article()
+        app = helpers._get_test_app()
 
-        response = auth_create.package_create({'user': None, 'model': model}, article)
-        assert_equals(response['success'], True)
+        tests.call_action_api(app, 'package_create', status=403, **article)
 
 
 class TestAction(helpers.FunctionalTestBase):
