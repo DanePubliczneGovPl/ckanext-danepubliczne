@@ -185,6 +185,7 @@
 .wrapper .dataset-filters .nav-item,
 .wrapper .dataset-filters .nav-aside li {
     padding: 0;
+    border: 0;
 }
 
 .wrapper .dataset-filters .nav-item > a,
