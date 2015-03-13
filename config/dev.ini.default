@@ -54,16 +54,6 @@ ckan.datastore.read_url = postgresql://datastore_default:datastore_default@local
 ckan.datastore.default_fts_lang = english
 ckan.datastore.default_fts_index_method = gist
 
-## Site Settings
-ckan.auth.anon_create_dataset = False
-ckan.auth.create_unowned_dataset = False 
-ckan.auth.create_dataset_if_not_in_organization = False
-ckan.auth.user_create_groups = False
-ckan.auth.user_create_organizations = False
-ckan.auth.user_delete_organizations = False
-
-
-
 # Remember to prefix with scheme (http:// or https://)
 ckan.site_url = http://localhost:5000
 
@@ -100,16 +90,17 @@ solr_url = http://127.0.0.1:8983/solr
 
 
 ## Plugins Settings
-#ckan.plugins = stats text_view recline_view pdf_view datastore datapusher archiver qa
-#ckan.plugins = stats text_view recline_view pdf_view datastore dane_publiczne dp_organization datapusher archiver qa
-ckan.plugins = stats text_view recline_view dane_publiczne dane_publiczne_organization dane_publiczne_dataset
+ckan.plugins = stats text_view recline_view datastore resource_proxy archiver qa datapusher dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories
+
+ckan.views.default_views = recline_view text_view
 
 ckanext-archiver.archive_dir = '/tmp/ckan-archive'
 ckanext-archiver.data_formats = 'all'
 
+
 ## Front-End Settings
-ckan.site_title = CKAN
-ckan.site_logo = /base/images/ckan-logo.png
+ckan.site_title = Dane Publiczne
+ckan.site_logo = /logo/logo.png
 ckan.site_description =
 ckan.favicon = /images/icons/ckan.ico
 ckan.gravatar_default = identicon
