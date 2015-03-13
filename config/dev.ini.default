@@ -139,10 +139,7 @@ ckan.max_image_size = 2
 
 # Make sure you have set up the DataStore
 
-ckan.datapusher.url = http://127.0.0.1:8800/
-
-#ckan.datapusher.formats = csv xls xlsx tsv application/csv application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-#ckan.datapusher.url = http://127.0.0.1:8800/
+ckan.datapusher.url = http://0.0.0.0:8800/
 
 ## Activity Streams Settings
 
