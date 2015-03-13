@@ -13,6 +13,7 @@
     {% endif %}
     <h1>{% block page_heading %}{{ pkg.title or pkg.name }}{% if pkg.state.startswith('draft') %}[{{ _('Draft') }}]
     {% endif %}{% endblock %}</h1>
+
     {% block package_notes %}
       {% if c.pkg_notes_formatted %}
         <div class="notes embedded-content">
@@ -20,9 +21,10 @@
         </div>
       {% endif %}
     {% endblock %}
+
     {% block package_license %}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
-  {% endblock %}
+    {% snippet "article/snippets/license.html", pkg_dict=pkg %}
+    {% endblock %}
   {% endblock %}
 
   {% block package_tags %}
