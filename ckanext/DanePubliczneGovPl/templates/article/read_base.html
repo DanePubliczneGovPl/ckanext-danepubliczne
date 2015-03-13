@@ -26,6 +26,13 @@
     {#  TODO article_edit #}
     {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
   {% endif %}
+  {% block follow_button %}
+    <div class="follow_button">
+      {% if not hide_follow_button %}
+        {{ h.follow_button('dataset', pkg.name) }}
+      {% endif %}
+    </div>
+  {% endblock %}
 {% endblock %}
 
 {#  TODO primary_content override #}
@@ -49,22 +56,4 @@
       </div>
     {% endif %}
   {% endblock %}
-{% endblock %}
-
-{% block secondary_content %}
-
-  {% block secondary_help_content %}{% endblock %}
-
-  {% block package_info %}
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
-  {% endblock %}
-
-  {% block package_social %}
-    {#{% snippet "snippets/social.html" %}#}
-  {% endblock %}
-
-  {% block package_license %}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
-  {% endblock %}
-
 {% endblock %}
