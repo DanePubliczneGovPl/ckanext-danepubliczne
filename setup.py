@@ -72,7 +72,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        dane_publiczne=ckanext.DanePubliczneGovPl.layout:Layout
+        dane_publiczne=ckanext.DanePubliczneGovPl.plugin:DanePubliczne
         dane_publiczne_organization=ckanext.DanePubliczneGovPl.schema.organization:OrganizationForm
         dane_publiczne_dataset=ckanext.DanePubliczneGovPl.schema.dataset:DatasetForm
         dane_publiczne_categories=ckanext.DanePubliczneGovPl.schema.category:Category
