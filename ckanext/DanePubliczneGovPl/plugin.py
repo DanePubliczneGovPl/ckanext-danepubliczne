@@ -26,6 +26,10 @@ class DanePubliczne(p.SingletonPlugin):
 
         map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.DanePubliczneGovPl.controllers.admin:AdminController')
 
+        map.connect('/user/register', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='register')
+        map.connect('/user/edit', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
+        map.connect('/user/edit/{id:.*}', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
+
         return map
 
 
