@@ -57,6 +57,7 @@ ckan.datastore.default_fts_index_method = gist
 # Remember to prefix with scheme (http:// or https://)
 ckan.site_url = http://localhost:5000
 
+ckan.tracking_enabled = true
 
 ## Authorization Settings
 
