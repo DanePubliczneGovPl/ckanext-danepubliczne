@@ -25,29 +25,6 @@ class AdminController(base_admin.AdminController):
             {'name': 'ckan.site_logo', 'control': 'input', 'label': _('Site Tag Logo'), 'placeholder': ''},
             {'name': 'ckan.site_about', 'control': 'markdown', 'label': _('About'), 'placeholder': _('About page text')},
             {'name': 'ckan.site_intro_text', 'control': 'markdown', 'label': _('Intro Text'), 'placeholder': _('Text on home page')},
-            {'name': 'ckanext.danepubliczne.maintenance_flash', 'control': 'input', 'label': _('Maintenance alert'), 'placeholder': _('Fill if there is planned maintenance break')},
+            {'name': 'ckan.danepubliczne.maintenance_flash', 'control': 'input', 'label': _('Maintenance alert'), 'placeholder': _('Fill if there is planned maintenance break')},
         ]
         return items
-
-    # def config(self):
-    #
-    #     items = self._get_config_form_items()
-    #     data = request.POST
-    #     if 'save' in data:
-    #         # update config from form
-    #         for item in items:
-    #             name = item['name']
-    #             if name in data:
-    #                 app_globals.set_global(name, data[name])
-    #         app_globals.reset()
-    #         h.redirect_to(controller='admin', action='config')
-    #
-    #     data = {}
-    #     for item in items:
-    #         name = item['name']
-    #         data[name] = config.get(name)
-    #
-    #     vars = {'data': data, 'errors': {}, 'form_items': items}
-    #     return base.render('admin/config.html',
-    #                        extra_vars = vars)
-    #

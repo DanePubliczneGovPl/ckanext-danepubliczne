@@ -29,6 +29,7 @@
 
 {% block header_debug %}
   {% block flash %}
+    {% do h.dp_check_maintenance() %}
     {% set flash_messages = h.flash.pop_messages() | list %}
     <div class="flash-messages">
       {% for message in flash_messages %}

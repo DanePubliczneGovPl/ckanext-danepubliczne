@@ -2,7 +2,9 @@ import mimetypes
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
+import ckan.lib.helpers as h
 
+from pylons import config
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -25,3 +27,15 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.DanePubliczneGovPl.controllers.admin:AdminController')
 
         return map
+
+
+
+    p.implements(p.ITemplateHelpers)
+    def get_helpers(self):
+        return {'dp_check_maintenance': self.h_check_maintenance}
+
+    def h_check_maintenance(self):
+        maintenance_flash = config.get('ckan.danepubliczne.maintenance_flash')
+
+        if maintenance_flash:
+            h.flash_notice(maintenance_flash)
