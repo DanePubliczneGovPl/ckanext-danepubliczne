@@ -65,7 +65,7 @@ class PiwikPlugin(plugins.SingletonPlugin):
     def render_piwik(self):
         return tk.render_snippet('snippets/piwik.html', dict(piwik={
             'error': self.error,
-            'url': self.url.replace('http://', '').replace('https://', '').strip('/'),
+            'url': self.url.strip('/'),
             'site_id': self.site_id,
             'domain': self.domain,
         }))
