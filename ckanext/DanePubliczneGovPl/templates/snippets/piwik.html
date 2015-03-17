@@ -24,10 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Piwik -->{% if piwik.error %}<!-- {{ piwik.error }} -->{% else %}
 <script type="text/javascript">
   var _paq = _paq || [];
-  {% if piwik.domain %}
-  _paq.push(["setCookieDomain", "*.{{ piwik.domain }}"]);
-  _paq.push(["setDomains", "*.{{ piwik.domain }}"]);
-  {% endif %}
+  {%- if piwik.domain %}
+    _paq.push(["setCookieDomain", "*.{{ piwik.domain }}"]);
+    _paq.push(["setDomains", "*.{{ piwik.domain }}"]);
+  {% endif -%}
+  {%- if piwik.cookies_disabled %}
+    _paq.push(['disableCookies']);
+  {% endif -%}
+
   _paq.push(["trackPageView"]);
   _paq.push(["enableLinkTracking"]);
   (function() {

@@ -64,6 +64,7 @@ ckan.tracking_enabled = true
 piwik.site_id = <piwik.site_id>
 piwik.url = <piwik.url>
 piwik.domain = <piwik.domain>
+piwik.cookies_disabled = true
 
 # Custom Dane Publiczne site settings
 

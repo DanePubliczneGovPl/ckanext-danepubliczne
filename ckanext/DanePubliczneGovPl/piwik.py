@@ -35,6 +35,7 @@ class PiwikPlugin(plugins.SingletonPlugin):
     url = None
     domain = None
     error = None
+    cookies_disabled = None
 
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.ITemplateHelpers)
@@ -46,11 +47,13 @@ class PiwikPlugin(plugins.SingletonPlugin):
                 error_if_query=True),
             'piwik.in_debug': conv.pipe(conv.guess_bool, conv.default(False)),
             'piwik.domain': conv.default(False),
+            'piwik.cookies_disabled': conv.default(False),
         }, default='drop'))(config, state=conv.default_state))
 
         self.site_id = config['piwik.site_id']
         self.url = config['piwik.url']
         self.domain = config['piwik.domain']
+        self.cookies_disabled = config['piwik.cookies_disabled']
 
         if config['debug'] and not config.get('piwik.in_debug'):
             self.error = 'Piwik is disabled in DEBUG mode unless PIWIK_IN_DEBUG is set'
@@ -68,4 +71,5 @@ class PiwikPlugin(plugins.SingletonPlugin):
             'url': self.url.strip('/'),
             'site_id': self.site_id,
             'domain': self.domain,
+            'cookies_disabled': self.cookies_disabled
         }))
