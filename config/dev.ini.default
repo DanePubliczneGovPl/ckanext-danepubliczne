@@ -57,7 +57,13 @@ ckan.datastore.default_fts_index_method = gist
 # Remember to prefix with scheme (http:// or https://)
 ckan.site_url = http://localhost:5000
 
+# Statistics
+
 ckan.tracking_enabled = true
+
+piwik.site_id = <piwik.site_id>
+piwik.url = <piwik.url>
+piwik.domain = <piwik.domain>
 
 # Custom Dane Publiczne site settings
 

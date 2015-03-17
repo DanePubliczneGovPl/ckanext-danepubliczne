@@ -1,0 +1,42 @@
+{#
+CKANExt-Etalab -- CKAN extension for Etalab
+By: Emmanuel Raviart <emmanuel@raviart.com>
+
+Copyright (C) 2013 Etalab
+http://github.com/etalab/ckanext-etalab
+
+This file is part of CKANExt-Etalab.
+
+CKANExt-Etalab is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+CKANExt-Etalab is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#}
+
+<!-- Piwik -->{% if piwik.error %}<!-- {{ piwik.error }} -->{% else %}
+<script type="text/javascript">
+  var _paq = _paq || [];
+  {% if piwik.domain %}
+  _paq.push(["setCookieDomain", "*.{{ piwik.domain }}"]);
+  _paq.push(["setDomains", "*.{{ piwik.domain }}"]);
+  {% endif %}
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="{{ piwik.url }}/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "{{ piwik.site_id }}"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="{{ piwik.url }}/piwik.php?idsite={{ piwik.site_id }}&rec=1&url={{ request.url }}" style="border:0" alt="" /></p></noscript>
+{% endif %}<!-- End Piwik Code -->
