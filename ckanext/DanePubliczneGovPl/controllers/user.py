@@ -1,19 +1,19 @@
 from pylons import config
 
 import json
-import ckan.lib.navl.dictization_functions
+import ckan.lib.navl.dictization_functions as df
 import ckan.lib.base as base
 import ckan.lib.helpers as h
 import ckan.lib.app_globals as app_globals
 import ckan.model as model
 import ckan.plugins.toolkit as tk
+import ckan.plugins as p
 import ckan.logic as logic
 import ckan.new_authz as new_authz
 from ckan.common import _, c, g, request, response
 
 abort = base.abort
 render = base.render
-_validate = ckan.lib.navl.dictization_functions.validate
 
 check_access = logic.check_access
 get_action = logic.get_action
@@ -24,6 +24,37 @@ ValidationError = logic.ValidationError
 import ckan.controllers.user as base_user
 
 class UserController(base_user.UserController):
+
+    def logged_in(self):
+        # redirect if needed
+        came_from = request.params.get('came_from', '')
+        if h.url_is_local(came_from):
+            return h.redirect_to(str(came_from))
+
+        if c.user:
+            context = None
+            data_dict = {'id': c.user}
+
+            user_dict = get_action('user_show')(context, data_dict)
+
+            user_ref = c.userobj.get_reference_preferred_for_uri()
+            h.redirect_to(locale=None, controller='user', action='dashboard_datasets',
+                      id=user_ref)
+        else:
+            err = _('Login failed. Bad username or password.')
+            if h.asbool(config.get('ckan.legacy_templates', 'false')):
+                h.flash_error(err)
+                h.redirect_to(controller='user',
+                              action='login', came_from=came_from)
+            else:
+                return self.login(error=err)
+
+    def logged_out(self):
+        # came_from = request.params.get('came_from', '')
+        # if h.url_is_local(came_from):
+        #     return h.redirect_to(str(came_from))
+
+        h.redirect_to('/')
 
     def edit(self, id=None, data=None, errors=None, error_summary=None):
         context = {'save': 'save' in request.params,
@@ -65,7 +96,7 @@ class UserController(base_user.UserController):
 
             schema = self._db_to_edit_form_schema()
             if schema:
-                old_data, errors = _validate(old_data, schema, context)
+                old_data, errors = df.validate(old_data, schema, context)
 
             c.display_name = old_data.get('display_name')
             c.user_name = old_data.get('name')

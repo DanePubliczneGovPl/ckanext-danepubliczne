@@ -29,6 +29,8 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('/user/register', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='register')
         map.connect('/user/edit', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
         map.connect('/user/edit/{id:.*}', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
+        map.connect('/user/logged_in', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_in')
+        map.connect('/user/logged_out', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_out')
 
         return map
 
