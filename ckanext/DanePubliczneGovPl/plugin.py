@@ -3,6 +3,7 @@ import mimetypes
 import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
+import ckan.lib.base as base
 
 from pylons import config
 
@@ -40,10 +41,15 @@ class DanePubliczne(p.SingletonPlugin):
 
     p.implements(p.ITemplateHelpers)
     def get_helpers(self):
-        return {'dp_check_maintenance': self.h_check_maintenance}
+        return {'dp_check_maintenance': self.h_check_maintenance,
+                'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs}
 
     def h_check_maintenance(self):
         maintenance_flash = config.get('ckan.danepubliczne.maintenance_flash')
 
         if maintenance_flash:
             h.flash_notice(maintenance_flash)
+
+    def h_if_show_gradient_with_tabs(self):
+        return base.request.urlvars['controller'] == 'admin' \
+            or (base.request.urlvars['controller'] == 'user' and base.request.urlvars['action'][:9] == 'dashboard')
