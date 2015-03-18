@@ -1,5 +1,6 @@
 from pylons import config
 
+import re
 import json
 import ckan.lib.navl.dictization_functions as df
 import ckan.lib.base as base
@@ -55,6 +56,43 @@ class UserController(base_user.UserController):
         #     return h.redirect_to(str(came_from))
 
         h.redirect_to('/')
+
+    def dashboard_search_history(self):
+        context = {'for_view': True, 'user': c.user or c.author,
+                   'auth_user_obj': c.userobj}
+        data_dict = {'user_obj': c.userobj}
+        self._setup_template_variables(context, data_dict)
+
+        search_history = get_action('search_history_list')(context, {})
+
+        c.search_history = self._search_history_for_display(search_history)
+
+        return render('user/dashboard_search_history.html')
+
+    def _search_history_for_display(self, search_history):
+        for item in search_history:
+            facets = item['params']['facet.field']
+
+            q = item['params']['q']
+            fq = item['params']['fq']
+            facets_set = {}
+            for m in re.finditer('\\+?(?P<facet>\\w+)\:(?P<value>(?P<quote>[\'"])(.*?)(?P=quote)|\\w+)', fq[0]):
+                facet = m.group('facet')
+                value = m.group('value').strip("\"'")
+                if facet in facets:
+                    facets_set[facet] = value
+
+            url_params = facets_set.copy()
+            if q:
+                url_params.update({'q': q})
+
+            item['display'] = {
+                'q': q,
+                'url': h.url_for('search', **url_params),
+                'facets': facets_set
+            }
+
+        return search_history
 
     def edit(self, id=None, data=None, errors=None, error_summary=None):
         context = {'save': 'save' in request.params,

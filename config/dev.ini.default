@@ -102,7 +102,7 @@ solr_url = http://127.0.0.1:8983/solr
 
 
 ## Plugins Settings
-ckan.plugins = stats text_view recline_view datastore resource_proxy archiver qa datapusher piwik dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories
+ckan.plugins = stats text_view recline_view datastore resource_proxy archiver qa datapusher piwik search_history dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories
 
 ckan.views.default_views = recline_view text_view
 

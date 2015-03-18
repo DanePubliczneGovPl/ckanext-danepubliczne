@@ -31,6 +31,8 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('/user/edit/{id:.*}', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
         map.connect('/user/logged_in', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_in')
         map.connect('/user/logged_out', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_out')
+        map.connect('user_dashboard_search_history', '/dashboard/search_history',
+                 controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
 
         return map
 
