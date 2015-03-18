@@ -1,0 +1,21 @@
+.singleresource .module-content {
+    padding: 0;
+}
+
+.singleresource h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.singleresource .ellipsis {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.singleresource .ellipsis a {
+    color: #157abe;
+}

@@ -290,12 +290,12 @@
 .wrapper .dataset-result .resource-item .dropdown .dropdown-menu li {
     width: auto;
     float: left;
+    margin-right: 15px;
 }
 
 .wrapper .dataset-result .resource-item .dropdown .dropdown-menu li a {
     padding-left: 0;
     padding-right: 0;
-    margin-right: 15px;
     font-size: 12px;
     font-weight: normal;
     color: #157abe;
@@ -303,9 +303,8 @@
 
 .wrapper .dataset-result .resource-item .dropdown .dropdown-menu li a:hover, .wrapper .dataset-result .resource-item .dropdown .dropdown-menu li a:active {
     background: none;
-    font-weight: bold;
     color: #157abe;
-    margin-right: 8px;
+    text-decoration: underline;
 }
 
 .wrapper .dataset-result .resource-item .dropdown .dropdown-menu li a i {
