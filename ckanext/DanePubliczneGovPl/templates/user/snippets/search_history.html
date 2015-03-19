@@ -1,0 +1,23 @@
+{#
+Displays search history.
+
+search_history - A list of searches to display
+list_class     - The class name for the list item.
+item_class     - The class name to use on each item.
+
+Example:
+
+   {% snippet 'user/snippets/search_history.html', search_history=c.search_history %}
+
+#}
+{% block search_history_list %}
+  {% if search_history %}
+    <ul class="{{ list_class or 'search_history-list unstyled' }}">
+    	{% block search_history_list_inner %}
+	      {% for item in search_history %}
+	        {% snippet 'user/snippets/search_history_item.html', item=item, item_class=item_class %}
+	      {% endfor %}
+	    {% endblock %}
+    </ul>
+  {% endif %}
+{% endblock %}

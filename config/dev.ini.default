@@ -54,19 +54,21 @@ ckan.datastore.read_url = postgresql://datastore_default:datastore_default@local
 ckan.datastore.default_fts_lang = english
 ckan.datastore.default_fts_index_method = gist
 
-## Site Settings
-ckan.auth.anon_create_dataset = False
-ckan.auth.create_unowned_dataset = False 
-ckan.auth.create_dataset_if_not_in_organization = False
-ckan.auth.user_create_groups = False
-ckan.auth.user_create_organizations = False
-ckan.auth.user_delete_organizations = False
-
-
-
 # Remember to prefix with scheme (http:// or https://)
 ckan.site_url = http://localhost:5000
 
+# Statistics
+
+ckan.tracking_enabled = true
+
+piwik.site_id = <piwik.site_id>
+piwik.url = <piwik.url>
+piwik.domain = <piwik.domain>
+piwik.cookies_disabled = true
+
+# Custom Dane Publiczne site settings
+
+# ckan.danepubliczne.maintenance_flash = Uwaga! Dnia xx marca 2015 od godziny 01:00 do godziny 09:00 będzie trwała przerwa techniczna.
 
 ## Authorization Settings
 
@@ -100,18 +102,19 @@ solr_url = http://127.0.0.1:8983/solr
 
 
 ## Plugins Settings
-#ckan.plugins = stats text_view recline_view pdf_view datastore datapusher archiver qa
-#ckan.plugins = stats text_view recline_view pdf_view datastore dane_publiczne dp_organization datapusher archiver qa
-ckan.plugins = stats text_view recline_view dane_publiczne dane_publiczne_organization dane_publiczne_dataset
+ckan.plugins = stats text_view recline_view datastore resource_proxy archiver qa datapusher piwik search_history dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories
+
+ckan.views.default_views = recline_view text_view
 
 ckanext-archiver.archive_dir = '/tmp/ckan-archive'
 ckanext-archiver.data_formats = 'all'
 
+
 ## Front-End Settings
-ckan.site_title = CKAN
-ckan.site_logo = /base/images/ckan-logo.png
+ckan.site_title = Dane Publiczne
+ckan.site_logo = /logo/logo.png
 ckan.site_description =
-ckan.favicon = /images/icons/ckan.ico
+ckan.favicon = /logo/fav.ico
 ckan.gravatar_default = identicon
 ckan.preview.direct = png jpg gif
 ckan.preview.loadable = html htm rdf+xml owl+xml xml n3 n-triples turtle plain atom csv tsv rss txt json
@@ -148,10 +151,7 @@ ckan.max_image_size = 2
 
 # Make sure you have set up the DataStore
 
-ckan.datapusher.url = http://127.0.0.1:8800/
-
-#ckan.datapusher.formats = csv xls xlsx tsv application/csv application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-#ckan.datapusher.url = http://127.0.0.1:8800/
+ckan.datapusher.url = http://0.0.0.0:8800/
 
 ## Activity Streams Settings
 
