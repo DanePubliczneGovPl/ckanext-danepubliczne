@@ -30,12 +30,10 @@
     color: #000000;
 }
 
-.notes p {
-    padding-bottom: 28px;
-}
-
 .notes ul,
 .notes ol {
+    margin: 0;
+    padding-bottom: 10px;
     padding-left: 50px;
 }
 

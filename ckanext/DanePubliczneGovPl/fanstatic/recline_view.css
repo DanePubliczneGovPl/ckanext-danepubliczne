@@ -1,0 +1,122 @@
+.btn-group > .btn, .btn-group > .btn:hover, .btn-group > .btn:focus,
+.pagination ul > li:first-child > a, .pagination ul > li:first-child > span,
+.pagination ul > li:last-child > a, .pagination ul > li:last-child > span {
+    background: #157abe;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 12px;
+    margin: 0;
+    border-width: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-text-shadow: none;
+    -moz-text-shadow: none;
+    -o-text-shadow: none;
+    text-shadow: none;
+}
+
+.btn-group > .btn:first-child,
+.btn-group > .btn:last-child {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.btn-group > .btn.active {
+    font-size: 16px;
+    background: #105d90;
+    color: #ffffff;
+}
+
+.header .recline-results-info {
+    font-size: 16px;
+    font-weight: normal;
+    color: #000000;
+    line-height: 35px;
+}
+
+.pagination ul {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.header .recline-pager .pagination li:first-child > a,
+.header .recline-pager .pagination li:last-child > a {
+    line-height: 20px;
+    padding: 8px 12px;
+}
+
+.pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span {
+    background: none;
+}
+
+.header .recline-pager .pagination a {
+    padding: 0 5px;
+    border: 0;
+}
+
+.header .recline-pager .pagination input {
+    width: 30px;
+    height: 18px;
+    padding: 8px;
+    margin: 0;
+}
+
+.header .recline-query-editor {
+    height: 35px;
+}
+
+.recline-query-editor .add-on,
+.recline-query-editor button.btn {
+    display: none;
+}
+
+.recline-data-explorer .header .menu-right {
+    border-left-width: 0;
+}
+
+.recline-query-editor .text-query > input {
+    font-size: 16px;
+    font-weight: normal;
+    color: #000000;
+    padding: 4px 8px;
+    height: 22px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.recline-slickgrid {
+    margin-top: 25px;
+}
+
+.recline-slickgrid .slick-header-columns .slick-header-column {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    padding: 14px 20px;
+    border-color: #b7b7b7;
+    background: #e5e5e5;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+
+.recline-slickgrid .slick-row {
+    background: #ffffff;
+}
+
+.recline-slickgrid .slick-row[row$="1"], .slick-row[row$="3"], .slick-row[row$="5"], .slick-row[row$="7"], .slick-row[row$="9"] {
+    background: #f5f5f5;
+}
+
+.recline-slickgrid .slick-row .slick-cell {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+    border-color: #b7b7b7;
+}

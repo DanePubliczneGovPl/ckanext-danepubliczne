@@ -190,6 +190,18 @@
     color: #000000;
 }
 
+.wrapper .dataset-result .module .notes ul,
+.wrapper .dataset-result .module .notes ol {
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+
+.wrapper .dataset-result .module .notes ul li,
+.wrapper .dataset-result .module .notes ol li {
+    padding-left: 18px;
+}
+
 .wrapper .dataset-result .module h2 {
     font-size: 18px;
     font-weight: bold;

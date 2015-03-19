@@ -4,7 +4,6 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 import ckan.lib.base as base
-
 from pylons import config
 
 class DanePubliczne(p.SingletonPlugin):
@@ -14,6 +13,7 @@ class DanePubliczne(p.SingletonPlugin):
         toolkit.add_template_directory(config, 'templates')
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('fanstatic', 'dane_publiczne')
+        toolkit.add_resource('fanstatic', 'ckanext-reclineview')
 
         mimetypes.add_type('application/json', '.geojson')
 
