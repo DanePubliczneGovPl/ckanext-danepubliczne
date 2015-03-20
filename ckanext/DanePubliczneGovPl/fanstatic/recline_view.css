@@ -1,3 +1,4 @@
+.btn, .btn:hover, .btn:focus,
 .btn-group > .btn, .btn-group > .btn:hover, .btn-group > .btn:focus,
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span,
 .pagination ul > li:last-child > a, .pagination ul > li:last-child > span {
@@ -6,8 +7,8 @@
     font-size: 16px;
     font-weight: bold;
     padding: 8px 12px;
-    margin: 0;
-    border-width: 0;
+    margin: 0 !important;
+    border: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -49,6 +50,13 @@
     padding: 8px 12px;
 }
 
+.header .recline-pager .pagination li:first-child > a:hover,
+.header .recline-pager .pagination li:first-child > a:active,
+.header .recline-pager .pagination li:last-child > a:hover,
+.header .recline-pager .pagination li:last-child > a:active {
+    background: #105D90;
+}
+
 .pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span {
     background: none;
 }
@@ -83,13 +91,14 @@
     font-weight: normal;
     color: #000000;
     padding: 4px 8px;
-    height: 22px;
+    height: 26px;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
 }
 
-.recline-slickgrid {
+.recline-slickgrid,
+.recline-filter-editor {
     margin-top: 25px;
 }
 
@@ -119,4 +128,8 @@
     font-weight: normal;
     color: #000000;
     border-color: #b7b7b7;
+}
+
+.recline-filter-editor .filters > form {
+    margin: 15px 0;
 }
