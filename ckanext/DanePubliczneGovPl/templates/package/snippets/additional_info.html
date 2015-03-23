@@ -1,7 +1,7 @@
 <section class="additional-info">
   {% block package_additional_info %}
       {% if pkg_dict.url %}
-        <div class="list">
+        <div class="list" style="clear: both; float: none;">
         <span class="dataset-label">{{ _('Source') }}</span>
         {% if h.is_url(pkg_dict.url) %}
           <span class="dataset-details" property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</span>
