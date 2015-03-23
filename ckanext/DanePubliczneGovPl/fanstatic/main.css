@@ -304,30 +304,28 @@ body {
 
 .btn {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: normal;
     padding: 8px 12px;
     border-width: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
-}
 
-.btn-primary {
+    text-shadow: none;
+
     background: #157abe;
     color: #ffffff;
 }
 
+.btn-primary {
+    font-weight: bold;
+}
+
+.btn:hover, .btn:active
+.btn-success:hover, .btn-success:active,
 .btn-primary:hover, .btn-primary:active {
     background: #105d90;
-}
-
-.btn-success {
-    background: #5bb75b;
     color: #ffffff;
-}
-
-.btn-success:hover, .btn-success:active {
-    background: #449b44;
 }
 
 .btn-danger {
@@ -337,6 +335,54 @@ body {
 
 .btn-danger:hover, .btn-danger:active {
     background: #c72f29;
+}
+
+.js .image-upload .btn,
+.js .image-upload .btn:hover,
+.js .image-upload .btn:active {
+    color: #FFFFFF !important;
+}
+
+.radio, .checkbox {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 6px;
+}
+
+.radio:before, .checkbox:before {
+    content: " ";
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    margin-left: -20px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    visibility: hidden;
+}
+
+input[type="radio"]:checked + .radio:before {
+    content: "\2022";
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    line-height: 18px;
+}
+
+input[type=checkbox]:checked + .checkbox:before {
+    content: "\2713";
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+    line-height: 18px;
 }
 
 /* ====================================

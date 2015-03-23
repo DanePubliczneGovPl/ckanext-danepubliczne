@@ -71,14 +71,6 @@
     display: none;
 }
 
-.singleitem .dataset-info .follow_button a.btn-success {
-    background: #157abe;
-}
-
-.singleitem .dataset-info .follow_button a.btn-success:hover, .singleitem .dataset-info .follow_button a.btn-success:active {
-    background: #105d90;
-}
-
 .singleitem .dataset-info .image {
     background-color: #157abe;
     margin: 10px auto;
