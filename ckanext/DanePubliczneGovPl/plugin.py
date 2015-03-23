@@ -42,7 +42,17 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.ITemplateHelpers)
     def get_helpers(self):
         return {'dp_check_maintenance': self.h_check_maintenance,
-                'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs}
+                'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs,
+                'dp_organization_image': self.h_organization_image}
+
+    def h_organization_image(self, org, show_placeholder_by_default = True):
+        if org.get('image_display_url', None):
+            return org.get('image_display_url')
+
+        if config.get('dp.show_organization_placeholder_image', show_placeholder_by_default):
+            return h.url_for_static('/base/images/placeholder-organization.png')
+
+        return None
 
     def h_check_maintenance(self):
         maintenance_flash = config.get('ckan.danepubliczne.maintenance_flash')
