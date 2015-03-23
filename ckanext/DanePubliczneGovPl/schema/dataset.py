@@ -1,3 +1,4 @@
+import re
 import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -26,7 +27,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             return []
 
     def h_update_frequencies_options(self):
-        return ({'value': freq, 'text': freq} for freq in self.update_frequencies())
+        return ({'value': freq, 'text': _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), freq).title())} for freq in self.h_update_frequencies())
 
     def h_package_has_license_restrictions(self, dpkg):
         return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
