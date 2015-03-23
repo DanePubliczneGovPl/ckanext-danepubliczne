@@ -8,9 +8,8 @@
     <div class="search-input control-group {{ search_class }}">
       <input type="text" class="search" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
       {% block search_input_button %}
-      <button type="submit" value="search">
+      <button type="submit" value="search" class="btn-search">
         <i class="icon-search"></i>
-        <span>{{ _('Submit') }}</span>
       </button>
       {% endblock %}
     </div>
