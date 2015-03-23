@@ -41,14 +41,6 @@
     display: none;
 }
 
-.list .dataset-info .follow_button a.btn-success {
-    background: #157abe;
-}
-
-.list .dataset-info .follow_button a.btn-success:hover, .list .dataset-info .follow_button a.btn-success:active {
-    background: #105d90;
-}
-
 .list .dataset-info .image {
     background-color: #157abe;
     margin: 10px auto;

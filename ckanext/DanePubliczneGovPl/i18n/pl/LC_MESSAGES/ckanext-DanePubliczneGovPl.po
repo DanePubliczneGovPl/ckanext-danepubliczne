@@ -51,3 +51,6 @@ msgstr "Login"
 
 msgid "Keywords"
 msgstr "Słowa kluczowe"
+
+msgid "Create new datasets"
+msgstr "Stwórz nowy dataset"
