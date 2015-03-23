@@ -48,3 +48,6 @@ msgstr "Filtruj"
 
 msgid "Login"
 msgstr "Login"
+
+msgid "Keywords"
+msgstr "Słowa kluczowe"
