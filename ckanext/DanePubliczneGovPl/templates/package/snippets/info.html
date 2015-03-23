@@ -13,6 +13,11 @@
             {{ h.follow_button('dataset', pkg.name) }}
           </div>
         {% endif %}
+        <div class="history_button">
+          <a href="{{ h.url_for('dataset_activity', id=pkg.name) }}" class="btn">
+            {{ _('History') }}
+          </a>
+        </div>
       </div>
     </div>
   </section>

@@ -174,7 +174,10 @@
     margin: 0;
     padding: 0;
     background: none;
-    display: none;
+}
+
+.wrapper .dataset-result .page-header .nav.nav-tabs {
+  background-color: red;
 }
 
 .wrapper .dataset-result .module h1 {

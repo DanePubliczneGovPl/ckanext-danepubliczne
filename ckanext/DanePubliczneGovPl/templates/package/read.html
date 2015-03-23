@@ -19,6 +19,10 @@
         {{ _('Private') }}
       </span>
     {% endif %}
+
+    {% set org_url = h.url_for(controller='organization', action='read', id=pkg.organization.name) %}
+    <a href="{{ org_url }}">{{ pkg.organization.title }}</a>
+
     <h1>
       {% block page_heading %}
         {{ pkg.title or pkg.name }}

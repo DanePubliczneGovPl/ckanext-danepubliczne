@@ -35,19 +35,23 @@
         </div>
       {% endif %}
 
+      {#
       {% if pkg_dict.version %}
       <div class="list">
         <span class="dataset-label">{{ _("Version") }}</span>
         <span class="dataset-details">{{ pkg_dict.version }}</span>
         </div>
       {% endif %}
+      #}
 
+      {#
       {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
       <div class="list">
         <span class="dataset-label">{{ _("State") }}</span>
         <span class="dataset-details">{{ _(pkg_dict.state) }}</span>
         </div>
       {% endif %}
+      #}
 
       {% if pkg_dict.metadata_modified %}
       <div class="list">
