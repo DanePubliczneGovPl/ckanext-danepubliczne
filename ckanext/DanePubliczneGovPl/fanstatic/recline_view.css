@@ -82,6 +82,10 @@
     display: none;
 }
 
+.recline-data-explorer {
+    overflow: hidden;
+}
+
 .recline-data-explorer .header .menu-right {
     border-left-width: 0;
 }
