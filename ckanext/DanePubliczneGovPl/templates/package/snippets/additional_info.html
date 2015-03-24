@@ -1,7 +1,7 @@
 <section class="additional-info">
   {% block package_additional_info %}
       {% if pkg_dict.url %}
-        <div class="list">
+        <div class="list" style="clear: both; float: none;">
         <span class="dataset-label">{{ _('Source') }}</span>
         {% if h.is_url(pkg_dict.url) %}
           <span class="dataset-details" property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</span>
@@ -35,19 +35,23 @@
         </div>
       {% endif %}
 
+      {#
       {% if pkg_dict.version %}
       <div class="list">
         <span class="dataset-label">{{ _("Version") }}</span>
         <span class="dataset-details">{{ pkg_dict.version }}</span>
         </div>
       {% endif %}
+      #}
 
+      {#
       {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
       <div class="list">
         <span class="dataset-label">{{ _("State") }}</span>
         <span class="dataset-details">{{ _(pkg_dict.state) }}</span>
         </div>
       {% endif %}
+      #}
 
       {% if pkg_dict.metadata_modified %}
       <div class="list">

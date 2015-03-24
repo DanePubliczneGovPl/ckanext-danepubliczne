@@ -1,3 +1,4 @@
+import re
 import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -12,10 +13,11 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
-        return {'dp_update_frequencies': self.update_frequencies,
-                'dp_update_frequencies_options': self.update_frequencies_options}
+        return {'dp_update_frequencies': self.h_update_frequencies,
+                'dp_update_frequencies_options': self.h_update_frequencies_options,
+                'dp_package_has_license_restrictions': self.h_package_has_license_restrictions}
 
-    def update_frequencies(self):
+    def h_update_frequencies(self):
         try:
             tags = tk.get_action('tag_list')(
                 data_dict={'vocabulary_id': 'update_frequencies'})
@@ -24,9 +26,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         except tk.ObjectNotFound:
             return []
 
-    def update_frequencies_options(self):
-        return ({'value': freq, 'text': freq} for freq in self.update_frequencies())
+    def h_update_frequencies_options(self):
+        return ({'value': freq, 'text': _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), freq).title())} for freq in self.h_update_frequencies())
 
+    def h_package_has_license_restrictions(self, dpkg):
+        return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
+            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False)
 
     p.implements(p.IAuthFunctions)
     def get_auth_functions(self):

@@ -3,9 +3,12 @@
 <li class="media-item">
   {% block item_inner %}
   {% block image %}
-    <div class="image-handler">
-      <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" class="media-image">
-    </div>
+    {% set image_url = h.dp_organization_image(organization) %}
+    {% if image_url %}
+      <div class="image-handler">
+        <img src="{{ image_url }}" alt="{{ organization.name }}" class="media-image">
+      </div>
+    {% endif %}
   {% endblock %}
   {% block title %}
     <h3 class="media-heading">{{ organization.display_name }}</h3>

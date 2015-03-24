@@ -1,0 +1,16 @@
+{#
+Renders a module for display in the site sidebar containing the rating for the
+provided dataset and some info about how the stars work.
+
+stars  - The number of stars assigned to the current dataset.
+reason - A reason, if any, why the dataset has no rating.
+
+Example:
+
+    {% snippet "qa/snippets/stars_module.html", stars=3 %}
+
+#}
+<section class="qa-ratings">
+  <span>{{ _('Openess Score') }}:</span>
+  <span>{{ h.qa_stars_rating(stars, reason) }}</span>
+</section>

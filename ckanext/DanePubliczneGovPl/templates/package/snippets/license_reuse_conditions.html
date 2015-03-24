@@ -1,12 +1,12 @@
 {# Warunki ponownego wykorzystywania informacji  #}
 
-Warunki ponownego wykorzystywania informacji:
-<ul>
-  {% if pkg_dict.license_condition_source %}
-    <li>{{ _('Odbiorca powinien poinformować o źródle pozyskania informacji') }}</li>
-  {% endif %}
+<h2>Warunki ponownego wykorzystywania informacji:</h2>
 
-  {% if pkg_dict.license_condition_timestamp %}
+{% if h.dp_package_has_license_restrictions(pkg_dict) %}
+<span>{{_("This dataset is considered public data and can be used under following restrictions") }}:</span>
+<ul>
+  {% if pkg_dict.license_condition_source or pkg_dict.license_condition_timestamp %}
+    <li>{{ _('Odbiorca powinien poinformować o źródle pozyskania informacji') }}</li>
     <li>{{ _('Odbiorca powinien poinformować o czasie wytworzenia i pozyskania informacji od dostawcy') }}</li>
   {% endif %}
 
@@ -23,3 +23,9 @@ Warunki ponownego wykorzystywania informacji:
     <li>{{ pkg_dict.license_condition_responsibilities }}</li>
   {% endif %}
 </ul>
+
+{%- else -%}
+
+<span>{{_("This dataset is considered public data and can be used without any restrictions") }}.</span>
+
+{%- endif %}
