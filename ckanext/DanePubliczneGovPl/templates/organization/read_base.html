@@ -88,10 +88,7 @@
             <aside class="dataset-filters span3">
               {% block secondary_content %}
                 <h2>{{ _('Filters') }}</h2>
-                  {% block links %}
-                    {{ super() }}
-                    {% include "organization/snippets/feeds.html" %}
-                  {% endblock %}
+                {% block organization_facets %}{% endblock %}
               {% endblock %}
             </aside>
             <div class="dataset-result span9">
