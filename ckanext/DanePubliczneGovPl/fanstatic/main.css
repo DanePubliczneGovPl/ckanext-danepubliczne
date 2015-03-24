@@ -181,6 +181,7 @@ body {
 .masthead .navigation,
 .masthead .section.site-language {
     margin-top: 5px;
+    width: 100%;
 }
 
 .masthead .section.site-language ul {
@@ -194,6 +195,10 @@ body {
     font-size: 16px;
     font-weight: normal;
     color: #000000;
+}
+
+.masthead .navigation .nav-pills li a {
+    padding: 8px 6px;
 }
 
 .masthead .navigation .nav-pills li a:hover,
@@ -216,7 +221,7 @@ body {
 }
 
 .masthead .site-search {
-    margin: 8px 8px 2px 0;
+    margin: 5px 8px 2px 0;
 }
 
 .masthead .site-search input {
@@ -224,10 +229,6 @@ body {
     font-size: 16px;
     font-weight: normal;
     color: #000000;
-}
-
-.masthead .section.site-language {
-    margin-left: 130px;
 }
 
 .masthead .section.site-language ul li a {
@@ -333,8 +334,13 @@ body {
     color: #ffffff;
 }
 
-.btn-danger:hover, .btn-danger:active {
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.disabled, .btn-danger[disabled] {
     background: #c72f29;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active, .btn-link.disabled, .btn-link[disabled] {
+    background: none;
+    color: #157abe;
 }
 
 .js .image-upload .btn,
@@ -426,4 +432,29 @@ input[type=checkbox]:checked + .checkbox:before {
     padding-left: 0;
     padding-right: 0;
     text-shadow: none;
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+    .masthead .navigation,
+    .masthead .section.site-language {
+        width: auto;
+    }
+
+    .masthead .navigation .nav-pills li a {
+        padding: 8px 12px;
+    }
+
+    .masthead .section.site-language {
+        margin-left: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .masthead .section.site-language {
+        margin-left: 100px;
+    }
 }

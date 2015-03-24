@@ -169,7 +169,13 @@
     }
 }
 
-@media (min-width: 978px) {
+@media (min-width: 992px) {
+    .homepage .categoriesBox .categories .box {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1200px) {
     .homepage .categoriesBox .categories .box {
         width: 25%;
     }
