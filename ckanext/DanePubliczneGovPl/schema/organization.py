@@ -13,10 +13,19 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
     def _form_to_db_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
         optional = tk.get_validator('ignore_missing')
+        not_empty = tk.get_validator('not_empty')
 
-        default_validators = [optional, to_extras]
+        default_validators = [not_empty, to_extras]
         schema.update({
-            'project_leader': default_validators
+            'address_city': default_validators,
+            'address_postal_code': default_validators,
+            'address_street': default_validators,
+            'website': default_validators,
+            'email': default_validators,
+            'tel': default_validators,
+            'fax': default_validators,
+            'regon': default_validators,
+            'epuap': default_validators
         })
         return schema
 
@@ -48,6 +57,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
 
         from_extras = tk.get_converter('convert_from_extras')
         optional = tk.get_validator('ignore_missing')
+        not_empty = tk.get_validator('not_empty')
 
         default_validators = [from_extras, optional]
         schema.update({
@@ -56,7 +66,15 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
             # to ('extras', '0', '__extras') -> dict
             # and from_extras is cannot match ('extras', '0', 'key') and does nothing
             'extras': {'value': [], 'key': []},
-            'project_leader': default_validators
+            'address_city': default_validators,
+            'address_postal_code': default_validators,
+            'address_street': default_validators,
+            'website': default_validators,
+            'email': default_validators,
+            'tel': default_validators,
+            'fax': default_validators,
+            'regon': default_validators,
+            'epuap': default_validators
         })
         return schema
 
