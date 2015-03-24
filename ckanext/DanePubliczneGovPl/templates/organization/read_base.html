@@ -1,12 +1,14 @@
 {% extends "page.html" %}
 
+{% set organization = c.group_dict %}
+
 {% block styles %}
   {{ super() }}
 
   {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
-{% block subtitle %}{{ c.group_dict.display_name }} - {{ _('Organizations') }}{% endblock %}
+{% block subtitle %}{{ organization.display_name }} - {{ _('Organizations') }}{% endblock %}
 
 {%- block content %}
   <form class="search-form" method="get" data-module="select-switch">
@@ -20,7 +22,7 @@
                   {% snippet 'snippets/home_breadcrumb_item.html' %}
                   {% block breadcrumb_content %}
                     <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
-                    <li class="active">{% link_for c.group_dict.display_name|truncate(35), controller='organization', action='read', id=c.group_dict.name %}</li>
+                    <li class="active">{% link_for organization.display_name|truncate(35), controller='organization', action='read', id=organization.name %}</li>
                   {% endblock %}
                 </ol>
               {% endif %}
@@ -29,36 +31,42 @@
 
           <div class="dataset-info">
               <div class="container">
-                <div class="span9">
+                <div class="span9 compact">
                 {% block heading %}
-                  <h1 class="heading">{{ c.group_dict.display_name }}{% if c.group_dict.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
+                  <h1 class="heading">{{ organization.display_name }}{% if organization.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
                 {% endblock %}
                 {% block description %}
-                  {% if c.group_dict.description %}
-                    <p>{{ c.group_dict.description }}</p>
-                  {% endif %}
+                  <p><strong>Adres: </strong>ul. Wawelska 52/54, 00-922 Warszawa</p>
+                  <p><strong>Strona WWW: </strong><a href="http://www.gios.gov.pl/">http://www.gios.gov.pl/</a></p>
+                  <p><strong>Adres e-mail: </strong><a href="mailto:sekretariat@gios.gov.pl" title="Napisz na sekretariat@gios.gov.pl">sekretariat@gios.gov.pl</a></p>
+                  <p><strong>Tel. </strong>+48 22 825 33 25</p>
+                  <p><strong>REGON: </strong>000861593</p>
+                  <p><a href="#" title="Elektroniczna Skrzynka Podawcza w portalu e-PUAP">Elektroniczna Skrzynka Podawcza w portalu e-PUAP</a></p>
                 {% endblock %}
                 {#{% block nums %}
                   <div class="nums">
                     <dl>
                       <dt>{{ _('Followers') }}</dt>
-                      <dd>{{ h.SI_number_span(c.group_dict.num_followers) }}</dd>
+                      <dd>{{ h.SI_number_span(organization.num_followers) }}</dd>
                     </dl>
                     <dl>
                       <dt>{{ _('Datasets') }}</dt>
-                      <dd>{{ h.SI_number_span(c.group_dict.packages|length) }}</dd>
+                      <dd>{{ h.SI_number_span(organization.packages|length) }}</dd>
                     </dl>
                   </div>
                 {% endblock %}
                 {% block follow %}
-                  <div class="follow_button">{{ h.follow_button('group', c.group_dict.id) }}</div>
+                  <div class="follow_button">{{ h.follow_button('group', organization.id) }}</div>
                 {% endblock %}#}
                 </div>
                 <div class="span3">
                     {% block image %}
-                      <div class="image">
-                        <img src="{{ c.group_dict.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ c.group_dict.name }}" />
-                      </div>
+                        {% set image_url = h.dp_organization_image(organization, show_placeholder_by_default = False) %}
+                        {% if image_url %}
+                          <div class="image-handler">
+                            <img src="{{ image_url }}" alt="{{ organization.name }}" alt="{{ organization.name }}">
+                          </div>
+                        {% endif %}
                     {% endblock %}
                 </div>
               </div>
@@ -140,9 +148,9 @@
                       {% endif %}
 
                       {% block content_action %}
-                        {% if h.check_access('organization_update', {'id': c.group_dict.id}) %}
+                        {% if h.check_access('organization_update', {'id': organization.id}) %}
                           <div class="page_primary_action span9">
-                            {% link_for _('Manage'), controller='organization', action='edit', id=c.group_dict.name, class_='btn', icon='wrench' %}
+                            {% link_for _('Manage'), controller='organization', action='edit', id=organization.name, class_='btn', icon='wrench' %}
                           </div>
                           {% endif %}
                       {% endblock %}
