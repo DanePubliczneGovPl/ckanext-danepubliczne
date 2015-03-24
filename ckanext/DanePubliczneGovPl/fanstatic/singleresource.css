@@ -1,5 +1,18 @@
+.singleresource .module-resource {
+    border-bottom: none;
+}
+
 .singleresource .module-content {
     padding: 0;
+}
+
+.singleresource .module-content p {
+    margin-bottom: 2px;
+}
+
+.singleresource .dataset-info,
+.singleresource .dataset-result {
+    display: none;
 }
 
 .singleresource h1 {
@@ -7,6 +20,13 @@
     font-weight: bold;
     color: #000000;
     line-height: 1.2em;
+    margin-bottom: 12px;
+}
+
+.singleresource .qa-ratings {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000;
     margin-bottom: 30px;
 }
 
@@ -14,7 +34,6 @@
     font-size: 14px;
     font-weight: normal;
     color: #000000;
-    margin-bottom: 20px;
 }
 
 .singleresource .ellipsis a {
@@ -40,36 +59,14 @@
 }
 
 .singleresource .nav {
-    margin-top: 60px;
-    border: none;
+    margin-top: 30px;
+    margin-bottom: 0;
     padding: 0;
 }
 
-.singleresource .nav li a,
-.singleresource .nav li a:hover {
-    border: none;
-    border-right: 1px solid #73afd8;
-    background: #157abe;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0;
-}
-
-.singleresource .nav li:last-child a {
-    border-right: none;
-}
-
-.singleresource .nav li a i {
-    display: none;
-}
-
-.singleresource .nav li.active a {
-    background: #0d507d;
+.singleresource .ckanext-datapreview {
+    margin-top: 0;
+    padding-top: 10px;
 }
 
 .singleresource .resource-view {
