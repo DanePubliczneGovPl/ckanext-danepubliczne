@@ -321,9 +321,9 @@ body {
     font-weight: bold;
 }
 
-.btn:hover, .btn:active
-.btn-success:hover, .btn-success:active,
-.btn-primary:hover, .btn-primary:active {
+.btn:hover, .btn:focus, .btn:active, .btn.disabled, .btn[disabled],
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.disabled, .btn-success[disabled],
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.disabled, .btn-primary[disabled] {
     background: #105d90;
     color: #ffffff;
 }

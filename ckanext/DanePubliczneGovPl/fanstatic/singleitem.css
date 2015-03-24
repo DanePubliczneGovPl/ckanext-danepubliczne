@@ -65,6 +65,11 @@
     font-weight: bold;
     color: #000000;
     margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.singleitem .dataset-info .history_button {
+    margin-top: 5px;
 }
 
 .singleitem .dataset-info .follow_button a i {
@@ -160,12 +165,14 @@
 
 .wrapper .dataset-result .module-content {
     padding-left: 30px;
+    margin-top: 5px;
 }
 
 .wrapper .dataset-result .page-header {
     margin: 0;
     padding: 0;
     background: none;
+    border-bottom: none;
 }
 
 .wrapper .dataset-result .page-header .nav.nav-tabs {
@@ -177,6 +184,7 @@
     font-weight: bold;
     color: #000000;
     line-height: 1.2em;
+    margin-top: 15px;
     margin-bottom: 20px;
 }
 
