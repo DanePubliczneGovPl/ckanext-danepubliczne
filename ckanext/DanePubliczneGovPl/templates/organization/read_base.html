@@ -1,6 +1,6 @@
 {% extends "page.html" %}
 
-{% set group = c.group_dict %}
+{% set organization = c.group_dict %}
 
 {% block styles %}
   {{ super() }}
@@ -8,7 +8,7 @@
   {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
-{% block subtitle %}{{ group.display_name }} - {{ _('Categories') }}{% endblock %}
+{% block subtitle %}{{ organization.display_name }} - {{ _('Organizations') }}{% endblock %}
 
 {%- block content %}
   <form class="search-form" method="get" data-module="select-switch">
@@ -21,8 +21,8 @@
                 <ol class="breadcrumb">
                   {% snippet 'snippets/home_breadcrumb_item.html' %}
                   {% block breadcrumb_content %}
-                    <li>{% link_for _('Categories'), controller='group', action='index' %}</li>
-                    <li class="active">{% link_for group.display_name|truncate(35), controller='group', action='read', id=group.name %}</li>
+                    <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
+                    <li class="active">{% link_for organization.display_name|truncate(35), controller='organization', action='read', id=organization.name %}</li>
                   {% endblock %}
                 </ol>
               {% endif %}
@@ -31,43 +31,49 @@
 
           <div class="dataset-info">
               <div class="container">
-                <div class="span9">
+                <div class="span9 compact">
                 {% block heading %}
-                  <h1 class="heading" style="color: {{ group.color }};">{{ group.display_name }}{% if group.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
+                  <h1 class="heading">{{ organization.display_name }}{% if organization.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
                 {% endblock %}
                 {% block description %}
-                  {% if group.description %}
-                    <p>{{ group.description }}</p>
-                  {% endif %}
+                  <p><strong>Adres: </strong>ul. Wawelska 52/54, 00-922 Warszawa</p>
+                  <p><strong>Strona WWW: </strong><a href="http://www.gios.gov.pl/">http://www.gios.gov.pl/</a></p>
+                  <p><strong>Adres e-mail: </strong><a href="mailto:sekretariat@gios.gov.pl" title="Napisz na sekretariat@gios.gov.pl">sekretariat@gios.gov.pl</a></p>
+                  <p><strong>Tel. </strong>+48 22 825 33 25</p>
+                  <p><strong>REGON: </strong>000861593</p>
+                  <p><a href="#" title="Elektroniczna Skrzynka Podawcza w portalu e-PUAP">Elektroniczna Skrzynka Podawcza w portalu e-PUAP</a></p>
                 {% endblock %}
                 {#{% block nums %}
                   <div class="nums">
                     <dl>
                       <dt>{{ _('Followers') }}</dt>
-                      <dd>{{ h.SI_number_span(group.num_followers) }}</dd>
+                      <dd>{{ h.SI_number_span(organization.num_followers) }}</dd>
                     </dl>
                     <dl>
                       <dt>{{ _('Datasets') }}</dt>
-                      <dd>{{ h.SI_number_span(group.packages|length) }}</dd>
+                      <dd>{{ h.SI_number_span(organization.packages|length) }}</dd>
                     </dl>
                   </div>
                 {% endblock %}
                 {% block follow %}
-                  <div class="follow_button">{{ h.follow_button('group', group.id) }}</div>
+                  <div class="follow_button">{{ h.follow_button('group', organization.id) }}</div>
                 {% endblock %}#}
                 </div>
                 <div class="span3">
                     {% block image %}
-                      <div class="image" style="background-color: {{ group.color }};">
-                        <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" />
-                      </div>
+                        {% set image_url = h.dp_organization_image(organization, show_placeholder_by_default = False) %}
+                        {% if image_url %}
+                          <div class="image-handler">
+                            <img src="{{ image_url }}" alt="{{ organization.name }}" alt="{{ organization.name }}">
+                          </div>
+                        {% endif %}
                     {% endblock %}
                 </div>
               </div>
           </div>
 
           {% block form %}
-            <div class="dataset-search" style="background-color: {{ group.color }};">
+            <div class="dataset-search">
               <div class="container">
                 {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
               </div>
@@ -84,7 +90,7 @@
                 <h2>{{ _('Filters') }}</h2>
                   {% block links %}
                     {{ super() }}
-                    {% include "group/snippets/feeds.html" %}
+                    {% include "organization/snippets/feeds.html" %}
                   {% endblock %}
               {% endblock %}
             </aside>
@@ -102,11 +108,11 @@
                         <div class="span8">
                       {% endif %}
                         {% set sorting = [
-                          (_('Relevance'), 'score desc, metadata_modified desc'),
-                          (_('Name Ascending'), 'name asc'),
-                          (_('Name Descending'), 'name desc'),
-                          (_('Last Modified'), 'metadata_modified desc'),
-                          (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
+                        (_('Relevance'), 'score desc, metadata_modified desc'),
+                        (_('Name Ascending'), 'title_string asc'),
+                        (_('Name Descending'), 'title_string desc'),
+                        (_('Last Modified'), 'metadata_modified desc'),
+                        (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
 
                             <div class="form-select control-group control-order-by">
                               <label for="field-order-by">{{ _('Order by') }}</label>
@@ -142,11 +148,11 @@
                       {% endif %}
 
                       {% block content_action %}
-                        {% if h.check_access('group_update', {'id': group.id}) %}
+                        {% if h.check_access('organization_update', {'id': organization.id}) %}
                           <div class="page_primary_action span9">
-                            {% link_for _('Manage'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
+                            {% link_for _('Manage'), controller='organization', action='edit', id=organization.name, class_='btn', icon='wrench' %}
                           </div>
-                        {% endif %}
+                          {% endif %}
                       {% endblock %}
                     {% endblock %}
 

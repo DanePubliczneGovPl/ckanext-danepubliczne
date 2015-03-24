@@ -32,6 +32,11 @@
     color: #434343;
 }
 
+.list .dataset-info .compact p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
 .list .dataset-info .nums dl {
     width: 50%;
     float: left;
@@ -238,6 +243,14 @@
     float: left;
     width: 100%;
     display: block;
+}
+
+.wrapper .dataset-result .module-content > .btn {
+    margin-right: 5px;
+}
+
+.wrapper .dataset-result .module-content > .btn:first-child {
+    margin-left: 30px;
 }
 
 .wrapper .dataset-result .results-total {

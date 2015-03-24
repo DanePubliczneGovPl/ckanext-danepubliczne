@@ -63,6 +63,26 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
     ###################################
     # Below not really interesting code
 
+    def new_template(self):
+        return 'group/new.html'
+
+    def about_template(self):
+        return 'group/about.html'
+
+    def admins_template(self):
+        return 'group/admins.html'
+
+    def bulk_process_template(self):
+        return 'group/bulk_process.html'
+
+    # don't override history_template - use group template for history
+
+    def edit_template(self):
+        return 'group/edit.html'
+
+    def activity_template(self):
+        return 'group/activity_stream.html'
+
     def is_fallback(self):
         # Overrides all 
         return False
