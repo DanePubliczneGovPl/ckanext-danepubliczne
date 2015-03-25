@@ -72,13 +72,6 @@
   </form>
 
   <div class="section site-language">
-    <ul class="nav nav-pills">
-      <li class="active">
-        <a href="#" target="_self" alt="{{ _('Polish version') }}">PL</a>
-      </li>
-      <li>
-        <a href="#" target="_self" alt="{{ _('English version') }}">EN</a>
-      </li>
-    </ul>
+    {% snippet 'snippets/language_selector.html' %}
   </div>
 {% endblock %}
