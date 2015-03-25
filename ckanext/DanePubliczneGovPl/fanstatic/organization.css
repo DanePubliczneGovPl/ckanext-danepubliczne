@@ -17,6 +17,7 @@
     font-size: 43px;
     font-weight: bold;
     float: left;
+    line-height: 1.1em;
 }
 
 .organization .page-header .btn,

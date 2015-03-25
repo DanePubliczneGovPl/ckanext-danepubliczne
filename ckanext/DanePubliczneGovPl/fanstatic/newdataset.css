@@ -15,7 +15,7 @@
     font-size: 20px;
     font-weight: bold;
     color: #1d1d1d;
-    line-height: 1.2em;
+    line-height: 1.1em;
 }
 
 .newdataset h3 {
@@ -119,7 +119,7 @@ select {
 }
 
 .form-horizontal .control-group {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 0;
 }
 
@@ -132,7 +132,18 @@ select {
 }
 
 .panel {
-    padding: 20px 25px;
+    padding: 20px 0;
+}
+
+.panel .panel-title {
+    padding: 20px 30px;
+    background: #AEAEAE;
+    margin: 0;
+}
+
+.panel .panel-body {
+    padding: 10px 30px 20px;
+    background: #EDEDED;
 }
 
 .panel .controls {
@@ -163,11 +174,17 @@ select {
 
 @media (min-width: 1200px) {
     .newdataset .dataset-info {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 270px;
+        height: 100%;
+        padding-bottom: 0;
     }
 
     .newdataset .dataset-result {
         width: 875px;
+        margin-left: 270px;
     }
 
     .newdataset .dataset-result .stages {

@@ -25,14 +25,6 @@
     padding: 0 25px 0 0;
 }
 
-.singleitem .dataset-info h1 {
-    font-size: 43px;
-    font-weight: bold;
-    color: #4b77be;
-    margin-top: 0;
-    margin-bottom: 35px;
-}
-
 .singleitem .dataset-info p {
     font-size: 18px;
     font-weight: normal;
@@ -172,9 +164,9 @@
     font-size: 24px;
     font-weight: bold;
     color: #000000;
-    line-height: 1.2em;
     margin-top: 15px;
     margin-bottom: 20px;
+    line-height: 1.1em;
 }
 
 .wrapper .dataset-result .module .notes {
