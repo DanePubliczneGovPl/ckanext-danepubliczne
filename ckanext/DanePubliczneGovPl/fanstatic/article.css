@@ -7,6 +7,16 @@
     margin-left: 0;
 }
 
+.page-header .content_action {
+    width: 100%;
+}
+
+.page-header .content_action > a,
+.page-header .content_action > div {
+    float: right;
+    margin-left: 10px;
+}
+
 .module-content,
 .module-content:first-child {
     background: none;

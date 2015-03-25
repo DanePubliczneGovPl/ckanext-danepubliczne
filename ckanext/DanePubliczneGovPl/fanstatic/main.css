@@ -161,6 +161,10 @@ body {
    The header at the top of the site
    ==================================== */
 
+.btn.btn-navbar, .btn.btn-navbar:hover, .btn.n-navbar:focus, .btn.btn-navbar:active {
+    margin: 5px 25px 0 0;
+}
+
 .masthead {
     background: #ffffff;
     color: #000000;
@@ -448,6 +452,10 @@ input[type=checkbox]:checked + .checkbox:before {
 @media (min-width: 992px) {
     body {
         padding-bottom: 400px;
+    }
+
+    .mobile-navbar {
+        display: none;
     }
 
     .masthead .navigation .nav-pills li a {
