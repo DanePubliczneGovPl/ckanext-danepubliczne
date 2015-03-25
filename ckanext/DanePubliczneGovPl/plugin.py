@@ -6,6 +6,7 @@ import ckan.lib.helpers as h
 import ckan.lib.base as base
 import paste.deploy.converters
 from pylons import config
+from routes.mapper import SubMapper
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -36,11 +37,36 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('user_dashboard_search_history', '/dashboard/search_history',
                  controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
 
-        map.connect('group_read', '/group/{id}', controller='ckanext.DanePubliczneGovPl.controllers.group:GroupController', action='read',
+        with SubMapper(map, controller='ckanext.DanePubliczneGovPl.controllers.group:GroupController') as m:
+            m.connect('group_index', '/group', action='index',
+                      highlight_actions='index search')
+            m.connect('group_list', '/group/list', action='list')
+            m.connect('group_new', '/group/new', action='new')
+            m.connect('group_action', '/group/{action}/{id}',
+                      requirements=dict(action='|'.join([
+                          'edit',
+                          'delete',
+                          'member_new',
+                          'member_delete',
+                          'history',
+                          'followers',
+                          'follow',
+                          'unfollow',
+                          'admins',
+                          'activity',
+                      ])))
+            m.connect('group_about', '/group/about/{id}', action='about',
+                      ckan_icon='info-sign'),
+            m.connect('group_edit', '/group/edit/{id}', action='edit',
+                      ckan_icon='edit')
+            m.connect('group_members', '/group/members/{id}', action='members',
+                      ckan_icon='group'),
+            m.connect('group_activity', '/group/activity/{id}/{offset}',
+                      action='activity', ckan_icon='time'),
+            m.connect('group_read', '/group/{id}', action='read',
                       ckan_icon='sitemap')
 
         return map
-
 
 
     p.implements(p.ITemplateHelpers)
