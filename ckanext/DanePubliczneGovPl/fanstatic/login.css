@@ -1,30 +1,18 @@
 .wrapper {
-    border: 4px solid #e3e3e3;
-    background: #ffffff;
-    margin: 0 auto;
-    display: inline-block;
-
     position: relative;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+    padding: 0;
 }
 
 [role=main] .primary {
-    width: 550px;
-    margin-left: 260px;
-    padding: 40px 28px;
+    width: 100%
+}
+
+[role=main] .primary > section {
+    padding: 0 20px;
 }
 
 [role=main] .secondary {
-    width: 260px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 100%;
+    width: 100%
 }
 
 [role=main] .secondary .module {
@@ -37,10 +25,6 @@
     color: #1d1d1d;
 }
 
-.module-content .action .btn {
-    position: absolute;
-}
-
 .form-horizontal .control-label {
     width: 100px;
 }
@@ -49,24 +33,10 @@
     content: ' ';
 }
 
-.form-horizontal .controls {
-    margin-left: 130px;
-}
-
-.form-horizontal .control-medium .controls input {
-    width: 340px;
-}
-
 .form-actions {
     margin: 0;
     border: none;
     background: none;
-}
-
-.form-horizontal .form-actions {
-    padding-left: 120px;
-    padding-right: 65px;
-    padding-bottom: 0;
 }
 
 .secondary {
@@ -107,10 +77,71 @@
     color: #000000;
 }
 
-.module-content .action {
-    position: absolute;
-    bottom: 32px;
-    left: 28px;
-    width: 100%;
-    height: 44px;
+@media (min-width: 768px) {
+    .wrapper {
+        border: 4px solid #e3e3e3;
+        background: #ffffff;
+        margin: 0 auto;
+        display: inline-block;
+
+        position: relative;
+        top: 0;
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+
+    [role=main] .primary {
+        width: 480px;
+        margin-left: 230px;
+        padding: 40px 15px;
+    }
+
+    [role=main] .primary > section {
+        padding: 0;
+    }
+
+    [role=main] .secondary {
+        width: 230px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 100%;
+    }
+
+    .form-horizontal .controls {
+        margin-left: 130px;
+    }
+
+    .form-horizontal .control-medium .controls input {
+        width: 340px;
+    }
+
+    .form-horizontal .form-actions {
+        padding-left: 120px;
+        padding-right: 65px;
+        padding-bottom: 0;
+    }
+
+    .module-content .action {
+        position: absolute;
+        bottom: 32px;
+        left: 28px;
+        width: 100%;
+        height: 44px;
+    }
+}
+
+@media (min-width: 992px) {
+    [role=main] .primary {
+        width: 550px;
+        margin-left: 260px;
+        padding: 40px 28px;
+    }
+
+    [role=main] .secondary {
+        width: 260px;
+    }
 }

@@ -1,3 +1,7 @@
+.wrapper {
+    margin: 0;
+}
+
 .singleresource .module-resource {
     border-bottom: none;
 }
@@ -72,4 +76,10 @@
 .singleresource .resource-view {
     margin: 0;
     padding: 0;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 0 -20px;
+    }
 }

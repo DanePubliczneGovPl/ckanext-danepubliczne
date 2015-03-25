@@ -13,7 +13,7 @@
       {% endif %}
     {% else %}
       <a href="{{ h.remove_url_param('_%s_limit' % name, extras=extras, alternative_url=alternative_url) }}"
-         class="read-more ckan-ikon ckan-icon-scrollup"><span
+         class="read-less ckan-ikon ckan-icon-scrolldown"><span
           class="hidden">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</span></a>
     {% endif %}
   </h3>

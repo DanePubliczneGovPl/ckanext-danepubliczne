@@ -86,6 +86,14 @@
     overflow: hidden;
 }
 
+.recline-data-explorer .header .navigation,
+.recline-data-explorer .header .recline-results-info,
+.recline-data-explorer .header .recline-pager {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .recline-data-explorer .header .menu-right {
     border-left-width: 0;
 }
@@ -136,4 +144,16 @@
 
 .recline-filter-editor .filters > form {
     margin: 15px 0;
+}
+
+@media (min-width: 768px) {
+    .recline-data-explorer .header .navigation,
+    .recline-data-explorer .header .recline-results-info,
+    .recline-data-explorer .header .recline-pager {
+        width: auto;
+        margin: 0 20px 0 0;
+    }
+}
+
+@media (min-width: 992px) {
 }
