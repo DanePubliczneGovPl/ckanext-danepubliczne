@@ -10,7 +10,7 @@
 }
 
 .list .dataset-info {
-    margin-bottom: 45px;
+    margin-bottom: 0;
 }
 
 .list .dataset-info [class*="span"] {
@@ -56,6 +56,7 @@
     -moz-border-radius: 100px;
     border-radius: 100px;
     position: relative;
+    display: none;
 }
 
 .list .dataset-info .image img {
@@ -72,6 +73,12 @@
     margin: 0;
     padding: 0;
     border: none;
+}
+
+.list .dataset-search {
+    padding: 15px 25px;
+    margin: 0 -25px;
+    background-color: #157abe;
 }
 
 .search-form .search-input {
@@ -377,7 +384,15 @@
 
     .list .dataset-search {
         padding: 15px 0;
-        background-color: #157abe;
+        margin: 0;
+    }
+
+    .list .dataset-info {
+        margin-bottom: 45px;
+    }
+
+    .list .dataset-info .image {
+        display: block;
     }
 }
 
