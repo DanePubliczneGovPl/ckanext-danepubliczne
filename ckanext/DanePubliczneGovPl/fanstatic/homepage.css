@@ -31,7 +31,8 @@
 .homepage .hero .module-content.info .module-search {
     background: none;
     padding: 0;
-    margin-top: 55px;
+    margin-top: 40px;
+    margin-bottom: 55px;
 }
 
 .homepage .hero .module-content.info .module-search .module-content {
@@ -54,7 +55,7 @@
 
 .homepage .categoriesBox {
     background: #efefef;
-    padding: 55px 0;
+    padding: 25px 0;
 }
 
 .homepage .categoriesBox .categories {
@@ -68,6 +69,8 @@
     font-weight: 300;
     color: #434343;
     margin-bottom: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .homepage .categoriesBox .categories .list {
@@ -127,7 +130,7 @@
     font-size: 36px;
     font-weight: 300;
     color: #434343;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .homepage .articlesBox .articles .article {
@@ -169,7 +172,22 @@
     }
 }
 
-@media (min-width: 978px) {
+@media (min-width: 992px) {
+    .homepage .categoriesBox {
+        padding-top: 55px;
+    }
+
+    .homepage .categoriesBox .categories h2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .homepage .categoriesBox .categories .box {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1200px) {
     .homepage .categoriesBox .categories .box {
         width: 25%;
     }

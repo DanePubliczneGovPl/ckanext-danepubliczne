@@ -1,3 +1,7 @@
+.wrapper {
+    margin: 0;
+}
+
 .organization .module-content {
     padding-left: 0;
     padding-right: 0;
@@ -22,7 +26,7 @@
 }
 
 .organization .page-header .search-input {
-    width: auto;
+    width: 100%;
     position: relative;
     padding: 2px 10px;
 
@@ -34,6 +38,7 @@
     font-weight: normal;
     color: #000000;
     margin: 0;
+    width: 98%;
 }
 
 .organization .page-header .search-input .btn-search {
@@ -96,4 +101,18 @@
 .organization .media-grid .count {
     color: #434343;
     font-weight: normal;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 0 -20px;
+    }
+
+    .organization .page-header .search-input {
+        width: auto;
+    }
+
+    .organization .page-header .search-input input {
+        width: auto;
+    }
 }
