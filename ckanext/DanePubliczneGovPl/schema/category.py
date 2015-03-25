@@ -36,6 +36,8 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             for extra in c['extras']:
                 if extra['key'] == 'color':
                     c['color'] = extra['value']
+                if extra['key'] == 'title_i18n':
+                    c['title_i18n'] = fluent_text_output_backcompat(extra['value'])
         
             categories2.append(c)
             
@@ -78,11 +80,6 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
 
         from_extras = tk.get_converter('convert_from_extras')
         optional = tk.get_validator('ignore_missing')
-        def fluent_text_output_backcompat(value):
-            try:
-                return fluent_text_output(value)
-            except Exception:
-                return {h.lang(): value}
 
         default_validators = [from_extras, optional]
         schema.update({
@@ -105,4 +102,8 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     form_to_db_schema_api_create = form_to_db_schema_api_update = form_to_db_schema
 
 
-    
+def fluent_text_output_backcompat(value):
+    try:
+        return fluent_text_output(value)
+    except Exception:
+        return {h.lang(): value}
