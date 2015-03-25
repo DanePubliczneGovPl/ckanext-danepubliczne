@@ -4,6 +4,7 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 import ckan.lib.base as base
+import paste.deploy.converters
 from pylons import config
 
 class DanePubliczne(p.SingletonPlugin):
@@ -52,7 +53,7 @@ class DanePubliczne(p.SingletonPlugin):
         if org.get('image_display_url', None):
             return org.get('image_display_url')
 
-        if config.get('dp.show_organization_placeholder_image', show_placeholder_by_default):
+        if paste.deploy.converters.asbool(config.get('dp.show_organization_placeholder_image', show_placeholder_by_default)):
             return h.url_for_static('/base/images/placeholder-organization.png')
 
         return None
