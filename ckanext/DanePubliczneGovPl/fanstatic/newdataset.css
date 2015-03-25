@@ -1,3 +1,8 @@
+.wrapper {
+    width: 100%;
+    margin: 0;
+}
+
 .newdataset {
     border: 4px solid #e3e3e3;
     background: #ffffff;
@@ -23,6 +28,8 @@
 
 .newdataset .dataset-info {
     background-color: #f9f9f9;
+    width: 100%;
+    padding-bottom: 40px;
 }
 
 .newdataset .dataset-info > section {
@@ -49,7 +56,7 @@
 }
 
 .newdataset .dataset-result {
-    width: 875px;
+    width: 100%;
 }
 
 .newdataset .dataset-result > .module {
@@ -61,17 +68,19 @@
     padding-right: 0;
 }
 
+.newdataset .dataset-edit {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
 .newdataset .dataset-result .stages {
     margin-left: 0;
+    margin-right: 0;
 }
 
 .newdataset .dataset-result .stages li {
     padding-top: 15px;
     padding-bottom: 15px;
-}
-
-.newdataset .dataset-result .stages li.complete .highlight {
-
 }
 
 .newdataset .dataset-result .stages li.complete:before,
@@ -93,6 +102,7 @@
 
 .newdataset .dataset-result .stages li .highlight {
     line-height: 36px;
+    text-indent: 0;
 }
 
 select, textarea, input, .uneditable-input {
@@ -121,6 +131,10 @@ select {
     margin-top: -8px;
 }
 
+.panel {
+    padding: 20px 25px;
+}
+
 .panel .controls {
     margin-left: 0;
 }
@@ -133,4 +147,30 @@ select {
 .newdataset .dataset-result .form-actions {
     background: none;
     border-top: 0;
+    padding: 20px 25px 0;
+    margin: 0;
+}
+
+.newdataset .dataset-result .form-actions .btn {
+    float: right;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 0 -25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .newdataset .dataset-info {
+        width: 270px;
+    }
+
+    .newdataset .dataset-result {
+        width: 875px;
+    }
+
+    .newdataset .dataset-result .stages {
+        margin-right: -25px;
+    }
 }
