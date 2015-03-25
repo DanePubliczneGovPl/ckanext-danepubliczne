@@ -35,6 +35,9 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('user_dashboard_search_history', '/dashboard/search_history',
                  controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
 
+        map.connect('group_read', '/group/{id}', controller='ckanext.DanePubliczneGovPl.controllers.group:GroupController', action='read',
+                      ckan_icon='sitemap')
+
         return map
 
 
