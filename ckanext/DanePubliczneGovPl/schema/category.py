@@ -2,9 +2,11 @@ import ckan.lib
 import ckan.logic
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
+import ckan.lib.helpers as h
 import ckan.lib.navl.dictization_functions as df
 from ckan.common import _
 from __builtin__ import True
+from ckanext.fluent.validators import fluent_text, fluent_text_output
 
 class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     '''
@@ -34,6 +36,8 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             for extra in c['extras']:
                 if extra['key'] == 'color':
                     c['color'] = extra['value']
+                if extra['key'] == 'title_i18n':
+                    c['title_i18n'] = fluent_text_output_backcompat(extra['value'])
         
             categories2.append(c)
             
@@ -62,9 +66,12 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     def _form_to_db_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
         not_empty = tk.get_validator('not_empty')
+        optional = tk.get_validator('ignore_missing')
 
         schema.update({
-            'color': [not_empty, to_extras]
+            'color': [not_empty, to_extras],
+            'title_i18n': [fluent_text, not_empty, to_extras],
+            'description': [fluent_text, optional]
         })
         return schema
 
@@ -72,7 +79,7 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
         schema = ckan.logic.schema.default_show_group_schema()
 
         from_extras = tk.get_converter('convert_from_extras')
-        optional = tk.get_validator('ignore_missing')        
+        optional = tk.get_validator('ignore_missing')
 
         default_validators = [from_extras, optional]
         schema.update({
@@ -81,7 +88,9 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             # to ('extras', '0', '__extras') -> dict
             # and from_extras is cannot match ('extras', '0', 'key') and does nothing
             'extras': {'value': [], 'key': []},
-            'color': default_validators
+            'color': default_validators,
+            'title_i18n': [from_extras, optional, fluent_text_output_backcompat],
+            'description': [optional, fluent_text_output_backcompat]
         })
         return schema
     
@@ -93,4 +102,8 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     form_to_db_schema_api_create = form_to_db_schema_api_update = form_to_db_schema
 
 
-    
+def fluent_text_output_backcompat(value):
+    try:
+        return fluent_text_output(value)
+    except Exception:
+        return {h.lang(): value}

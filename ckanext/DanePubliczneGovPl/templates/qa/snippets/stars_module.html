@@ -13,4 +13,8 @@ Example:
 <section class="qa-ratings">
   <span>{{ _('Openess Score') }}:</span>
   <span>{{ h.qa_stars_rating(stars, reason) }}</span>
+  <p class="rating-info-toggle module-content module-border-top"><a href="#" data-toggle="ratings" data-target=".rating-info-wrapper" data-hide-text="{{ _('Hide rating info') }}">{{ _('About these ratings…') }}</a></p>
+  <div class="rating-info-wrapper js-hide module-border-top">
+    {{ h.qa_stars_info(stars) }}
+  </div>
 </section>

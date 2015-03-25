@@ -8,13 +8,47 @@ overriding the form blocks depending on the current context
   {% if action == "edit" %}{{ super() }}{% endif %}
 {% endblock %}
 
+{% block basic_fields %}
+  {% set locale_default = h.get_available_locales()[0].language %}
+  {% set attrs = { locale_default: {'data-module': 'slug-preview-target'}} %}
+
+  {%- for lang in h.fluent_form_languages({},{}) -%}
+  {{ form.input('title_i18n-' + lang, label=_('Name') + ' ' + lang.upper(), id='field-title_i18n-' + lang, placeholder=_('Name of category'),
+    value=data.get('title_i18n', {})[lang] or data['title_i18n' + '-' + lang], error=errors['title_i18n-'+lang], classes=['control-full'], attrs=attrs.get(lang,{})) }}
+  {%- endfor -%}
+
+  {# Perhaps these should be moved into the controller? #}
+  {% set prefix = h.url_for(controller='group', action='read', id='') %}
+  {% set domain = h.url_for(controller='group', action='read', id='', qualified=true) %}
+  {% set domain = domain|replace("http://", "")|replace("https://", "") %}
+  {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<group>'} %}
+
+  {{ form.prepend('name', label=_('URL'), prepend=prefix, id='field-url', placeholder=_('my-group'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
+
+  {%- for lang in h.fluent_form_languages({},{}) -%}
+  {{ form.markdown('description-' + lang, label=_('Description') + ' ' + lang.upper(), id='field-description-' + lang, placeholder=_('Description of this category'),
+    value=data.get('description', {})[lang] or data['description' + '-' + lang], error=errors['description-'+lang]) }}
+  {%- endfor -%}
+
+  {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
+  {% set is_url = data.image_url and data.image_url.startswith('http') %}
+
+  {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload) }}
+
+{% endblock %}
+
 {% block custom_fields %}
   <div class="control-group control-full color_chooser">
     <label class="control-label">{{ _('Color') }}</label>
     <div class="controls">
 
       {% for cl in h.dp_category_colors() %}
-      <input type="radio" name="color" value="{{ cl }}" {% if data.color %}checked="checked"{% endif %}/><span class='sample' style="background-color: {{ cl }}"></span>{{ cl }}<br/>
+      <input type="radio" id="color-{{ cl }}" name="color" value="{{ cl }}" {% if data.color %}checked="checked"{% endif %}>
+      <label for="color-{{ cl }}" class="radio">
+        <div class="sample" style="background-color: {{ cl }}; display: inline-block; width: 19px">&nbsp;</div>
+        <span>(#4b77be)</span>
+      </label>
+      <br/>
       {% endfor %}
     </div>
   </div>

@@ -7,7 +7,7 @@
             <li class="box span3" style="background-color: {{ c.color }};">
                 <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self" class="category" title="{{ c.display_name }}">
                     <img class="category-img" src="{{ c.image_display_url }}" alt=""/>
-                    <h3>{{ c.display_name }}</h3>
+                    <h3>{{ c.get('title_i18n', {}).get(h.lang(), None) or c.display_name }}</h3>
                 </a>
             </li>
         {% endfor %}
