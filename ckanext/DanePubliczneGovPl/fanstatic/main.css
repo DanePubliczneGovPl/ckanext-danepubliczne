@@ -358,10 +358,10 @@ body {
 }
 
 .radio, .checkbox {
-    display: inline-block;
     cursor: pointer;
     position: relative;
     padding-left: 6px;
+    margin-left: 20px;
 }
 
 .radio:before, .checkbox:before {
@@ -373,6 +373,7 @@ body {
 
     position: absolute;
     left: 0;
+    top: 0;
     bottom: 1px;
     background-color: #ffffff;
     border: 1px solid #bbbbbb;
@@ -380,6 +381,9 @@ body {
 }
 
 input[type="radio"], input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
     visibility: hidden;
 }
 
