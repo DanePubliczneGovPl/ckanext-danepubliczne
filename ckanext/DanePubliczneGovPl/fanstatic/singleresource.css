@@ -31,7 +31,25 @@
     font-size: 14px;
     font-weight: normal;
     color: #000;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    width: 100%;
+    display: inline-block;
+}
+
+.singleresource .qa-ratings span,
+.singleresource .qa-ratings p {
+    width: auto;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.singleresource .qa-ratings .rating-info-toggle {
+    padding-left: 10px;
+}
+
+.singleresource .qa-ratings .rating-info-wrapper {
+    width: 100%;
+    float: left;
 }
 
 .singleresource .ellipsis {

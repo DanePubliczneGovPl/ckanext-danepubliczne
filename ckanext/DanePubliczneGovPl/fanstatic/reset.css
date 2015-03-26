@@ -3247,10 +3247,6 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     clear: both
 }
 
-.navbar .container {
-    width: auto
-}
-
 .nav-collapse.collapse {
     height: auto;
     overflow: visible
@@ -5968,11 +5964,6 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 
     .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
         padding: 5px
-    }
-
-    .navbar .container {
-        width: auto;
-        padding: 0
     }
 
     .navbar .brand {
