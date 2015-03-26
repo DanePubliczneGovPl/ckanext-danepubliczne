@@ -28,7 +28,7 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <li class="active"><a href="javascript:void(0);">{{ h.resource_display_name(res)|truncate(30) }}</a></li>
+  <li class="active"><a href="javascript:void(0);">{{ h.resource_display_name(res)) }}</a></li>
 {% endblock %}
 
 {% block pre_primary %}
@@ -69,7 +69,7 @@
           </div>
 
           {% block resource_content %}
-            {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) | truncate(50) }}</h1>{% endblock %}
+            {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>{% endblock %}
               {% block qa_stars %}
                 {{ h.qa_stars(c.resource.id) }}
               {% endblock %}
