@@ -1,0 +1,14 @@
+{% ckan_extends %}
+
+{% import 'macros/form.html' as form %}
+
+{% set data = data or {} %}
+{% set errors = errors or {} %}
+{% set action = form_action or h.url_for(controller='package', action='new_resource', id=pkg_name) %}
+
+{% block metadata_fields %}
+  {% block package_basic_fields_tags %}
+    {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?vocabulary_id=resource_types&incomplete=?'} %}
+    {{ form.input('resource_tag_string', id='field-tags', label=_('Resource types'), placeholder=_('eg. text, audio, video, presentation, report, motion'), value=data.resource_tag_string, error=errors.resource_tags, classes=['control-full'], attrs=tag_attrs) }}
+  {% endblock %}
+{% endblock %}
