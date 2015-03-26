@@ -56,7 +56,8 @@
     margin-bottom: 10px;
 }
 
-.singleitem .dataset-info .history_button {
+.singleitem .dataset-info .history_button,
+.singleitem .dataset-info .feedback_button {
     margin-top: 5px;
 }
 
