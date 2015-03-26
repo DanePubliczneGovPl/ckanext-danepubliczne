@@ -187,9 +187,9 @@ body {
     padding-right: 20px;
 }
 
-.masthead .navigation,
-.masthead .section.site-language {
+.masthead .navigation, .masthead .section.site-language {
     margin-top: 5px;
+    width: 100%;
 }
 
 .masthead .section.site-language ul {
@@ -460,6 +460,10 @@ input[type=checkbox]:checked + .checkbox:before {
 
     .mobile-navbar {
         display: none;
+    }
+
+    .masthead .navigation, .masthead .section.site-language {
+        width: auto;
     }
 
     .masthead .navigation .nav-pills li a {
