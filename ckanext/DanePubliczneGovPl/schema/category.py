@@ -16,21 +16,19 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
 
     def get_helpers(self):
         return {'dp_categories': self.h_categories,
-                'dp_categories_home': self.h_categories_home,
                 'dp_category_colors': self.h_colors,
+                'dp_default_locale': self.h_default_locale
             }
 
-    def h_categories(self):
-        categories = tk.get_action('group_list')(data_dict={'all_fields': True})
-        
-        return categories
-    
-    def h_categories_home(self):
+    def h_default_locale(self):
+        return h.get_available_locales()[0].language
+
+    def h_categories(self, exclude_empty = False):
         categories = tk.get_action('group_list')(data_dict={'all_fields': True, 'include_extras': True})
         
         categories2 = []
         for c in categories:
-            if c['package_count'] == 0:
+            if c['package_count'] == 0 and exclude_empty:
                 continue
             
             for extra in c['extras']:
@@ -40,7 +38,10 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
                     c['title_i18n'] = fluent_text_output_backcompat(extra['value'])
         
             categories2.append(c)
-            
+
+            if c.get('title_i18n'):
+                c['title'] = c['title_i18n'][self.h_default_locale()]
+
         return categories2
 
     def h_colors(self):
