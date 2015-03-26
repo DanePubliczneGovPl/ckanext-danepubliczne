@@ -49,7 +49,7 @@
   {% block secondary_help_content %}{% endblock %}
 
   {% block package_info %}
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
+    {% snippet 'package/snippets/info.html', pkg=pkg, feedback_form_items=feedback_form_items %}
   {% endblock %}
 
   {% block package_license %}

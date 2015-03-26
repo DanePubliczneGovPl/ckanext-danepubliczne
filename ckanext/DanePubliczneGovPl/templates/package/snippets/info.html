@@ -25,7 +25,7 @@
                                                data-hide-text="{{ _('Hide feedback form') }}" class="btn">{{ _('Send feedback') }}</a>
           </div>
           <div class="feedback-form-wrapper js-hide">
-            FORMULARZ ZGLAsZANIA UWAG
+            {% snippet 'package/snippets/feedback_form.html', pkg=pkg, feedback_form_items=feedback_form_items %}
           </div>
         </div>
       </div>
