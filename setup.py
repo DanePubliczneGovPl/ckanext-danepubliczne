@@ -7,7 +7,6 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the relevant file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
-
 setup(
     name='''ckanext-DanePubliczneGovPl''',
 
@@ -80,5 +79,7 @@ setup(
         dane_publiczne_categories=ckanext.DanePubliczneGovPl.schema.category:Category
         dane_publiczne_articles=ckanext.DanePubliczneGovPl.schema.article:Article
         piwik=ckanext.DanePubliczneGovPl.piwik:PiwikPlugin
+        [babel.extractors]
+        ckan=ckan.lib.extract:extract_ckan
     ''',
 )
