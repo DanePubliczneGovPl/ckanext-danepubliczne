@@ -96,8 +96,7 @@
               {% block primary_content %}
                 <section class="module">
                   <div class="module-content">
-                    {% block page_primary_action %}
-                      {% if not no_title %}
+                    {% if not no_title %}
                         <div class="span5">
                           <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
                         </div>
@@ -144,15 +143,15 @@
                           {% endtrans %}
                         </div>
                       {% endif %}
-
                       {% block content_action %}
                         {% if h.check_access('organization_update', {'id': organization.id}) %}
                           <div class="page_primary_action span9">
+                            {% block page_primary_action %}{% endblock %}
                             {% link_for _('Manage'), controller='organization', action='edit', id=organization.name, class_='btn', icon='wrench' %}
                           </div>
-                          {% endif %}
+                        {% endif %}
                       {% endblock %}
-                    {% endblock %}
+                    </div>
 
                     {% block package_search_results_list %}
                       <div class="span9">
