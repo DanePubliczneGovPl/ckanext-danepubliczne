@@ -37,6 +37,8 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('user_dashboard_search_history', '/dashboard/search_history',
                  controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
 
+        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.DanePubliczneGovPl.controllers.feedback:FeedbackController', action='submit')
+
         with SubMapper(map, controller='ckanext.DanePubliczneGovPl.controllers.group:GroupController') as m:
             m.connect('group_index', '/group', action='index',
                       highlight_actions='index search')
