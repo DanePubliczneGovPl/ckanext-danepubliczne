@@ -11,6 +11,7 @@
         {{ _('Private') }}
       </span>
     {% endif %}
+    {# TODO does private implies state=draft? #}
     <h1>{% block page_heading %}{{ pkg.title or pkg.name }}{% if pkg.state.startswith('draft') %}[{{ _('Draft') }}]
     {% endif %}{% endblock %}</h1>
 

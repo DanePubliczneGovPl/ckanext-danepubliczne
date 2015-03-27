@@ -8,7 +8,9 @@
   {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
-{% block subtitle %}{{ group.title_i18n[h.lang()] }} - {{ _('Categories') }}{% endblock %}
+{% set category_title = group.get('title_i18n',{})[h.lang()] or group.title %}
+
+{% block subtitle %}{{ category_title }} - {{ _('Categories') }}{% endblock %}
 
 {%- block content %}
   <form class="search-form" method="get" data-module="select-switch">
@@ -22,7 +24,7 @@
                   {% snippet 'snippets/home_breadcrumb_item.html' %}
                   {% block breadcrumb_content %}
                     <li>{% link_for _('Categories'), controller='group', action='index' %}</li>
-                    <li class="active">{% link_for group.title_i18n[h.lang()], controller='group', action='read', id=group.name %}</li>
+                    <li class="active">{% link_for category_title, controller='group', action='read', id=group.name %}</li>
                   {% endblock %}
                 </ol>
               {% endif %}
@@ -33,7 +35,7 @@
               <div class="container">
                 <div class="span9">
                 {% block heading %}
-                  <h1 class="heading" style="color: {{ group.color }};">{{ group.title_i18n[h.lang()] }}{% if group.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
+                  <h1 class="heading" style="color: {{ group.color }};">{{ category_title }}{% if group.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
                 {% endblock %}
                 {% block description %}
                   {% if group.description[h.lang()] %}
