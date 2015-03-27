@@ -55,15 +55,7 @@ CUSTOM_PO_FILES := $(foreach lang,$(LANGUAGES),i18n/$(lang)/LC_MESSAGES/ckan.po)
 MO_TARGETS := $(patsubst %.po,%.mo,$(CUSTOM_PO_FILES))
 
 
-all: debug $(MO_TARGETS)
-
-debug:
-	@echo $(CURR_PATH)
-	@echo $(PARENT_PATH)
-	@echo $(CURR_DIRNAME)
-	@echo $(SOURCESDIR)
-	@echo $(PLUGINS)
-	@echo $(LANGUAGES)
+all: $(MO_TARGETS)
 
 ##------------------------------------------------------------
 ## POT aggregation
