@@ -9,6 +9,6 @@
 {% block metadata_fields %}
   {% block package_basic_fields_tags %}
     {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?vocabulary_id=resource_types&incomplete=?'} %}
-    {{ form.input('resource_tag_string', id='field-tags', label=_('Resource types'), placeholder=_('eg. text, audio, video, presentation, report, motion'), value=data.resource_tag_string, error=errors.resource_tags, classes=['control-full'], attrs=tag_attrs) }}
+    {{ form.input('resource_type', id='field-tags', label=_('Resource types'), placeholder=_('eg. text, audio, video, presentation, report, motion'), value=data.resource_type, error=errors.resource_type, classes=['control-full'], attrs=tag_attrs) }}
   {% endblock %}
 {% endblock %}

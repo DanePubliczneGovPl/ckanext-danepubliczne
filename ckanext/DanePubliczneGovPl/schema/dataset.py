@@ -42,8 +42,30 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
 
 
-    #
-    # p.implements(p.IPackageController, inherit=True)
+
+    p.implements(p.IPackageController, inherit=True)
+    def before_index(self, pkg_dict):
+        # Resource type is multivalue field
+        types = []
+        for tag_string in pkg_dict['res_type']:
+            if tag_string:
+                types += [tag.strip() for tag in tag_string.split(',')]
+
+        pkg_dict['res_type'] = types
+
+        return pkg_dict
+
+
+
+    p.implements(p.IFacets, inherit=True)
+    def dataset_facets(self, facets_dict, package_type):
+        facets_dict.pop('license_id', None)
+
+        facets_dict['res_type'] = _('Resource types')
+
+        return facets_dict
+
+
     # def after_create(self, context, pkg_dict):
     #     group = pkg_dict['category']
     #
