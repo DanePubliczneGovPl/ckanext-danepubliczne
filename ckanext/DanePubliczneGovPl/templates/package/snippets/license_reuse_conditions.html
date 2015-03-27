@@ -1,26 +1,23 @@
-{# Warunki ponownego wykorzystywania informacji  #}
-
-<h2>Warunki ponownego wykorzystywania informacji:</h2>
+<h2>{% trans %}Restrictions on reuse of this dataset{% endtrans %}:</h2>
 
 {% if h.dp_package_has_license_restrictions(pkg_dict) %}
-<span>{{_("This dataset is considered public data and can be used under following restrictions") }}:</span>
+<span>{{ _("This dataset is considered public data and can be used under following restrictions") }}:</span>
 <ul>
   {% if pkg_dict.license_condition_source or pkg_dict.license_condition_timestamp %}
-    <li>{{ _('Odbiorca powinien poinformować o źródle pozyskania informacji') }}</li>
-    <li>{{ _('Odbiorca powinien poinformować o czasie wytworzenia i pozyskania informacji od dostawcy') }}</li>
+  <li>{{ _('One should inform about the source of this data') }}</li>
+  <li>{{ _('One should inform about the creation time of reused information as well as time of access to it') }}</li>
   {% endif %}
 
   {% if pkg_dict.license_condition_original %}
-    <li>{{ _('Odbiorca powinien zawrzeć kopię informacji w pierwotnie pozyskanej formie udostępniając przetworzoną informację') }}
-    </li>
+  <li>{{ _('One should publish a copy of originally accessed data when publishing reused information') }}</li>
   {% endif %}
 
   {% if pkg_dict.license_condition_modification %}
-    <li>{{ _('Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją jakkolwiek modyfikuje') }}</li>
+  <li>{{ _('One should inform about modifications to originally accessed information') }}</li>
   {% endif %}
 
   {% if pkg_dict.license_condition_responsibilities %}
-    <li>{{ pkg_dict.license_condition_responsibilities }}</li>
+    <li>_('Restriction of data provider responsibility'): {{ pkg_dict.license_condition_responsibilities }}</li>
   {% endif %}
 </ul>
 

@@ -9,20 +9,18 @@
   {{ form.select('update_frequency', label=_('Update frequency'), id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
 
   <div class="panel panel-default">
-    {#  TODO translate #}
-    <h3 class="panel-title">Określenie warunków ponownego wykorzystywania</h3>
+    <h3 class="panel-title">{% trans %}Specify data reuse conditions{% endtrans %}</h3>
 
     <div class="panel-body">
-      Informacje publiczne są udostępniane w celu ich ponownego wykorzystywania bez ograniczeń warunkami i
-      bezpłatnie.
-      Istnieją od tej zasady wymienione poniżej wyjątki, jednak zachęcamy, aby ich nie stosować jeżeli nie
-      przemawiają za tym mocne racje.
+      {% trans %}We publish public data so they can be reused freely and unrestricted.
+      There are exceptions from this rule mentioned below, but we encourage not to restrict them if there is no clear case for that.
+      {% endtrans %}
 
-      {{ form.checkbox('license_condition_source', label=_('Odbiorca powinien poinformować o źródle pozyskania informacji'), id='field-license_condition_source', error=errors.license_condition_source, value='true', checked=data.license_condition_source) }}
-      {{ form.checkbox('license_condition_timestamp', label=_('Odbiorca powinien poinformować o czasie wytworzenia i pozyskania informacji od dostawcy'), id='field-license_condition_timestamp', error=errors.license_condition_timestamp, value='true', checked=data.license_condition_timestamp) }}
-      {{ form.checkbox('license_condition_original', label=_('Odbiorca powinien zawrzeć kopię informacji w pierwotnie pozyskanej formie udostępniając przetworzoną informację'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
-      {{ form.checkbox('license_condition_modification', label=_('Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją jakkolwiek modyfikuje'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
-      {{ form.textarea('license_condition_responsibilities', label=_('Zakres odpowiedzialności dostawcy za przekazywane informacje'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
+      {{ form.checkbox('license_condition_source', label=_('One should inform about the source of this data'), id='field-license_condition_source', error=errors.license_condition_source, value='true', checked=data.license_condition_source) }}
+      {{ form.checkbox('license_condition_timestamp', label=_('One should inform about the creation time of reused information as well as time of access to it'), id='field-license_condition_timestamp', error=errors.license_condition_timestamp, value='true', checked=data.license_condition_timestamp) }}
+      {{ form.checkbox('license_condition_original', label=_('One should publish a copy of originally accessed data when publishing reused information'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
+      {{ form.checkbox('license_condition_modification', label=_('One should inform about modifications to originally accessed information'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
+      {{ form.textarea('license_condition_responsibilities', label=_('Restriction of data provider responsibility'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
     </div>
   </div>
 

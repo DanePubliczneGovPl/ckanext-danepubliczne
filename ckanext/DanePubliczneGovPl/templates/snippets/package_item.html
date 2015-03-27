@@ -9,7 +9,7 @@
         {% if package.private %}
           <span class="dataset-private label label-inverse">
             <i class="icon-lock"></i>
-            {{ _('Private') }}
+            {{ _('Draft') }}
           </span>
         {% endif %}
         {{ h.link_to(title, h.url_for(controller='package', action='read', id=package.name)) }}
