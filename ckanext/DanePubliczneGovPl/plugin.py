@@ -171,3 +171,5 @@ class DanePubliczne(p.SingletonPlugin):
     def h_if_show_gradient_with_tabs(self):
         return base.request.urlvars['controller'] == 'admin' \
             or (base.request.urlvars['controller'] == 'user' and base.request.urlvars['action'][:9] == 'dashboard')
+
+    # TODO ckan-dev What is the preferred way to make multilingual groups / datasets /tags: fluent or multilingual?

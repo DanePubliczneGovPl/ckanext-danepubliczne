@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-DanePubliczneGovPl 1.0.0.dev0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-03-26 15:46+0100\n"
+"POT-Creation-Date: 2015-03-27 17:46+0100\n"
 "PO-Revision-Date: 2015-03-26 15:50+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -56,17 +56,17 @@ msgstr ""
 msgid "Fill if there is planned maintenance break"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/controllers/feedback.py:19
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:40
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/feedback_form.html:4
 msgid "Your feedback"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/controllers/feedback.py:19
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:40
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/feedback_form.html:4
 msgid "What is your feedback on this dataset?"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/controllers/feedback.py:20
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:41
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/feedback_form.html:5
 #: ckanext/DanePubliczneGovPl/templates/user/edit_user_form.html:13
 #: ckanext/DanePubliczneGovPl/templates/user/new_user_form.html:5
@@ -74,13 +74,35 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/controllers/feedback.py:20
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:41
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/feedback_form.html:5
 msgid "Leave email if we should get back to you"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/controllers/feedback.py:31
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:58
+msgid "Please provide your feedback"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:67
+msgid "User feedback concerning source_type title"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:81
 msgid "Thank you for your feedback!"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:122
+msgid ""
+"User {email} has sent feedback concerning {display_name}[{url}].\n"
+"\n"
+"Feedback:\n"
+"\n"
+"{feedback}\n"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/controllers/feedback.py:148
+#, python-format
+msgid "%s <%s>"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/controllers/group.py:124
@@ -200,40 +222,13 @@ msgstr ""
 msgid "User %s not authorized to update articles"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/schema/dataset.py:135
+#: ckanext/DanePubliczneGovPl/schema/dataset.py:88
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_form.html:12
+msgid "Resource types"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/schema/dataset.py:181
 msgid "Category '{0}' doesn't exist"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:6
-msgid "Additional info about service"
-msgstr "Dodatkowe informacje o serwisie"
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:11
-msgid "About {0}"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:18
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:169
-#: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:172
-#: ckanext/DanePubliczneGovPl/templates/package/search.html:128
-msgid "API"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:20
-#: ckanext/DanePubliczneGovPl/templates/footer.html:26
-msgid ""
-"Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a "
-"pellentesque dui, non felis. Maecenas malesuada elit lectus felis, "
-"malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta "
-"urna."
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:21
-msgid "read more about API"
-msgstr "czytaj więcej o API"
-
-#: ckanext/DanePubliczneGovPl/templates/footer.html:24
-msgid "Nie znalazłeś interesujących Cię danych? Zaproponuj dataset"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/header.html:6
@@ -272,7 +267,7 @@ msgid "Search Datasets"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/header.html:69
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:72
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:74
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:79
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:33
 #: ckanext/DanePubliczneGovPl/templates/snippets/search_form.html:3
@@ -360,23 +355,24 @@ msgid "Skip to content"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/article/read.html:11
-#: ckanext/DanePubliczneGovPl/templates/package/read.html:19
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_basic_fields.html:28
-#: ckanext/DanePubliczneGovPl/templates/snippets/package_item.html:12
+#: ckanext/DanePubliczneGovPl/templates/package/read.html:24
 msgid "Private"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/article/read.html:14
-#: ckanext/DanePubliczneGovPl/templates/package/read.html:30
+#: ckanext/DanePubliczneGovPl/templates/article/read.html:15
+#: ckanext/DanePubliczneGovPl/templates/package/read.html:35
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_basic_fields.html:28
+#: ckanext/DanePubliczneGovPl/templates/snippets/package_item.html:12
 #: ckanext/DanePubliczneGovPl/templates/snippets/package_item.html:17
 msgid "Draft"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/article/read_base.html:27
 #: ckanext/DanePubliczneGovPl/templates/group/edit.html:12
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:147
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:149
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:150
 #: ckanext/DanePubliczneGovPl/templates/package/read_base.html:19
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:44
 msgid "Manage"
 msgstr ""
 
@@ -454,7 +450,7 @@ msgid "Active"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/article/snippets/package_basic_fields.html:44
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:36
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:38
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:36
 #: ckanext/DanePubliczneGovPl/templates/snippets/package_item.html:19
 msgid "Deleted"
@@ -483,8 +479,8 @@ msgstr ""
 #: ckanext/DanePubliczneGovPl/templates/group/edit.html:9
 #: ckanext/DanePubliczneGovPl/templates/group/index.html:3
 #: ckanext/DanePubliczneGovPl/templates/group/index.html:6
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:11
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:24
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:13
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:26
 msgid "Categories"
 msgstr ""
 
@@ -520,58 +516,58 @@ msgstr ""
 msgid "Create Category"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:84
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:86
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:91
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:45
 msgid "Filters"
 msgstr "Filtruj"
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:105
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:107
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:108
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:65
 msgid "Relevance"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:106
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:108
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:109
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:66
 #: ckanext/DanePubliczneGovPl/templates/snippets/search_form.html:4
 msgid "Name Ascending"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:107
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:109
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:110
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:67
 #: ckanext/DanePubliczneGovPl/templates/snippets/search_form.html:4
 msgid "Name Descending"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:108
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:110
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:111
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:68
 msgid "Last Modified"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:109
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:111
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:112
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:69
 #: ckanext/DanePubliczneGovPl/templates/snippets/package_item.html:24
 msgid "Popular"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:112
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:114
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:115
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:72
 msgid "Order by"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:122
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:124
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:125
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:82
 msgid "Go"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:128
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:130
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:131
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:88
 msgid ""
@@ -581,7 +577,7 @@ msgid ""
 "                          "
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:136
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:138
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:139
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:96
 msgid ""
@@ -593,19 +589,25 @@ msgid ""
 "                          "
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:170
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:171
+#: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:172
+#: ckanext/DanePubliczneGovPl/templates/package/search.html:128
+msgid "API"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:172
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:173
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:129
 msgid "API Docs"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:172
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:174
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:175
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:131
 msgid "full {format} dump"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:173
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:175
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:176
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:132
 #, python-format
@@ -619,7 +621,7 @@ msgid ""
 "                          "
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:180
+#: ckanext/DanePubliczneGovPl/templates/group/read_base.html:182
 #: ckanext/DanePubliczneGovPl/templates/organization/read_base.html:183
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:139
 #, python-format
@@ -637,8 +639,8 @@ msgid "read more"
 msgstr "czytaj więcej"
 
 #: ckanext/DanePubliczneGovPl/templates/home/snippets/categories.html:3
-msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
-msgstr ""
+msgid "Choose a category of data that interests you"
+msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
 
 #: ckanext/DanePubliczneGovPl/templates/home/snippets/search.html:2
 msgid "eg. Gold Prices"
@@ -824,6 +826,67 @@ msgid ""
 "revision</a>."
 msgstr ""
 
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:51
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:32
+msgid "View"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:53
+msgid "API Endpoint"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:55
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:43
+msgid "Go to resource"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:57
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:40
+msgid "Download"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:79
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:81
+msgid "URL:"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:92
+#, python-format
+msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:134
+msgid "There are no views created for this resource yet."
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:138
+msgid "Not seeing the views you were expecting?"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:140
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_view.html:23
+msgid "Click here for more information."
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:143
+msgid "Here are some reasons you may not be seeing expected views:"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:145
+msgid "No view has been created that is suitable for this resource"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:146
+msgid "The site administrators may not have enabled the relevant view plugins"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/resource_read.html:147
+msgid ""
+"If a view requires the DataStore, the DataStore plugin may not be "
+"enabled, or the data may not have been pushed to the DataStore, or the "
+"DataStore hasn't finished processing the data yet"
+msgstr ""
+
 #: ckanext/DanePubliczneGovPl/templates/package/search.html:106
 msgid "Add Dataset"
 msgstr ""
@@ -871,43 +934,41 @@ msgstr ""
 msgid "Send feedback"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:3
-msgid "Warunki ponownego wykorzystywania informacji"
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:1
+msgid "Restrictions on reuse of this dataset"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:6
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:4
 msgid ""
 "This dataset is considered public data and can be used under following "
 "restrictions"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:9
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:7
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:19
+msgid "One should inform about the source of this data"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:8
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:20
+msgid ""
+"One should inform about the creation time of reused information as well "
+"as time of access to it"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:12
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:21
-msgid "Odbiorca powinien poinformować o źródle pozyskania informacji"
+msgid ""
+"One should publish a copy of originally accessed data when publishing "
+"reused information"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:10
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:16
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:22
-msgid ""
-"Odbiorca powinien poinformować o czasie wytworzenia i pozyskania "
-"informacji od dostawcy"
+msgid "One should inform about modifications to originally accessed information"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:14
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:23
-msgid ""
-"Odbiorca powinien zawrzeć kopię informacji w pierwotnie pozyskanej formie"
-" udostępniając przetworzoną informację"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:19
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:24
-msgid ""
-"Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją "
-"jakkolwiek modyfikuje"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:29
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/license_reuse_conditions.html:26
 msgid ""
 "This dataset is considered public data and can be used without any "
 "restrictions"
@@ -929,24 +990,28 @@ msgstr ""
 msgid "Update frequency"
 msgstr ""
 
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:25
-msgid "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:12
+msgid "Specify data reuse conditions"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:15
+msgid ""
+"We publish public data so they can be reused freely and unrestricted.\n"
+"      There are exceptions from this rule mentioned below, but we "
+"encourage not to restrict them if there is no clear case for that.\n"
+"      "
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/package_metadata_fields.html:23
+msgid "Restriction of data provider responsibility"
+msgstr ""
+
+#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_form.html:12
+msgid "eg. text, audio, video, presentation, report, motion"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:24
 msgid "Explore"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:32
-msgid "View"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:40
-msgid "Download"
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_item.html:43
-msgid "Go to resource"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_view.html:9
@@ -955,10 +1020,6 @@ msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_view.html:21
 msgid "This resource view is not available at the moment."
-msgstr ""
-
-#: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_view.html:23
-msgid "Click here for more information."
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/package/snippets/resource_view.html:29
@@ -1021,7 +1082,7 @@ msgid "Hide rating info"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/qa/snippets/stars_module.html:16
-msgid "About these ratings…"
+msgid "What these stars mean…"
 msgstr ""
 
 #: ckanext/DanePubliczneGovPl/templates/snippets/facet_list.html:12
@@ -1182,4 +1243,57 @@ msgstr ""
 #: ckanext/DanePubliczneGovPl/templates/user/snippets/login_form.html:22
 msgid "Forgot your password?"
 msgstr ""
+
+#~ msgid "Additional info about service"
+#~ msgstr "Dodatkowe informacje o serwisie"
+
+#~ msgid "About {0}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Lorem ipsum dolor sit amet enim. "
+#~ "Etiam ullamcorper. Suspendisse a pellentesque"
+#~ " dui, non felis. Maecenas malesuada "
+#~ "elit lectus felis, malesuada ultricies. "
+#~ "Curabitur et ligula. Ut molestie a, "
+#~ "ultricies porta urna."
+#~ msgstr ""
+
+#~ msgid "read more about API"
+#~ msgstr "czytaj więcej o API"
+
+#~ msgid "Nie znalazłeś interesujących Cię danych? Zaproponuj dataset"
+#~ msgstr ""
+
+#~ msgid "Wybierz interesujący Cię dział zasobów informacyjnych"
+#~ msgstr ""
+
+#~ msgid "Warunki ponownego wykorzystywania informacji"
+#~ msgstr ""
+
+#~ msgid "Odbiorca powinien poinformować o źródle pozyskania informacji"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Odbiorca powinien poinformować o czasie "
+#~ "wytworzenia i pozyskania informacji od "
+#~ "dostawcy"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Odbiorca powinien zawrzeć kopię informacji "
+#~ "w pierwotnie pozyskanej formie udostępniając"
+#~ " przetworzoną informację"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Odbiorca powinien poinformować o przetworzeniu"
+#~ " informacji, gdy ją jakkolwiek modyfikuje"
+#~ msgstr ""
+
+#~ msgid "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+#~ msgstr ""
+
+#~ msgid "About these ratings…"
+#~ msgstr ""
 
