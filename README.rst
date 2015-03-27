@@ -2,34 +2,34 @@
    these badges work. The necessary Travis and Coverage config files have been
    generated for you.
 
-.. image:: https://travis-ci.org/github/ckanext-DanePubliczneGovPl.svg?branch=master
-    :target: https://travis-ci.org/github/ckanext-DanePubliczneGovPl
+.. image:: https://travis-ci.org/github/ckanext-danepubliczne.svg?branch=master
+    :target: https://travis-ci.org/github/ckanext-danepubliczne
 
-.. image:: https://coveralls.io/repos/github/ckanext-DanePubliczneGovPl/badge.png?branch=master
-  :target: https://coveralls.io/r/github/ckanext-DanePubliczneGovPl?branch=master
+.. image:: https://coveralls.io/repos/github/ckanext-danepubliczne/badge.png?branch=master
+  :target: https://coveralls.io/r/github/ckanext-danepubliczne?branch=master
 
-.. image:: https://pypip.in/download/ckanext-DanePubliczneGovPl/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-DanePubliczneGovPl/
+.. image:: https://pypip.in/download/ckanext-danepubliczne/badge.svg
+    :target: https://pypi.python.org/pypi//ckanext-danepubliczne/
     :alt: Downloads
 
-.. image:: https://pypip.in/version/ckanext-DanePubliczneGovPl/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl/
+.. image:: https://pypip.in/version/ckanext-danepubliczne/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Latest Version
 
-.. image:: https://pypip.in/py_versions/ckanext-DanePubliczneGovPl/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl/
+.. image:: https://pypip.in/py_versions/ckanext-danepubliczne/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Supported Python versions
 
-.. image:: https://pypip.in/status/ckanext-DanePubliczneGovPl/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl/
+.. image:: https://pypip.in/status/ckanext-danepubliczne/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Development Status
 
-.. image:: https://pypip.in/license/ckanext-DanePubliczneGovPl/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl/
+.. image:: https://pypip.in/license/ckanext-danepubliczne/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: License
 
 =============
-ckanext-DanePubliczneGovPl
+ckanext-danepubliczne
 =============
 
 .. Put a description of your extension here:
@@ -53,17 +53,17 @@ Installation
    For example installing any non-Python dependencies or adding any required
    config settings.
 
-To install ckanext-DanePubliczneGovPl:
+To install ckanext-danepubliczne:
 
 1. Activate your CKAN virtual environment, for example::
 
      . /usr/lib/ckan/default/bin/activate
 
-2. Install the ckanext-DanePubliczneGovPl Python package into your virtual environment::
+2. Install the ckanext-danepubliczne Python package into your virtual environment::
 
-     pip install ckanext-DanePubliczneGovPl
+     pip install ckanext-danepubliczne
 
-3. Add ``DanePubliczneGovPl`` to the ``ckan.plugins`` setting in your CKAN
+3. Add ``danepubliczne`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
@@ -80,18 +80,18 @@ Document any optional config settings here. For example::
 
     # The minimum number of hours to wait before re-checking a resource
     # (optional, default: 24).
-    ckanext.DanePubliczneGovPl.some_setting = some_default_value
+    ckanext.danepubliczne.some_setting = some_default_value
 
 
 ------------------------
 Development Installation
 ------------------------
 
-To install ckanext-DanePubliczneGovPl for development, activate your CKAN virtualenv and
+To install ckanext-danepubliczne for development, activate your CKAN virtualenv and
 do::
 
-    git clone https://github.com/github/ckanext-DanePubliczneGovPl.git
-    cd ckanext-DanePubliczneGovPl
+    git clone https://github.com/github/ckanext-danepubliczne.git
+    cd ckanext-danepubliczne
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -107,15 +107,15 @@ To run the tests, do::
 To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
-    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.DanePubliczneGovPl --cover-inclusive --cover-erase --cover-tests
+    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.danepubliczne --cover-inclusive --cover-erase --cover-tests
 
 
 ---------------------------------
-Registering ckanext-DanePubliczneGovPl on PyPI
+Registering ckanext-danepubliczne on PyPI
 ---------------------------------
 
-ckanext-DanePubliczneGovPl should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl. If that link doesn't work, then
+ckanext-danepubliczne should be availabe on PyPI as
+https://pypi.python.org/pypi/ckanext-danepubliczne. If that link doesn't work, then
 you can register the project on PyPI for the first time by following these
 steps:
 
@@ -140,10 +140,10 @@ steps:
 
 
 ----------------------------------------
-Releasing a New Version of ckanext-DanePubliczneGovPl
+Releasing a New Version of ckanext-danepubliczne
 ----------------------------------------
 
-ckanext-DanePubliczneGovPl is availabe on PyPI as https://pypi.python.org/pypi/ckanext-DanePubliczneGovPl.
+ckanext-danepubliczne is availabe on PyPI as https://pypi.python.org/pypi/ckanext-danepubliczne.
 To publish a new version to PyPI follow these steps:
 
 1. Update the version number in the ``setup.py`` file.

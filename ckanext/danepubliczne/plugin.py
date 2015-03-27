@@ -24,22 +24,22 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IRoutes, inherit=True)
 
     def before_map(self, map):
-        map.connect('ckanadmin_config', '/ckan-admin/config', controller='ckanext.DanePubliczneGovPl.controllers.admin:AdminController',
+        map.connect('ckanadmin_config', '/ckan-admin/config', controller='ckanext.danepubliczne.controllers.admin:AdminController',
                 action='config', ckan_icon='check')
 
-        map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.DanePubliczneGovPl.controllers.admin:AdminController')
+        map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.danepubliczne.controllers.admin:AdminController')
 
-        map.connect('/user/register', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='register')
-        map.connect('/user/edit', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
-        map.connect('/user/edit/{id:.*}', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='edit')
-        map.connect('/user/logged_in', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_in')
-        map.connect('/user/logged_out', controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='logged_out')
+        map.connect('/user/register', controller='ckanext.danepubliczne.controllers.user:UserController', action='register')
+        map.connect('/user/edit', controller='ckanext.danepubliczne.controllers.user:UserController', action='edit')
+        map.connect('/user/edit/{id:.*}', controller='ckanext.danepubliczne.controllers.user:UserController', action='edit')
+        map.connect('/user/logged_in', controller='ckanext.danepubliczne.controllers.user:UserController', action='logged_in')
+        map.connect('/user/logged_out', controller='ckanext.danepubliczne.controllers.user:UserController', action='logged_out')
         map.connect('user_dashboard_search_history', '/dashboard/search_history',
-                 controller='ckanext.DanePubliczneGovPl.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
+                 controller='ckanext.danepubliczne.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
 
-        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.DanePubliczneGovPl.controllers.feedback:FeedbackController', action='submit')
+        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='submit')
 
-        with SubMapper(map, controller='ckanext.DanePubliczneGovPl.controllers.group:GroupController') as m:
+        with SubMapper(map, controller='ckanext.danepubliczne.controllers.group:GroupController') as m:
             m.connect('group_index', '/group', action='index',
                       highlight_actions='index search')
             m.connect('group_list', '/group/list', action='list')
@@ -69,7 +69,7 @@ class DanePubliczne(p.SingletonPlugin):
                       ckan_icon='sitemap')
 
         # TODO ckan-dev ability to override controller from config
-        with SubMapper(map, controller='ckanext.DanePubliczneGovPl.controllers.package:PackageController') as m:
+        with SubMapper(map, controller='ckanext.danepubliczne.controllers.package:PackageController') as m:
             m.connect('search', '/dataset', action='search',
                       highlight_actions='index search')
             m.connect('add dataset', '/dataset/new', action='new')

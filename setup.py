@@ -73,12 +73,12 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        dane_publiczne=ckanext.DanePubliczneGovPl.plugin:DanePubliczne
-        dane_publiczne_organization=ckanext.DanePubliczneGovPl.schema.organization:OrganizationForm
-        dane_publiczne_dataset=ckanext.DanePubliczneGovPl.schema.dataset:DatasetForm
-        dane_publiczne_categories=ckanext.DanePubliczneGovPl.schema.category:Category
-        dane_publiczne_articles=ckanext.DanePubliczneGovPl.schema.article:Article
-        piwik=ckanext.DanePubliczneGovPl.piwik:PiwikPlugin
+        dane_publiczne=ckanext.danepubliczne.plugin:DanePubliczne
+        dane_publiczne_organization=ckanext.danepubliczne.schema.organization:OrganizationForm
+        dane_publiczne_dataset=ckanext.danepubliczne.schema.dataset:DatasetForm
+        dane_publiczne_categories=ckanext.danepubliczne.schema.category:Category
+        dane_publiczne_articles=ckanext.danepubliczne.schema.article:Article
+        piwik=ckanext.danepubliczne.piwik:PiwikPlugin
         [babel.extractors]
         ckan=ckan.lib.extract:extract_ckan
     ''',
