@@ -141,3 +141,13 @@ class PackageController(base_package.PackageController):
 
         assert False, "We should never get here"
 
+    def _resource_tag_string_to_list(self, tag_string):
+        ''' This is used to change tags from a sting to a list of dicts '''
+        out = []
+        for tag in tag_string.split(','):
+            tag = tag.strip()
+            if tag:
+                out.append({'name': tag,
+                            'vocabulary_id': 'resource_tags',
+                            'state': 'active'})
+        return out

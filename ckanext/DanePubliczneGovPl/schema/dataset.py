@@ -3,7 +3,8 @@ import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.navl.dictization_functions as df
-from ckan.common import _
+import ckan.model as model
+from ckan.common import _, g
 from ckan import logic
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
@@ -42,8 +43,53 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
 
 
-    #
-    # p.implements(p.IPackageController, inherit=True)
+
+    p.implements(p.IPackageController, inherit=True)
+    def before_index(self, pkg_dict):
+        # Resource type is multivalue field
+        types = []
+        for tag_string in pkg_dict['res_type']:
+            if tag_string:
+                types += [tag.strip() for tag in tag_string.split(',')]
+
+        pkg_dict['res_type'] = types
+
+        return pkg_dict
+
+    def after_create(self, context, pkg_dict):
+        self._create_missing_resource_type_tags(pkg_dict)
+
+    def after_update(self, context, pkg_dict):
+        self._create_missing_resource_type_tags(pkg_dict)
+
+    def _create_missing_resource_type_tags(self, pkg_dict):
+        context = {'model': model, 'user': g.site_id}
+
+        existing = logic.action.get.tag_list(context, {'vocabulary_id': 'resource_types'})
+
+        used = []
+        for r in pkg_dict.get('resources', []):
+            used += [el.strip() for el in r.get('resource_type', '').split(',') if el.strip() != '']
+
+        missing = set(used) - set(existing)
+        for tag in missing:
+            try:
+                logic.action.create.tag_create(context, {
+                    'name': tag,
+                    'vocabulary_id': 'resource_types'
+                })
+            except Exception as e:
+                raise Exception("Internal error while creating tags")
+
+    p.implements(p.IFacets, inherit=True)
+    def dataset_facets(self, facets_dict, package_type):
+        facets_dict.pop('license_id', None)
+
+        facets_dict['res_type'] = _('Resource types')
+
+        return facets_dict
+
+
     # def after_create(self, context, pkg_dict):
     #     group = pkg_dict['category']
     #
