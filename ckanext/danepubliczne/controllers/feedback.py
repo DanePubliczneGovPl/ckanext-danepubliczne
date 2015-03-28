@@ -64,7 +64,7 @@ class FeedbackController(base.BaseController):
             base.abort(400)
 
         msg = get_feedback_body(feedback, pkg, source_url, email)
-        subject = _('User feedback concerning ' + data['source_type'] + ' ' + pkg['title'])
+        subject = _('User feedback concerning') + ' ' + pkg['title']
 
         rev = logic.get_action('revision_show')({}, {'id': pkg['revision_id']})
         # pkg.organization.name

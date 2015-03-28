@@ -37,7 +37,7 @@
                 {% endblock %}
                 {% block description %}
                   <p><strong>{{ _('Address') }}: </strong>{{ organization.address_street }}, {{ organization.postal_code }} {{ organization.address_city }}</p>
-                  <p><strong>{{ _('Webiste') }}: </strong><a href="{{ organization.website }}">{{ organization.website }}</a></p>
+                  <p><strong>{{ _('Website') }}: </strong><a href="{{ organization.website }}">{{ organization.website }}</a></p>
                   <p><strong>{{ _('E-mail') }}: </strong><a href="mailto:{{ organization.email }}" title="Napisz na {{ organization.email }}">{{ organization.email }}</a></p>
                   <p><strong>{{ _('Telephone') }}. </strong>{{ organization.tel }}</p>
                   {% if organization.fax %}<p><strong>{{ _('Fax') }}. </strong>{{ organization.fax }}</p>{% endif %}
