@@ -43,6 +43,7 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+/ckanext/danepubliczne/i18n/**/LC_MESSAGES/ckan.po
 
 # Django stuff:
 *.log

@@ -1,4 +1,4 @@
-﻿# Translations template for ckan.
+# Translations template for ckan.
 # Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
 # 
@@ -58,7 +58,7 @@ msgstr "Site Tag Line"
 
 #: ckan/controllers/admin.py:46
 msgid "Site Tag Logo"
-msgstr "Site Tag Logo"
+msgstr "Adres logo serwisu"
 
 #: ckan/controllers/admin.py:47 ckan/templates/header.html:97
 #: ckan/templates/group/about.html:3 ckan/templates/group/read_base.html:19
@@ -745,7 +745,7 @@ msgid ""
 "User \"%s\" is now registered but you are still logged in as \"%s\" from "
 "before"
 msgstr ""
-"Użytkownik \"%s\" został zarejestrowany, ale nadal jesteś zalogowany jako \"%s\ "z"
+"Użytkownik \"%s\" został zarejestrowany, ale nadal jesteś zalogowany jako \"%s\"z"
 "przed"
 
 #: ckan/controllers/user.py:245
@@ -1191,7 +1191,7 @@ msgid ""
 "       %(reset_link)s\n"
 "    "
 msgstr ""
-"Zażądano zresetowania hasła %(site_title)s. \N"
+"Zażądano zresetowania hasła %(site_title)s. \n"
 "\n"
 "Proszę kliknąć na poniższy link, aby potwierdzić tę prośbę: \n"
 "\n"
@@ -2288,7 +2288,12 @@ msgstr "Wyszukiwanie zbioru danych"
 #: ckan/templates/organization/read.html:18
 #: ckan/templates/snippets/search_form.html:3
 msgid "Search datasets..."
-msgstr "Wyszukianie zbioru danych..."
+msgstr "Przeszukuj dane..."
+
+#: ckan/templates/home/snippets/search.html:6
+msgid "Search data"
+msgstr "Wyszukuj dane"
+
 
 #: ckan/templates/activity_streams/activity_stream_items.html:7
 msgid "Load less"
@@ -2308,7 +2313,7 @@ msgstr "Administracja"
 
 #: ckan/templates/admin/base.html:8
 msgid "Sysadmins"
-msgstr "Administratorzy systemowi"
+msgstr "Administratorzy"
 
 #: ckan/templates/admin/base.html:9
 msgid "Config"
@@ -2644,7 +2649,7 @@ msgstr "Edytuj Grupę"
 #: ckan/templates_legacy/package/resource_read.html:72
 #: ckan/templates_legacy/revision/layout.html:12
 msgid "View"
-msgstr "Przeglądanie"
+msgstr "Zobacz"
 
 #: ckan/templates/group/edit_base.html:21 ckan/templates/group/members.html:3
 #: ckan/templates/organization/edit_base.html:24
@@ -2884,14 +2889,14 @@ msgstr "Ta grupa nie ma opisu"
 #: ckan/templates/organization/snippets/organization_item.html:31
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
-msgstr[0] "{num} zbiorów danych"
-msgstr[1] "{num} zbiór danych"
-msgstr[2] "{num} zbiory danych"
+msgstr[0] "{num} Zbiór danych"
+msgstr[1] "{num} Zbiory danych"
+msgstr[2] "{num} Zbiorów danych"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
 msgid "0 Datasets"
-msgstr "0 zbiorów danych"
+msgstr "0 Zbiorów danych"
 
 #: ckan/templates/group/snippets/group_item.html:37
 #: ckan/templates/group/snippets/group_item.html:38
@@ -3485,6 +3490,9 @@ msgstr "Status"
 msgid "Last updated"
 msgstr "Ostatnia modyfikacja"
 
+msgid "Last Updated"
+msgstr "Ostatnia Modyfikacja"
+
 #: ckan/templates/package/resource_data.html:42
 msgid "Never"
 msgstr "Nigdy"
@@ -3990,6 +3998,10 @@ msgstr "Rezultaty filtrowania"
 #: ckan/templates_legacy/related/dashboard.html:31
 msgid "Filter by type"
 msgstr "Filtruj wg typu"
+
+#: ckan/templates/package/snippets/view_form_filters.html:46
+msgid "Filters"
+msgstr "Filtry"
 
 #: ckan/templates/related/dashboard.html:65
 #: ckan/templates_legacy/related/dashboard.html:33
@@ -5259,7 +5271,7 @@ msgid ""
 "that you can \n"
 "            browse, learn about and download."
 msgstr ""
-"możesz \ n"
+"możesz \n"
 "przeglądać, dowiedzieć się wiecej i pobrać."
 
 #: ckan/templates_legacy/home/index.html:32
@@ -5759,7 +5771,7 @@ msgstr "Nie można osadzić ponieważ zasób jest prywatny."
 #: ckan/templates_legacy/package/resource_read.html:150
 #: ckan/templates_legacy/package/resource_read.html:151
 msgid "Embed"
-msgstr "Osadzać"
+msgstr "Umieść na swojej stronie"
 
 #: ckan/templates_legacy/package/search.html:9
 #: ckan/templates_legacy/package/search.html:10
@@ -6507,3 +6519,86 @@ msgstr "Wybierz cechę zbioru danych i sprawdźć, które kategorie posiadają n
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
 msgstr "Wybierz obszar"
+
+#: ckanext/imageview/theme/templates/image_form.html:3
+msgid "Image url"
+msgstr "Adres obrazka"
+
+#: ckanext/imageview/theme/templates/image_form.html:3
+msgid "eg. http://example.com/image.jpg (if blank uses resource url)"
+msgstr "np. http://example.com/image.jpg (jeżeli puste używa URL zasobu)"
+
+#: ckanext/reclineview/plugin.py:82
+msgid "Data Explorer"
+msgstr "Eksplorator Danych"
+
+#: ckanext/reclineview/plugin.py:106
+msgid "Table"
+msgstr "Tabela"
+
+#: ckanext/reclineview/plugin.py:149
+msgid "Graph"
+msgstr "Wykres"
+
+msgid "Grid"
+msgstr "Tabela"
+
+#: ckanext/reclineview/plugin.py:207
+msgid "Map"
+msgstr "Mapa"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:3
+#: ckanext/reclineview/theme/templates/recline_map_form.html:3
+msgid "Row offset"
+msgstr "Numer wiersza"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:3
+#: ckanext/reclineview/theme/templates/recline_map_form.html:3
+msgid "eg: 0"
+msgstr "np: 0"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:4
+#: ckanext/reclineview/theme/templates/recline_map_form.html:4
+msgid "Number of rows"
+msgstr "Liczba wierszy"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:4
+#: ckanext/reclineview/theme/templates/recline_map_form.html:4
+msgid "eg: 100"
+msgstr "np: 100"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:6
+msgid "Graph type"
+msgstr "Typ wykresu"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:7
+msgid "Group (Axis 1)"
+msgstr "Grupa (Oś 1)"
+
+#: ckanext/reclineview/theme/templates/recline_graph_form.html:8
+msgid "Series (Axis 2)"
+msgstr "Seria (Oś 2)"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:6
+msgid "Field type"
+msgstr "Typ pola"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:7
+msgid "Latitude field"
+msgstr "Pole z szerokością geograficzną"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:8
+msgid "Longitude field"
+msgstr "Pole z wysokością geograficzną"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:9
+msgid "GeoJSON field"
+msgstr "Pole typu GeoJSON"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:10
+msgid "Auto zoom to features"
+msgstr "Automatycznie przybliżaj do wybieranych punktów"
+
+#: ckanext/reclineview/theme/templates/recline_map_form.html:11
+msgid "Cluster markers"
+msgstr "Znaczniki zgrupowanych punktów"

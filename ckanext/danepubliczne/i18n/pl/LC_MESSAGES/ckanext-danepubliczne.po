@@ -1,3 +1,37 @@
+# #-#-#-#-#  ckanext-danepubliczne.pot (ckanext-danepubliczne 1.0.0.dev0)  #-#-#-#-#
+# Translations template for ckanext-danepubliczne.
+# This file is distributed under the same license as the ckanext-danepubliczne project.
+#
+# Translators:
+# Mariusz Machuta-Rakowski
+# Krzysztof Madejski
+msgid ""
+msgstr ""
+"#-#-#-#-#  ckanext-danepubliczne.pot (ckanext-danepubliczne 1.0.0.dev0)  #-#-"
+"#-#-#\n"
+"Project-Id-Version: ckanext-danepubliczne 1.0.0.dev0\n"
+"POT-Creation-Date: 2015-03-28 17:13+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+##############
+# Overriding CKAN
+msgid "Organizations"
+msgstr "Instytucje"
+
+msgid "organizations"
+msgstr "instytucje"
+
+msgid "Groups"
+msgstr "Kategorie"
+
+###############3
+# ckanext-danepubliczne strings
+
 #: ckanext/danepubliczne/controllers/admin.py:28
 msgid "Maintenance alert"
 msgstr "Informacja o planowanej przerwie technicznej"
@@ -19,7 +53,7 @@ msgstr "Jakie masz uwagi do tego zbioru danych? Zostaną one przesłane do osoby
 #: ckanext/danepubliczne/controllers/feedback.py:41
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:5
 msgid "Leave email if we should get back to you"
-msgstr "Zostaw email, jeżeli chcesz byśmy Ci odpisali"
+msgstr "Zostaw, jeżeli mamy odpisać "
 
 #: ckanext/danepubliczne/controllers/feedback.py:58
 msgid "Please provide your feedback"
@@ -203,6 +237,7 @@ msgstr ""
 "\n"
 "                            <p class=\"extra\">Spróbuj zastosować inne filtry wyszukiwania."
 ".</p>\n"
+"           "
 
 #: ckanext/danepubliczne/templates/group/read_base.html:138
 #: ckanext/danepubliczne/templates/organization/read_base.html:139
@@ -215,6 +250,7 @@ msgid ""
 "                              again.</p>\n"
 "                          "
 msgstr ""
+"\n"
 "<p><strong>Wystąpił błąd podczas wyszukiwania.</strong> "
 "Proszę spróbować później lub zgłosić nam błąd jeżeli będzie się on powtarzał</p>"
 
@@ -237,6 +273,7 @@ msgstr ""
 "                            (zobacz\n"
 "                            %(api_doc_link)s) lub\n"
 "                            ściągnąć je %(dump_link)s.\n"
+"                          "
 
 #: ckanext/danepubliczne/templates/group/read_base.html:182
 #: ckanext/danepubliczne/templates/organization/read_base.html:183
@@ -250,10 +287,12 @@ msgid ""
 "                            %(api_doc_link)s).\n"
 "                          "
 msgstr ""
+"\n"
 "                            Możesz uzyskać te same wyniki wyszukiwania za pomocą API "
 "%(api_link)s\n"
 "                            (lub\n"
 "                            %(api_doc_link)s).\n"
+"                          "
 
 #: ckanext/danepubliczne/templates/home/snippets/categories.html:3
 msgid "Choose a category of data that interests you"
@@ -346,7 +385,8 @@ msgid ""
 "          Datasets are what users see when searching for data.\n"
 "          "
 msgstr ""
-"Zbiór danych jest podstawową bytem w tym serwisie. "
+"\n"
+"Zbiory danych są osią tego serwisu. "
 "Użytkownicy wyszukują zbiory danych, a następnie nawigują to plików powiązanych z poszukiwanym zbiorem."
 
 #: ckanext/danepubliczne/templates/package/snippets/additional_info.html:74
@@ -444,6 +484,7 @@ msgstr ""
 "\n"
 "            <p class=\"empty\">Ten zbiór danych nie posiada żadnych danych, <a "
 "href=\"%(url)s\">dodaj do niego zasoby!</a></p>\n"
+"          "
 
 #: ckanext/danepubliczne/templates/package/snippets/tags.html:3
 msgid "Keywords"
