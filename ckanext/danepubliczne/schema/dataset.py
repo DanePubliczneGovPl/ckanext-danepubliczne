@@ -81,6 +81,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             except Exception as e:
                 raise Exception("Internal error while creating tags")
 
+
     p.implements(p.IFacets, inherit=True)
     def dataset_facets(self, facets_dict, package_type):
         facets_dict.pop('license_id', None)
@@ -88,6 +89,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         facets_dict['res_type'] = _('Resource types')
 
         return facets_dict
+
+    def group_facets(self, facets_dict, group_type, package_type):
+        return self.dataset_facets(facets_dict, None)
+
+    def organization_facets(self, facets_dict, organization_type, package_type):
+        return self.dataset_facets(facets_dict, None)
 
 
     # def after_create(self, context, pkg_dict):
