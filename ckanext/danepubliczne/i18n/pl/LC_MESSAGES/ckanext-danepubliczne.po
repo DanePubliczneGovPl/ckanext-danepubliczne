@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-03-30 11:07+0200\n"
+"POT-Creation-Date: 2015-03-30 12:09+0200\n"
 "PO-Revision-Date: 2015-03-30 11:07+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -99,12 +99,12 @@ msgstr "Użytkownik %s nie może kasować artykułów"
 msgid "User %s not authorized to update articles"
 msgstr "Użytkownik %s nie może aktualizować artykułów"
 
-#: ckanext/danepubliczne/schema/dataset.py:89
+#: ckanext/danepubliczne/schema/dataset.py:94
 #: ckanext/danepubliczne/templates/package/snippets/resource_form.html:12
 msgid "Resource types"
 msgstr "Typy zasobów"
 
-#: ckanext/danepubliczne/schema/dataset.py:188
+#: ckanext/danepubliczne/schema/dataset.py:193
 msgid "Category '{0}' doesn't exist"
 msgstr "Kategoria '{0}' nie istnieje"
 
@@ -252,23 +252,9 @@ msgstr "Zaktualizuj Kategorię"
 msgid "Create Category"
 msgstr "Stwórz Nową Kategorię"
 
-#: ckanext/danepubliczne/templates/group/read_base.html:130
-#: ckanext/danepubliczne/templates/organization/read_base.html:131
-#: ckanext/danepubliczne/templates/package/search.html:88
-msgid ""
-"\n"
-"                            <p class=\"extra\">Please try another "
-"search.</p>\n"
-"                          "
-msgstr ""
-"\n"
-"                            <p class=\"extra\">Spróbuj zastosować inne "
-"filtry wyszukiwania..</p>\n"
-"           "
-
-#: ckanext/danepubliczne/templates/group/read_base.html:138
-#: ckanext/danepubliczne/templates/organization/read_base.html:139
-#: ckanext/danepubliczne/templates/package/search.html:96
+#: ckanext/danepubliczne/templates/group/read_base.html:136
+#: ckanext/danepubliczne/templates/organization/read_base.html:137
+#: ckanext/danepubliczne/templates/package/search.html:94
 msgid ""
 "\n"
 "                            <p><strong>There was an error while "
@@ -281,9 +267,9 @@ msgstr ""
 "<p><strong>Wystąpił błąd podczas wyszukiwania.</strong> Proszę spróbować "
 "później lub zgłosić nam błąd jeżeli będzie się on powtarzał</p>"
 
-#: ckanext/danepubliczne/templates/group/read_base.html:175
-#: ckanext/danepubliczne/templates/organization/read_base.html:176
-#: ckanext/danepubliczne/templates/package/search.html:132
+#: ckanext/danepubliczne/templates/group/read_base.html:173
+#: ckanext/danepubliczne/templates/organization/read_base.html:174
+#: ckanext/danepubliczne/templates/package/search.html:130
 #, python-format
 msgid ""
 "\n"
@@ -302,9 +288,9 @@ msgstr ""
 "                            ściągnąć je %(dump_link)s.\n"
 "                          "
 
-#: ckanext/danepubliczne/templates/group/read_base.html:182
-#: ckanext/danepubliczne/templates/organization/read_base.html:183
-#: ckanext/danepubliczne/templates/package/search.html:139
+#: ckanext/danepubliczne/templates/group/read_base.html:180
+#: ckanext/danepubliczne/templates/organization/read_base.html:181
+#: ckanext/danepubliczne/templates/package/search.html:137
 #, python-format
 msgid ""
 "\n"
@@ -537,6 +523,28 @@ msgstr "Ukryj opis badania otwartości"
 #: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:16
 msgid "What these stars mean"
 msgstr "Dowiedz się co oznaczają te gwiazdki"
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
+msgid "{number} article found for \"{query}\""
+msgid_plural "{number} articles found for \"{query}\""
+msgstr[0] "Znaleziono {number} artykuł z frazą \"{query}\""
+msgstr[1] "Znaleziono {number} artykuły z frazą \"{query}\""
+msgstr[2] "Znaleziono {number} artykułów z frazą \"{query}\""
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:34
+msgid "No articles found for \"{query}\""
+msgstr "Nie znaleziono artykułów z frazą \"{query}\""
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:35
+msgid "{number} article found"
+msgid_plural "{number} articles found"
+msgstr[0] "Znaleziono {number} artykuł"
+msgstr[1] "Znaleziono {number} artykuły"
+msgstr[2] "Znaleziono {number} artykułów"
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:36
+msgid "No articles found"
+msgstr "Nie znaleziono artykułów"
 
 #: ckanext/danepubliczne/templates/user/dashboard.html:11
 #: ckanext/danepubliczne/templates/user/dashboard_search_history.html:6

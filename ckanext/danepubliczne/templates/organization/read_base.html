@@ -128,9 +128,7 @@
 
                       {% if request.params and c.page.item_count == 0 %}
                         <div class="span9">
-                          {% trans %}
-                            <p class="extra">Please try another search.</p>
-                          {% endtrans %}
+                          {% trans %} <p class="extra">Please try another search.</p>{% endtrans %}
                         </div>
                       {% endif %}
 

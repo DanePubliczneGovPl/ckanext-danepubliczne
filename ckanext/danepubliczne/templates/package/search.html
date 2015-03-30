@@ -30,7 +30,7 @@
           {% block form %}
             <div class="dataset-search">
               <div class="container">
-                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
+                {% snippet 'snippets/search_form.html', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
               </div>
             </div>
           {% endblock %}
@@ -55,7 +55,7 @@
                     {% block page_primary_action %}
                       {% if not no_title %}
                         <div class="span5">
-                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</h2>
                         </div>
                         <div class="span3">
                       {% else %}
@@ -85,9 +85,7 @@
 
                       {% if request.params and c.page.item_count == 0 %}
                         <div class="span9">
-                          {% trans %}
-                            <p class="extra">Please try another search.</p>
-                          {% endtrans %}
+                          {% trans %} <p class="extra">Please try another search.</p>{% endtrans %}
                         </div>
                       {% endif %}
 

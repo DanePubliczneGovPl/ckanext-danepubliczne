@@ -84,6 +84,11 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     p.implements(p.IFacets, inherit=True)
     def dataset_facets(self, facets_dict, package_type):
+        if package_type == 'article':
+            return {
+                'tags': _('Tags'),
+            }
+
         facets_dict.pop('license_id', None)
 
         facets_dict['res_type'] = _('Resource types')

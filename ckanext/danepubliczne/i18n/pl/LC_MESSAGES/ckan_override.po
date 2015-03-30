@@ -3172,7 +3172,7 @@ msgstr "Znalezione dla \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
-msgstr "Przepraszamy, nie znaleziono zbiorów danych dla \"{query}\""
+msgstr "Przepraszamy, nie znaleziono zbiorów danych dla frazy \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:37
 msgid "Make public"
@@ -4186,7 +4186,7 @@ msgstr "Pokaż tylko popularne {facet_type}"
 
 #: ckan/templates/snippets/facet_list.html:78
 msgid "There are no {facet_type} that match this search"
-msgstr "{facet_type} zgodne z kryteriami wyszukiwania"
+msgstr "{facet_type}: Brak zgodnych z kryteriami wyszukiwania"
 
 #: ckan/templates/snippets/home_breadcrumb_item.html:2
 #: ckan/templates_legacy/admin/layout.html:10
@@ -4254,20 +4254,20 @@ msgstr ""
 #: ckan/templates/snippets/search_result_text.html:15
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
-msgstr[0] "{number} znaleziony zbiór danych z \"{query}\""
-msgstr[1] "{number} znalezione zbiory danych z \"{query}\""
-msgstr[2] "{number} znalezionych zbiorów danych z \"{query}\""
+msgstr[0] "Znaleziono {number} zbiór danych z frazą \"{query}\""
+msgstr[1] "Znaleziono {number} zbiory danych z frazą \"{query}\""
+msgstr[2] "Znaleziono {number} zbiorów danych z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:16
 msgid "No datasets found for \"{query}\""
-msgstr "Nie znaleziono zbioru danych z \"{query}\""
+msgstr "Nie znaleziono zbioru danych z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:17
 msgid "{number} dataset found"
 msgid_plural "{number} datasets found"
-msgstr[0] "{number} znaleziony zbior danych"
-msgstr[1] "{number} znalezione zbiory danych"
-msgstr[2] "{number} znalezionych zbiorów danych"
+msgstr[0] "Znaleziono {number} zbiór danych"
+msgstr[1] "Znaleziono {number} zbiory danych"
+msgstr[2] "Znaleziono {number} zbiorów danych"
 
 #: ckan/templates/snippets/search_result_text.html:18
 msgid "No datasets found"
@@ -4276,13 +4276,13 @@ msgstr "Nie znaleziono zbioru danych"
 #: ckan/templates/snippets/search_result_text.html:21
 msgid "{number} group found for \"{query}\""
 msgid_plural "{number} groups found for \"{query}\""
-msgstr[0] "{number} znaleziony zbior danych for \"{query}\""
-msgstr[1] "{number} znalezione zbiory danych for \"{query}\""
-msgstr[2] "{number} znalezionych zbiorów danych for \"{query}\""
+msgstr[0] "Znaleziono {number} zbiór danych z frazą \"{query}\""
+msgstr[1] "Znaleziono {number} zbiory danych z frazą \"{query}\""
+msgstr[2] "Znaleziono {number} zbiorów danych z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:22
 msgid "No groups found for \"{query}\""
-msgstr "Nie znaleziono grupy z \"{query}\""
+msgstr "Nie znaleziono grupy z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:23
 msgid "{number} group found"
@@ -4298,20 +4298,20 @@ msgstr "Nie znaleziono grup"
 #: ckan/templates/snippets/search_result_text.html:27
 msgid "{number} organization found for \"{query}\""
 msgid_plural "{number} organizations found for \"{query}\""
-msgstr[0] "Nie znaleziono {number} organizacji z \"{query}\""
-msgstr[1] "Nie znaleziono {number} organizacji z \"{query}\""
-msgstr[2] "Nie znaleziono {number} organizacji z \"{query}\""
+msgstr[0] "Nie znaleziono {number} organizacji z frazą \"{query}\""
+msgstr[1] "Nie znaleziono {number} organizacji z frazą \"{query}\""
+msgstr[2] "Nie znaleziono {number} organizacji z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:28
 msgid "No organizations found for \"{query}\""
-msgstr "Nie znaleziono organizacji z \"{query}\""
+msgstr "Nie znaleziono organizacji z frazą \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:29
 msgid "{number} organization found"
 msgid_plural "{number} organizations found"
-msgstr[0] "{number} znaleziona organizacja"
-msgstr[1] "{number} znalezione organizacje"
-msgstr[2] "{number} znalezionych organizacji"
+msgstr[0] "Znaleziono {number} organizacja"
+msgstr[1] "Znaleziono {number} organizacje"
+msgstr[2] "Znaleziono {number} organizacji"
 
 #: ckan/templates/snippets/search_result_text.html:30
 msgid "No organizations found"
