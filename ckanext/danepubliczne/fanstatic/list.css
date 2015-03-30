@@ -48,7 +48,7 @@
 
 .list .dataset-info .image {
     background-color: #157abe;
-    margin: 10px auto;
+    margin: 10px 0;
     text-align: center;
     width: 100px;
     height: 100px;
@@ -58,6 +58,7 @@
     border-radius: 100px;
     position: relative;
     display: none;
+    float: right;
 }
 
 .list .dataset-info .image img {
@@ -248,6 +249,11 @@
     content: "\e901";
 }
 
+.wrapper .dataset-result,
+.wrapper .dataset-result [class*="span"]{
+    margin-left:0;
+}
+
 .wrapper .dataset-result .module {
     float: left;
     width: 100%;
@@ -266,11 +272,13 @@
     font-size: 30px;
     font-weight: normal;
     color: #157abe;
+    line-height: 1em;
     margin-top: 25px;
 }
 
 .wrapper .dataset-result .control-order-by {
     margin-top: 14px;
+    margin-right: -25px;
 }
 
 .wrapper .dataset-result .control-order-by label {

@@ -60,7 +60,7 @@
                   <div class="follow_button">{{ h.follow_button('group', organization.id) }}</div>
                 {% endblock %}#}
                 </div>
-                <div class="span3">
+                <div class="span3 pull-right">
                     {% block image %}
                         {% set image_url = h.dp_organization_image(organization, show_placeholder_by_default = False) %}
                         {% if image_url %}
@@ -100,7 +100,7 @@
                         <div class="span5">
                           <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
                         </div>
-                        <div class="span3">
+                    <div class="span3 pull-right">
                       {% else %}
                         <div class="span8">
                       {% endif %}
