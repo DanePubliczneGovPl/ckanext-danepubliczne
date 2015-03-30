@@ -58,7 +58,7 @@
                   <div class="follow_button">{{ h.follow_button('group', group.id) }}</div>
                 {% endblock %}#}
                 </div>
-                <div class="span3">
+                <div class="span3 pull-right">
                     {% block image %}
                       {% if group.image_display_url %}
                       <div class="image" style="background-color: {{ group.color }};">
@@ -92,7 +92,7 @@
                   {% endblock %}
               {% endblock %}
             </aside>
-            <div class="dataset-result span9">
+            <div class="dataset-result span9 pull-right">
               {% block primary_content %}
                 <section class="module">
                   <div class="module-content">
@@ -101,7 +101,7 @@
                         <div class="span5">
                           <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
                         </div>
-                        <div class="span3">
+                    <div class="span3 pull-right">
                       {% else %}
                         <div class="span8">
                       {% endif %}
