@@ -59,7 +59,7 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
         
     p.implements(p.IGroupForm)
     def is_fallback(self):
-        return False
+        return True
     
     def group_types(self):
         return ['group']

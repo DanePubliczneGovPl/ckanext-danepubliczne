@@ -48,7 +48,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def before_index(self, pkg_dict):
         # Resource type is multivalue field
         types = []
-        for tag_string in pkg_dict['res_type']:
+        for tag_string in pkg_dict.get('res_type', []):
             if tag_string:
                 types += [tag.strip() for tag in tag_string.split(',')]
 

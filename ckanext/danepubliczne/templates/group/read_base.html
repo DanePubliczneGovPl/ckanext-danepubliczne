@@ -60,9 +60,11 @@
                 </div>
                 <div class="span3">
                     {% block image %}
+                      {% if group.image_display_url %}
                       <div class="image" style="background-color: {{ group.color }};">
-                        <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" />
+                        <img src="{{ group.image_display_url }}" alt="{{ group.name }}" />
                       </div>
+                      {% endif %}
                     {% endblock %}
                 </div>
               </div>
