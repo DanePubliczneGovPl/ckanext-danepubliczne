@@ -7,6 +7,7 @@ import ckan.lib.base as base
 import paste.deploy.converters
 from pylons import config
 from routes.mapper import SubMapper
+import ckan.lib.app_globals as app_globals
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -19,7 +20,14 @@ class DanePubliczne(p.SingletonPlugin):
 
         mimetypes.add_type('application/json', '.geojson')
 
-
+        # TODO ckan-dev load all properties from SystemInfo at load, instead of using app_globals.auto_update:
+        # TODO ckan-dev def get_globals_key(key):   should allow ckanext.
+        app_globals.auto_update += [
+            'ckanext.danepubliczne.maintenance_flash',
+        ]
+        for locale in h.get_available_locales():
+            lang = locale.language
+            app_globals.auto_update += ['ckan.site_intro_text-' + lang, 'ckan.site_about-' + lang]
 
     p.implements(p.IRoutes, inherit=True)
 
@@ -163,7 +171,7 @@ class DanePubliczne(p.SingletonPlugin):
         return None
 
     def h_check_maintenance(self):
-        maintenance_flash = config.get('ckan.danepubliczne.maintenance_flash')
+        maintenance_flash = config.get('ckanext.danepubliczne.maintenance_flash')
 
         if maintenance_flash:
             h.flash_notice(maintenance_flash)

@@ -68,7 +68,7 @@ piwik.cookies_disabled = true
 
 # Custom Dane Publiczne site settings
 
-# ckan.danepubliczne.maintenance_flash = Uwaga! Dnia xx marca 2015 od godziny 01:00 do godziny 09:00 będzie trwała przerwa techniczna.
+# ckanext.danepubliczne.maintenance_flash = Uwaga! Dnia xx marca 2015 od godziny 01:00 do godziny 09:00 będzie trwała przerwa techniczna.
 
 ## Authorization Settings
 
