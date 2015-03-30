@@ -183,8 +183,6 @@ body {
 
 .masthead .header-image {
     margin-top: 4px;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .masthead .navigation, .masthead .section.site-language {
@@ -446,10 +444,9 @@ input[type=checkbox]:checked + .checkbox:before {
     text-shadow: none;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 480px) {
     .masthead .header-image {
-        padding-left: 0;
-        padding-right: 0;
+        width: 100%;
     }
 }
 
