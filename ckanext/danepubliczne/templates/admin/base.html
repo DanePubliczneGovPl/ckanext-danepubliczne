@@ -1,0 +1,14 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Administration') }}{% endblock %}
+
+{% block breadcrumb_content %}{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('ckanadmin_index', _('Sysadmins')) }}
+  {{ h.build_nav_icon('ckanadmin_config', _('Config')) }}
+  {{ h.build_nav_icon('qa_index', _('Quality Assurance'), highlight_actions='index package_index five_stars dataset_broken_resource_links organisation_index '
+    +'broken_resource_links resource_five_stars dataset_five_stars broken_resource_links_by_dataset'
+    +'organisations_with_broken_resource_links broken_resource_links_by_dataset_for_organisation') }}
+  {{ h.build_nav_icon('ckanadmin_trash', _('Trash')) }}
+{% endblock %}

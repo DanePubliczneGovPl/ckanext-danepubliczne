@@ -32,10 +32,14 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IRoutes, inherit=True)
 
     def before_map(self, map):
+        # TODO ckan-dev named routes are not overriden; config['routes.named_routes']['ckanadmin_config']['controller'] != 'ckanext.danepubliczne.controllers.admin:AdminController'
+        # see https://github.com/ckan/ckan/blob/release-v2.3/ckan/lib/helpers.py#L405 called by https://github.com/ckan/ckan/blob/release-v2.3/ckan/lib/helpers.py#L566
+        # which results in tab being not 'active'
         map.connect('ckanadmin_config', '/ckan-admin/config', controller='ckanext.danepubliczne.controllers.admin:AdminController',
                 action='config', ckan_icon='check')
 
         map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.danepubliczne.controllers.admin:AdminController')
+        map.connect('qa_index', '/qa', controller='ckanext.qa.controller:QAController', action='index')
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
             m.connect('/user/reset', action='request_reset')
