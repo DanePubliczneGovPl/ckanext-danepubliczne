@@ -96,7 +96,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
     # don't override history_template - use group template for history
 
     def edit_template(self):
-        return 'group/edit.html'
+        return 'organization/edit.html'
 
     def activity_template(self):
         return 'group/activity_stream.html'
