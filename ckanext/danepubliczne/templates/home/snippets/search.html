@@ -1,4 +1,4 @@
-{% set intro = g.site_intro_text %}
+{% set intro = g['site_intro_text-' + h.lang()] %}
 {% set placeholder = _('eg. Gold Prices') %}
 
 

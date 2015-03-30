@@ -23,8 +23,15 @@ class AdminController(base_admin.AdminController):
             {'name': 'ckan.site_title', 'control': 'input', 'label': _('Site Title'), 'placeholder': ''},
             {'name': 'ckan.site_description', 'control': 'input', 'label': _('Site Tag Line'), 'placeholder': ''},
             {'name': 'ckan.site_logo', 'control': 'input', 'label': _('Site Tag Logo'), 'placeholder': ''},
-            {'name': 'ckan.site_about', 'control': 'markdown', 'label': _('About'), 'placeholder': _('About page text')},
-            {'name': 'ckan.site_intro_text', 'control': 'markdown', 'label': _('Intro Text'), 'placeholder': _('Text on home page')},
-            {'name': 'ckan.danepubliczne.maintenance_flash', 'control': 'input', 'label': _('Maintenance alert'), 'placeholder': _('Fill if there is planned maintenance break')},
+            {'name': 'ckanext.danepubliczne.maintenance_flash', 'control': 'input', 'label': _('Maintenance alert'), 'placeholder': _('Fill if there is planned maintenance break')},
         ]
+
+        for locale in h.get_available_locales():
+            lang = locale.language
+            items += [{'name': 'ckan.site_about-' + lang, 'control': 'markdown', 'label': _('About') + ' ' + lang.upper(), 'placeholder': _('About page text')}]
+
+        for locale in h.get_available_locales():
+            lang = locale.language
+            items += [{'name': 'ckan.site_intro_text-' + lang, 'control': 'markdown', 'label': _('Intro Text') + ' ' + lang.upper(), 'placeholder': _('Text on home page')}]
+
         return items
