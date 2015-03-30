@@ -5810,7 +5810,7 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
         margin-left: 0
     }
 
-    .container {
+    .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
         width: auto
     }
 
