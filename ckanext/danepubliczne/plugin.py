@@ -37,13 +37,15 @@ class DanePubliczne(p.SingletonPlugin):
 
         map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.danepubliczne.controllers.admin:AdminController')
 
-        map.connect('/user/register', controller='ckanext.danepubliczne.controllers.user:UserController', action='register')
-        map.connect('/user/edit', controller='ckanext.danepubliczne.controllers.user:UserController', action='edit')
-        map.connect('/user/edit/{id:.*}', controller='ckanext.danepubliczne.controllers.user:UserController', action='edit')
-        map.connect('/user/logged_in', controller='ckanext.danepubliczne.controllers.user:UserController', action='logged_in')
-        map.connect('/user/logged_out', controller='ckanext.danepubliczne.controllers.user:UserController', action='logged_out')
-        map.connect('user_dashboard_search_history', '/dashboard/search_history',
-                 controller='ckanext.danepubliczne.controllers.user:UserController', action='dashboard_search_history', ckan_icon='list')
+        with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
+            m.connect('/user/reset', action='request_reset')
+            m.connect('/user/register', action='register')
+            m.connect('/user/edit', action='edit')
+            m.connect('/user/edit/{id:.*}', action='edit')
+            m.connect('/user/logged_in', action='logged_in')
+            m.connect('/user/logged_out', action='logged_out')
+            m.connect('user_dashboard_search_history', '/dashboard/search_history',
+                     action='dashboard_search_history', ckan_icon='list')
 
         map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='submit')
 

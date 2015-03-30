@@ -13,9 +13,9 @@
       {% block form %}
         <form action="" method="post" class="form-horizontal">
           <div class="control-group control-medium">
-            <label class="control-label" for="field-username">{{ _('Username') }}</label>
+            <label class="control-label" for="field-email">{{ _('Email') }}</label>
             <div class="controls">
-                <input id="field-username" name="user" value="" type="text" />
+                <input id="field-email" name="email" value="" type="text" />
             </div>
           </div>
           {% block form_button %}
@@ -35,7 +35,7 @@
     {% block help_inner %}
     <h2 class="module-heading">{{ _('How does this work?') }}</h2>
     <div class="module-content">
-      <p>{% trans %}Enter your username into the box and we will send you
+      <p>{% trans %}We will send you
       an email with a link to enter a new password.{% endtrans %}</p>
     </div>
     {% endblock %}

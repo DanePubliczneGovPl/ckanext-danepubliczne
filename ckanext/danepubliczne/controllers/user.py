@@ -3,6 +3,7 @@ from pylons import config
 import re
 import json
 import ckan.lib.navl.dictization_functions as df
+import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.base as base
 import ckan.lib.helpers as h
 import ckan.lib.app_globals as app_globals
@@ -12,6 +13,7 @@ import ckan.plugins.toolkit as tk
 import ckan.plugins as p
 import ckan.lib.captcha as captcha
 import ckan.logic as logic
+import ckan.lib.mailer as mailer
 import ckan.new_authz as new_authz
 from ckan.common import _, c, g, request, response
 
@@ -250,6 +252,33 @@ class UserController(base_user.UserController):
 
         return render('user/edit.html')
 
+    def request_reset(self):
+        context = {'model': model, 'session': model.Session, 'user': c.user,
+                   'auth_user_obj': c.userobj}
+
+        try:
+            check_access('request_reset', context)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to request reset password.'))
+
+        if request.method == 'POST':
+            email = request.params.get('email')
+            users = model.User.by_email(email)
+
+            if not users:
+                h.flash_error(_('Email not registered: %s') % email)
+
+            else:
+                try:
+                    mailer.send_reset_link(users[0])
+                    h.flash_success(_('Please check your inbox for '
+                                    'a reset code.'))
+                    h.redirect_to('/')
+                except mailer.MailerException, e:
+                    h.flash_error(_('Could not send reset link: %s') %
+                                  unicode(e))
+
+        return render('user/request_reset.html')
 
 def convert_to_json(field):
     def f(key, data, errors, context):

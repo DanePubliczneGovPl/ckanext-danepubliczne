@@ -4502,7 +4502,7 @@ msgstr "Żaden problem, użyj mechanizmu odzyskiwania hasła w celu zresetowania
 
 #: ckan/templates/user/login.html:38 ckan/templates_legacy/user/login.html:51
 msgid "Forgot your password?"
-msgstr "Zapomniałeś(aś) hasła?"
+msgstr "Nie pamiętasz hasła?"
 
 #: ckan/templates/user/logout.html:3 ckan/templates/user/logout.html:9
 msgid "Logged Out"
