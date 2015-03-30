@@ -155,6 +155,7 @@
     position: absolute;
     top: 50%;
     right: 10px;
+    text-decoration: none;
 
     -moz-transform: translate(0, -50%);
     -webkit-transform: translate(0, -50%);
@@ -211,6 +212,7 @@
     background-color: #157abe;
     font-weight: bold;
     color: #ffffff;
+
 }
 
 .wrapper .dataset-filters .nav-item.active > a:before,
@@ -219,23 +221,31 @@
 }
 
 .wrapper .dataset-filters .nav-item > a:hover:after,
-.wrapper .dataset-filters .nav-aside li a:hover:after {
+.wrapper .dataset-filters .nav-aside li a:hover:after,
+.wrapper .dataset-filters .nav-item.active > a:after,
+.wrapper .dataset-filters .nav-item.active > a:hover:after,
+.wrapper .dataset-filters .nav-aside li.active a:after,
+.wrapper .dataset-filters .nav-aside li.active a:hover:after {
     font-family: 'ckan';
+    font-size: 16px;
     font-weight: normal;
+    background: none;
+    right: 14px;
+    margin-top: -9px;
+}
+
+.wrapper .dataset-filters .nav-item > a:hover:after,
+.wrapper .dataset-filters .nav-aside li a:hover:after {
     color: #157abe;
     content: "\e900";
-    background: none;
 }
 
 .wrapper .dataset-filters .nav-item.active > a:after,
 .wrapper .dataset-filters .nav-item.active > a:hover:after,
 .wrapper .dataset-filters .nav-aside li.active a:after,
 .wrapper .dataset-filters .nav-aside li.active a:hover:after {
-    font-family: 'ckan';
-    font-weight: normal;
     color: #ffffff;
     content: "\e901";
-    background: none;
 }
 
 .wrapper .dataset-result .module {
