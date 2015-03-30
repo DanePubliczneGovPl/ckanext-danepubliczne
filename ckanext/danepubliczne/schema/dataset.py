@@ -3,7 +3,9 @@ import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.navl.dictization_functions as df
+import ckan.lib.helpers as h
 import ckan.model as model
+from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g
 from ckan import logic
 
@@ -16,7 +18,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def get_helpers(self):
         return {'dp_update_frequencies': self.h_update_frequencies,
                 'dp_update_frequencies_options': self.h_update_frequencies_options,
-                'dp_package_has_license_restrictions': self.h_package_has_license_restrictions}
+                'dp_package_has_license_restrictions': self.h_package_has_license_restrictions,
+                'dp_openess_info': self.h_openess_info}
 
     def h_update_frequencies(self):
         try:
@@ -33,6 +36,15 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def h_package_has_license_restrictions(self, dpkg):
         return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
             or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False)
+
+    @classmethod
+    def h_openess_info(cls, score):
+        if isinstance(score, str) or isinstance(score, unicode):
+            score = int(score)
+
+        qa_captions = [_('Missing QA information')] + QAPlugin.get_qa_captions()
+
+        return qa_captions[max(score, 0)]
 
     p.implements(p.IAuthFunctions)
     def get_auth_functions(self):
@@ -92,6 +104,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         facets_dict.pop('license_id', None)
 
         facets_dict['res_type'] = _('Resource types')
+        facets_dict['res_extras_openness_score'] = _('Openess Score')
 
         return facets_dict
 
