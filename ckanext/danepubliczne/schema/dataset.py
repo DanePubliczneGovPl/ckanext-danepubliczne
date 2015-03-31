@@ -46,13 +46,38 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         return qa_captions[max(score, 0)]
 
-    p.implements(p.IAuthFunctions)
-    def get_auth_functions(self):
-        return {
-            # 'member_create': member_create,
-            # 'member_delete': member_delete,
-        }
 
+
+    p.implements(p.IConfigurer)
+    def update_config(self, config):
+        # TODO ckan-dev ckan.new_authz should be overridable by IAuthFunctions as well
+        # no need to hack it like this then
+
+        # Allow organizations members to add datasets to all non-org groups (categories in our case)
+        import ckan.new_authz
+        old_has_user_permission_for_group_or_org = ckan.new_authz.has_user_permission_for_group_or_org
+
+        def new_has_user_permission_for_group_or_org(group_id_or_name, user_name, permission):
+            sup = old_has_user_permission_for_group_or_org(group_id_or_name, user_name, permission)
+            if sup:
+                return True
+
+            # Get group
+            if not group_id_or_name:
+                return False
+            group = model.Group.get(group_id_or_name)
+            if not group:
+                return False
+
+            is_admin_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'admin')
+            is_editor_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'editor')
+
+            # Allow organization admins & editors to add and remove packages from groups (categories)
+            if (is_admin_somewhere or is_editor_somewhere) and group.type == 'group':
+                return True
+            return False
+
+        ckan.new_authz.has_user_permission_for_group_or_org = new_has_user_permission_for_group_or_org
 
 
 
@@ -94,6 +119,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 raise Exception("Internal error while creating tags")
 
 
+
     p.implements(p.IFacets, inherit=True)
     def dataset_facets(self, facets_dict, package_type):
         if package_type == 'article':
@@ -114,18 +140,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def organization_facets(self, facets_dict, organization_type, package_type):
         return self.dataset_facets(facets_dict, None)
 
-
-    # def after_create(self, context, pkg_dict):
-    #     group = pkg_dict['category']
-    #
-    #
-    #     r = tk.get_action('member_create')(context, data_dict={
-    #         'id': group,
-    #         'object': pkg_dict['id'],
-    #         'object_type': 'package',
-    #         'capacity': 'public'
-    #     })
-    #
 
 
     p.implements(p.IDatasetForm)
@@ -198,7 +212,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = self._modify_package_schema(schema)
         return schema
 
-
+# TODO ckan-dev add converters and validators as IValidator? should converters have their own Interface for extending to allow tk.get_converter?
 def category_exists(value, context):
     categories = tk.get_action('group_list')(context, {})
 
@@ -220,30 +234,3 @@ def category_to_group(key, data, errors, context):
     category = data.pop(('category',))
 
     data[('groups', 0, 'name')] = category
-
-
-def member_create(context, data_dict):
-    user = context['user']
-
-    is_admin_somewhere = new_authz.has_user_permission_for_some_org(user, 'admin')
-
-    # Allow organization admins to add and remove packages from groups (categories)
-    if is_admin_somewhere and data_dict['object_type'] == 'package' and data_dict['capacity'] == 'public':
-        return {'success': True}
-
-    # if not call super
-    import ckan.logic.auth.create as ac
-    ac.member_create(context, data_dict)
-
-def member_delete(context, data_dict):
-    user = context['user']
-
-    is_admin_somewhere = new_authz.has_user_permission_for_some_org(user, 'admin')
-
-    # Allow organization admins to add and remove packages from groups (categories)
-    if is_admin_somewhere and data_dict['object_type'] == 'package' and data_dict['capacity'] == 'public':
-        return {'success': True}
-
-    # if not call super
-    import ckan.logic.auth.create as ad
-    ad.member_delete(context, data_dict)
