@@ -91,6 +91,31 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['res_type'] = types
 
+
+        # Resuse conditions
+        from paste.deploy.converters import asbool
+        # TODO prefix extras_ - create searchable text in PL/EN
+        pkg_dict['license_condition_modification'] = asbool(pkg_dict.get('license_condition_modification'))
+        pkg_dict['license_condition_original'] = asbool(pkg_dict.get('license_condition_original'))
+        pkg_dict['license_condition_source'] = asbool(pkg_dict.get('license_condition_source'))
+        pkg_dict['license_condition_timestamp'] = asbool(pkg_dict.get('license_condition_timestamp'))
+        pkg_dict['license_condition_responsibilities'] = bool(pkg_dict.get('license_condition_responsibilities','').strip())
+
+        pkg_dict['has_any_reuse_conditions'] = pkg_dict['license_condition_modification'] \
+            or pkg_dict['license_condition_original'] or pkg_dict['license_condition_source'] \
+            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities']
+
+        restrictions = []
+        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities']:
+            if pkg_dict['license_condition_' + restr]:
+                restrictions.append(restr)
+
+        if not restrictions:
+            restrictions = ['none']
+
+        pkg_dict['vocab_reuse_conditions'] = restrictions
+
+
         return pkg_dict
 
     def after_create(self, context, pkg_dict):
@@ -131,6 +156,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         facets_dict['res_type'] = _('Resource types')
         facets_dict['res_extras_openness_score'] = _('Openess Score')
+        facets_dict['vocab_reuse_conditions'] = _('Restrictions on reuse of this dataset')
 
         return facets_dict
 
