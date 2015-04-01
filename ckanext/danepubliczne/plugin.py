@@ -77,6 +77,10 @@ class DanePubliczne(p.SingletonPlugin):
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
                      action='dashboard_search_history', ckan_icon='list')
 
+        with SubMapper(map, controller='package') as m:
+            m.connect('dataset_search', '/dataset', action='search',
+                  highlight_actions='index search')
+
         map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
         map.connect('new_dataset_feedback_submit', '/new_dataset_feedback', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='new_dataset_feedback')
 
