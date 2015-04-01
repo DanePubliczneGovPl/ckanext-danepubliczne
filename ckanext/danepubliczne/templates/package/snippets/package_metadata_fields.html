@@ -20,7 +20,7 @@
       {{ form.checkbox('license_condition_timestamp', label=_('One should inform about the creation time of reused information as well as time of access to it'), id='field-license_condition_timestamp', error=errors.license_condition_timestamp, value='true', checked=data.license_condition_timestamp) }}
       {{ form.checkbox('license_condition_original', label=_('One should publish a copy of originally accessed data when publishing reused information'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
       {{ form.checkbox('license_condition_modification', label=_('One should inform about modifications to originally accessed information'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
-      {{ form.textarea('license_condition_responsibilities', label=_('Restriction of data provider responsibility'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
+      {{ form.textarea('license_condition_responsibilities', label=_('Restriction of data provider liability'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
     </div>
   </div>
 

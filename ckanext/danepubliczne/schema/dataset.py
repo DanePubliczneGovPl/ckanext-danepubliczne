@@ -8,6 +8,7 @@ import ckan.model as model
 from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g
 from ckan import logic
+from ckanext.fluent.validators import fluent_text, fluent_text_output
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -19,7 +20,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         return {'dp_update_frequencies': self.h_update_frequencies,
                 'dp_update_frequencies_options': self.h_update_frequencies_options,
                 'dp_package_has_license_restrictions': self.h_package_has_license_restrictions,
-                'dp_openess_info': self.h_openess_info}
+                'dp_openess_info': self.h_openess_info,
+                'dp_translate_facet': self.h_translate_facet,
+                'dp_vocab_reuse_conditions_captions': self.h_vocab_reuse_conditions_captions}
 
     def h_update_frequencies(self):
         try:
@@ -156,9 +159,34 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         facets_dict['res_type'] = _('Resource types')
         facets_dict['res_extras_openness_score'] = _('Openess Score')
-        facets_dict['vocab_reuse_conditions'] = _('Restrictions on reuse of this dataset')
+        facets_dict['vocab_reuse_conditions'] = _('Restrictions on reuse')
 
         return facets_dict
+
+    @classmethod
+    def h_vocab_reuse_conditions_captions(cls):
+        return {
+            'none': _('No restrictions'),
+            'modification': _('Inform about modifications'),
+            'original': _('Publish original copy'),
+            'source': _('Inform about source'),
+            'timestamp': _('Inform about creation & access time'),
+            'responsibilities': _('Provider restricts liability')
+        }
+
+    @classmethod
+    def h_translate_facet(cls, label, facet):
+        if facet == 'groups':
+            group = model.Group.get(label)
+            title_i18n = fluent_text_output(group.extras['title_i18n'])
+
+            return title_i18n[h.lang()]
+
+        elif facet == 'vocab_reuse_conditions':
+            return cls.h_vocab_reuse_conditions_captions()[label]
+
+        return label
+
 
     def group_facets(self, facets_dict, group_type, package_type):
         return self.dataset_facets(facets_dict, None)

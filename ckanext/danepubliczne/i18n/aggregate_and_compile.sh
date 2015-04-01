@@ -46,9 +46,11 @@ do
   # If we have file overriding all CKAN original translations use it (ckan_override.po)
 
   if [ -f $OVERRIDEN_CKAN_PO ]; then
-    PO_FILES="$PO_FILES $OVERRIDEN_CKAN_PO $CKAN_I18N/$LANGUAGE/LC_MESSAGES/ckan.po"
-    PO_FILES_VERBOSE="$PO_FILES_VERBOSE ckan[override] ckan[org]"
-  else
+    PO_FILES="$PO_FILES $OVERRIDEN_CKAN_PO"
+    PO_FILES_VERBOSE="$PO_FILES_VERBOSE ckan[override]"
+  fi
+
+  if [ -f $CKAN_I18N/$LANGUAGE/LC_MESSAGES/ckan.po ]; then
     PO_FILES="$PO_FILES $CKAN_I18N/$LANGUAGE/LC_MESSAGES/ckan.po"
     PO_FILES_VERBOSE="$PO_FILES_VERBOSE ckan[org]"
   fi

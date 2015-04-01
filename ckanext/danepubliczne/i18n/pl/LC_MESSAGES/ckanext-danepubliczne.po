@@ -419,6 +419,9 @@ msgstr "Zgłoś uwagi do zbioru"
 msgid "Restrictions on reuse of this dataset"
 msgstr "Warunki ponownego wykorzystywania informacji"
 
+msgid "Restrictions on reuse"
+msgstr "Warunki ponownego wykorzystywania informacji"
+
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:4
 msgid ""
 "This dataset is considered public data and can be used under following "
