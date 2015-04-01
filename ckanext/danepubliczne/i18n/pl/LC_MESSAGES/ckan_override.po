@@ -1924,7 +1924,7 @@ msgstr "Inne (Otwarte)"
 
 #: ckan/model/license.py:266
 msgid "Other (Public Domain)"
-msgstr "Dane Publiczne"
+msgstr "Informacje Sektora Publicznego"
 
 #: ckan/model/license.py:276
 msgid "Other (Attribution)"

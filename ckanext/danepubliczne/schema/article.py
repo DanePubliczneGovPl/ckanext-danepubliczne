@@ -61,10 +61,6 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         not_empty = tk.get_validator('not_empty')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
-        # License is fixed to Creative Commons Share-Alike
-        def fixed_license(value, context):
-            return 'cc-by-sa'
-
         def fixed_type(value, context):
             return Article._PACKAGE_TYPE
 
@@ -75,7 +71,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
-            'license_id': [fixed_license, unicode],
+            'license_id': [not_empty, unicode]
         }
 
         return schema

@@ -11,12 +11,6 @@
   {% block form_actions %}
     <div class="form-actions">
       {% block disclaimer %}
-        <p class="action-info small">
-          {%- trans -%}
-            Important: By submitting content, you
-            agree to release your contributions under the Creative Commons Share-Alike License.
-          {%- endtrans -%}
-        </p>
       {% endblock %}
       {% block delete_button %}
         {% if h.check_access('package_delete', {'id': data.id}) and not data.state == 'deleted' %}
