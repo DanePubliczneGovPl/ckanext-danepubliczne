@@ -197,9 +197,11 @@
 .wrapper .dataset-filters .nav-item > a,
 .wrapper .dataset-filters .nav-aside li a {
     margin: 0 -4px 0 0;
+    padding-right: 35px;
     font-size: 14px;
     font-weight: normal;
     color: #1d1d1d;
+    line-height: 1.1em;
 }
 
 .wrapper .dataset-filters .nav-item > a:hover,
@@ -214,6 +216,11 @@
     font-weight: bold;
     color: #ffffff;
 
+}
+
+.nav-item.active > a span, .nav-aside li.active a span{
+    white-space:normal;
+    overflow: visible;
 }
 
 .wrapper .dataset-filters .nav-item.active > a:before,
