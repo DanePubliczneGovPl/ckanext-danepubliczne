@@ -6,9 +6,13 @@ import ckan.lib.helpers as h
 import ckan.lib.base as base
 import paste.deploy.converters
 from pylons import config
+from pylons.util import class_name_from_module_name
 from routes.mapper import SubMapper
 import ckan.lib.app_globals as app_globals
 from ckan.common import _
+import sys, logging
+
+log = logging.getLogger(__name__)
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -32,140 +36,49 @@ class DanePubliczne(p.SingletonPlugin):
 
 
 
+    p.implements(p.IMiddleware, inherit=True)
+    def make_middleware(self, app, config):
+        # Hack it so our controllers pretend they are original ones! Buahahhaha!
+        overriden_controlers = ['package', 'user', 'admin', 'group']
+
+        for controller in overriden_controlers:
+            # Pull the controllers class name, import controller
+            full_module_name = 'ckanext.danepubliczne.controllers.' \
+                + controller.replace('/', '.')
+
+            # Hide the traceback here if the import fails (bad syntax and such)
+            __traceback_hide__ = 'before_and_this'
+
+            __import__(full_module_name)
+            if hasattr(sys.modules[full_module_name], '__controller__'):
+                mycontroller = getattr(sys.modules[full_module_name],
+                    sys.modules[full_module_name].__controller__)
+            else:
+                module_name = controller.split('/')[-1]
+                class_name = class_name_from_module_name(module_name) + 'Controller'
+                if app.log_debug:
+                    log.debug("Found controller, module: '%s', class: '%s'",
+                              full_module_name, class_name)
+                mycontroller = getattr(sys.modules[full_module_name], class_name)
+
+            app.controller_classes[controller] = mycontroller
+
+        return app
+
+
+
     p.implements(p.IRoutes, inherit=True)
 
     def before_map(self, map):
-        # TODO ckan-dev named routes are not overriden; config['routes.named_routes']['ckanadmin_config']['controller'] != 'ckanext.danepubliczne.controllers.admin:AdminController'
-        # see https://github.com/ckan/ckan/blob/release-v2.3/ckan/lib/helpers.py#L405 called by https://github.com/ckan/ckan/blob/release-v2.3/ckan/lib/helpers.py#L566
-        # which results in tab being not 'active'
-        map.connect('ckanadmin_config', '/ckan-admin/config', controller='ckanext.danepubliczne.controllers.admin:AdminController',
-                action='config', ckan_icon='check')
-
-        map.connect('ckanadmin', '/ckan-admin/{action}', controller='ckanext.danepubliczne.controllers.admin:AdminController')
+        map.connect('ckanadmin_config', '/ckan-admin/config', controller='admin', action='config', ckan_icon='check')
         map.connect('qa_index', '/qa', controller='ckanext.qa.controller:QAController', action='index')
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
-            m.connect('/user/reset', action='request_reset')
-            m.connect('/user/register', action='register')
-            m.connect('/user/edit', action='edit')
-            m.connect('/user/edit/{id:.*}', action='edit')
-            m.connect('/user/logged_in', action='logged_in')
-            m.connect('/user/logged_out', action='logged_out')
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
                      action='dashboard_search_history', ckan_icon='list')
 
         map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
         map.connect('new_dataset_feedback_submit', '/new_dataset_feedback', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='new_dataset_feedback')
-
-        with SubMapper(map, controller='ckanext.danepubliczne.controllers.group:GroupController') as m:
-            m.connect('group_index', '/group', action='index',
-                      highlight_actions='index search')
-            m.connect('group_list', '/group/list', action='list')
-            m.connect('group_new', '/group/new', action='new')
-            m.connect('group_action', '/group/{action}/{id}',
-                      requirements=dict(action='|'.join([
-                          'edit',
-                          'delete',
-                          'member_new',
-                          'member_delete',
-                          'history',
-                          'followers',
-                          'follow',
-                          'unfollow',
-                          'admins',
-                          'activity',
-                      ])))
-            m.connect('group_about', '/group/about/{id}', action='about',
-                      ckan_icon='info-sign'),
-            m.connect('group_edit', '/group/edit/{id}', action='edit',
-                      ckan_icon='edit')
-            m.connect('group_members', '/group/members/{id}', action='members',
-                      ckan_icon='group'),
-            m.connect('group_activity', '/group/activity/{id}/{offset}',
-                      action='activity', ckan_icon='time'),
-            m.connect('group_read', '/group/{id}', action='read',
-                      ckan_icon='sitemap')
-
-        # TODO ckan-dev ability to override controller from config
-        with SubMapper(map, controller='ckanext.danepubliczne.controllers.package:PackageController') as m:
-            m.connect('dataset_search', '/dataset', action='search',
-                      highlight_actions='index search read'),
-            m.connect('article_search', '/dataset', action='search',
-                      highlight_actions='index search read'),
-            m.connect('search', '/dataset', action='search',
-                      highlight_actions='index search read'),
-
-            m.connect('add dataset', '/dataset/new', action='new')
-            m.connect('/dataset/{action}',
-                      requirements=dict(action='|'.join([
-                          'list',
-                          'autocomplete',
-                          'search'
-                      ])))
-
-            m.connect('/dataset/{action}/{id}/{revision}', action='read_ajax',
-                      requirements=dict(action='|'.join([
-                          'read',
-                          'edit',
-                          'history',
-                      ])))
-            m.connect('/dataset/{action}/{id}',
-                      requirements=dict(action='|'.join([
-                          'new_metadata',
-                          'new_resource',
-                          'history',
-                          'read_ajax',
-                          'history_ajax',
-                          'follow',
-                          'activity',
-                          'groups',
-                          'unfollow',
-                          'delete',
-                          'api_data',
-                      ])))
-            m.connect('dataset_edit', '/dataset/edit/{id}', action='edit',
-                      ckan_icon='edit')
-            m.connect('dataset_followers', '/dataset/followers/{id}',
-                      action='followers', ckan_icon='group')
-            m.connect('dataset_activity', '/dataset/activity/{id}',
-                      action='activity', ckan_icon='time')
-            m.connect('/dataset/activity/{id}/{offset}', action='activity')
-            m.connect('dataset_groups', '/dataset/groups/{id}',
-                      action='groups', ckan_icon='group')
-            m.connect('/dataset/{id}.{format}', action='read')
-            m.connect('dataset_resources', '/dataset/resources/{id}',
-                      action='resources', ckan_icon='reorder')
-            m.connect('dataset_read', '/dataset/{id}', action='read',
-                      ckan_icon='sitemap')
-            m.connect('/dataset/{id}/resource/{resource_id}',
-                      action='resource_read')
-            m.connect('/dataset/{id}/resource_delete/{resource_id}',
-                      action='resource_delete')
-            m.connect('resource_edit', '/dataset/{id}/resource_edit/{resource_id}',
-                      action='resource_edit', ckan_icon='edit')
-            m.connect('/dataset/{id}/resource/{resource_id}/download',
-                      action='resource_download')
-            m.connect('/dataset/{id}/resource/{resource_id}/download/{filename}',
-                      action='resource_download')
-            m.connect('/dataset/{id}/resource/{resource_id}/embed',
-                      action='resource_embedded_dataviewer')
-            m.connect('/dataset/{id}/resource/{resource_id}/viewer',
-                      action='resource_embedded_dataviewer', width="960",
-                      height="800")
-            m.connect('/dataset/{id}/resource/{resource_id}/preview',
-                      action='resource_datapreview')
-            m.connect('views', '/dataset/{id}/resource/{resource_id}/views',
-                      action='resource_views', ckan_icon='reorder')
-            m.connect('new_view', '/dataset/{id}/resource/{resource_id}/new_view',
-                      action='edit_view', ckan_icon='edit')
-            m.connect('edit_view',
-                      '/dataset/{id}/resource/{resource_id}/edit_view/{view_id}',
-                      action='edit_view', ckan_icon='edit')
-            m.connect('resource_view',
-                      '/dataset/{id}/resource/{resource_id}/view/{view_id}',
-                      action='resource_view')
-            m.connect('/dataset/{id}/resource/{resource_id}/view/',
-                      action='resource_view')
 
         return map
 
