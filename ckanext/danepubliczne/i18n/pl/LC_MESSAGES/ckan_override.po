@@ -3111,11 +3111,9 @@ msgstr "powiązane elementy"
 
 #: ckan/templates/macros/form.html:125
 msgid ""
-"You can use <a href=\"http://daringfireball.net/projects/markdown/syntax\" "
-"target=\"_blank\">Markdown formatting</a> here"
+"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">Markdown formatting</a> here"
 msgstr ""
-"Możesz użyć <a href=\"http://daringfireball.net/projects/markdown/syntax\" "
-"target=\"_blank\">Markdown formatting</a> "
+"Możesz tutaj używać <a href=\"#markdown\" title=\"formatowanie Markdown - przewodnik\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">formatowania Markdown</a> here"
 
 #: ckan/templates/macros/form.html:264
 msgid "This field is required"
