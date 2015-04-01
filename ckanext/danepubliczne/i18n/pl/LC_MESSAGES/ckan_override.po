@@ -2548,6 +2548,12 @@ msgstr "Własne pole (puste)"
 msgid "Custom Field"
 msgstr "Własne pole"
 
+msgid "Key"
+msgstr "Klucz"
+
+msgid "Value"
+msgstr "Wartość"
+
 #: ckan/templates/development/snippets/form.html:22
 msgid "Markdown"
 msgstr "Markdown"
@@ -3369,7 +3375,7 @@ msgstr "Utwórz Zbiór Danych "
 
 #: ckan/templates/package/base_form_page.html:17
 msgid "What are datasets?"
-msgstr "czym są zbiory danych"
+msgstr "Czym są zbiory danych"
 
 #: ckan/templates/package/base_form_page.html:20
 msgid ""

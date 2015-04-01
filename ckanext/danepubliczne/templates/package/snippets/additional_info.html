@@ -40,7 +40,7 @@
       <div class="list">
         <span class="dataset-label">{{ _("Version") }}</span>
         <span class="dataset-details">{{ pkg_dict.version }}</span>
-        </div>
+      </div>
       {% endif %}
       #}
 
@@ -53,6 +53,11 @@
       {% endif %}
       #}
 
+      <div class="list">
+        <span class="dataset-label">{{ _("Category") }}</span>
+        <span class="dataset-details"><a href="{{ h.url_for('group_read', id=pkg_dict.category) }}">{{ h.dp_translate_facet(pkg_dict.category, 'groups') }}</a></span>
+      </div>
+
       {% if pkg_dict.metadata_modified %}
       <div class="list">
         <span class="dataset-label">{{ _("Last Updated") }}</span>
@@ -64,15 +69,15 @@
       <div class="list">
         <span class="dataset-label">{{ _("Created") }}</span>
         <span class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</span>
-        </div>
+      </div>
       {% endif %}
 
       {% block extras scoped %}
         {% for extra in h.sorted_extras(pkg_dict.extras) %}
           {% set key, value = extra %}
           <div class="list">
-            <span class="dataset-label">{{ _("Category") }}</span>
-            <span class="dataset-details">{{ pkg_dict.category }}</span>
+            <span class="dataset-label">{{ key|title }}</span>
+            <span class="dataset-details">{{ value }}</span>
             </div>
         {% endfor %}
       {% endblock %}

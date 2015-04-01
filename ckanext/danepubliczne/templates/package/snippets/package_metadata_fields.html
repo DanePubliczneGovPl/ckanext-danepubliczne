@@ -8,6 +8,10 @@
 
   {{ form.select('update_frequency', label=_('Update frequency'), id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
 
+  {% block package_metadata_fields_custom %}
+    {{ super() }}
+  {% endblock %}
+
   <div class="panel panel-default">
     <h3 class="panel-title">{% trans %}Specify data reuse conditions{% endtrans %}</h3>
 

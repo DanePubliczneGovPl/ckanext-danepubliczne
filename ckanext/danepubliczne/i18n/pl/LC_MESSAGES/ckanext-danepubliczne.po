@@ -578,6 +578,28 @@ msgstr ""
 "Wpisz swój adres e-mail,\n"
 "aby otrzymać instrukcje resetowania hasła."
 
+# Częstotliwość aktualizacji
+msgid "Daily"
+msgstr "Codzienna"
+
+msgid "Every Half Year"
+msgstr "Co pół roku"
+
+msgid "Monthly"
+msgstr "Miesięczna"
+
+msgid "Not Applicable"
+msgstr "Nie dotyczy"
+
+msgid "Quarterly"
+msgstr "Kwartalna"
+
+msgid "Weekly"
+msgstr "Tygodniowa"
+
+msgid "Yearly"
+msgstr "Coroczna"
+
 # #############
 # Overriding CKAN
 msgid "Organizations"
@@ -591,4 +613,7 @@ msgstr "Kategorie"
 
 msgid "Website"
 msgstr "Strona internetowa"
+
+msgid "Custom Field"
+msgstr "Dodatkowa metadana"
 
