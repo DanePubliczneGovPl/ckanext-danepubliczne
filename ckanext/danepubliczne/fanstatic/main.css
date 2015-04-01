@@ -416,6 +416,10 @@ input[type=checkbox]:checked + .checkbox:before {
     padding: 70px 0;
 }
 
+.site-footer .attribution strong {
+  display: block;
+}
+
 .footer-links ul li {
     margin-bottom: 10px;
 }
