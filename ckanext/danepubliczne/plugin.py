@@ -76,6 +76,8 @@ class DanePubliczne(p.SingletonPlugin):
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
                      action='dashboard_search_history', ckan_icon='list')
+            m.connect('user_dashboard_account', '/dashboard/account',
+                     action='read', ckan_icon='user_grey')
 
         with SubMapper(map, controller='package') as m:
             m.connect('dataset_search', '/dataset', action='search',

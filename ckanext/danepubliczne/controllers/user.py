@@ -280,6 +280,36 @@ class UserController(base_user.UserController):
 
         return render('user/request_reset.html')
 
+    def read(self, id=None):
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'auth_user_obj': c.userobj,
+                   'for_view': True}
+        data_dict = {'id': id,
+                     'user_obj': c.userobj,
+                     'include_datasets': True,
+                     'include_num_followers': True}
+
+        context['with_related'] = True
+
+        self._setup_template_variables(context, data_dict)
+
+        # The legacy templates have the user's activity stream on the user
+        # profile page, new templates do not.
+        if h.asbool(config.get('ckan.legacy_templates', False)):
+            c.user_activity_stream = get_action('user_activity_list_html')(
+                context, {'id': c.user_dict['id']})
+
+        return render('user/dashboard_account.html', extra_vars={'userd': c.user_dict})
+
+    def _setup_template_variables(self, context, data_dict):
+        super(UserController, self)._setup_template_variables(context, data_dict)
+
+        about = c.user_dict['about']
+        print about
+        if about:
+            of = json.loads(about)
+            c.user_dict.update(of)
+
 def convert_to_json(field):
     def f(key, data, errors, context):
         j = data.get((field,), {})

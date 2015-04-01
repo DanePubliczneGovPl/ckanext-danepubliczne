@@ -4359,17 +4359,17 @@ msgstr "Aktualności"
 #: ckan/templates/user/dashboard.html:20
 #: ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
-msgstr "Mój zbiór danych"
+msgstr "Moje zbiory danych"
 
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
 msgid "My Organizations"
-msgstr "Moja Organizacja"
+msgstr "Moje Organizacje"
 
 #: ckan/templates/user/dashboard.html:22
 #: ckan/templates/user/dashboard_groups.html:12
 msgid "My Groups"
-msgstr "Moja grupa"
+msgstr "Moje grupy"
 
 #: ckan/templates/user/dashboard.html:39
 msgid "Activity from items that I'm following"
