@@ -1,13 +1,5 @@
 {% extends "package/edit_base.html" %}
 
-{% block styles %}
-  {{ super() }}
-
-  {% resource 'dane_publiczne/newdataset.css' %}
-{% endblock %}
-
-{% block wrapper_class %} newdataset{% endblock %}
-
 {% block primary_content %}
   <h1 class="hide-heading">{{ _('Create new datasets') }}</h1>
   <section class="module">
