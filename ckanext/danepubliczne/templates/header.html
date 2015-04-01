@@ -52,9 +52,9 @@
   <ul class="nav nav-pills">
     {% block header_site_navigation_tabs %}
       {{ h.build_nav_main(
-        ('search', _('Datasets')),
+        ('dataset_search', _('Datasets')),
         ('organizations_index', _('Organizations')),
-        ('article_search', _('Articles')),
+        ('article_search', _('Knowledge base')),
         ('about', _('About'))
       ) }}
     {% endblock %}

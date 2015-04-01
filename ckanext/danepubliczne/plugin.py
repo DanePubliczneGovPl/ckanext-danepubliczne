@@ -88,8 +88,13 @@ class DanePubliczne(p.SingletonPlugin):
 
         # TODO ckan-dev ability to override controller from config
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.package:PackageController') as m:
+            m.connect('dataset_search', '/dataset', action='search',
+                      highlight_actions='index search read'),
+            m.connect('article_search', '/dataset', action='search',
+                      highlight_actions='index search read'),
             m.connect('search', '/dataset', action='search',
-                      highlight_actions='index search')
+                      highlight_actions='index search read'),
+
             m.connect('add dataset', '/dataset/new', action='new')
             m.connect('/dataset/{action}',
                       requirements=dict(action='|'.join([

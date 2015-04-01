@@ -1,4 +1,6 @@
 import re
+import copy
+from webhelpers.html import literal
 import ckan.new_authz as new_authz
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -6,7 +8,7 @@ import ckan.lib.navl.dictization_functions as df
 import ckan.lib.helpers as h
 import ckan.model as model
 from ckanext.qa.plugin import QAPlugin
-from ckan.common import _, g
+from ckan.common import _, g, c
 from ckan import logic
 from ckanext.fluent.validators import fluent_text, fluent_text_output
 
@@ -81,6 +83,46 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             return False
 
         ckan.new_authz.has_user_permission_for_group_or_org = new_has_user_permission_for_group_or_org
+
+
+        def new_make_menu_item(menu_item, title, **kw):
+            ''' build a navigation item used for example breadcrumbs
+
+            outputs <li><a href="..."></i> title</a></li>
+
+            :param menu_item: the name of the defined menu item defined in
+            config/routing as the named route of the same name
+            :type menu_item: string
+            :param title: text used for the link
+            :type title: string
+            :param **kw: additional keywords needed for creating url eg id=...
+
+            :rtype: HTML literal
+
+            This function is called by wrapper functions.
+            '''
+            _menu_items = config['routes.named_routes']
+            if menu_item not in _menu_items:
+                raise Exception('menu item `%s` cannot be found' % menu_item)
+            item = copy.copy(_menu_items[menu_item])
+            item.update(kw)
+            active = h._link_active(item)
+
+            if c.controller == 'ckanext.danepubliczne.controllers.package:PackageController' and c.action == 'search':
+                active = c.page[0]['type'] == menu_item[:-7]
+
+            needed = item.pop('needed')
+            for need in needed:
+                if need not in kw:
+                    raise Exception('menu item `%s` need parameter `%s`'
+                                    % (menu_item, need))
+            link = h._link_to(title, menu_item, suppress_active_class=True, **item)
+            if active:
+                return literal('<li class="active">') + link + literal('</li>')
+            return literal('<li>') + link + literal('</li>')
+
+        # TODO ckan-dev ability to override controller from config
+        h._make_menu_item = new_make_menu_item
 
 
 
