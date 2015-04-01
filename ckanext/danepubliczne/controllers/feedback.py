@@ -42,7 +42,7 @@ class FeedbackController(base.BaseController):
         ]
         return items
 
-    def submit(self):
+    def data_feedback(self):
         data = request.POST
         if not data.get('source_type') in ['dataset'] or not data.get('source_id'):
             base.abort(400)
@@ -74,12 +74,35 @@ class FeedbackController(base.BaseController):
         # pkg.maintainer_email
         mail_from = config.get('smtp.mail_from')
 
-        # TODO _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg, cc={mail_from: None})
-        _mail_recipient(author['fullname'], 'krzysztof.madejski@epf.org.pl', g.site_title, g.site_url, subject, msg, cc={'krzysztof.madejski@epf.org.pl': None})
+        _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg, cc={mail_from: None})
         #mailer.mail_recipient(author['display_name'], author['email'], subject, msg)
 
         h.flash_success(_('Thank you for your feedback!'))
         h.redirect_to(source_url)
+
+    def new_dataset_feedback(self):
+        data = request.POST
+        if not data.get('came_from'):
+            base.abort(400)
+
+        source_url = data['came_from']
+
+        feedback = data.get('feedback', '').strip()
+        email = data.get('email', '').strip()
+
+        if not feedback:
+            h.flash_error(_('Please provide your feedback'))
+            h.redirect_to(str(source_url))
+
+        msg = get_new_dataset_feedback_body(feedback, email)
+        subject = _('Proposition for new dataaset')
+
+        mail_from = config.get('smtp.mail_from')
+
+        _mail_recipient(g.site_title, mail_from, g.site_title, g.site_url, subject, msg)
+
+        h.flash_success(_('Thank you for your feedback!'))
+        h.redirect_to(str(source_url))
 
     def reset_config(self):
         if 'cancel' in request.params:
@@ -117,6 +140,19 @@ class FeedbackController(base.BaseController):
         vars = {'data': data, 'errors': {}, 'form_items': items}
         return base.render('admin/config.html',
                            extra_vars = vars)
+
+def get_new_dataset_feedback_body(feedback, email=''):
+    body = _(
+    "User {email} has sent proposition for a new dataset:\n"
+    "\n"
+    "{feedback}\n"
+    )
+
+    d = {
+        'feedback': feedback,
+        'email': email
+        }
+    return body.format(**d)
 
 def get_feedback_body(feedback, pkg_dict, source_url, email=''):
     body = _(

@@ -24,9 +24,10 @@
       <a class="btn btn-link" href="#" target="_self">{{ _('read more about API') }}</a>
     </div>
     <div class="attribution span5">
-      <h2>{{ _('You haven\'t find here what you were looking for?') + ' ' + _('Propose new dataset') }}</h2>
-
-      <p>{{ _('Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.') }}</p>
+      <h2>{{ _('You haven\'t find here what you were looking for?') + ' ' + _('Propose new dataset') + '!' }}</h2>
+      <div class="new_dataset_feedback">
+      {% snippet 'snippets/new_dataset_feedback_form.html' %}
+      </div>
     </div>
   </div>
 {% endblock %}

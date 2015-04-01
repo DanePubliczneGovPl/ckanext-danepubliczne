@@ -449,6 +449,32 @@ input[type=checkbox]:checked + .checkbox:before {
     text-shadow: none;
 }
 
+.site-footer .new_dataset_feedback textarea,
+.site-footer .new_dataset_feedback input {
+    background-color: black;
+    color: white;
+    border-color: white;
+    width: 100%;
+}
+.site-footer .new_dataset_feedback label {
+    visibility: hidden;
+    height: 0px;
+}
+.site-footer .new_dataset_feedback .btn,
+.site-footer .new_dataset_feedback .btn:focus,
+.site-footer .new_dataset_feedback .btn:active,
+.site-footer .new_dataset_feedback .btn.disabled,
+.site-footer .new_dataset_feedback .btn[disabled] {
+    background-color: black;
+    color: #ffffff;
+    border-color: white;
+    border-width: 1px;
+}
+
+.site-footer .new_dataset_feedback .btn:hover {
+    background-color: #AEAEAE;
+}
+
 @media (max-width: 480px) {
     .masthead .header-image {
         width: 100%;
