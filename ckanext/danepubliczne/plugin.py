@@ -8,6 +8,7 @@ import paste.deploy.converters
 from pylons import config
 from routes.mapper import SubMapper
 import ckan.lib.app_globals as app_globals
+from ckan.common import _
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -28,6 +29,8 @@ class DanePubliczne(p.SingletonPlugin):
         for locale in h.get_available_locales():
             lang = locale.language
             app_globals.auto_update += ['ckan.site_intro_text-' + lang, 'ckan.site_about-' + lang]
+
+
 
     p.implements(p.IRoutes, inherit=True)
 
@@ -51,7 +54,8 @@ class DanePubliczne(p.SingletonPlugin):
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
                      action='dashboard_search_history', ckan_icon='list')
 
-        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='submit')
+        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
+        map.connect('new_dataset_feedback_submit', '/new_dataset_feedback', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='new_dataset_feedback')
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.group:GroupController') as m:
             m.connect('group_index', '/group', action='index',
@@ -187,3 +191,8 @@ class DanePubliczne(p.SingletonPlugin):
             or (base.request.urlvars['controller'] == 'user' and base.request.urlvars['action'][:9] == 'dashboard')
 
     # TODO ckan-dev What is the preferred way to make multilingual groups / datasets /tags: fluent or multilingual?
+
+
+    p.implements(p.IAuthenticator, inherit=True)
+    def login(self):
+        h.flash_notice(_('We use cookies to handle logged-in users'))
