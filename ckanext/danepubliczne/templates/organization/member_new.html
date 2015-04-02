@@ -24,7 +24,7 @@
             <input id="username" name="username" type="text" value="{{ user.name }}"
             disabled="True" class="control-medium">
           {% else %}
-            <input id="username" type="text" name="username" placeholder="Username"
+            <input id="username" type="text" name="username" placeholder="{{ _('User name or email') }}"
             value="" class="control-medium" data-module="autocomplete" data-module-label="fullname_with_email"
             data-module-source="/api/2/util/user/autocomplete_email?q=?">
           {% endif %}

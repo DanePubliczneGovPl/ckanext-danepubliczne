@@ -221,15 +221,21 @@ class GroupController(base_group.GroupController):
                 email = data_dict.get('email')
 
                 if email:
-                    user_data_dict = {
-                        'email': email,
-                        'group_id': data_dict['id'],
-                        'role': data_dict['role']
-                    }
-                    del data_dict['email']
-                    user_dict = self._action('user_invite')(context,
-                            user_data_dict)
-                    data_dict['username'] = user_dict['name']
+                    # check if user exists
+                    user = context['session'].query(model.User).filter_by(email=email, state='active').first()
+                    if user:
+                        data_dict['username'] = user.name
+
+                    else:
+                        user_data_dict = {
+                            'email': email,
+                            'group_id': data_dict['id'],
+                            'role': data_dict['role']
+                        }
+                        del data_dict['email']
+                        user_dict = self._action('user_invite')(context,
+                                user_data_dict)
+                        data_dict['username'] = user_dict['name']
 
                 c.group_dict = self._action('group_member_create')(context, data_dict)
 
