@@ -479,6 +479,34 @@ input[type=checkbox]:checked + .checkbox:before {
     background-color: #AEAEAE;
 }
 
+.add-member-form .control-label {
+  text-align: right;
+  margin-right: 15px;
+  float: left;
+}
+.add-member-form .controls {
+  margin-left: auto;
+  float: left;
+}
+.add-member-or {
+  float: none;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  width: 7%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: bold;
+}
+.add-member-form .row-fluid .control-group {
+  float: none;
+  width: 45%;
+}
+.add-member-form .row-fluid .select2-container,
+.add-member-form .row-fluid input {
+  width: 100% !important;
+}
+
 @media (max-width: 480px) {
     .masthead .header-image {
         width: 100%;

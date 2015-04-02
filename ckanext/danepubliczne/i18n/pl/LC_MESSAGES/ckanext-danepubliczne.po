@@ -617,3 +617,25 @@ msgstr "Strona internetowa"
 msgid "Custom Field"
 msgstr "Dodatkowa metadana"
 
+msgid "Members"
+msgstr "Pracownicy"
+
+#: ckan/templates/group/member_new.html:8
+#: ckan/templates/organization/member_new.html:10
+msgid "Back to all members"
+msgstr "Powrót do listy pracowników"
+
+#: ckan/templates/group/member_new.html:10
+#: ckan/templates/organization/member_new.html:7
+#: ckan/templates/organization/member_new.html:12
+msgid "Edit Member"
+msgstr "Edytuj Pracownika"
+
+#: ckan/templates/group/member_new.html:10 ckan/templates/group/members.html:6
+#: ckan/templates/organization/member_new.html:7
+#: ckan/templates/organization/member_new.html:12
+#: ckan/templates/organization/member_new.html:62
+#: ckan/templates/organization/members.html:6
+msgid "Add Member"
+msgstr "Dodaj Pracownika"
+
