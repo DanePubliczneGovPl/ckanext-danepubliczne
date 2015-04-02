@@ -109,6 +109,7 @@ ckan.views.default_views = recline_view text_view
 ckanext-archiver.archive_dir = '/tmp/ckan-archive'
 ckanext-archiver.data_formats = 'all'
 
+ckan.extra_resource_fields=openness_score
 
 ## Front-End Settings
 ckan.site_title = Dane Publiczne
