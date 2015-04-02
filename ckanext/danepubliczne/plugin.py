@@ -4,12 +4,14 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 import ckan.lib.base as base
+import ckan.logic
+from ckan.common import _
+
 import paste.deploy.converters
 from pylons import config
 from pylons.util import class_name_from_module_name
 from routes.mapper import SubMapper
 import ckan.lib.app_globals as app_globals
-from ckan.common import _
 import sys, logging
 
 log = logging.getLogger(__name__)
@@ -39,7 +41,7 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IMiddleware, inherit=True)
     def make_middleware(self, app, config):
         # Hack it so our controllers pretend they are original ones! Buahahhaha!
-        overriden_controlers = ['package', 'user', 'admin', 'group']
+        overriden_controlers = ['package', 'user', 'admin', 'group', 'organization']
 
         for controller in overriden_controlers:
             # Pull the controllers class name, import controller
@@ -86,6 +88,10 @@ class DanePubliczne(p.SingletonPlugin):
         map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
         map.connect('new_dataset_feedback_submit', '/new_dataset_feedback', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='new_dataset_feedback')
 
+        with SubMapper(map, controller='ckanext.danepubliczne.controllers.api:UtilExtension', path_prefix='/api{ver:/1|/2|}',
+                   ver='/1') as m:
+            m.connect('/util/user/autocomplete_email', action='user_autocomplete_email')
+
         return map
 
 
@@ -120,3 +126,50 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IAuthenticator, inherit=True)
     def login(self):
         h.flash_notice(_('We use cookies to handle logged-in users'))
+
+
+
+    p.implements(p.IActions)
+    def get_actions(self):
+        return {
+            'user_autocomplete_email': user_autocomplete_email
+        }
+
+
+@ckan.logic.validate(ckan.logic.schema.default_autocomplete_schema)
+def user_autocomplete_email(context, data_dict):
+    '''Return a list of user names that contain a string.
+
+    :param q: the string to search for
+    :type q: string
+    :param limit: the maximum number of user names to return (optional,
+        default: 20)
+    :type limit: int
+
+    :rtype: a list of user dictionaries each with keys ``'name'``,
+        ``'fullname'``, and ``'id'``
+
+    '''
+    model = context['model']
+    user = context['user']
+
+    ckan.logic.check_access('user_autocomplete', context, data_dict)
+
+    q = data_dict['q']
+    limit = data_dict.get('limit', 20)
+
+    query = model.User.search(q, user_name=user)
+    query = query.filter(model.User.state != model.State.DELETED)
+    query = query.limit(limit)
+
+    user_list = []
+    for user in query.all():
+        result_dict = {}
+        for k in ['id', 'name', 'fullname', 'email']:
+            result_dict[k] = getattr(user, k)
+
+        result_dict['fullname_with_email'] = "%s <%s>" % (user.fullname, user.email)
+
+        user_list.append(result_dict)
+
+    return user_list

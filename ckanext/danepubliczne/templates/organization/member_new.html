@@ -25,8 +25,8 @@
             disabled="True" class="control-medium">
           {% else %}
             <input id="username" type="text" name="username" placeholder="Username"
-            value="" class="control-medium" data-module="autocomplete"
-            data-module-source="/api/2/util/user/autocomplete?q=?">
+            value="" class="control-medium" data-module="autocomplete" data-module-label="fullname_with_email"
+            data-module-source="/api/2/util/user/autocomplete_email?q=?">
           {% endif %}
         </div>
       </div>

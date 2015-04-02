@@ -192,3 +192,54 @@ class GroupController(base_group.GroupController):
 
         self._setup_template_variables(context, {'id':id},
             group_type=group_type)
+
+    def member_new(self, id):
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author}
+
+        #self._check_access('group_delete', context, {'id': id})
+        try:
+            data_dict = {'id': id}
+            data_dict['include_datasets'] = False
+            c.group_dict = self._action('group_show')(context, data_dict)
+            group_type = 'organization' if c.group_dict['is_organization'] else 'group'
+            c.roles = self._action('member_roles_list')(
+                context, {'group_type': group_type}
+            )
+
+            if request.method == 'POST':
+                data_dict = clean_dict(df.unflatten(
+                    tuplize_dict(parse_params(request.params))))
+                data_dict['id'] = id
+                data_dict['role'] = 'editor' # fixed
+
+                email = data_dict.get('email')
+
+                if email:
+                    user_data_dict = {
+                        'email': email,
+                        'group_id': data_dict['id'],
+                        'role': data_dict['role']
+                    }
+                    del data_dict['email']
+                    user_dict = self._action('user_invite')(context,
+                            user_data_dict)
+                    data_dict['username'] = user_dict['name']
+
+                c.group_dict = self._action('group_member_create')(context, data_dict)
+
+                self._redirect_to(controller='group', action='members', id=id)
+            else:
+                user = request.params.get('user')
+                if user:
+                    c.user_dict = get_action('user_show')(context, {'id': user})
+                    c.user_role = new_authz.users_role_for_group_or_org(id, user) or 'member'
+                else:
+                    c.user_role = 'member'
+        except NotAuthorized:
+            abort(401, _('Unauthorized to add member to group %s') % '')
+        except NotFound:
+            abort(404, _('Group not found'))
+        except ValidationError, e:
+            h.flash_error(e.error_summary)
+        return self._render_template('group/member_new.html')
