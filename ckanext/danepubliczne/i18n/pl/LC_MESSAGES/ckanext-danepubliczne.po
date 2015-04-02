@@ -53,7 +53,7 @@ msgstr ""
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:5
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:5
 msgid "Leave email if we should get back to you"
-msgstr "Zostaw, jeżeli mamy odpisać "
+msgstr "Zostaw email, jeżeli mamy odpisać "
 
 #: ckanext/danepubliczne/controllers/feedback.py:58
 #: ckanext/danepubliczne/controllers/feedback.py:94
