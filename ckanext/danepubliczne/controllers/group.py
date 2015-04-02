@@ -48,7 +48,12 @@ class GroupController(base_group.GroupController):
         else:
             q += ' groups:"%s"' % c.group_dict.get('name')
 
-        c.description_formatted = h.render_markdown(c.group_dict.get('description').get(h.lang()))
+        description = c.group_dict.get('description')
+        if description:
+            if group_type == 'group':
+                c.description_formatted = h.render_markdown(description.get(h.lang()))
+            else:
+                c.description_formatted = h.render_markdown(description)
 
         context['return_query'] = True
 
