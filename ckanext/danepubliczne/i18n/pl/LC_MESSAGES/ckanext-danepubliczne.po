@@ -141,7 +141,7 @@ msgstr "Warunki ponownego wykorzystywania informacji"
 
 #: ckanext/danepubliczne/schema/dataset.py:208
 msgid "No restrictions"
-msgstr "Bez ograniczeń"
+msgstr "Bez warunków"
 
 #: ckanext/danepubliczne/schema/dataset.py:209
 msgid "Inform about modifications"

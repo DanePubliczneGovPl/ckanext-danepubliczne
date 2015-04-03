@@ -7,6 +7,7 @@ import ckan.plugins.toolkit as tk
 import ckan.lib.navl.dictization_functions as df
 import ckan.lib.helpers as h
 import ckan.model as model
+from paste.deploy.converters import asbool
 from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g, c, request
 from ckan import logic
@@ -198,7 +199,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         facets_dict['res_type'] = _('Resource types')
         facets_dict['res_extras_openness_score'] = _('Openess Score')
-        facets_dict['vocab_reuse_conditions'] = _('Restrictions on reuse')
+        facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
 
         return facets_dict
 
@@ -223,6 +224,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         elif facet == 'vocab_reuse_conditions':
             return cls.h_vocab_reuse_conditions_captions()[label]
+
+        elif facet == 'has_any_reuse_conditions':
+            if asbool(label):
+                return _('Restrictions set')
+            else:
+                return _('No restrictions')
 
         return label
 
