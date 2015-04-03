@@ -21,7 +21,7 @@ class AdminController(base_admin.AdminController):
 
         items = [
             {'name': 'ckan.site_title', 'control': 'input', 'label': _('Site Title'), 'placeholder': ''},
-            {'name': 'ckan.site_description', 'control': 'input', 'label': _('Site Tag Line'), 'placeholder': ''},
+            #{'name': 'ckan.site_description', 'control': 'input', 'label': _('Site Tag Line'), 'placeholder': ''},
             {'name': 'ckan.site_logo', 'control': 'input', 'label': _('Site Tag Logo'), 'placeholder': ''},
             {'name': 'ckanext.danepubliczne.maintenance_flash', 'control': 'input', 'label': _('Maintenance alert'), 'placeholder': _('Fill if there is planned maintenance break')},
         ]
