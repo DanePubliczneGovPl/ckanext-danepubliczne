@@ -46,7 +46,7 @@ class UserController(base_user.UserController):
             h.redirect_to(locale=None, controller='user', action='dashboard_datasets',
                       id=user_ref)
         else:
-            err = _('Login failed. Bad username or password.')
+            err = _('Login failed. Wrong email or password.')
             if h.asbool(config.get('ckan.legacy_templates', 'false')):
                 h.flash_error(err)
                 h.redirect_to(controller='user',
