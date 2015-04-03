@@ -252,6 +252,31 @@ class UserController(base_user.UserController):
 
         return render('user/edit.html')
 
+    def _save_edit(self, id, context):
+        try:
+            data_dict = logic.clean_dict(df.unflatten(
+                logic.tuplize_dict(logic.parse_params(request.params))))
+            context['message'] = data_dict.get('log_message', '')
+            data_dict['id'] = id
+
+            # MOAN: Do I really have to do this here?
+            if 'activity_streams_email_notifications' not in data_dict:
+                data_dict['activity_streams_email_notifications'] = False
+
+            user = get_action('user_update')(context, data_dict)
+            h.flash_success(_('Profile updated'))
+            h.redirect_to('user_dashboard_account', id=user['name'])
+        except NotAuthorized:
+            abort(401, _('Unauthorized to edit user %s') % id)
+        except NotFound, e:
+            abort(404, _('User not found'))
+        except logic.DataError:
+            abort(400, _(u'Integrity Error'))
+        except ValidationError, e:
+            errors = e.error_dict
+            error_summary = e.error_summary
+            return self.edit(id, data_dict, errors, error_summary)
+
     def request_reset(self):
         context = {'model': model, 'session': model.Session, 'user': c.user,
                    'auth_user_obj': c.userobj}
