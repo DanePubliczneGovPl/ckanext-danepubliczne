@@ -4,8 +4,12 @@
 
 {% block styles %}
   {{ super() }}
-
   {% resource 'dane_publiczne/list.css' %}
+{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {% include "group/snippets/feeds.html" %}
 {% endblock %}
 
 {% set category_title = group.get('title_i18n',{})[h.lang()] or group.title %}
@@ -86,10 +90,6 @@
             <aside class="dataset-filters span3">
               {% block secondary_content %}
                 <h2>{{ _('Filters') }}</h2>
-                  {% block links %}
-                    {{ super() }}
-                    {% include "group/snippets/feeds.html" %}
-                  {% endblock %}
               {% endblock %}
             </aside>
             <div class="dataset-result span9 pull-right">

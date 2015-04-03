@@ -8,6 +8,11 @@
   {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
+{% block links %}
+  {{ super() }}
+  {% include "organization/snippets/feeds.html" %}
+{% endblock %}
+
 {% block subtitle %}{{ organization.display_name }} - {{ _('Organizations') }}{% endblock %}
 
 {%- block content %}
