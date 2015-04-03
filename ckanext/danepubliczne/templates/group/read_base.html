@@ -146,7 +146,7 @@
                       {% block content_action %}
                         {% if h.check_access('group_update', {'id': group.id}) %}
                           <div class="page_primary_action span9">
-                            {% link_for _('Create Category'), controller='group', action='new', class_='btn'%}
+                            {% link_for _('Add Category'), controller='group', action='new', class_='btn'%}
                             {% link_for _('Manage'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
                           </div>
                         {% endif %}

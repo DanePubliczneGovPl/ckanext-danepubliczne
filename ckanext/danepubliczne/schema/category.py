@@ -40,7 +40,9 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             categories2.append(c)
 
             if c.get('title_i18n'):
-                c['title'] = c['title_i18n'][self.h_default_locale()]
+                c['title'] = c['title_i18n'][h.lang()]
+            else:
+                c['title'] = c['display_name    ']
 
         return categories2
 
