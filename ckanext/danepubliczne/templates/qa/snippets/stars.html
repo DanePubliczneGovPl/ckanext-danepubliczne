@@ -15,7 +15,7 @@ reason - A reason why the dataset doesn't have a rating.
     <a href="http://5stardata.info/">
     <span class="star-rating-stars">
       {%- for index in range(5) -%}
-        {%- if index <= stars -%}
+        {%- if index < stars -%}
         <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" />
         {%- else -%}
         <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" />
