@@ -55,6 +55,7 @@
             {% endblock %}
 
               {% block primary %}
+                <div class="dataset-result {% if self.secondary()|trim == '' %}span12{% else %}span9{% endif %}">
                 {% block primary_content %}
                   <article class="module">
                     {% block page_header %}
@@ -80,6 +81,7 @@
                     </div>
                   </article>
                 {% endblock %}
+                </div>
               {% endblock %}
 
               {% block secondary %}

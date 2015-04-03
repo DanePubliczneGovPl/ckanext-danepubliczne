@@ -3,6 +3,7 @@
 
 <form class="dataset-form form-horizontal" method="post" action="{{ action }}" data-module="basic-form">
   {% block errors %}{{ form.errors(error_summary) }}{% endblock %}
+  <input type="hidden" name="_ckan_phase" value="dataset_new_1" /> {# it is needed for tags to be saved #}
 
   {% block basic_fields %}
     {% snippet 'article/snippets/package_basic_fields.html', data=data, errors=errors, licenses=c.licenses, groups_available=c.groups_available %}

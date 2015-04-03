@@ -2,6 +2,12 @@
 
 {% set pkg = c.pkg_dict %}
 
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'dane_publiczne/singleitem.css' %}
+{% endblock %}
+
 {% block primary_content_inner %}
   {{ super() }}
   {% block package_description %}

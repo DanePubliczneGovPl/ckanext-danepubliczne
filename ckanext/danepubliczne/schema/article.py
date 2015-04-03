@@ -71,7 +71,8 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
-            'license_id': [not_empty, unicode]
+            'license_id': [not_empty, unicode],
+            'tag_string': schema['tag_string']
         }
 
         return schema
@@ -104,9 +105,8 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     def edit_template(self):
         return 'article/edit.html'
 
-    #
-    # def search_template(self):
-    # return 'article/search.html'
+    def search_template(self):
+        return 'article/search.html'
     #
     # def history_template(self):
     #     return 'article/history.html'

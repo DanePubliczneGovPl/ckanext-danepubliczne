@@ -4,7 +4,7 @@
 
 {% block breadcrumb_content_selected %} class="active"{% endblock %}
 
-{% block subtitle %}{{ _('Articles') }}{% endblock %}
+{% block subtitle %}{{ _('Knowledge base') }}{% endblock %}
 
 {% block breadcrumb_content %}
   {% if pkg %}
@@ -14,11 +14,11 @@
       <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
       <li>{% link_for organization, controller='organization', action='read', id=pkg.organization.name %}</li>
     {% else %}
-      <li>{% link_for _('Articles'), controller='package', action='search' %}</li><!-- TODO correct link -->
+      <li>{% link_for _('Knowledge base'), named_route='article_search' %}</li>
     {% endif %}
-    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset, controller='package', action='read', id=pkg.name %}</li>
+    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset, named_route='article_read', id=pkg.name %}</li>
   {% else %}
-    <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
-    <li class="active"><a href="javascript:void(0);">{{ _('Create Dataset') }}</a></li>
+    <li>{% link_for _('Knowledge base'), named_route='article_search' %}</li>
+    <li class="active"><a href="javascript:void(0);">{{ _('Add Article') }}</a></li>
   {% endif %}
 {% endblock %}

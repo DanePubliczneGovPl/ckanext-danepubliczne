@@ -1,0 +1,9 @@
+{% extends "package/search.html" %}
+{% import 'macros/form.html' as form %}
+
+{% block subtitle %}{{ _("Knowledge base") }}{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Knowledge base'), named_route = 'article_search', highlight_actions = 'new index') }}</li>
+{% endblock %}
