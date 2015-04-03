@@ -4,6 +4,7 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 import ckan.lib.base as base
+import ckan.new_authz as new_authz
 import ckan.logic
 from ckan.common import _
 
@@ -132,9 +133,19 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IActions)
     def get_actions(self):
         return {
-            'user_autocomplete_email': user_autocomplete_email
+            'user_autocomplete_email': user_autocomplete_email,
+            'member_list': member_list
         }
 
+
+    p.implements(p.IAuthFunctions)
+    def get_auth_functions(self):
+        return {
+            # Only sysadmins can list users
+            'user_list': ckan.logic.auth.get.sysadmin,
+            'member_list': ckan.logic.auth.get.sysadmin,
+            'user_show': auth_user_show
+        }
 
 @ckan.logic.validate(ckan.logic.schema.default_autocomplete_schema)
 def user_autocomplete_email(context, data_dict):
@@ -173,3 +184,66 @@ def user_autocomplete_email(context, data_dict):
         user_list.append(result_dict)
 
     return user_list
+
+# Only sysadmins can list members
+def member_list(context, data_dict=None):
+    '''Return the members of a group.
+
+    The user must have permission to 'get' the group.
+
+    :param id: the id or name of the group
+    :type id: string
+    :param object_type: restrict the members returned to those of a given type,
+      e.g. ``'user'`` or ``'package'`` (optional, default: ``None``)
+    :type object_type: string
+    :param capacity: restrict the members returned to those with a given
+      capacity, e.g. ``'member'``, ``'editor'``, ``'admin'``, ``'public'``,
+      ``'private'`` (optional, default: ``None``)
+    :type capacity: string
+
+    :rtype: list of (id, type, capacity) tuples
+
+    :raises: :class:`ckan.logic.NotFound`: if the group doesn't exist
+
+    '''
+    model = context['model']
+
+    group = model.Group.get(ckan.logic.get_or_bust(data_dict, 'id'))
+    if not group:
+        raise ckan.logic.NotFound
+
+    obj_type = data_dict.get('object_type', None)
+    capacity = data_dict.get('capacity', None)
+
+    ckan.logic.check_access('member_list', context, data_dict)
+
+    q = model.Session.query(model.Member).\
+        filter(model.Member.group_id == group.id).\
+        filter(model.Member.state == "active")
+
+    if obj_type:
+        q = q.filter(model.Member.table_name == obj_type)
+    if capacity:
+        q = q.filter(model.Member.capacity == capacity)
+
+    trans = new_authz.roles_trans()
+
+    def translated_capacity(capacity):
+        try:
+            return trans[capacity]
+        except KeyError:
+            return capacity
+
+    return [(m.table_id, m.table_name, translated_capacity(m.capacity))
+            for m in q.all()]
+
+
+def auth_user_show(context, data_dict):
+    # Allow users to only see their profiles
+    success = False
+    if data_dict.get('id'):
+        success = context['user'] == data_dict['id']
+    elif data_dict.get('user_obj'):
+        success = context['user'] == data_dict['user_obj'].name
+
+    return {'success': success}
