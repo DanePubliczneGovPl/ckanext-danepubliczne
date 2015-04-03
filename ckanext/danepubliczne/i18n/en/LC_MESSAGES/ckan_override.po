@@ -32,3 +32,6 @@ msgstr "data providers"
 
 msgid "Groups"
 msgstr "Categories"
+
+msgid "eg. Gold Prices"
+msgstr "eg. Baza teleadresowa"
