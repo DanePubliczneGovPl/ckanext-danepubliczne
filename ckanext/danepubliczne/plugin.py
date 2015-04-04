@@ -4,9 +4,12 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 import ckan.lib.base as base
+import ckan.lib.activity_streams as activity_streams
 import ckan.new_authz as new_authz
 import ckan.logic
+import ckan.model as model
 from ckan.common import _
+from webhelpers.html import literal
 
 import paste.deploy.converters
 from pylons import config
@@ -36,6 +39,15 @@ class DanePubliczne(p.SingletonPlugin):
         for locale in h.get_available_locales():
             lang = locale.language
             app_globals.auto_update += ['ckan.site_intro_text-' + lang, 'ckan.site_about-' + lang]
+
+
+        # don't show user names in activity stream
+        def get_snippet_actor_org(activity, detail):
+            return literal('''<span class="actor">%s</span>'''
+            % (linked_org_for(activity['user_id'], 0, 30))
+            )
+
+        activity_streams.activity_snippet_functions['actor'] = get_snippet_actor_org
 
 
 
@@ -247,3 +259,23 @@ def auth_user_show(context, data_dict):
         success = context['user'] == data_dict['user_obj'].name
 
     return {'success': success}
+
+def linked_org_for(user, maxlength=0, avatar=20):
+    if user in [model.PSEUDO_USER__LOGGED_IN, model.PSEUDO_USER__VISITOR]:
+        return user
+    if not isinstance(user, model.User):
+        user_name = unicode(user)
+        user = model.User.get(user_name)
+        if not user:
+            return user_name
+
+    if user:
+        groups = user.get_groups('organization')
+        if not groups or len(groups) > 1:
+            return user.name if model.User.VALID_NAME.match(user.name) else user.id
+
+        org = groups[0] # Assuming user only in one org
+        displayname = org.display_name
+        if maxlength and len(displayname) > maxlength:
+            displayname = displayname[:maxlength] + '...'
+        return h.link_to(displayname, h.url_for(controller='organization', action='read', id=org.name))

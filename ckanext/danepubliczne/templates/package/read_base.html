@@ -2,6 +2,12 @@
 
 {% block subtitle %}{{ pkg.title or pkg.name }} - {{ super() }}{% endblock %}
 
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'dane_publiczne/singleitem.css' %}
+{% endblock %}
+
 {% block links -%}
   {{ super() }}
   <link rel="alternate" type="application/rdf+xml" href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>

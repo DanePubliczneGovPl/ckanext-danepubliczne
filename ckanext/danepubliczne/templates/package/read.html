@@ -2,12 +2,6 @@
 
 {% set pkg = c.pkg_dict %}
 
-{% block styles %}
-  {{ super() }}
-
-  {% resource 'dane_publiczne/singleitem.css' %}
-{% endblock %}
-
 {% block scripts %}
   {{ super() }}
   {% resource 'ckanext-qa/qa.js' %}
