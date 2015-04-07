@@ -576,7 +576,7 @@ msgstr ""
 "          "
 
 #: ckanext/danepubliczne/templates/package/snippets/tags.html:3
-msgid "Keywords"
+msgid "Tags"
 msgstr "Słowa kluczowe"
 
 #: ckanext/danepubliczne/templates/qa/snippets/stars.html:13
