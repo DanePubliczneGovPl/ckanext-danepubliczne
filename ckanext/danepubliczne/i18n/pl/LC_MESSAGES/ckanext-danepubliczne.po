@@ -673,13 +673,16 @@ msgstr "Tygodniowa"
 msgid "Yearly"
 msgstr "Coroczna"
 
-# #############
+# ##########################################################################
 # Overriding CKAN
 msgid "Organizations"
 msgstr "Dostawcy"
 
 msgid "organization"
 msgstr "dostawca"
+
+msgid "Organization"
+msgstr "Dostawca"
 
 msgid "organizations"
 msgstr "dostawcy"
