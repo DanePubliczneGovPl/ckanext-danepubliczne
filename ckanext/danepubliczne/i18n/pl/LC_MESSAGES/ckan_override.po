@@ -3694,7 +3694,7 @@ msgstr "Stan"
 #: ckan/templates_legacy/package/resource_read.html:84
 #: ckan/templates_legacy/package/resource_read.html:87
 msgid "Data API"
-msgstr "API"
+msgstr "API do danych"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:4
 #: ckan/templates/related/snippets/related_form.html:18
