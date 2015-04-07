@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block header_account_notlogged %}
-  <li>{% link_for _('Log in'), controller='user', action='login', came_from=request.environ['CKAN_CURRENT_URL'] %}</li>
+  <li>{% link_for _('Log in'), controller='user', action='login', came_from=h.url_for(request.environ['CKAN_CURRENT_URL']) %}</li>
 {% endblock %}
 
 {% block header_debug %}
