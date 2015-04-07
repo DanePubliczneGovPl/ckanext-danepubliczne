@@ -119,7 +119,7 @@ msgstr "Usuwanie zakończone"
 
 #: ckan/controllers/admin.py:157
 msgid "Action not implemented."
-msgstr "Akacja nie jest zaimplementowana."
+msgstr "Akcja nie została zaimplementowana."
 
 #: ckan/controllers/api.py:60 ckan/controllers/group.py:151
 #: ckan/controllers/home.py:29 ckan/controllers/package.py:127
@@ -330,7 +330,7 @@ msgstr "Brak uprawnień do wykonywania bulk update"
 
 #: ckan/controllers/group.py:434
 msgid "Unauthorized to create a group"
-msgstr "Brak uprawniań aby utworzyć grupę"
+msgstr "Brak uprawnień, aby utworzyć grupę"
 
 #: ckan/controllers/group.py:483 ckan/controllers/package.py:320
 #: ckan/controllers/package.py:811
@@ -348,7 +348,7 @@ msgstr "Błąd integralności"
 #: ckan/controllers/group.py:574
 #, python-format
 msgid "User %r not authorized to edit %s authorizations"
-msgstr "Użytkownik %r nie posiada uprawnień aby edycji %s autoryzacji "
+msgstr "Użytkownik %r nie posiada uprawnień edycji %s autoryzacji "
 
 #: ckan/controllers/group.py:591 ckan/controllers/group.py:603
 #: ckan/controllers/group.py:618 ckan/controllers/group.py:687
@@ -472,7 +472,7 @@ msgstr "Zbiór danych nie został znaleziony"
 #: ckan/controllers/package.py:1301 ckan/controllers/related.py:124
 #, python-format
 msgid "Unauthorized to read package %s"
-msgstr "Brak uprawnień aby wyświetlić pakiet %s"
+msgstr "Brak uprawnień, aby wyświetlić pakiet %s"
 
 #: ckan/controllers/package.py:367 ckan/controllers/package.py:369
 #: ckan/controllers/package.py:371
@@ -813,7 +813,7 @@ msgstr "Brak uprawnień do zresetowania hasła"
 
 #: ckan/controllers/user.py:471
 msgid "Invalid reset key. Please try again."
-msgstr "Błędy klucz do reset hasła. Spróbuj ponownie."
+msgstr "Błędy klucz do resetu hasła. Spróbuj ponownie."
 
 #: ckan/controllers/user.py:483
 msgid "Your password has been reset."
@@ -1810,11 +1810,11 @@ msgstr "Użytkownik %s nie posiada uprawnień do odczytania pakietu %s"
 #: ckan/logic/auth/get.py:141
 #, python-format
 msgid "User %s not authorized to read resource %s"
-msgstr "Użytkownik %s nie posiada uprawnień aby odczytać zasób %s"
+msgstr "Użytkownik %s nie posiada uprawnień, aby odczytać zasób %s"
 
 #: ckan/logic/auth/get.py:216
 msgid "You must be logged in to access your dashboard."
-msgstr "Musisz być zalogowany by dostać się do swojego dashboard."
+msgstr "Musisz być zalogowany, by dostać się do swojego panelu."
 
 #: ckan/logic/auth/update.py:33
 #, python-format
@@ -2355,7 +2355,7 @@ msgid ""
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
 "the modules that appear on your homepage.</p>"
 msgstr ""
-" <p><strong>Nazwa Portala:</strong> To nazwa tej instancji  CKAN  "
+" <p><strong>Nazwa Portalu:</strong> To nazwa tej instancji  CKAN  "
 "pojawia się w różnych miejscach na portalu CKAN.</p> <p><strong>Styl:</strong> "
 "Wybór z listy prostych zestawów graficznych "
 "pozwala na bardzo szybkie dostosowanie grafiki portala.</p> <p><strong>Site Tag Logo:</strong> Ten"
@@ -2411,7 +2411,7 @@ msgstr " Dalsze informacje <a       "
 
 #: ckan/templates/ajax_snippets/api_info.html:33
 msgid "Endpoints"
-msgstr "Dostępne url"
+msgstr "Dostępne URL"
 
 #: ckan/templates/ajax_snippets/api_info.html:37
 msgid ""
@@ -3208,7 +3208,7 @@ msgstr "Ten zbiór danych nie posiada opisu"
 
 #: ckan/templates/organization/bulk_process.html:90
 msgid "This organization has no datasets associated to it"
-msgstr "Ta organizacja nie ma powiązanych żadnych zbiorów danych"
+msgstr "Ta organizacja nie posiada żadnych zbiorów danych"
 
 #: ckan/templates/organization/bulk_process.html:99
 #: ckan/templates/package/search.html:30
@@ -3236,7 +3236,7 @@ msgstr "Ostatnia modyfikacja"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
-msgstr "Czy na pewno chcesz usunąć organizację - {name}? "
+msgstr "Czy na pewno chcesz usunąć organizację - {name}?"
 
 #: ckan/templates/organization/edit.html:6
 #: ckan/templates/organization/snippets/info.html:13
@@ -3393,7 +3393,7 @@ msgstr "Zobacz zbiór danych"
 
 #: ckan/templates/package/edit_base.html:18
 msgid "Edit metadata"
-msgstr "Edytuj meta dane"
+msgstr "Edytuj metadane"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Associate this group with this dataset"
@@ -3931,7 +3931,7 @@ msgstr "Podobne Formularze"
 
 #: ckan/templates/related/base_form_page.html:20
 msgid "What are related items?"
-msgstr "Czyym są elementy powiązane?"
+msgstr "Czym są elementy powiązane?"
 
 #: ckan/templates/related/base_form_page.html:22
 msgid ""
@@ -5072,7 +5072,7 @@ msgstr "Lista grup"
 
 #: ckan/templates_legacy/group/layout.html:35
 msgid "Login to Add a Group"
-msgstr "Zaloguj się aby dodać grupę"
+msgstr "Zaloguj się, aby dodać grupę"
 
 #: ckan/templates_legacy/group/new.html:5
 #: ckan/templates_legacy/group/new.html:6
@@ -5346,7 +5346,7 @@ msgstr ""
 
 #: ckan/templates_legacy/importer/importer.html:30
 msgid "Log in to use this tool"
-msgstr "Zaloguj się by uzyć narzędzia"
+msgstr "Zaloguj się, by użyć tego narzędzia"
 
 #: ckan/templates_legacy/importer/preview.html:6
 msgid "Preview - Importer"
