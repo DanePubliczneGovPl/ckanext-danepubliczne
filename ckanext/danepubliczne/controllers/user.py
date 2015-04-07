@@ -33,8 +33,6 @@ class UserController(base_user.UserController):
     def logged_in(self):
         # redirect if needed
         came_from = request.params.get('came_from', '')
-        if h.url_is_local(came_from):
-            return h.redirect_to(str(came_from))
 
         if c.user:
             context = None
@@ -43,6 +41,10 @@ class UserController(base_user.UserController):
             user_dict = get_action('user_show')(context, data_dict)
 
             user_ref = c.userobj.get_reference_preferred_for_uri()
+
+            if h.url_is_local(came_from) and came_from != '/':
+                return h.redirect_to(str(came_from))
+
             h.redirect_to(locale=None, controller='user', action='dashboard_datasets',
                       id=user_ref)
         else:
