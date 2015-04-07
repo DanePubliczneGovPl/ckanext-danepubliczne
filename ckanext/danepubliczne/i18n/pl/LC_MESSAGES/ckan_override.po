@@ -1027,58 +1027,58 @@ msgstr[2] "{mins} minuty temu"
 #: ckan/lib/formatters.py:114
 msgid "{hours} hour ago"
 msgid_plural "{hours} hours ago"
-msgstr[0] "{hours} godzin temu"
-msgstr[1] "{hours} godzina temu"
-msgstr[2] "{hours} godziny temu"
+msgstr[0] "{hours} godzinę temu"
+msgstr[1] "{hours} godziny temu"
+msgstr[2] "{hours} godzin temu"
 
 #: ckan/lib/formatters.py:120
 msgid "{days} day ago"
 msgid_plural "{days} days ago"
-msgstr[0] "{days} dni temu"
-msgstr[1] "{days} dzień temu"
+msgstr[0] "wczoraj"
+msgstr[1] "{days} dni temu"
 msgstr[2] "{days} dni temu"
 
 #: ckan/lib/formatters.py:123
 msgid "{months} month ago"
 msgid_plural "{months} months ago"
-msgstr[0] "{months} miesięcy temu"
-msgstr[1] "{months} miesiąc temu"
-msgstr[2] "{months} miesiące temu"
+msgstr[0] "{months} miesiąc temu"
+msgstr[1] "{months} miesiące temu"
+msgstr[2] "{months} miesiący temu"
 
 #: ckan/lib/formatters.py:125
 msgid "over {years} year ago"
 msgid_plural "over {years} years ago"
-msgstr[0] "blisko {years} lat temu"
-msgstr[1] "blisko {years} rok temu"
+msgstr[0] "blisko {years} rok temu"
+msgstr[1] "blisko {years} lata temu"
 msgstr[2] "blisko {years} lata temu"
 
 #: ckan/lib/formatters.py:138
 msgid "{month} {day}, {year}, {hour:02}:{min:02}"
-msgstr "{month} {day}, {year}, {hour:02}:{min:02}"
+msgstr "{day} {month} {year}, {hour:02}:{min:02}"
 
 #: ckan/lib/formatters.py:142
 msgid "{month} {day}, {year}"
-msgstr "{month} {day}, {year}"
+msgstr "{day} {month} {year}"
 
 #: ckan/lib/formatters.py:158
 msgid "{bytes} bytes"
-msgstr "{bytes} bytes"
+msgstr "{bytes} bajtów"
 
 #: ckan/lib/formatters.py:160
 msgid "{kibibytes} KiB"
-msgstr "{kibibytes} KiB"
+msgstr "{kibibytes} KB"
 
 #: ckan/lib/formatters.py:162
 msgid "{mebibytes} MiB"
-msgstr "{mebibytes} MiB"
+msgstr "{mebibytes} MB"
 
 #: ckan/lib/formatters.py:164
 msgid "{gibibytes} GiB"
-msgstr "{gibibytes} GiB"
+msgstr "{gibibytes} GB"
 
 #: ckan/lib/formatters.py:166
 msgid "{tebibytes} TiB"
-msgstr "{tebibytes} TiB"
+msgstr "{tebibytes} TB"
 
 #: ckan/lib/formatters.py:178
 msgid "{n}"
