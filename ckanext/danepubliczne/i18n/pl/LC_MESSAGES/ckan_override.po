@@ -3911,7 +3911,7 @@ msgstr "Czytaj zestaw danych w formie %s"
 #: ckan/templates/package/snippets/stages.html:25
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
-msgstr "Utówrz zbiór danych"
+msgstr "Utwórz zbiór danych"
 
 #: ckan/templates/package/snippets/stages.html:32
 #: ckan/templates/package/snippets/stages.html:36
