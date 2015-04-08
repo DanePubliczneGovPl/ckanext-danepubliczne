@@ -1,0 +1,9 @@
+{% import 'macros/form.html' as form %}
+
+<form method='post' action='{{ h.url_for("data_feedback_submit") }}' class='feedback-form'>
+  {{ form.textarea('feedback', label=_('Your feedback'), placeholder=_('What is your feedback on this dataset?')) }}
+  {{ form.input('email', label=_('Email'), placeholder = _('Leave email if we should get back to you')) }}
+  {{ form.hidden('source_type', pkg.type) }}
+  {{ form.hidden('source_id', pkg.id) }}
+  <button type="submit" class="btn btn-primary" name="send">{{ _('Send') }}</button>
+</form>

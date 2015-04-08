@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'dane_publiczne/reset.css' %}
+  {% resource 'dane_publiczne/main.css' %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+  {% block piwik %}
+    {{ h.piwik() }}
+  {% endblock %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% import 'macros/form.html' as form %}
+
+{% set username_error = true if error_summary %}
+{% set password_error = true if error_summary %}
+
+<form action="{{ action }}" method="post" class="form-horizontal">
+  {{ form.errors(errors=error_summary) }}
+
+  {{ form.input('login', label=_("Email"), id='field-login', value="", error=username_error, classes=["control-medium"]) }}
+
+  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"]) }}
+
+  <div class="control-group ">
+    <div class="controls">
+      <input id="field-remember" type="checkbox" name="remember" value="63072000" checked="checked">
+      <label class="checkbox" for="field-remember">{{ _("Remember me") }}</label>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <a class="btn btn-link pull-left"
+       href="{{ h.url_for(controller='user', action='request_reset') }}">{{ _('Forgot your password?') }}</a>
+    <button class="btn btn-primary" type="submit">{{ _('Login') }}</button>
+  </div>
+</form>

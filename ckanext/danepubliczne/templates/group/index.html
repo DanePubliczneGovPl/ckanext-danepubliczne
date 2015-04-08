@@ -1,0 +1,7 @@
+{% ckan_extends %}
+
+{% block subtitle %}{{ _('Categories') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Categories'), controller='group', action='index' %}</li>
+{% endblock %}

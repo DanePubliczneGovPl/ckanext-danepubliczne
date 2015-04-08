@@ -1,0 +1,214 @@
+.homepage [role="main"] {
+    padding: 0;
+}
+
+.homepage .hero {
+    padding: 0;
+}
+
+.homepage .hero .module-content:first-child {
+    padding-top: 0;
+}
+
+.homepage .hero .module-content.info {
+    padding: 75px 0 0;
+}
+
+.homepage .hero .module-content.info header h1 {
+    color: #157abe;
+    font-size: 43px;
+    font-weight: bold;
+    margin-bottom: 28px;
+    line-height: 1.1em;
+}
+
+.homepage .hero .module-content.info header p {
+    color: #434343;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.3em;
+}
+
+.homepage .hero .module-content.info .module-search {
+    background: none;
+    padding: 0;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+.homepage .hero .module-content.info .module-search .module-content {
+    background: none;
+    padding: 0;
+}
+
+.homepage .hero .module-content.info .module-search .module-content input {
+    font-size: 18px;
+    font-weight: normal;
+    color: #535353;
+    border-color: #157abe;
+    padding: 15px 22px;
+}
+
+.homepage .hero .module-content.info .module-search .module-content button i {
+    font-size: 22px;
+    color: #157abe;
+}
+
+.homepage .media-overlay {
+    display: none;
+}
+
+.homepage .categoriesBox {
+    padding: 25px 0;
+}
+
+.homepage .categoriesBox .categories {
+    width: 100%;
+    float: left;
+    padding: 0;
+}
+
+.homepage .categoriesBox .categories h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #434343;
+    margin-bottom: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.homepage .categoriesBox .categories .list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.homepage .categoriesBox .categories .box {
+    margin-left: 0;
+    border-width: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.homepage .categoriesBox .categories .category {
+    display: block;
+    height: 242px;
+    padding: 30px 25px;
+    text-decoration: none;
+    position: relative;
+}
+
+.homepage .categoriesBox .categories .category:hover{
+    background:rgba(0,0,0,.2);
+}
+
+.homepage .categoriesBox .categories .category .category-img {
+    max-width: 100px;
+    max-height: 80px;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+.homepage .categoriesBox .categories .category h3 {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2em;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 25px 30px;
+}
+
+.homepage .articlesBox {
+    border-top: 5px solid #009ae0;
+    background: #ffffff;
+    padding: 55px 0;
+}
+
+.homepage .articlesBox .articles {
+    width: 100%;
+    float: left;
+    padding: 0;
+}
+
+.homepage .articlesBox .articles h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #434343;
+    margin-bottom: 20px;
+}
+
+.homepage .articlesBox .articles .article {
+    font-size: 14px;
+    font-weight: normal;
+    color: #010101;
+}
+
+.homepage .articlesBox .articles .article h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.homepage .articlesBox .articles .article h3 a {
+    color: #010101;
+}
+
+.homepage .articlesBox .articles .article > small {
+    margin-bottom: 18px;
+    display: block;
+    width: 100%;
+}
+
+.homepage .articlesBox .articles .article p {
+    line-height: 1.2em;
+    margin-bottom: 12px;
+}
+
+.homepage .articlesBox .articles .article .btn {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 4px 16px;
+}
+
+@media (min-width: 768px) {
+    .homepage .media-overlay {
+        display: block;
+    }
+
+    .homepage .hero .module-content.info .module-search {
+        margin-bottom: 55px;
+    }
+
+    .homepage .categoriesBox {
+        background: #efefef;
+    }
+
+    .homepage .categoriesBox .categories .box {
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .homepage .categoriesBox {
+        padding-top: 55px;
+    }
+
+    .homepage .categoriesBox .categories h2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .homepage .categoriesBox .categories .box {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .categoriesBox .categories .box {
+        width: 25%;
+    }
+}

@@ -1,0 +1,193 @@
+.wrapper {
+    width: 100%;
+    margin: 0;
+}
+
+.newdataset {
+    border: 4px solid #e3e3e3;
+    background: #ffffff;
+    display: inline-block;
+}
+
+.newdataset h1,
+.newdataset h2,
+.newdataset h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1d1d1d;
+    line-height: 1.1em;
+}
+
+.newdataset h3 {
+    font-size: 18px;
+}
+
+.newdataset [class*="span"] {
+    margin-left: 0;
+}
+
+.newdataset .dataset-info {
+    background-color: #f9f9f9;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+.newdataset .dataset-info > section {
+    margin: 0;
+}
+
+.newdataset .dataset-info h2 {
+    border-width: 0;
+    padding: 40px 25px 20px;
+}
+
+.newdataset .dataset-info h2 i {
+    display: none;
+}
+
+.newdataset .dataset-info .module-content {
+    padding-top: 0;
+}
+
+.newdataset .dataset-info .module-content p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #000;
+}
+
+.newdataset .dataset-result {
+    width: 100%;
+}
+
+.newdataset .dataset-result > .module {
+    margin-top: 0;
+}
+
+.newdataset .dataset-result > .module > .module-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.newdataset .dataset-edit {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.newdataset .dataset-result .stages {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.newdataset .dataset-result .stages li {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.newdataset .dataset-result .stages li.complete:before,
+.newdataset .dataset-result .stages li.active:before {
+    color: #157abe;
+}
+
+.newdataset .dataset-result .stages li.active:after {
+    border-color: #157abe rgba(21, 122, 190, 0);
+}
+
+.newdataset .dataset-result .stages li.complete .highlight {
+    background: #2096e6;
+}
+
+.newdataset .dataset-result .stages li.active .highlight {
+    background: #157abe;
+}
+
+.newdataset .dataset-result .stages li .highlight {
+    line-height: 36px;
+    text-indent: 0;
+}
+
+select, textarea, input, .uneditable-input {
+    height: 29px;
+    padding: 5px 10px;
+    margin: 1px 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1em;
+}
+
+select {
+    padding: 5px;
+}
+
+.form-horizontal .control-group {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.form-horizontal .control-group.control-full {
+    margin-top: 15px;
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+    margin-top: -8px;
+}
+
+.panel {
+    padding: 20px 0;
+}
+
+.panel .panel-title {
+    padding: 20px 30px;
+    background: #AEAEAE;
+    margin: 0;
+}
+
+.panel .panel-body {
+    padding: 10px 30px 20px;
+    background: #EDEDED;
+}
+
+.panel .controls {
+    margin-left: 0;
+}
+
+.panel .control-label {
+    width: 100%;
+    text-align: left;
+}
+
+.newdataset .dataset-result .form-actions {
+    background: none;
+    border-top: 0;
+    padding: 20px 25px 0;
+    margin: 0;
+}
+
+.newdataset .dataset-result .form-actions .btn {
+    float: right;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 0 -25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .newdataset .dataset-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 270px;
+        height: 100%;
+        padding-bottom: 0;
+    }
+
+    .newdataset .dataset-result {
+        width: 875px;
+        margin-left: 270px;
+    }
+
+    .newdataset .dataset-result .stages {
+        margin-right: -25px;
+    }
+}

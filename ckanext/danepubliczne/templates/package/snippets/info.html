@@ -1,0 +1,34 @@
+{% if pkg %}
+  <section class="module module-narrow">
+    <div class="module context-info">
+      <div class="module-content">
+        <div class="nums">
+          <dl>
+            <dt>{{ _('Followers') }}</dt>
+            <dd>{{ h.SI_number_span(h.get_action('dataset_follower_count', {'id': pkg.id})) }}</dd>
+          </dl>
+        </div>
+        {% if not hide_follow_button %}
+          <div class="follow_button">
+            {{ h.follow_button('dataset', pkg.name) }}
+          </div>
+        {% endif %}
+        <div class="history_button">
+          <a href="{{ h.url_for('dataset_activity', id=pkg.name) }}" class="btn">
+            {{ _('History') }}
+          </a>
+        </div>
+
+        <div class="feedback">
+          <div class="feedback_button feedback-form-toggle">
+            <a href="#" data-toggle="ratings" data-target=".feedback-form-wrapper"
+                                               data-hide-text="{{ _('Hide feedback form') }}" class="btn">{{ _('Send feedback') }}</a>
+          </div>
+          <div class="feedback-form-wrapper js-hide">
+            {% snippet 'package/snippets/feedback_form.html', pkg=pkg, feedback_form_items=feedback_form_items %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

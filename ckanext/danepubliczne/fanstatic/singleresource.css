@@ -1,0 +1,103 @@
+.wrapper {
+    margin: 0;
+}
+
+.singleresource .module-resource {
+    border-bottom: none;
+}
+
+.singleresource .module-content {
+    padding: 0;
+}
+
+.singleresource .module-content p {
+    margin-bottom: 2px;
+}
+
+.singleresource .dataset-info,
+.singleresource .dataset-result {
+    display: none;
+}
+
+.singleresource h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    line-height: 1.1em;
+    margin-bottom: 12px;
+}
+
+.singleresource .qa-ratings {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000;
+    margin-bottom: 25px;
+    width: 100%;
+    display: inline-block;
+}
+
+.singleresource .qa-ratings span,
+.singleresource .qa-ratings p {
+    width: auto;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.singleresource .qa-ratings .rating-info-toggle {
+    padding-left: 10px;
+}
+
+.singleresource .qa-ratings .rating-info-wrapper {
+    width: 100%;
+    float: left;
+}
+
+.singleresource .ellipsis {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.singleresource .ellipsis a {
+    color: #157abe;
+}
+
+.singleresource .notes {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.singleresource .notes ul,
+.singleresource .notes ol {
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+
+.singleresource .notes ul li,
+.singleresource .notes ol li {
+    padding-left: 18px;
+}
+
+.singleresource .nav {
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.singleresource .ckanext-datapreview {
+    margin-top: 0;
+    padding-top: 10px;
+}
+
+.singleresource .resource-view {
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 0 -20px;
+    }
+}

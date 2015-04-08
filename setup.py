@@ -7,9 +7,8 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the relevant file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
-
 setup(
-    name='''ckanext-DanePubliczneGovPl''',
+    name='''ckanext-danepubliczne''',
 
     # Versions should comply with     .  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -52,7 +51,9 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=[],
+    install_requires=[
+        'biryani >=0.10.4, <0.11',
+    ],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -72,8 +73,13 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        dane_publiczne=ckanext.DanePubliczneGovPl.layout:Layout
-        dane_publiczne_organization=ckanext.DanePubliczneGovPl.schema.organization:OrganizationForm
-        dane_publiczne_dataset=ckanext.DanePubliczneGovPl.schema.dataset:DatasetForm
+        dane_publiczne=ckanext.danepubliczne.plugin:DanePubliczne
+        dane_publiczne_organization=ckanext.danepubliczne.schema.organization:OrganizationForm
+        dane_publiczne_dataset=ckanext.danepubliczne.schema.dataset:DatasetForm
+        dane_publiczne_categories=ckanext.danepubliczne.schema.category:Category
+        dane_publiczne_articles=ckanext.danepubliczne.schema.article:Article
+        piwik=ckanext.danepubliczne.piwik:PiwikPlugin
+        [babel.extractors]
+        ckan=ckan.lib.extract:extract_ckan
     ''',
 )

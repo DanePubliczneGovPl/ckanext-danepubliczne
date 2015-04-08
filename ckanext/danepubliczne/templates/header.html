@@ -1,0 +1,78 @@
+{% ckan_extends %}
+
+{% block header_account_logged %}
+  {% if c.userobj.sysadmin %}
+  <li>
+    <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+      <i class="icon-legal"></i>
+    </a>
+  </li>
+  {% endif %}
+  <li>
+    <a href="{{ h.url_for('user_dashboard') }}"
+       class="image" title="{{ _('View profile') }}">
+      <span class="username">{{ _('My account') }}</span>
+    </a>
+  </li>
+  {% block header_account_log_out_link %}
+    <li>
+      <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+        <span class="signout">{{ _('Log out') }}</span>
+      </a>
+    </li>
+  {% endblock %}
+{% endblock %}
+
+{% block header_account_notlogged %}
+  <li>{% link_for _('Log in'), controller='user', action='login', came_from=h.url_for(request.environ['CKAN_CURRENT_URL']) %}</li>
+{% endblock %}
+
+{% block header_debug %}
+  {% block flash %}
+    {% do h.dp_check_maintenance() %}
+    {% set flash_messages = h.flash.pop_messages() | list %}
+    <div class="flash-messages">
+      {% for message in flash_messages %}
+        <div class="container">
+          <div class="alert fade in {{ message.category }}">
+            {{ h.literal(message) }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endblock %}
+
+  {% if g.debug and not g.debug_supress_header %}
+    <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+  {% endif %}
+{% endblock %}
+
+{% block header_site_navigation %}
+<nav class="section navigation">
+  <ul class="nav nav-pills">
+    {% block header_site_navigation_tabs %}
+      {{ h.build_nav_main(
+        ('dataset_search', _('Datasets')),
+        ('organizations_index', _('Organizations')),
+        ('article_search', _('Knowledge base')),
+        ('about', _('About'))
+      ) }}
+    {% endblock %}
+  </ul>
+</nav>
+{% endblock %}
+
+{% block header_site_search %}
+  <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}"
+        method="get">
+    <div class="field">
+      <label for="field-sitewide-search">{{ _('Search Datasets') }}</label>
+      <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search datasets...') }}"/>
+      <button class="btn-search" type="submit"><i class="icon-search"></i></button>
+    </div>
+  </form>
+
+  <div class="section site-language">
+    {% snippet 'snippets/language_selector.html' %}
+  </div>
+{% endblock %}

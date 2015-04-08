@@ -1,0 +1,19 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {{ super() }}
+
+  {{ form.input('address_street', label=_('Street address'), id='field-address_street', placeholder=_('Street address with building no.'), value=data.address_street, error=errors.address_street, classes=['control-medium'], is_required=True) }}
+  {{ form.input('address_postal_code', label=_('Postal code'), id='field-address_postal_code', value=data.address_postal_code, error=errors.address_postal_code, classes=['control-medium'], is_required=True) }}
+  {{ form.input('address_city', label=_('City'), id='field-address_city', value=data.address_city, error=errors.address_city, classes=['control-medium'], is_required=True) }}
+
+  {{ form.input('website', label=_('Website'), id='field-website', placeholder=_('Main website of organization'), value=data.website, error=errors.website, classes=['control-medium'], is_required=True) }}
+  {{ form.input('email', label=_('E-mail'), id='field-email', placeholder=_('Main e-mail of your office'), value=data.email, error=errors.email, classes=['control-medium'], is_required=True) }}
+  {{ form.input('tel', label=_('Telephone'), id='field-tel', value=data.tel, error=errors.tel, classes=['control-medium'], is_required=True) }}
+  {{ form.input('fax', label=_('Fax'), id='field-fax', value=data.fax, error=errors.fax, classes=['control-medium'], is_required=True) }}
+  {{ form.input('regon', label=_('REGON number'), id='field-regon', value=data.regon, error=errors.regon, classes=['control-medium'], is_required=True) }}
+  {{ form.input('epuap', label=_('ePUAP account'), id='field-epuap', placeholder=_('Address of the ePUAP feedback account'), value=data.epuap, error=errors.epuap, classes=['control-medium'], is_required=True) }}
+{% endblock %}
+
+{% block custom_fields %}
+{% endblock %}

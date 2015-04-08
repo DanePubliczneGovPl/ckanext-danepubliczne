@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="ckan {{ c.__version__ }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Przerwa techniczna</title>
+        <style>
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Open Sans Light'), local('OpenSans-Light'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/DXI1ORHCpsQm3Vp6mXoaTRa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans'), local('OpenSans'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(/fonts/open-sans/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNShUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/MTP_ySUJH_bn48VBG8sNSha1RVmPjeKy21_GQJaLlJI.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBUOjZSKWg4xBWp_C_qQx0o.woff2) format('woff2'), url(/fonts/open-sans/k3k702ZOKiLJc3WVjuplzBa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: italic;
+            font-weight: 300;
+            src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxo05NJhCxBV64hQBJiatqx0.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxrsuoFAk0leveMLeqYtnfAY.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: italic;
+            font-weight: 400;
+            src: local('Open Sans Italic'), local('OpenSans-Italic'), url(/fonts/open-sans/xjAJXh38I15wypJXxuGMBqg5eI2G47JWe0-AuFtD150.woff2) format('woff2'), url(/fonts/open-sans/xjAJXh38I15wypJXxuGMBtIh4imgI8P11RFo6YPCPC0.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: italic;
+            font-weight: 600;
+            src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxt5wBDjbAC_0C3a56xIGvxo.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxmWeb5PoA5ztb49yLyUzH1A.woff) format('woff');
+        }
+
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxqsA81DAeuqoeYxDcSOJPMY.woff2) format('woff2'), url(/fonts/open-sans/PRmiXeptR36kaC0GEAetxoUt79146ZFaIJxILcpzmhI.woff) format('woff');
+        }
+        html{
+            min-height: 100%;
+            position: relative;
+            font-size: 100%;
+        }
+        body{
+            background: #FFFFFF;
+            border-top: 4px solid #539ECF;
+            font-family: "Open Sans",Arial,sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            color: #444;
+            margin: 0;
+        }
+        img{
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
+            border: none;
+        }
+        .masthead {
+            background: #FFFFFF;
+            color: #000000;
+            font-size: 16px;
+            font-weight: normal;
+            position: static;
+            margin-top: 40px;
+            margin-bottom: 0;
+            min-height: 62px;
+            display: block;
+
+        }
+        .masthead::before, .masthead::after {
+            display: table;
+            content: "";
+            line-height: 0;
+        }
+        .container{
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .container::before, .container::after {
+            display: table;
+            line-height: 0;
+            content: "";
+        }
+        .header-image{
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: 4px;
+            float: left;
+            display: block;
+        }
+        .hero{
+            padding: 0;
+            min-height: 350px;
+            position: relative;
+        }
+        .hero .module-content{
+            padding: 0 25px 20px;
+        }
+        .hero .module-content.info{
+            padding: 75px 0 0;
+        }
+        .hero header{
+            display: block;
+        }
+        .hero header h1 {
+            color: #157ABE;
+            font-size: 43px;
+            font-weight: bold;
+            line-height: 1.1em;
+            margin: 10px 0 28px;
+        }
+        .hero header p {
+            color: #434343;
+            font-size: 18px;
+            font-weight: normal;
+            line-height: 1.3em;
+            margin: 0 0 10px;
+        }
+        .hero .media-overlay {
+            display: block;
+            position: relative;
+            min-height: 35px;
+        }
+
+        @media (min-width: 1200px) {
+            .row {
+                margin-left: -30px;
+                *zoom: 1
+            }
+            .row:before, .row:after {
+                display: table;
+                line-height: 0;
+                content: ""
+            }
+            .row:after {
+                clear: both
+            }
+            [class*="span"] {
+                float: left;
+                min-height: 1px;
+                margin-left: 30px
+            }
+            .container {
+                width: 1170px
+            }
+            .span6 {
+                width: 570px;
+            }
+        }
+        @media (min-width: 980px){
+            .row {
+                margin-left: -20px;
+                *zoom: 1
+            }
+            .row:before, .row:after {
+                display: table;
+                line-height: 0;
+                content: ""
+            }
+            .row:after {
+                clear: both
+            }
+            [class*="span"] {
+                float: left;
+                min-height: 1px;
+                margin-left: 20px;
+            }
+            .container {
+                width: 940px
+            }
+            .span6 {
+                width: 460px;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            .row {
+                margin-left: -20px;
+                *zoom: 1;
+            }
+            .row:before, .row:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+            .row:after {
+                clear: both;
+            }
+            [class*="span"] {
+                float: left;
+                min-height: 1px;
+                margin-left: 20px;
+            }
+            .container {
+                width: 724px;
+            }
+            .span6 {
+                width: 352px;
+            }
+        }
+        @media (max-width: 767px) {
+            body{
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+            .container {
+                width: auto;
+            }
+            .row {
+                margin-left: 0
+            }
+            [class*="span"] {
+                display: block;
+                float: none;
+                width: 100%;
+                margin-left: 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box
+            }
+            .maintance .media-overlay{
+                display:none;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <header class="masthead">
+            <div class="container">
+                <hgroup class="header-image">
+                    <a class="logo" href="/"><img src="/logo/logo.png" alt="Dane Publiczne" title="Dane Publiczne"></a>
+                </hgroup>
+            </div>
+        </header>
+        <div class="maintance">
+            <div role="main" class="hero">
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <div class="module-content box info">
+                                <header>
+                                    <h1>Przerwa techniczna</h1>
+                                    <p>Trwa przerwa techniczna.</p>
+                                    <p>System będzie ponownie dostępny __ o godzinie __</p>
+                                </header>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="module-content box">
+                                <section class="media-overlay">
+                                    <img src="/logo/promoted-dane.png" alt="" height="453" width="524">
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
