@@ -53,7 +53,7 @@ msgstr ""
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:5
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:5
 msgid "Leave email if we should get back to you"
-msgstr "Zostaw email, jeżeli mamy odpisać "
+msgstr "Zostaw adres email, jeśli mamy się z Tobą skontaktować w razie pytań"
 
 #: ckanext/danepubliczne/controllers/feedback.py:58
 #: ckanext/danepubliczne/controllers/feedback.py:94
@@ -593,7 +593,10 @@ msgstr "Dowiedz się, co oznaczają te gwiazdki"
 
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid "What data would you like to see on our site?"
-msgstr "Jakie dane powinniśmy dodać do tego serwisu?"
+msgstr ""
+"Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w portalu. "
+"Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi dostawcami "
+"możliwość ich udostępnienia."
 
 #: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
 msgid "{number} article found for \"{query}\""
@@ -856,6 +859,7 @@ msgid "Create dataset"
 msgstr "Utwórz zbiór danych"
 
 #: ckan/lib/mailer.py:119
+#, python-format
 msgid ""
 "You have been invited to {site_title}. A user has already been createdto you "
 "with the username {user_name}. You can change it later.\n"
@@ -864,8 +868,11 @@ msgid ""
 "\n"
 "   {reset_link}\n"
 msgstr ""
-"Zapraszamy do współtworzenia serwisu {site_title}. Konto użytkownika zostało już dla Ciebie utworzone.\n"
+"W portalu {site_title} zostało utworzone konto na Twój adres mailowy.\n"
 "\n"
-"Aby zaakceptować to zaproszenie kliknij w poniższy link i ustaw swoje hasło do serwisu.\n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:\n"
 "\n"
-"   {reset_link}\n"
+"       {reset_link}s\n"
+
+msgid "Dear %s,"
+msgstr "Witaj%.0s,"

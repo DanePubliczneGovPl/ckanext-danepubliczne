@@ -1170,7 +1170,7 @@ msgstr "Nie określono formatu dla zasobu."
 #: ckan/lib/mailer.py:25
 #, python-format
 msgid "Dear %s,"
-msgstr "Drogi/Droga %s,"
+msgstr "Witaj %s,"
 
 #: ckan/lib/mailer.py:38
 #, python-format
@@ -1209,13 +1209,28 @@ msgid ""
 "       %(reset_link)s\n"
 "    "
 msgstr ""
-"Zostałeś zaproszony do %(site_title)s. Konto zostało  utworzone \n"
-"z nazwą użytkownika %(nazwa_użytkownika)y. Nazwę użytkownika można zmienić.  \n"
+"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
 "\n"
-"Aby zaakceptować zaproszenie, proszę kliknąć na link i ustawić hasło: \n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
 "\n"
-"		%(reset_link)s\n"
-" 	"
+"       %(reset_link)s\n"
+"    "
+
+msgid ""
+"You have been invited to {site_title}. A user has already been createdto you "
+"with the username {user_name}. You can change it later.\n"
+"\n"
+"To accept this invite, please reset your password at:\n"
+"\n"
+"   {reset_link}\n"
+msgstr ""
+"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
+"\n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
+"\n"
+"       %(reset_link)s\n"
+"    "
+
 #: ckan/lib/mailer.py:145 ckan/templates_legacy/user/perform_reset.html:6
 #: ckan/templates_legacy/user/perform_reset.html:14
 msgid "Reset your password"
@@ -1223,7 +1238,7 @@ msgstr "Zresetuj swoje hasło"
 
 #: ckan/lib/mailer.py:151
 msgid "Invite for {site_title}"
-msgstr "Zapraszają na {site_title}"
+msgstr "Zaproszenie do portalu {site_title}"
 
 #: ckan/lib/package_saver.py:29
 msgid "No web page given"
@@ -6658,22 +6673,6 @@ msgstr ""
 "Otrzymaliśmy prośbę o zresetowanie hasła powiązanego z tym mailem w serwisie {site_title}.\n"
 "\n"
 "Kliknij w poniższy link, aby ustawić nowe hasło do konta:\n"
-"\n"
-"   {reset_link}\n"
-
-#: ckan/lib/mailer.py:119
-msgid ""
-"You have been invited to {site_title}. A user has already been createdto you "
-"with the username {user_name}. You can change it later.\n"
-"\n"
-"To accept this invite, please reset your password at:\n"
-"\n"
-"   {reset_link}\n"
-msgstr ""
-"Zapraszamy do współtworzenia serwisu {site_title}. Użytkownik o nazwie {user_name} został "
-"już dla Ciebie utworzony.\n"
-"\n"
-"Aby zaakceptować to zaproszenie kliknij w poniższy link i ustaw swoje hasło do serwisu.\n"
 "\n"
 "   {reset_link}\n"
 
