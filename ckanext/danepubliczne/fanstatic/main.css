@@ -97,10 +97,25 @@
     content: "\e911";
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
-input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 4-18 */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+/* IE 10+ */
 
 /* =====================================================
    The general setup of the site
@@ -269,6 +284,11 @@ body {
     color: #060300;
 }
 
+.toolbar .home span {
+    display: inline-block;
+    text-indent: -9999px;
+}
+
 /* ===========================================
    The content in the middle of the front page
    =========================================== */
@@ -417,7 +437,7 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .attribution strong {
-  display: block;
+    display: block;
 }
 
 .footer-links ul li {
@@ -460,10 +480,12 @@ input[type=checkbox]:checked + .checkbox:before {
     border-color: white;
     width: 100%;
 }
+
 .site-footer .new_dataset_feedback label {
     visibility: hidden;
     height: 0px;
 }
+
 .site-footer .new_dataset_feedback .btn,
 .site-footer .new_dataset_feedback .btn:focus,
 .site-footer .new_dataset_feedback .btn:active,
@@ -480,31 +502,35 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .add-member-form .control-label {
-  text-align: right;
-  margin-right: 15px;
-  float: left;
+    text-align: right;
+    margin-right: 15px;
+    float: left;
 }
+
 .add-member-form .controls {
-  margin-left: auto;
-  float: left;
+    margin-left: auto;
+    float: left;
 }
+
 .add-member-or {
-  float: none;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  width: 7%;
-  text-align: center;
-  text-transform: uppercase;
-  color: #999999;
-  font-weight: bold;
+    float: none;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 7%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #999999;
+    font-weight: bold;
 }
+
 .add-member-form .row-fluid .control-group {
-  float: none;
-  width: 45%;
+    float: none;
+    width: 45%;
 }
+
 .add-member-form .row-fluid .select2-container,
 .add-member-form .row-fluid input {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 @media (max-width: 480px) {
