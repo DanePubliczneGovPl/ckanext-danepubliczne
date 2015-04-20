@@ -40,6 +40,9 @@
 {% endblock %}
 
 {% block header_debug %}
+    <ul id="Accessibility" class="hidden">
+        <li><a href="#content">{{ _('Jump to content') }}</a></li>
+    </ul>
     {% block flash %}
         {% do h.dp_check_maintenance() %}
         {% set flash_messages = h.flash.pop_messages() | list %}
