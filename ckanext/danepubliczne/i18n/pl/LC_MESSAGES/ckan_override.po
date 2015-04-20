@@ -1170,7 +1170,7 @@ msgstr "Nie określono formatu dla zasobu."
 #: ckan/lib/mailer.py:25
 #, python-format
 msgid "Dear %s,"
-msgstr "Drogi/Droga %s,"
+msgstr "Witaj %s,"
 
 #: ckan/lib/mailer.py:38
 #, python-format
@@ -1209,13 +1209,28 @@ msgid ""
 "       %(reset_link)s\n"
 "    "
 msgstr ""
-"Zostałeś zaproszony do %(site_title)s. Konto zostało  utworzone \n"
-"z nazwą użytkownika %(nazwa_użytkownika)y. Nazwę użytkownika można zmienić.  \n"
+"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
 "\n"
-"Aby zaakceptować zaproszenie, proszę kliknąć na link i ustawić hasło: \n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
 "\n"
-"		%(reset_link)s\n"
-" 	"
+"       %(reset_link)s\n"
+"    "
+
+msgid ""
+"You have been invited to {site_title}. A user has already been createdto you "
+"with the username {user_name}. You can change it later.\n"
+"\n"
+"To accept this invite, please reset your password at:\n"
+"\n"
+"   {reset_link}\n"
+msgstr ""
+"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
+"\n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
+"\n"
+"       %(reset_link)s\n"
+"    "
+
 #: ckan/lib/mailer.py:145 ckan/templates_legacy/user/perform_reset.html:6
 #: ckan/templates_legacy/user/perform_reset.html:14
 msgid "Reset your password"
@@ -1223,7 +1238,7 @@ msgstr "Zresetuj swoje hasło"
 
 #: ckan/lib/mailer.py:151
 msgid "Invite for {site_title}"
-msgstr "Zapraszają na {site_title}"
+msgstr "Zaproszenie do portalu {site_title}"
 
 #: ckan/lib/package_saver.py:29
 msgid "No web page given"
@@ -2330,7 +2345,7 @@ msgstr "Reset"
 
 #: ckan/templates/admin/config.html:13
 msgid "Update Config"
-msgstr "Akutalizacja konfiguracji"
+msgstr "Aktualizacja konfiguracji"
 
 #: ckan/templates/admin/config.html:22
 msgid "CKAN config options"
@@ -6600,3 +6615,505 @@ msgstr "Automatycznie przybliżaj do wybieranych punktów"
 #: ckanext/reclineview/theme/templates/recline_map_form.html:11
 msgid "Cluster markers"
 msgstr "Znaczniki zgrupowanych punktów"
+
+#: ckan/controllers/feed.py:234 ckan/controllers/group.py:364
+msgid "Organization not found"
+msgstr "Nie znaleziono organizacji"
+
+#: ckan/controllers/package.py:750
+msgid "Unauthorized to create a resource for this package"
+msgstr "Brak uprawnień do utworzenia zasobu w tym zbiorze danych"
+
+#: ckan/controllers/package.py:1153 ckan/controllers/package.py:1615
+msgid "Resource view not found"
+msgstr "Brak wizualizacji dla tych danych"
+
+#: ckan/controllers/package.py:1523
+msgid "Unauthorized to edit resource"
+msgstr "Brak uprawnień do edycji zasobu"
+
+#: ckan/controllers/package.py:1541
+msgid "View not found"
+msgstr "Nie znaleziono widoku danych"
+
+#: ckan/controllers/package.py:1543
+#, python-format
+msgid "Unauthorized to view View %s"
+msgstr "Brak uprawnień do obejrzenia widoku %s"
+
+#: ckan/controllers/package.py:1549
+msgid "View Type Not found"
+msgstr "Nieznany Typ Widoku"
+
+#: ckan/controllers/package.py:1609
+msgid "Bad resource view data"
+msgstr "Niepoprawne opcje wizualizacji danych"
+
+#: ckan/controllers/package.py:1618
+#, python-format
+msgid "Unauthorized to read resource view %s"
+msgstr "Brak uprawnień do odczytu widoku zasobu %s"
+
+#: ckan/controllers/package.py:1621
+msgid "Resource view not supplied"
+msgstr "Brak wizualizacji danych zasobu"
+
+#: ckan/controllers/util.py:21
+msgid "Redirecting to external site is not allowed."
+msgstr "Przekierowywanie do zewnętrznych serwisów jest niedozwolone."
+
+#: ckan/lib/mailer.py:104
+msgid ""
+"You have requested your password on {site_title} to be reset.\n"
+"\n"
+"Please click the following link to confirm this request:\n"
+"\n"
+"   {reset_link}\n"
+msgstr ""
+"Otrzymaliśmy prośbę o zresetowanie hasła powiązanego z tym mailem w serwisie {site_title}.\n"
+"\n"
+"Kliknij w poniższy link, aby ustawić nowe hasło do konta:\n"
+"\n"
+"   {reset_link}\n"
+
+#: ckan/logic/validators.py:104
+msgid "Must be a postive integer"
+msgstr "Podaj dodatnią liczbę całkowitą"
+
+#: ckan/logic/validators.py:151
+msgid "Dataset id already exists"
+msgstr "Zbiór danych o tym ID już istnieje"
+
+#: ckan/logic/validators.py:356
+#, python-format
+msgid "Must be at least %s characters long"
+msgstr "Wpisz przynajmniej %s znaków"
+
+#: ckan/logic/validators.py:361
+msgid ""
+"Must be purely lowercase alphanumeric (ascii) characters and these symbols: -"
+"_"
+msgstr ""
+"Dozwolone są tylko małe litery oraz symbole: - _"
+
+#: ckan/logic/validators.py:805
+msgid "\"filter_fields\" and \"filter_values\" should have the same length"
+msgstr ""
+
+#: ckan/logic/validators.py:816
+msgid "\"filter_fields\" is required when \"filter_values\" is filled"
+msgstr ""
+
+#: ckan/logic/validators.py:819
+msgid "\"filter_values\" is required when \"filter_fields\" is filled"
+msgstr ""
+
+#: ckan/logic/validators.py:833
+msgid "There is a schema field with the same name"
+msgstr "Istnieje pole schemy o tej samej nazwie"
+
+#: ckan/logic/auth/create.py:77
+msgid "No dataset id provided, cannot check auth."
+msgstr "Brak podanego ID zbioru danych"
+
+#: ckan/logic/auth/create.py:92
+#, python-format
+msgid "User %s not authorized to create resources on dataset %s"
+msgstr "Uzytkownik %s nie posiada praw do dodania zasobu do zbioru %s"
+
+#: ckan/logic/auth/delete.py:50
+msgid "Resource view not found, cannot check auth."
+msgstr "Nie znaleziono podanego widoku danych"
+
+#: ckan/logic/auth/get.py:166
+#, python-format
+msgid "User %s not authorized to read group %s"
+msgstr "Użytkownik %s nie ma praw do odczytu grupy"
+
+#: ckan/logic/auth/update.py:228
+msgid "User {0} not authorized to update user {1}"
+msgstr "Użytkownik {0} nie ma praw do zaktualizowania użytkownika {1}"
+
+#: ckan/model/license.py:177
+msgid "License not specified"
+msgstr "Brak określonej licencji"
+
+#: ckan/public/base/javascript/modules/resource-view-reorder.js:8
+msgid "Reorder resource view"
+msgstr "Ustaw kolejność widoków danych"
+
+#: ckan/templates/page.html:6
+msgid "Skip to content"
+msgstr "Przejdź do treści"
+
+#: ckan/templates/admin/config.html:29
+#, python-format
+msgid ""
+" <p><strong>Site Title:</strong> This is the title of this CKAN instance It "
+"appears in various places throughout CKAN.</p> <p><strong>Style:</strong> "
+"Choose from a list of simple variations of the main colour scheme to get a "
+"very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This "
+"is the logo that appears in the header of all the CKAN instance templates.</"
+"p> <p><strong>About:</strong> This text will appear on this CKAN instances "
+"<a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro Text:</"
+"strong> This text will appear on this CKAN instances <a href=\"%(home_url)s"
+"\">home page</a> as a welcome to visitors.</p> <p><strong>Custom CSS:</"
+"strong> This is a block of CSS that appears in <code>&lt;head&gt;</code> tag "
+"of every page. If you wish to customize the templates more fully we "
+"recommend <a href=\"%(docs_url)s\" target=\"_blank\">reading the "
+"documentation</a>.</p> <p><strong>Homepage:</strong> This is for choosing a "
+"predefined layout for the modules that appear on your homepage.</p> "
+msgstr ""
+
+#: ckan/templates/admin/index.html:15
+msgid "Administer CKAN"
+msgstr "Zarządzaj serwisem"
+
+#: ckan/templates/admin/index.html:20
+#, python-format
+msgid ""
+" <p>As a sysadmin user you have full control over this CKAN instance. "
+"Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
+"CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+msgstr ""
+
+#: ckan/templates/admin/trash.html:20
+msgid "Purge"
+msgstr "Opróżnij kosz"
+
+#: ckan/templates/admin/trash.html:32
+msgid " <p>Purge deleted datasets forever and irreversibly.</p> "
+msgstr " <p>Usuwa nieodwracalnie skasowane zbiory danych.</p> "
+
+#: ckan/templates/ajax_snippets/api_info.html:24
+msgid ""
+" Further information in the <a       href=\"http://docs.ckan.org/en/latest/"
+"maintaining/datastore.html\" target=\"_blank\">main CKAN Data API and "
+"DataStore documentation</a>.</p> "
+msgstr ""
+
+#: ckan/templates/group/member_new.html:81
+msgid ""
+" <p><strong>Admin:</strong> Can edit group information, as well as manage "
+"organization members.</p> <p><strong>Member:</strong> Can add/remove "
+"datasets from groups</p> "
+msgstr ""
+
+#: ckan/templates/home/snippets/about_text.html:1
+msgid ""
+" <p>CKAN is the world’s leading open-source data portal platform.</p> "
+"<p>CKAN is a complete out-of-the-box software solution that makes data "
+"accessible and usable – by providing tools to streamline publishing, "
+"sharing, finding and using data (including storage of data and provision of "
+"robust data APIs). CKAN is aimed at data publishers (national and regional "
+"governments, companies and organizations) wanting to make their data open "
+"and available.</p> <p>CKAN is used by governments and user groups worldwide "
+"and powers a variety of official and community data portals including "
+"portals for local, national and international government, such as the UK’s "
+"<a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
+"href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a href="
+"\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland government "
+"portals, as well as city and municipal sites in the US, UK, Argentina, "
+"Finland and elsewhere.</p> <p>CKAN: <a href=\"http://ckan.org/\">http://ckan."
+"org/</a><br /> CKAN Tour: <a href=\"http://ckan.org/tour/\">http://ckan.org/"
+"tour/</a><br /> Features overview: <a href=\"http://ckan.org/features/"
+"\">http://ckan.org/features/</a></p> "
+msgstr ""
+
+#: ckan/templates/home/snippets/search.html:2
+msgid "E.g. environment"
+msgstr "Np. środowisko"
+
+#: ckan/templates/home/snippets/search.html:16
+msgid "Popular tags"
+msgstr "Popularne słowa kluczowe"
+
+#: ckan/templates/macros/form.html:126
+#, python-format
+msgid ""
+"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
+"target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true"
+"\">Markdown formatting</a> here"
+msgstr ""
+
+#: ckan/templates/organization/member_new.html:82
+msgid ""
+" <p><strong>Admin:</strong> Can add/edit and delete datasets, as well as "
+"manage organization members.</p> <p><strong>Editor:</strong> Can add and "
+"edit datasets, but not manage organization members.</p> <p><strong>Member:</"
+"strong> Can view the organization's private datasets, but not add new "
+"datasets.</p> "
+msgstr ""
+
+#: ckan/templates/organization/snippets/feeds.html:3
+msgid "Datasets in organization: {group}"
+msgstr "Zbiory danych organizacji: {group}"
+
+#: ckan/templates/organization/snippets/help.html:7
+msgid ""
+" <p>Organizations act like publishing departments for datasets (for example, "
+"the Department of Health). This means that datasets can be published by and "
+"belong to a department instead of an individual user.</p> <p>Within "
+"organizations, admins can assign roles and authorise its members, giving "
+"individual users the right to publish datasets from that particular "
+"organisation (e.g. Office of National Statistics).</p> "
+msgstr ""
+
+#: ckan/templates/package/edit_view.html:3
+#: ckan/templates/package/edit_view.html:4
+#: ckan/templates/package/edit_view.html:8
+#: ckan/templates/package/edit_view.html:12
+msgid "Edit view"
+msgstr "Edytuj widok"
+
+#: ckan/templates/package/new_view.html:3
+#: ckan/templates/package/new_view.html:4
+#: ckan/templates/package/new_view.html:8
+#: ckan/templates/package/new_view.html:12
+msgid "Add view"
+msgstr "Dodaj widok"
+
+#: ckan/templates/package/new_view.html:19
+msgid ""
+" Data Explorer views may be slow and unreliable unless the DataStore "
+"extension is enabled. For more information, please see the <a href='http://"
+"docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-structured-data-"
+"the-data-explorer' target='_blank'>Data Explorer documentation</a>. "
+msgstr ""
+
+#: ckan/templates/package/resource_edit_base.html:28
+msgid "Views"
+msgstr "Widoki zasobu"
+
+#: ckan/templates/package/resource_read.html:112
+msgid "There are no views created for this resource yet."
+msgstr "Brak wizualizacji danych dla tego zasobu."
+
+#: ckan/templates/package/resource_read.html:116
+msgid "Not seeing the views you were expecting?"
+msgstr "Nie widzisz wizualizacji danych, które powinny się tu pojawić?"
+
+#: ckan/templates/package/resource_read.html:121
+msgid "Here are some reasons you may not be seeing expected views:"
+msgstr "Kilka przyczyn z powodu których widoki danych mogą być niewidoczne:"
+
+#: ckan/templates/package/resource_read.html:123
+msgid "No view has been created that is suitable for this resource"
+msgstr "Żaden widok nie został utworzony dla tego zasobu"
+
+#: ckan/templates/package/resource_read.html:124
+msgid "The site administrators may not have enabled the relevant view plugins"
+msgstr "Brak uruchomionych rozszerzeń obsługujących wizualizacje"
+
+#: ckan/templates/package/resource_read.html:125
+msgid ""
+"If a view requires the DataStore, the DataStore plugin may not be enabled, "
+"or the data may not have been pushed to the DataStore, or the DataStore "
+"hasn't finished processing the data yet"
+msgstr ""
+"Jeżeli widok wymaga rozszerzenia DataStore, sprawdź czy to rozszerzenie jest włączone, "
+"oraz czy dane zasobu zostały przeniesione do lokalnej bazy danych."
+
+#: ckan/templates/package/resource_views.html:10
+msgid "New view"
+msgstr "Nowy widok"
+
+#: ckan/templates/package/resource_views.html:28
+msgid "This resource has no views"
+msgstr "Ten zasób nie ma zdefiniowanych żadnych wizualizacji danych"
+
+#: ckan/templates/package/resources.html:19
+#: ckan/templates/package/snippets/resources_list.html:25
+#, python-format
+msgid ""
+" <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
+"add some?</a></p> "
+msgstr ""
+" <p class=\"empty\">Ten zbiór nie posiada żadnych danych, <a href=\"%(url)s\">dodaj do niego zasób!</a></p> "
+
+#: ckan/templates/package/search.html:56
+#, python-format
+msgid ""
+" You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s) or download a %(dump_link)s. "
+msgstr ""
+
+#: ckan/templates/package/search.html:60
+#, python-format
+msgid ""
+" You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s). "
+msgstr ""
+
+#: ckan/templates/package/view_edit_base.html:9
+msgid "All views"
+msgstr "Wszystkie widoki"
+
+#: ckan/templates/package/view_edit_base.html:12
+msgid "View view"
+msgstr "Zobacz widok"
+
+#: ckan/templates/package/view_edit_base.html:37
+msgid "View preview"
+msgstr "Zobacz widok"
+
+#: ckan/templates/package/snippets/package_form.html:28
+msgid ""
+"The <i>data license</i> you select above only applies to the contents of any "
+"resource files that you add to this dataset. By submitting this form, you "
+"agree to release the <i>metadata</i> values that you enter into the form "
+"under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open "
+"Database License</a>."
+msgstr ""
+
+#: ckan/templates/package/snippets/resource_form.html:40
+msgid "This will be guessed automatically. Leave blank if you wish"
+msgstr "To pole zostanie ustawione automatycznie. Możesz pozostawić je puste"
+
+#: ckan/templates/package/snippets/resource_view.html:24
+msgid "This resource view is not available at the moment."
+msgstr "Widok danych nie jest dostępny w tym momencie."
+
+#: ckan/templates/package/snippets/resource_view.html:63
+msgid "Embed resource view"
+msgstr "Umieść na stronie"
+
+#: ckan/templates/package/snippets/resource_view.html:66
+msgid ""
+"You can copy and paste the embed code into a CMS or blog software that "
+"supports raw HTML"
+msgstr ""
+"Możesz skopiować kod wizualizatora danych do swojej platformy CMS lub bloga, "
+"jeżeli obsługuje on wklejanie kodu HTML"
+
+#: ckan/templates/package/snippets/resource_view.html:69
+msgid "Width"
+msgstr "Szerokość"
+
+#: ckan/templates/package/snippets/resource_view.html:72
+msgid "Height"
+msgstr "Wysokość"
+
+#: ckan/templates/package/snippets/resource_views_list.html:8
+msgid "Resource Preview"
+msgstr "Podgląd zasobu"
+
+#: ckan/templates/package/snippets/resources_list.html:29
+msgid "This dataset has no data"
+msgstr "Zbiór danych nie posiada danych"
+
+#: ckan/templates/package/snippets/view_form.html:8
+msgid "eg. My View"
+msgstr "np. Dane tabelaryczne"
+
+#: ckan/templates/package/snippets/view_form.html:9
+msgid "eg. Information about my view"
+msgstr "np. Dane w postaci tabelarycznej"
+
+#: ckan/templates/package/snippets/view_form_filters.html:16
+msgid "Add Filter"
+msgstr "Dodaj filtr"
+
+#: ckan/templates/package/snippets/view_form_filters.html:28
+msgid "Remove Filter"
+msgstr "Usuń filtr"
+
+#: ckan/templates/package/snippets/view_help.html:2
+msgid "What's a view?"
+msgstr "Czym jest widok danych?"
+
+#: ckan/templates/package/snippets/view_help.html:4
+msgid "A view is a representation of the data held against a resource"
+msgstr "Widok jest wizualizacją danych przetrzymywanych w zasobie"
+
+#: ckan/templates/related/base_form_page.html:22
+msgid ""
+" <p>Related Media is any app, article, visualisation or idea related to this "
+"dataset.</p> <p>For example, it could be a custom visualisation, pictograph "
+"or bar chart, an app using all or part of the data or even a news story that "
+"references this dataset.</p> "
+msgstr ""
+" <p>Zewnętrzne linki to jakiekolwiek treści (aplikacja, artykuł, wizualizacja) odnoszące się "
+"do tego zbioru danych.</p> "
+
+#: ckan/templates/related/dashboard.html:21
+#, python-format
+msgid ""
+" <p>Showing items <strong>%(first)s - %(last)s</strong> of <strong>"
+"%(item_count)s</strong> related items found</p> "
+msgstr ""
+" <p>Wyświetlanie pozycji <strong>%(first)s - %(last)s</strong> z <strong>"
+"%(item_count)s</strong> znalezionych powiązanych pozycji</p> "
+
+#: ckan/templates/related/dashboard.html:25
+#, python-format
+msgid " <p><strong>%(item_count)s</strong> related items found</p> "
+msgstr " <p>Znaleziono <strong>%(item_count)s</strong> powiązanych pozycji</p> "
+
+#: ckan/templates/related/dashboard.html:50
+msgid ""
+" These are applications built with the datasets as well as ideas for things "
+"that could be done with them. "
+msgstr ""
+
+#: ckan/templates/snippets/search_form.html:77
+msgid " <p class=\"extra\">Please try another search.</p> "
+msgstr "<p class=\"extra\">Proszę spróbować innego wyszukiwania.</p>"
+
+#: ckan/templates/snippets/search_form.html:83
+msgid ""
+" <p><strong>There was an error while searching.</strong> Please try again.</"
+"p> "
+msgstr ""
+" <p><strong>Wystąpił błąd podczas wyszukiwania.</strong> Proszę spróbować ponownie.</"
+"p> "
+
+#: ckan/templates/user/edit_user_form.html:43
+msgid "Are you sure you want to regenerate the API key?"
+msgstr "Czy na pewno chcesz zresetować klucz API?"
+
+#: ckan/templates/user/edit_user_form.html:44
+msgid "Regenerate API Key"
+msgstr "Zresetuj klucz API"
+
+#: ckan/templates/user/new_user_form.html:5
+msgid "username"
+msgstr "nazwa użytkownika"
+
+#: ckan/templates/user/request_reset.html:6
+msgid "Password reset"
+msgstr "Zresetuj swoje hasło"
+
+#: ckan/templates/user/request_reset.html:19
+msgid "Request reset"
+msgstr "Wyślij instrukcje resetowania"
+
+#: ckanext/datastore/db.py:652
+msgid ""
+"The data was invalid (for example: a numeric value is out of range or was "
+"inserted into a text field)."
+msgstr ""
+
+#: ckanext/example_idatasetform/templates/package/search.html:16
+msgid "Custom Field Ascending"
+msgstr "Niestandardowe pole rosnąco"
+
+#: ckanext/example_idatasetform/templates/package/search.html:17
+msgid "Custom Field Descending"
+msgstr "Niestandardowe pole malejąco"
+
+#: ckanext/example_idatasetform/templates/package/snippets/resource_form.html:6
+msgid "custom resource text"
+msgstr ""
+
+#: ckanext/example_theme/v12_extra_public_dir/templates/home/snippets/promoted.html:4
+msgid "CKAN's data previewing tool has many powerful features"
+msgstr ""
+
+#: ckanext/webpageview/theme/templates/webpage_form.html:3
+msgid "Web Page url"
+msgstr "Adres strony"
+
+#: ckanext/webpageview/theme/templates/webpage_form.html:3
+msgid "eg. http://example.com (if blank uses resource url)"
+msgstr "np. http://mojastrona.pl (gdy puste, zostanie użyty adres url zasobu)"
