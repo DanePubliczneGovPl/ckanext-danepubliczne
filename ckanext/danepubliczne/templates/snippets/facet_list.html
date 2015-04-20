@@ -42,9 +42,11 @@
                   <span class="star-rating-stars">
                   {%- for index in range(5) -%}
                     {%- if index <= openess_score -%}
-                    <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" />
+                        <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" alt=""
+                             title="{%- index -%}{{ _('on') }} {%- range(5) -%}"/>
                     {%- else -%}
-                    <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" />
+                        <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16"
+                             alt="" title="{%- index -%}{{ _('on') }} {%- range(5) -%}"/>
                     {%- endif -%}
                   {%- endfor -%}
                   </span>
