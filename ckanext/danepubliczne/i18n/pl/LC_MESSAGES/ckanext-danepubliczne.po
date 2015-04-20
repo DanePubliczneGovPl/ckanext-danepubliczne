@@ -226,6 +226,9 @@ msgstr "Moje konto"
 msgid "Knowledge base"
 msgstr "Baza wiedzy"
 
+msgid "Back to home page"
+msgstr "Przejdź do strony głównej"
+
 #: ckanext/danepubliczne/templates/admin/base.html:10
 msgid "Quality Assurance"
 msgstr "Raporty jakości"
