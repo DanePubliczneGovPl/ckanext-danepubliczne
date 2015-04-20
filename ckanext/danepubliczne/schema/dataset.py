@@ -41,7 +41,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def h_package_has_license_restrictions(self, dpkg):
         return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
-            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False)
+            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False) or dpkg.get('license_condition_db_or_copyrighted',False)
 
     @classmethod
     def h_openess_info(cls, score):
@@ -143,13 +143,15 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['license_condition_source'] = asbool(pkg_dict.get('license_condition_source'))
         pkg_dict['license_condition_timestamp'] = asbool(pkg_dict.get('license_condition_timestamp'))
         pkg_dict['license_condition_responsibilities'] = bool(pkg_dict.get('license_condition_responsibilities','').strip())
+        pkg_dict['license_condition_db_or_copyrighted'] = bool(pkg_dict.get('license_condition_db_or_copyrighted','').strip())
 
         pkg_dict['has_any_reuse_conditions'] = pkg_dict['license_condition_modification'] \
             or pkg_dict['license_condition_original'] or pkg_dict['license_condition_source'] \
-            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities']
+            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities'] \
+            or pkg_dict['license_condition_db_or_copyrighted']
 
         restrictions = []
-        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities']:
+        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities', 'db_or_copyrighted']:
             if pkg_dict['license_condition_' + restr]:
                 restrictions.append(restr)
 
@@ -211,7 +213,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'original': _('Publish original copy'),
             'source': _('Inform about source'),
             'timestamp': _('Inform about creation & access time'),
-            'responsibilities': _('Provider restricts liability')
+            'responsibilities': _('Provider restricts liability'),
+            'db_or_copyrighted': _('Restrictions on databases and copyrighted material')
         }
 
     @classmethod
@@ -261,7 +264,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [from_extras, optional]
+            'license_condition_responsibilities': [from_extras, optional],
+            'license_condition_db_or_copyrighted': [from_extras, optional]
         })
         return schema
 
@@ -286,7 +290,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [optional, to_extras]
+            'license_condition_responsibilities': [optional, to_extras],
+            'license_condition_db_or_copyrighted': [optional, to_extras]
         })
         # Add our custom_resource_text metadata field to the schema
         # schema['resources'].update({

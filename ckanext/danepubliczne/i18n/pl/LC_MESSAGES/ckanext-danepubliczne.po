@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-04-07 16:59+0200\n"
+"POT-Creation-Date: 2015-04-20 17:33+0200\n"
 "PO-Revision-Date: 2015-03-30 11:07+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -98,16 +98,16 @@ msgstr ""
 "\n"
 "{feedback}\n"
 
-#: ckanext/danepubliczne/controllers/user.py:49
+#: ckanext/danepubliczne/controllers/user.py:51
 msgid "Login failed. Wrong email or password."
 msgstr "Niepoprawne dane logowania. Błędny email lub hasło."
 
-#: ckanext/danepubliczne/controllers/user.py:294
+#: ckanext/danepubliczne/controllers/user.py:296
 #, python-format
 msgid "Email not registered: %s"
 msgstr "Brak konta o adresie email: %s"
 
-#: ckanext/danepubliczne/controllers/user.py:392
+#: ckanext/danepubliczne/controllers/user.py:394
 msgid "That email is not available."
 msgstr "Podany adres email jest zajęty."
 
@@ -130,50 +130,55 @@ msgstr "Użytkownik %s nie może aktualizować artykułów"
 msgid "Missing QA information"
 msgstr "Brak informacji o stopniu otwartości zasobu"
 
-#: ckanext/danepubliczne/schema/dataset.py:200
+#: ckanext/danepubliczne/schema/dataset.py:202
 #: ckanext/danepubliczne/templates/package/snippets/resource_form.html:12
 msgid "Resource types"
 msgstr "Typy zasobów"
 
-#: ckanext/danepubliczne/schema/dataset.py:201
+#: ckanext/danepubliczne/schema/dataset.py:203
 #: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:14
 msgid "Openess Score"
 msgstr "Otwartość zasobu"
 
-#: ckanext/danepubliczne/schema/dataset.py:202
+#: ckanext/danepubliczne/schema/dataset.py:204
 msgid "Restrictions on reuse"
 msgstr "Warunki ponownego wykorzystywania informacji"
 
-#: ckanext/danepubliczne/schema/dataset.py:209
-#: ckanext/danepubliczne/schema/dataset.py:232
+#: ckanext/danepubliczne/schema/dataset.py:211
+#: ckanext/danepubliczne/schema/dataset.py:235
 msgid "No restrictions"
 msgstr "Bez warunków"
 
-#: ckanext/danepubliczne/schema/dataset.py:210
+#: ckanext/danepubliczne/schema/dataset.py:212
 msgid "Inform about modifications"
 msgstr "Informuj, gdy modyfikujesz dane"
 
-#: ckanext/danepubliczne/schema/dataset.py:211
+#: ckanext/danepubliczne/schema/dataset.py:213
 msgid "Publish original copy"
 msgstr "Opublikuj kopię oryginalnych danych"
 
-#: ckanext/danepubliczne/schema/dataset.py:212
+#: ckanext/danepubliczne/schema/dataset.py:214
 msgid "Inform about source"
 msgstr "Informuj, skąd pobrałeś dane"
 
-#: ckanext/danepubliczne/schema/dataset.py:213
+#: ckanext/danepubliczne/schema/dataset.py:215
 msgid "Inform about creation & access time"
 msgstr "Informuj o czasie stworzenia danych oraz ich pobrania z serwisu"
 
-#: ckanext/danepubliczne/schema/dataset.py:214
+#: ckanext/danepubliczne/schema/dataset.py:216
 msgid "Provider restricts liability"
 msgstr "Dostawca danych ogranicza odpowiedzialność"
 
-#: ckanext/danepubliczne/schema/dataset.py:230
+#: ckanext/danepubliczne/schema/dataset.py:217
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:24
+msgid "Restrictions on databases and copyrighted material"
+msgstr "Ograniczenia prawno-autorskie lub bazodanowe"
+
+#: ckanext/danepubliczne/schema/dataset.py:233
 msgid "Restrictions set"
 msgstr "Warunki określone"
 
-#: ckanext/danepubliczne/schema/dataset.py:320
+#: ckanext/danepubliczne/schema/dataset.py:325
 msgid "Category '{0}' doesn't exist"
 msgstr "Kategoria '{0}' nie istnieje"
 
@@ -201,8 +206,8 @@ msgid ""
 "Digitalization\"></a>"
 msgstr ""
 "<strong>Serwis prowadzony przez</strong> <a "
-"href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo Administracji "
-"i Cyfryzacji\"></a>"
+"href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo "
+"Administracji i Cyfryzacji\"></a>"
 
 #: ckanext/danepubliczne/templates/footer.html:34
 msgid "You haven't find here what you were looking for?"
@@ -524,7 +529,12 @@ msgstr ""
 "Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją "
 "jakkolwiek modyfikuje"
 
-#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:26
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:20
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:27
+msgid "Restriction of data provider liability"
+msgstr "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:30
 msgid ""
 "This dataset is considered public data and can be used without any "
 "restrictions"
@@ -542,19 +552,22 @@ msgstr "Warunki ponownego wykorzystywania informacji w tym zbiorze"
 
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:19
 msgid ""
-"We publish public data so they can be reused freely and unrestricted.\n"
-"      There are exceptions from this rule mentioned below, but we "
-"encourage not to restrict them if there is no clear case for that.\n"
-"      "
+"We publish public data so they can be reused freely and unrestricted. There "
+"are exceptions from this rule mentioned below, but we encourage not to "
+"restrict them if there is no clear case for that."
 msgstr ""
 "Informacje publiczne są udostępniane w celu ich ponownego wykorzystywania"
-" bez ograniczeń warunkami i bezpłatnie.      Istnieją od tej zasady "
+" bez ograniczeń warunkami i bezpłatnie. Istnieją od tej zasady "
 "wymienione poniżej wyjątki, jednak zachęcamy, aby ich nie stosować jeżeli"
 " nie      przemawiają za tym mocne racje."
 
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:27
-msgid "Restriction of data provider liability"
-msgstr "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:28
+msgid ""
+"Restrictions for reuse of copyrighted material or databases (art. 23b "
+"ust. 3 ustawy o dostępie do informacji publicznej)"
+msgstr ""
+"Warunki korzystania z informacji publicznych spełniających cechy utworu lub stanowiących bazę danych (art. 23b "
+"ust. 3 ustawy o dostępie do informacji publicznej)"
 
 #: ckanext/danepubliczne/templates/package/snippets/resource_form.html:12
 msgid "eg. text, audio, video, presentation, report, motion"
@@ -575,10 +588,6 @@ msgstr ""
 "danych, <a href=\"%(url)s\">dodaj do niego zasoby!</a></p>\n"
 "          "
 
-#: ckanext/danepubliczne/templates/package/snippets/tags.html:3
-msgid "Tags"
-msgstr "Słowa kluczowe"
-
 #: ckanext/danepubliczne/templates/qa/snippets/stars.html:13
 msgid "Not Rated"
 msgstr "Brak informacji"
@@ -594,9 +603,9 @@ msgstr "Dowiedz się, co oznaczają te gwiazdki"
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid "What data would you like to see on our site?"
 msgstr ""
-"Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w portalu. "
-"Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi dostawcami "
-"możliwość ich udostępnienia."
+"Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w "
+"portalu. Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi "
+"dostawcami możliwość ich udostępnienia."
 
 #: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
 msgid "{number} article found for \"{query}\""
@@ -649,6 +658,9 @@ msgstr "Dane służbowe"
 msgid "We will send you an email with a link to enter a new password."
 msgstr "Wpisz swój adres e-mail, aby otrzymać instrukcje resetowania hasła."
 
+msgid "Tags"
+msgstr "Słowa kluczowe"
+
 # Częstotliwość aktualizacji
 msgid "Daily"
 msgstr "Codzienna"
@@ -685,134 +697,107 @@ msgstr "Dostawca"
 msgid "organizations"
 msgstr "dostawcy"
 
-#: ckan/controllers/group.py:597
 msgid "Organization has been deleted."
 msgstr "Dostawca został usunięty."
 
-#: ckan/controllers/feed.py:234 ckan/controllers/group.py:364
 msgid "Organization not found"
 msgstr "Nie znaleziono dostawcy"
 
-#: ckan/templates/organization/base_form_page.html:5
 msgid "Organization Form"
 msgstr "Formularz dostawcy"
 
-#: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
 msgstr "Zbiory danych dostawcy: {group}"
 
-#: ckan/templates/organization/bulk_process.html:90
 msgid "This organization has no datasets associated to it"
 msgstr "Ten dostawca nie posiada żadnych zbiorów danych"
 
-#: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
 msgstr "Czy na pewno chcesz usunąć dostawcę - {name}?"
 
-#: ckan/lib/activity_streams.py:70
 msgid "{actor} updated the organization {organization}"
 msgstr "{actor} zaktualizował dostawcę {organization}"
 
-#: ckan/lib/activity_streams.py:95
 msgid "{actor} deleted the organization {organization}"
 msgstr "{actor} usunął dostawcę {organization}"
 
-#: ckan/lib/activity_streams.py:111
 msgid "{actor} created the organization {organization}"
 msgstr "{actor} stworzył dostawcę {organization}"
 
 msgid "A organization must be supplied"
 msgstr "Dostawca musi być zatwierdzony"
 
-#: ckan/logic/validators.py:38
 msgid "You cannot remove a dataset from an existing organization"
 msgstr "Nie możesz usunąć zbioru danych dostawcy"
 
-#: ckan/logic/validators.py:43
 msgid "Organization does not exist"
 msgstr "Dostawca nie istnieje"
 
-#: ckan/logic/validators.py:48
 msgid "You cannot add a dataset to this organization"
 msgstr "Nie możesz dodać zbioru danych do tego dostawcy"
 
-#: ckan/logic/auth/create.py:30
-#, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "Użytkownik %s nie posiada uprawnień do dodania zbioru danych dla tego dostawcy"
+msgstr ""
+"Użytkownik %s nie posiada uprawnień do"
+" dodania zbioru danych dla tego "
+"dostawcy"
 
-#: ckan/logic/auth/create.py:101
-#, python-format
 msgid "User %s not authorized to create organizations"
 msgstr "Użytkownik %s nie posiada uprawnień do tworzenia dostawcy"
 
-#: ckan/logic/auth/delete.py:106
-#, python-format
 msgid "User %s not authorized to delete organizations"
 msgstr "Użytkownik %s nie posiada uprawnień do usuwania dostawców"
 
-#: ckan/logic/auth/delete.py:110
-#, python-format
 msgid "User %s not authorized to delete organization %s"
 msgstr "Użytkownik %s nie posiada uprawnień do usunięcia dostawcy %s"
 
-#: ckan/logic/auth/delete.py:139
-#, python-format
 msgid "User %s not authorized to delete organization %s members"
 msgstr "Użytkownik %s nie posiada uprawnień do usuwania pracowników dostawcy %s"
 
-#: ckan/logic/auth/update.py:120
-#, python-format
 msgid "User %s not authorized to edit organization %s"
 msgstr "Użytkownik %s nie posiada uprawnień do edytowania dostawcy %s"
 
 msgid "Edit Organization"
 msgstr "Edytuj dostawcę"
 
-#: ckan/templates/organization/index.html:13
-#: ckan/templates/user/dashboard_organizations.html:7
 msgid "Add Organization"
 msgstr "Dodaj dostawcę"
 
-#: ckan/templates/organization/index.html:20
 msgid "Search organizations..."
 msgstr "Szukanie dostawcy..."
 
-#: ckan/templates/organization/member_new.html:58
 msgid "Update Member"
 msgstr "Aktualizuj pracownika"
 
 msgid "Create an Organization"
 msgstr "Utwórz dostawcę"
 
-#: ckan/templates/organization/new_organization_form.html:19
 msgid "Create Organization"
 msgstr "Stwórz dostawcę"
 
-#: ckan/templates/organization/snippets/organization_form.html:81
 msgid ""
-"Are you sure you want to delete this Organization? This will delete all the "
-"public and private datasets belonging to this organization."
+"Are you sure you want to delete"
+" this Organization? This will delete "
+"all the public and private datasets "
+"belonging to this organization."
 msgstr ""
-"Czy na pewno chcesz usunąć tego dostawcę? To spowoduje usunięcie wszystkich"
-"publicznych i prywatnych zbiorów danych tego dostawcy."
+"Czy na pewno chcesz usunąć tego "
+"dostawcę? To spowoduje usunięcie "
+"wszystkichpublicznych i prywatnych zbiorów "
+"danych tego dostawcy."
 
-#: ckan/templates/organization/snippets/organization_form.html:85
 msgid "Save Organization"
 msgstr "Zapisz dostawcę"
 
-#: ckan/templates/snippets/search_result_text.html:28
 msgid "No organizations found for \"{query}\""
 msgstr "Nie znaleziono dostawców z frazą \"{query}\""
 
-#: ckan/templates/snippets/search_result_text.html:30
 msgid "No organizations found"
 msgstr "Nie znaleziono dostawców"
 
 msgid "My Organization"
 msgstr "Moja instytucja"
 
-#: ckan/templates/snippets/search_result_text.html:29
 msgid "{number} organization found"
 msgid_plural "{number} organizations found"
 msgstr[0] "Znaleziono {number} dostawcę"
@@ -840,29 +825,20 @@ msgstr "Edytuj Pracownika"
 msgid "Add Member"
 msgstr "Dodaj Pracownika"
 
-#: ckan/templates/organization/read.html:5
-#: ckan/templates/package/search.html:16
-#: ckan/templates/user/dashboard_datasets.html:7
-#: ckan/templates_legacy/js_strings.html:16
-#: ckan/templates_legacy/group/layout.html:16
 msgid "Add Dataset"
 msgstr "Dodaj zbiór danych"
 
-#: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
-#: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
 msgstr "Utwórz zbiór danych"
 
-#: ckan/templates/package/snippets/stages.html:25
-#: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
 msgstr "Utwórz zbiór danych"
 
-#: ckan/lib/mailer.py:119
-#, python-format
 msgid ""
-"You have been invited to {site_title}. A user has already been createdto you "
-"with the username {user_name}. You can change it later.\n"
+"You have been invited to {site_title}."
+" A user has already been createdto"
+" you with the username {user_name}. "
+"You can change it later.\n"
 "\n"
 "To accept this invite, please reset your password at:\n"
 "\n"
@@ -870,9 +846,11 @@ msgid ""
 msgstr ""
 "W portalu {site_title} zostało utworzone konto na Twój adres mailowy.\n"
 "\n"
-"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:\n"
+"Aby dokończyć proces rejestracji, kliknij "
+"w poniższy link i ustaw hasło:\n"
 "\n"
 "       {reset_link}s\n"
 
 msgid "Dear %s,"
 msgstr "Witaj%.0s,"
+
