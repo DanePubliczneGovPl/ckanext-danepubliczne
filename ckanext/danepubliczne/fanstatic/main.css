@@ -126,6 +126,14 @@ html {
     position: relative;
 }
 
+.visibility-hidden {
+    visibility: hidden;
+    text-indent: -9999px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+
 body {
     background: #ffffff;
     border-top: 4px solid #539ecf;
@@ -541,7 +549,7 @@ input[type=checkbox]:checked + .checkbox:before {
 
 @media (min-width: 992px) {
     body {
-        padding-bottom: 400px;
+        padding-bottom: 490px;
     }
 
     .mobile-navbar {

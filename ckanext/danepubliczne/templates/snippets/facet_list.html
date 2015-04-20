@@ -9,12 +9,12 @@
       {% if h.has_more_facets(name) %}
         <a href="{{ h.remove_url_param('_%s_limit' % name, replace=0, extras=extras, alternative_url=alternative_url) }}"
            class="read-more ckan-ikon ckan-icon-scrollup"><span
-            class="hidden">{{ _('Show More {facet_type}').format(facet_type=title) }}</span></a>
+                class="visibility-hidden">{{ _('Show More {facet_type}').format(facet_type=title) }}</span></a>
       {% endif %}
     {% else %}
       <a href="{{ h.remove_url_param('_%s_limit' % name, extras=extras, alternative_url=alternative_url) }}"
          class="read-less ckan-ikon ckan-icon-scrolldown"><span
-          class="hidden">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</span></a>
+              class="visibility-hidden">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</span></a>
     {% endif %}
   </h3>
 {% endblock %}
@@ -33,20 +33,21 @@
             <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
               <a href="{{ href }}"
                  title="{{ label }}">
-
+                  {% if item.active %}
+                      <span class="visibility-hidden">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
                 {% if name == 'res_extras_openness_score' %}
                 {% set openess_score = item.name|int %}
                 {% set openess_info = h.dp_openess_info(openess_score) %}
                 <span>
-                  <span class="hidden">{{ openess_info }}</span>
+                  <span class="visibility-hidden">{{ openess_info }}</span>
                   <span class="star-rating-stars">
                   {%- for index in range(5) -%}
                     {%- if index <= openess_score -%}
-                        <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" alt=""
-                             title="{%- index -%}{{ _('on') }} {%- range(5) -%}"/>
+                        <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" alt=""/>
+                        <span class="visibility-hidden">{{ index }} {{ _('on') }} {{ range(5) }}</span>
                     {%- else -%}
                         <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16"
-                             alt="" title="{%- index -%}{{ _('on') }} {%- range(5) -%}"/>
+                             alt=""/>
                     {%- endif -%}
                   {%- endfor -%}
                   </span>

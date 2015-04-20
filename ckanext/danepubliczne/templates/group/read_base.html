@@ -3,13 +3,13 @@
 {% set group = c.group_dict %}
 
 {% block styles %}
-  {{ super() }}
-  {% resource 'dane_publiczne/list.css' %}
+    {{ super() }}
+    {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
 {% block links %}
-  {{ super() }}
-  {% include "group/snippets/feeds.html" %}
+    {{ super() }}
+    {% include "group/snippets/feeds.html" %}
 {% endblock %}
 
 {% set category_title = group.get('title_i18n',{})[h.lang()] or group.title %}
@@ -17,36 +17,38 @@
 {% block subtitle %}{{ category_title }} - {{ _('Categories') }}{% endblock %}
 
 {%- block content %}
-  <form class="search-form" method="get" data-module="select-switch">
-    <div id="content" class="list" role="main">
-      {% block toolbar %}
-        <div class="toolbar">
-          {% block breadcrumb %}
-            <div class="container">
-              {% if self.breadcrumb_content() | trim %}
-                <ol class="breadcrumb">
-                  {% snippet 'snippets/home_breadcrumb_item.html' %}
-                  {% block breadcrumb_content %}
-                    <li>{% link_for _('Categories'), controller='group', action='index' %}</li>
-                    <li class="active">{% link_for category_title, controller='group', action='read', id=group.name %}</li>
-                  {% endblock %}
-                </ol>
-              {% endif %}
-            </div>
-          {% endblock %}
+    <form class="search-form" method="get" data-module="select-switch">
+        <div id="content" class="list" role="main">
+            {% block toolbar %}
+                <div class="toolbar">
+                    {% block breadcrumb %}
+                        <div class="container">
+                            {% if self.breadcrumb_content() | trim %}
+                                <ol class="breadcrumb">
+                                    {% snippet 'snippets/home_breadcrumb_item.html' %}
+                                    {% block breadcrumb_content %}
+                                        <li>{% link_for _('Categories'), controller='group', action='index' %}</li>
+                                        <li class="active">{% link_for category_title, controller='group', action='read', id=group.name %}</li>
+                                    {% endblock %}
+                                </ol>
+                            {% endif %}
+                        </div>
+                    {% endblock %}
 
-          <div class="dataset-info">
-              <div class="container">
-                <div class="span9">
-                {% block heading %}
-                  <h1 class="heading" style="color: {{ group.color }};">{{ category_title }}{% if group.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
-                {% endblock %}
-                {% block description %}
-                  {% if group.description[h.lang()] %}
-                    <p>{{ group.description[h.lang()] }}</p>
-                  {% endif %}
-                {% endblock %}
-                {#{% block nums %}
+                    <div class="dataset-info">
+                        <div class="container">
+                            <div class="span9">
+                                {% block heading %}
+                                    <h1 class="heading" style="color: {{ group.color }};">
+                                        {{ category_title }}{% if group.state == 'deleted' %}[{{ _('Deleted') }}
+                                            ]{% endif %}</h1>
+                                {% endblock %}
+                                {% block description %}
+                                    {% if group.description[h.lang()] %}
+                                        <p>{{ group.description[h.lang()] }}</p>
+                                    {% endif %}
+                                {% endblock %}
+                                {#{% block nums %}
                   <div class="nums">
                     <dl>
                       <dt>{{ _('Followers') }}</dt>
@@ -61,111 +63,112 @@
                 {% block follow %}
                   <div class="follow_button">{{ h.follow_button('group', group.id) }}</div>
                 {% endblock %}#}
-                </div>
-                <div class="span3 pull-right">
-                    {% block image %}
-                      {% if group.image_display_url %}
-                      <div class="image" style="background-color: {{ group.color }};">
-                          <img src="{{ group.image_display_url }}" alt=""/>
-                      </div>
-                      {% endif %}
+                            </div>
+                            <div class="span3 pull-right">
+                                {% block image %}
+                                    {% if group.image_display_url %}
+                                        <div class="image" style="background-color: {{ group.color }};">
+                                            <img src="{{ group.image_display_url }}" alt=""/>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% block form %}
+                        <div class="dataset-search" style="background-color: {{ group.color }};">
+                            <div class="container">
+                                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
+                            </div>
+                        </div>
                     {% endblock %}
                 </div>
-              </div>
-          </div>
+            {% endblock %}
 
-          {% block form %}
-            <div class="dataset-search" style="background-color: {{ group.color }};">
-              <div class="container">
-                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
-              </div>
-            </div>
-          {% endblock %}
-        </div>
-      {% endblock %}
-
-      {% block main_content %}
-        <div class="wrapper">
-          <div class="container">
-            <aside class="dataset-filters span3">
-              {% block secondary_content %}
-                <h2>{{ _('Filters') }}</h2>
-              {% endblock %}
-            </aside>
-            <div class="dataset-result span9 pull-right">
-              {% block primary_content %}
-                <section class="module">
-                  <div class="module-content">
-                    {% block page_primary_action %}
-                      {% if not no_title %}
-                        <div class="span5">
-                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
-                        </div>
-                    <div class="span3 pull-right">
-                      {% else %}
-                        <div class="span8">
-                      {% endif %}
-                        {% set sorting = [
+            {% block main_content %}
+                <div class="wrapper">
+                    <div class="container">
+                        <aside class="dataset-filters span3">
+                            {% block secondary_content %}
+                                <h2>{{ _('Filters') }}</h2>
+                            {% endblock %}
+                        </aside>
+                        <div class="dataset-result span9 pull-right">
+                            {% block primary_content %}
+                                <section class="module">
+                                    <div class="module-content">
+                                        {% block page_primary_action %}
+                                            {% if not no_title %}
+                                                <div class="span5">
+                                                    <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                                                </div>
+                                                <div class="span3 pull-right">
+                                            {% else %}
+                                                <div class="span8">
+                                            {% endif %}
+                                        {% set sorting = [
                           (_('Relevance'), 'score desc, metadata_modified desc'),
                           (_('Name Ascending'), 'name asc'),
                           (_('Name Descending'), 'name desc'),
                           (_('Last Modified'), 'metadata_modified desc'),
                           (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
 
-                            <div class="form-select control-group control-order-by">
-                              <label for="field-order-by">{{ _('Order by') }}</label>
-                              <select id="field-order-by" name="sort">
-                                {% for label, value in sorting %}
-                                  {% if label and value %}
-                                    <option value="{{ value }}"
-                                        {% if c.sort_by_selected == value %}
-                                            selected="selected"{% endif %}>{{ label }}</option>
-                                  {% endif %}
-                                {% endfor %}
-                              </select>
-                              <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
-                            </div>
-                        </div>
+                                        <div class="form-select control-group control-order-by">
+                                            <label for="field-order-by">{{ _('Order by') }}</label>
+                                            <select id="field-order-by" name="sort">
+                                                {% for label, value in sorting %}
+                                                    {% if label and value %}
+                                                        <option value="{{ value }}"
+                                                                {% if c.sort_by_selected == value %}
+                                                                selected="selected"{% endif %}>{{ label }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                            <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
+                                        </div>
+                                        </div>
 
-                      {% if request.params and c.page.item_count == 0 %}
-                        <div class="span9">
-                          {% trans %} <p class="extra">Please try another search.</p>{% endtrans %}
-                        </div>
-                      {% endif %}
+                                            {% if request.params and c.page.item_count == 0 %}
+                                                <div class="span9">
+                                                    {% trans %}
+                                                        <p class="extra">Please try another search.</p>{% endtrans %}
+                                                </div>
+                                            {% endif %}
 
-                      {% if c.query_error %}
-                        <div class="span9">
-                          {% trans %}
-                            <p><strong>There was an error while searching.</strong> Please
-                              try
-                              again.</p>
-                          {% endtrans %}
-                        </div>
-                      {% endif %}
+                                            {% if c.query_error %}
+                                                <div class="span9">
+                                                    {% trans %}
+                                                        <p><strong>There was an error while searching.</strong> Please
+                                                            try
+                                                            again.</p>
+                                                    {% endtrans %}
+                                                </div>
+                                            {% endif %}
 
-                      {% block content_action %}
-                        {% if h.check_access('group_update', {'id': group.id}) %}
-                          <div class="page_primary_action span9">
-                            {% link_for _('Add Category'), controller='group', action='new', class_='btn'%}
-                            {% link_for _('Manage'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
-                          </div>
-                        {% endif %}
-                      {% endblock %}
-                    {% endblock %}
+                                            {% block content_action %}
+                                                {% if h.check_access('group_update', {'id': group.id}) %}
+                                                    <div class="page_primary_action span9">
+                                                        {% link_for _('Add Category'), controller='group', action='new', class_='btn' %}
+                                                        {% link_for _('Manage'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endblock %}
 
-                    {% block package_search_results_list %}
-                      <div class="span9">
-                        {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+                                        {% block package_search_results_list %}
+                                            <div class="span9">
+                                                {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
 
-                        {% block page_pagination %}
-                          {{ c.page.pager(q=c.q) }}
-                        {% endblock %}
-                      </div>
-                    {% endblock %}
-                    </div>
-                </section>
+                                                {% block page_pagination %}
+                                                    {{ c.page.pager(q=c.q) }}
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+                                        </div>
+                                </section>
 
-                {#
+                                {#
                 {% block package_search_results_api %}
                   <section class="module">
                     <div class="module-content">
@@ -192,11 +195,11 @@
                   </section>
                 {% endblock %}
                 #}
-              {% endblock %}
-            </div>
-          </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
         </div>
-      {% endblock %}
-    </div>
-  </form>
+    </form>
 {% endblock -%}
