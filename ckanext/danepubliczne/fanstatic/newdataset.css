@@ -202,6 +202,13 @@ select {
         margin-left: 270px;
     }
 
+    .wrapper.newdataset.no-nav .dataset-result {
+        width: 96%;
+        margin-left: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .newdataset .dataset-result .stages {
         margin-right: -25px;
     }

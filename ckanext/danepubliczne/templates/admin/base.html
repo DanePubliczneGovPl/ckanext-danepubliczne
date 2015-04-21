@@ -1,5 +1,11 @@
 {% extends "page.html" %}
 
+{% block styles %}
+    {{ super() }}
+
+    {% resource 'dane_publiczne/admin.css' %}
+{% endblock %}
+
 {% block subtitle %}{{ _('Administration') }}{% endblock %}
 
 {% block breadcrumb_content %}{% endblock %}
@@ -13,3 +19,5 @@
   {{ h.build_nav_icon('user_index', _('Users')) }}
   {{ h.build_nav_icon('ckanadmin_trash', _('Trash')) }}
 {% endblock %}
+
+{% block secondary %}{% endblock %}

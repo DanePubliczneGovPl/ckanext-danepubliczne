@@ -321,6 +321,10 @@ body {
     width: 75%;
 }
 
+.wrapper.no-nav .primary {
+    width: 100%;
+}
+
 [role="main"] .secondary {
     width: 25%;
     float: left;
