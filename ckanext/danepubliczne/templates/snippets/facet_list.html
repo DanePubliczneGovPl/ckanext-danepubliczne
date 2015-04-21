@@ -45,12 +45,12 @@
                       {%- if index <= openess_score -%}
                           <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16"
                                alt=""/>
-                          <span class="visibility-hidden">{{ index }} {{ _('on') }} {{ range(5) }}</span>
                       {%- else -%}
                           <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16"
                                alt=""/>
                       {%- endif -%}
                   {%- endfor -%}
+                      <span class="visibility-hidden">{{ openess_score + 1 }} {{ _('on') }} {{ 5 }}</span>
                   </span>
                   {{ count }}
                 </span>

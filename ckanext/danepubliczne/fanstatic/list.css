@@ -229,6 +229,7 @@
 .nav-item.active > a span, .nav-aside li.active a span{
     white-space:normal;
     overflow: visible;
+    display: inline-block;
 }
 
 .wrapper .dataset-filters .nav-item.active > a:before,
