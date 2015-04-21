@@ -169,7 +169,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
 
         # Update frequency (string instead of text solr type)
-        pkg_dict['update_frequency'] = pkg_dict['extras_update_frequency']
+        pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
         return pkg_dict
 
