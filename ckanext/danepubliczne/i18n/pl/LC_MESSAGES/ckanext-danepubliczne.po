@@ -588,8 +588,8 @@ msgstr ""
 msgid "Tags"
 msgstr "Słowa kluczowe"
 
-msgid "Edit: {dataset_name}"
-msgstr "Edytuj: {dataset_name}"
+msgid "Resources"
+msgstr "Zasoby"
 
 #: ckanext/danepubliczne/templates/qa/snippets/stars.html:13
 msgid "Not Rated"

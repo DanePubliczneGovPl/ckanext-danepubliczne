@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+{% block styles %}
+    {{ super() }}
+
+    {% resource 'dane_publiczne/editdataset.css' %}
+{% endblock %}
+
+{% block wrapper_class %}{{ super() }} editdataset{% endblock %}
+
+{% block wrapper_title %}<h1>{{ _('Resources') + ': ' + pkg_dict.title }}</h1>{% endblock %}
