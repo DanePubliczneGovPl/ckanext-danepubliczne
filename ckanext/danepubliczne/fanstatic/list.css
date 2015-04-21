@@ -188,6 +188,14 @@
     transform: rotate(-90deg);
 }
 
+.wrapper .dataset-filters .read-more-button {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1em;
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
 .wrapper .dataset-filters .nav-item,
 .wrapper .dataset-filters .nav-aside li {
     padding: 0;
