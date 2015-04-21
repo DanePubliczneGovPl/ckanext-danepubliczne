@@ -6,7 +6,7 @@
     {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
   {% endblock %}
 
-  {{ form.select('update_frequency', label=_('Update frequency'), id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
+  {{ form.select('update_frequency', label=_('Update frequency'), selected=data.update_frequency, id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
 
   {% block package_metadata_fields_custom %}
     {{ super() }}
