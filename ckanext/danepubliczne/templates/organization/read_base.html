@@ -3,53 +3,65 @@
 {% set organization = c.group_dict %}
 
 {% block styles %}
-  {{ super() }}
+    {{ super() }}
 
-  {% resource 'dane_publiczne/list.css' %}
+    {% resource 'dane_publiczne/list.css' %}
 {% endblock %}
 
 {% block links %}
-  {{ super() }}
-  {% include "organization/snippets/feeds.html" %}
+    {{ super() }}
+    {% include "organization/snippets/feeds.html" %}
 {% endblock %}
 
 {% block subtitle %}{{ organization.display_name }} - {{ _('Organizations') }}{% endblock %}
 
 {%- block content %}
-  <form class="search-form" method="get" data-module="select-switch">
-    <div id="content" class="list" role="main">
-      {% block toolbar %}
-        <div class="toolbar">
-          {% block breadcrumb %}
-            <div class="container">
-              {% if self.breadcrumb_content() | trim %}
-                <ol class="breadcrumb">
-                  {% snippet 'snippets/home_breadcrumb_item.html' %}
-                  {% block breadcrumb_content %}
-                    <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
-                    <li class="active">{% link_for organization.display_name, controller='organization', action='read', id=organization.name %}</li>
-                  {% endblock %}
-                </ol>
-              {% endif %}
-            </div>
-          {% endblock %}
+    <form class="search-form" method="get" data-module="select-switch">
+        <div id="content" class="list" role="main">
+            {% block toolbar %}
+                <div class="toolbar">
+                    {% block breadcrumb %}
+                        <div class="container">
+                            {% if self.breadcrumb_content() | trim %}
+                                <ol class="breadcrumb">
+                                    {% snippet 'snippets/home_breadcrumb_item.html' %}
+                                    {% block breadcrumb_content %}
+                                        <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
+                                        <li class="active">{% link_for organization.display_name, controller='organization', action='read', id=organization.name %}</li>
+                                    {% endblock %}
+                                </ol>
+                            {% endif %}
+                        </div>
+                    {% endblock %}
 
-          <div class="dataset-info">
-              <div class="container">
-                <div class="span9 compact">
-                {% block heading %}
-                  <h1 class="heading">{{ organization.display_name }}{% if organization.state == 'deleted' %}[{{ _('Deleted') }}]{% endif %}</h1>
-                {% endblock %}
-                {% block description %}
-                  <p><strong>{{ _('Address') }}: </strong>{{ organization.address_street }}, {{ organization.postal_code }} {{ organization.address_city }}</p>
-                  <p><strong>{{ _('Website') }}: </strong><a href="{{ organization.website }}">{{ organization.website }}</a></p>
-                  <p><strong>{{ _('E-mail') }}: </strong><a href="mailto:{{ organization.email }}" title="Napisz na {{ organization.email }}">{{ organization.email }}</a></p>
-                  <p><strong>{{ _('Telephone') }}. </strong>{{ organization.tel }}</p>
-                  {% if organization.fax %}<p><strong>{{ _('Fax') }}. </strong>{{ organization.fax }}</p>{% endif %}
-                  {% if organization.regon %}<p><strong>{{ _('REGON number') }}: </strong>{{ organization.regon }}</p>{% endif %}
-                  {% if organization.epuap %}<p><a href="{{ organization.epuap }}" title="{{ _('ePUAP account') }}">{{ _('ePUAP account') }}</a></p>{% endif %}
-                {% endblock %}
-                {#{% block nums %}
+                    <div class="dataset-info">
+                        <div class="container">
+                            <div class="span9 compact">
+                                {% block heading %}
+                                    <h1 class="heading">
+                                        {{ organization.display_name }}{% if organization.state == 'deleted' %}[
+                                            {{ _('Deleted') }}]{% endif %}</h1>
+                                {% endblock %}
+                                {% block description %}
+                                    <p>
+                                        <strong>{{ _('Address') }}: </strong>{{ organization.address_street }}, {{ organization.postal_code }} {{ organization.address_city }}
+                                    </p>
+                                    <p><strong>{{ _('Website') }}: </strong><a
+                                            href="{{ organization.website }}">{{ organization.website }}</a></p>
+                                    <p><strong>{{ _('E-mail') }}: </strong><a href="mailto:{{ organization.email }}"
+                                                                              title="Napisz na {{ organization.email }}">{{ organization.email }}</a>
+                                    </p>
+                                    <p><strong>{{ _('Telephone') }}. </strong>{{ organization.tel }}</p>
+                                    {% if organization.fax %}
+                                        <p><strong>{{ _('Fax') }}. </strong>{{ organization.fax }}</p>{% endif %}
+                                    {% if organization.regon %}
+                                        <p><strong>{{ _('REGON number') }}: </strong>{{ organization.regon }}</p>
+                                    {% endif %}
+                                    {% if organization.epuap %}<p><a href="{{ organization.epuap }}"
+                                                                     title="{{ _('ePUAP account') }}">{{ _('ePUAP account') }}</a>
+                                    </p>{% endif %}
+                                {% endblock %}
+                                {#{% block nums %}
                   <div class="nums">
                     <dl>
                       <dt>{{ _('Followers') }}</dt>
@@ -64,111 +76,112 @@
                 {% block follow %}
                   <div class="follow_button">{{ h.follow_button('group', organization.id) }}</div>
                 {% endblock %}#}
-                </div>
-                <div class="span3 pull-right">
-                    {% block image %}
-                        {% set image_url = h.dp_organization_image(organization, show_placeholder_by_default = False) %}
-                        {% if image_url %}
-                          <div class="image-handler">
-                            <img src="{{ image_url }}" alt="{{ organization.name }}" alt="{{ organization.name }}">
-                          </div>
-                        {% endif %}
+                            </div>
+                            <div class="span3 pull-right">
+                                {% block image %}
+                                    {% set image_url = h.dp_organization_image(organization, show_placeholder_by_default = False) %}
+                                    {% if image_url %}
+                                        <div class="image-handler">
+                                            <img src="{{ image_url }}" alt="">
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {% block form %}
+                        <div class="dataset-search">
+                            <div class="container">
+                                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
+                            </div>
+                        </div>
                     {% endblock %}
                 </div>
-              </div>
-          </div>
+            {% endblock %}
 
-          {% block form %}
-            <div class="dataset-search">
-              <div class="container">
-                {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
-              </div>
-            </div>
-          {% endblock %}
-        </div>
-      {% endblock %}
-
-      {% block main_content %}
-        <div class="wrapper">
-          <div class="container">
-            <aside class="dataset-filters span3">
-              {% block secondary_content %}
-                <h2>{{ _('Filters') }}</h2>
-                {% block organization_facets %}{% endblock %}
-              {% endblock %}
-            </aside>
-            <div class="dataset-result span9 pull-right">
-              {% block primary_content %}
-                <section class="module">
-                  <div class="module-content">
-                    {% if not no_title %}
-                        <div class="span5">
-                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
-                        </div>
-                    <div class="span3 pull-right">
-                      {% else %}
-                        <div class="span8">
-                      {% endif %}
-                        {% set sorting = [
+            {% block main_content %}
+                <div class="wrapper">
+                    <div class="container">
+                        <aside class="dataset-filters span3">
+                            {% block secondary_content %}
+                                <h2>{{ _('Filters') }}</h2>
+                                {% block organization_facets %}{% endblock %}
+                            {% endblock %}
+                        </aside>
+                        <div class="dataset-result span9 pull-right">
+                            {% block primary_content %}
+                                <section class="module">
+                                    <div class="module-content">
+                                        {% if not no_title %}
+                                            <div class="span5">
+                                                <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                                            </div>
+                                            <div class="span3 pull-right">
+                                        {% else %}
+                                            <div class="span8">
+                                        {% endif %}
+                                        {% set sorting = [
                         (_('Relevance'), 'score desc, metadata_modified desc'),
                         (_('Name Ascending'), 'title_string asc'),
                         (_('Name Descending'), 'title_string desc'),
                         (_('Last Modified'), 'metadata_modified desc'),
                         (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
 
-                            <div class="form-select control-group control-order-by">
-                              <label for="field-order-by">{{ _('Order by') }}</label>
-                              <select id="field-order-by" name="sort">
-                                {% for label, value in sorting %}
-                                  {% if label and value %}
-                                    <option value="{{ value }}"
-                                        {% if c.sort_by_selected == value %}
-                                            selected="selected"{% endif %}>{{ label }}</option>
-                                  {% endif %}
-                                {% endfor %}
-                              </select>
-                              <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
-                            </div>
-                        </div>
+                                        <div class="form-select control-group control-order-by">
+                                            <label for="field-order-by">{{ _('Order by') }}</label>
+                                            <select id="field-order-by" name="sort">
+                                                {% for label, value in sorting %}
+                                                    {% if label and value %}
+                                                        <option value="{{ value }}"
+                                                                {% if c.sort_by_selected == value %}
+                                                                selected="selected"{% endif %}>{{ label }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                            <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
+                                        </div>
+                                        </div>
 
-                      {% if request.params and c.page.item_count == 0 %}
-                        <div class="span9">
-                          {% trans %} <p class="extra">Please try another search.</p>{% endtrans %}
-                        </div>
-                      {% endif %}
+                                        {% if request.params and c.page.item_count == 0 %}
+                                            <div class="span9">
+                                                {% trans %}
+                                                    <p class="extra">Please try another search.</p>{% endtrans %}
+                                            </div>
+                                        {% endif %}
 
-                      {% if c.query_error %}
-                        <div class="span9">
-                          {% trans %}
-                            <p><strong>There was an error while searching.</strong> Please
-                              try
-                              again.</p>
-                          {% endtrans %}
-                        </div>
-                      {% endif %}
-                      {% block content_action %}
-                        {% if h.check_access('organization_update', {'id': organization.id}) %}
-                          <div class="page_primary_action span9">
-                            {% block page_primary_action %}{% endblock %}
-                            {% link_for _('Manage'), controller='organization', action='edit', id=organization.name, class_='btn', icon='wrench' %}
-                          </div>
-                        {% endif %}
-                      {% endblock %}
-                    </div>
+                                        {% if c.query_error %}
+                                            <div class="span9">
+                                                {% trans %}
+                                                    <p><strong>There was an error while searching.</strong> Please
+                                                        try
+                                                        again.</p>
+                                                {% endtrans %}
+                                            </div>
+                                        {% endif %}
+                                        {% block content_action %}
+                                            {% if h.check_access('organization_update', {'id': organization.id}) %}
+                                                <div class="page_primary_action span9">
+                                                    {% block page_primary_action %}{% endblock %}
+                                                    {% link_for _('Manage'), controller='organization', action='edit', id=organization.name, class_='btn', icon='wrench' %}
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+                                        </div>
 
-                    {% block package_search_results_list %}
-                      <div class="span9">
-                        {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+                                        {% block package_search_results_list %}
+                                            <div class="span9">
+                                                {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
 
-                        {% block page_pagination %}
-                          {{ c.page.pager(q=c.q) }}
-                        {% endblock %}
-                      </div>
-                    {% endblock %}
-                    </div>
-                </section>
+                                                {% block page_pagination %}
+                                                    {{ c.page.pager(q=c.q) }}
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                </section>
 
-                {#
+                                {#
                 {% block package_search_results_api %}
                   <section class="module">
                     <div class="module-content">
@@ -195,11 +208,11 @@
                   </section>
                 {% endblock %}
                 #}
-              {% endblock %}
-            </div>
-          </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
         </div>
-      {% endblock %}
-    </div>
-  </form>
+    </form>
 {% endblock -%}

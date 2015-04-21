@@ -1,0 +1,28 @@
+{% ckan_extends %}
+
+{% block styles %}
+    {{ super() }}
+
+    {% resource 'dane_publiczne/login.css' %}
+{% endblock %}
+
+{% block primary_content %}
+    <section class="module">
+        <div class="module-content">
+            <h1 class="page-heading">{% block page_heading %}{{ _('Register for an Account') }}{% endblock %}</h1>
+            {{ c.form | safe }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block secondary_content %}
+    {% block help %}
+        <section class="module module-narrow module-shallow">
+            <h2 class="module-heading">{{ _('Need an Account?') }}</h2>
+
+            <div class="module-content">
+                <p>{% trans %}Then sign right up, it only takes a minute.{% endtrans %}</p>
+            </div>
+        </section>
+    {% endblock %}
+{% endblock %}

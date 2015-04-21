@@ -97,10 +97,25 @@
     content: "\e911";
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
-input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 4-18 */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+/* IE 10+ */
 
 /* =====================================================
    The general setup of the site
@@ -109,6 +124,14 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 html {
     min-height: 100%;
     position: relative;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+    text-indent: -9999px;
+    display: inline-block;
+    width: 0;
+    height: 0;
 }
 
 body {
@@ -269,6 +292,11 @@ body {
     color: #060300;
 }
 
+.toolbar .home span {
+    display: inline-block;
+    text-indent: -9999px;
+}
+
 /* ===========================================
    The content in the middle of the front page
    =========================================== */
@@ -354,6 +382,27 @@ body {
     color: #157abe;
 }
 
+.btn-large {
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33;
+    padding: 10px 16px;
+}
+
+.btn-small {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 5px 10px;
+}
+
+.btn-mini {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;
+}
+
 .js .image-upload .btn,
 .js .image-upload .btn:hover,
 .js .image-upload .btn:active {
@@ -417,7 +466,7 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .attribution strong {
-  display: block;
+    display: block;
 }
 
 .footer-links ul li {
@@ -441,16 +490,35 @@ input[type=checkbox]:checked + .checkbox:before {
     font-weight: 600;
     line-height: 1.2em;
     color: #ffffff;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .site-footer .attribution p,
 .site-footer .attribution .btn-link {
     font-size: 14px;
     font-weight: normal;
-    color: #bebebe;
     padding-left: 0;
     padding-right: 0;
     text-shadow: none;
+}
+
+.site-footer .attribution .btn-link {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.site-footer .attribution .btn-link img {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.site-footer .attribution p {
+    color: #bebebe;
 }
 
 .site-footer .new_dataset_feedback textarea,
@@ -459,11 +527,18 @@ input[type=checkbox]:checked + .checkbox:before {
     color: white;
     border-color: white;
     width: 100%;
+    margin-bottom: 0;
 }
+
+.site-footer .new_dataset_feedback input {
+    width: 96.5%;
+}
+
 .site-footer .new_dataset_feedback label {
     visibility: hidden;
     height: 0px;
 }
+
 .site-footer .new_dataset_feedback .btn,
 .site-footer .new_dataset_feedback .btn:focus,
 .site-footer .new_dataset_feedback .btn:active,
@@ -480,31 +555,35 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .add-member-form .control-label {
-  text-align: right;
-  margin-right: 15px;
-  float: left;
+    text-align: right;
+    margin-right: 15px;
+    float: left;
 }
+
 .add-member-form .controls {
-  margin-left: auto;
-  float: left;
+    margin-left: auto;
+    float: left;
 }
+
 .add-member-or {
-  float: none;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  width: 7%;
-  text-align: center;
-  text-transform: uppercase;
-  color: #999999;
-  font-weight: bold;
+    float: none;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 7%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #999999;
+    font-weight: bold;
 }
+
 .add-member-form .row-fluid .control-group {
-  float: none;
-  width: 45%;
+    float: none;
+    width: 45%;
 }
+
 .add-member-form .row-fluid .select2-container,
 .add-member-form .row-fluid input {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 @media (max-width: 480px) {
@@ -515,7 +594,7 @@ input[type=checkbox]:checked + .checkbox:before {
 
 @media (min-width: 992px) {
     body {
-        padding-bottom: 400px;
+        padding-bottom: 490px;
     }
 
     .mobile-navbar {
@@ -539,7 +618,7 @@ input[type=checkbox]:checked + .checkbox:before {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 250px;
+        height: 350px;
         margin-right: 0;
         margin-left: 0;
     }

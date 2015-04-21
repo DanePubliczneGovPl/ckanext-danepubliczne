@@ -6,7 +6,7 @@
     {% set image_url = h.dp_organization_image(organization) %}
     {% if image_url %}
       <div class="image-handler">
-        <img src="{{ image_url }}" alt="{{ organization.name }}" class="media-image">
+          <img src="{{ image_url }}" alt="" class="media-image">
       </div>
     {% endif %}
   {% endblock %}
