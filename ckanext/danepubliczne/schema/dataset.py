@@ -17,31 +17,38 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Modifies fields and appearance of datasets
     '''
+
+    UPDATE_FREQUENCIES = [
+        "yearly",
+        "notApplicable",
+        "everyHalfYear",
+        "daily",
+        "weekly",
+        "quarterly",
+        "monthly"
+    ]
+
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
-        return {'dp_update_frequencies': self.h_update_frequencies,
-                'dp_update_frequencies_options': self.h_update_frequencies_options,
+        return {'dp_update_frequencies': DatasetForm.h_update_frequencies,
+                'dp_update_frequencies_options': DatasetForm.h_update_frequencies_options,
                 'dp_package_has_license_restrictions': self.h_package_has_license_restrictions,
                 'dp_openess_info': self.h_openess_info,
                 'dp_translate_facet': self.h_translate_facet,
                 'dp_vocab_reuse_conditions_captions': self.h_vocab_reuse_conditions_captions}
 
-    def h_update_frequencies(self):
-        try:
-            tags = tk.get_action('tag_list')(
-                data_dict={'vocabulary_id': 'update_frequencies'})
+    @classmethod
+    def h_update_frequencies(cls):
+        return cls.UPDATE_FREQUENCIES
 
-            return tags
-        except tk.ObjectNotFound:
-            return []
-
-    def h_update_frequencies_options(self):
-        return ({'value': freq, 'text': _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), freq).title())} for freq in self.h_update_frequencies())
+    @classmethod
+    def h_update_frequencies_options(cls):
+        return ({'value': freq, 'text': cls.h_translate_facet(freq, 'update_frequency')} for freq in cls.h_update_frequencies())
 
     def h_package_has_license_restrictions(self, dpkg):
         return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
-            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False)
+            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False) or dpkg.get('license_condition_db_or_copyrighted',False)
 
     @classmethod
     def h_openess_info(cls, score):
@@ -143,13 +150,15 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['license_condition_source'] = asbool(pkg_dict.get('license_condition_source'))
         pkg_dict['license_condition_timestamp'] = asbool(pkg_dict.get('license_condition_timestamp'))
         pkg_dict['license_condition_responsibilities'] = bool(pkg_dict.get('license_condition_responsibilities','').strip())
+        pkg_dict['license_condition_db_or_copyrighted'] = bool(pkg_dict.get('license_condition_db_or_copyrighted','').strip())
 
         pkg_dict['has_any_reuse_conditions'] = pkg_dict['license_condition_modification'] \
             or pkg_dict['license_condition_original'] or pkg_dict['license_condition_source'] \
-            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities']
+            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities'] \
+            or pkg_dict['license_condition_db_or_copyrighted']
 
         restrictions = []
-        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities']:
+        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities', 'db_or_copyrighted']:
             if pkg_dict['license_condition_' + restr]:
                 restrictions.append(restr)
 
@@ -158,6 +167,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['vocab_reuse_conditions'] = restrictions
 
+
+        # Update frequency (string instead of text solr type)
+        pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
         return pkg_dict
 
@@ -198,6 +210,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         facets_dict.pop('license_id', None)
 
         facets_dict['res_type'] = _('Resource types')
+        facets_dict['update_frequency'] = _('Update frequency')
         facets_dict['res_extras_openness_score'] = _('Openess Score')
         facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
 
@@ -211,7 +224,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'original': _('Publish original copy'),
             'source': _('Inform about source'),
             'timestamp': _('Inform about creation & access time'),
-            'responsibilities': _('Provider restricts liability')
+            'responsibilities': _('Provider restricts liability'),
+            'db_or_copyrighted': _('Restrictions on databases and copyrighted material')
         }
 
     @classmethod
@@ -221,6 +235,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             title_i18n = fluent_text_output(group.extras['title_i18n'])
 
             return title_i18n[h.lang()]
+
+        elif facet == 'update_frequency':
+             return _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), label).title())
 
         elif facet == 'vocab_reuse_conditions':
             return cls.h_vocab_reuse_conditions_captions()[label]
@@ -248,26 +265,25 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         optional = tk.get_validator('ignore_missing')
         from_extras = tk.get_converter('convert_from_extras')
-        from_tags = tk.get_converter('convert_from_tags')
         checkboxes = [from_extras, optional, tk.get_validator('boolean_validator')]
 
         schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
         schema.update({
             'category': [category_from_group],
-            'update_frequency': [from_tags('update_frequencies')],
+            'update_frequency': [from_extras],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [from_extras, optional]
+            'license_condition_responsibilities': [from_extras, optional],
+            'license_condition_db_or_copyrighted': [from_extras, optional]
         })
         return schema
 
     def _modify_package_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
-        to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
@@ -277,7 +293,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'category': [category_exists, category_to_group],
-            'update_frequency': [to_tags('update_frequencies')],
+            'update_frequency': [to_extras],
 
             'license_id': [fixed_license, unicode],
 
@@ -286,7 +302,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [optional, to_extras]
+            'license_condition_responsibilities': [optional, to_extras],
+            'license_condition_db_or_copyrighted': [optional, to_extras]
         })
         # Add our custom_resource_text metadata field to the schema
         # schema['resources'].update({

@@ -58,6 +58,11 @@
         <span class="dataset-details"><a href="{{ h.url_for('group_read', id=pkg_dict.category) }}">{{ h.dp_translate_facet(pkg_dict.category, 'groups') }}</a></span>
       </div>
 
+      <div class="list">
+        <span class="dataset-label">{{ _('Update frequency') }}</span>
+        <span class="dataset-details">{{ h.dp_translate_facet(pkg_dict.update_frequency, 'update_frequency') }}</span>
+      </div>
+
       {% if pkg_dict.metadata_modified %}
       <div class="list">
         <span class="dataset-label">{{ _("Last Updated") }}</span>

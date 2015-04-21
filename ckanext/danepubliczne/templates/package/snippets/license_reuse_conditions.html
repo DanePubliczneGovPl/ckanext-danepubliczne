@@ -17,7 +17,11 @@
   {% endif %}
 
   {% if pkg_dict.license_condition_responsibilities %}
-    <li>_('Restriction of data provider liability'): {{ pkg_dict.license_condition_responsibilities }}</li>
+    <li>{{ _('Restriction of data provider liability') }}: {{ pkg_dict.license_condition_responsibilities }}</li>
+  {% endif %}
+
+  {% if pkg_dict.license_condition_db_or_copyrighted %}
+    <li>{{ _('Restrictions on databases and copyrighted material') }}: {{ pkg_dict.license_condition_db_or_copyrighted }}</li>
   {% endif %}
 </ul>
 

@@ -8,4 +8,4 @@
 
 {% block wrapper_class %}{{ super() }} editdataset{% endblock %}
 
-{% block wrapper_title %}<h1>{{ _('Edit: {dataset_name}') }}</h1>{% endblock %}
+{% block wrapper_title %}<h1>{{ _('Edit') + ': ' + pkg_dict.title }}</h1>{% endblock %}

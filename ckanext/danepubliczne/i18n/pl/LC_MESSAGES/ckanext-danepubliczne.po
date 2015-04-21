@@ -230,7 +230,7 @@ msgid "Knowledge base"
 msgstr "Baza wiedzy"
 
 msgid "Jump to content"
-msgstr "Przejdż do treści"
+msgstr "Przejdź do treści"
 
 msgid "Back to home page"
 msgstr "Przejdź do strony głównej"
@@ -605,7 +605,10 @@ msgstr "Dowiedz się, co oznaczają te gwiazdki"
 
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid "What data would you like to see on our site?"
-msgstr "Jakie dane powinniśmy dodać do tego serwisu?"
+msgstr ""
+"Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w "
+"portalu. Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi "
+"dostawcami możliwość ich udostępnienia."
 
 #: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
 msgid "{number} article found for \"{query}\""
@@ -863,6 +866,3 @@ msgstr "Utwórz zbiór danych"
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
 msgstr "Utwórz zbiór danych"
-
-msgid "Filter selected - press again to deselect"
-msgstr "Filtr wybrany - wciśnij ponownie aby odznaczyć go"
