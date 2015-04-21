@@ -99,8 +99,8 @@
     position: relative;
 }
 
-.homepage .categoriesBox .categories .category:hover{
-    background:rgba(0,0,0,.2);
+.homepage .categoriesBox .categories .category:hover {
+    background: rgba(0, 0, 0, .2);
 }
 
 .homepage .categoriesBox .categories .category .category-img {
@@ -132,6 +132,10 @@
     width: 100%;
     float: left;
     padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .homepage .articlesBox .articles h2 {
@@ -139,6 +143,7 @@
     font-weight: 300;
     color: #434343;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .homepage .articlesBox .articles .article {
@@ -172,6 +177,48 @@
     font-size: 14px;
     font-weight: normal;
     padding: 4px 16px;
+}
+
+.homepage .articlesBox .articles .article.box {
+    height: 100%;
+    border: none;
+}
+
+.homepage .articlesBox .articles .article.box a {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.homepage .articlesBox .articles .article.box h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px;
+    width: 86%;
+    margin: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.homepage .articlesBox .articles .article.box .icon {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+.homepage .articlesBox .articles .article.box p {
+    margin: 0;
 }
 
 @media (min-width: 768px) {

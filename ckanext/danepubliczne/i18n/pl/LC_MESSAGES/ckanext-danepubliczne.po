@@ -186,6 +186,9 @@ msgstr "Dodatkowe informacje o serwisie"
 msgid "Articles"
 msgstr "Baza wiedzy"
 
+msgid "Show all articles"
+msgstr "Pokaż wszystkie artykuły"
+
 #: ckanext/danepubliczne/templates/footer.html:23
 msgid ""
 "All datasets and resources on this site, as well as content of most of "
