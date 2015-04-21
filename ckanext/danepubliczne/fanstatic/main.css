@@ -469,16 +469,35 @@ input[type=checkbox]:checked + .checkbox:before {
     font-weight: 600;
     line-height: 1.2em;
     color: #ffffff;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .site-footer .attribution p,
 .site-footer .attribution .btn-link {
     font-size: 14px;
     font-weight: normal;
-    color: #bebebe;
     padding-left: 0;
     padding-right: 0;
     text-shadow: none;
+}
+
+.site-footer .attribution .btn-link {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.site-footer .attribution .btn-link img {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.site-footer .attribution p {
+    color: #bebebe;
 }
 
 .site-footer .new_dataset_feedback textarea,
@@ -487,6 +506,11 @@ input[type=checkbox]:checked + .checkbox:before {
     color: white;
     border-color: white;
     width: 100%;
+    margin-bottom: 0;
+}
+
+.site-footer .new_dataset_feedback input {
+    width: 96.5%;
 }
 
 .site-footer .new_dataset_feedback label {

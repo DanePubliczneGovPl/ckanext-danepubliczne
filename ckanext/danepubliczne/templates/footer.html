@@ -1,40 +1,46 @@
 {% ckan_extends %}
 
 {% block footer_content %}
-  <div class="row">
-    <nav class="footer-links span3">
-      <h2 class="hide">{{ _('Additional info about service') }}</h2>
-      {% block footer_nav %}
-        <ul class="unstyled">
-        {% block footer_links %}
-          {{ h.build_nav_main(
+    <div class="row">
+        <nav class="footer-links span3">
+            <h2 class="hide">{{ _('Additional info about service') }}</h2>
+            {% block footer_nav %}
+                <ul class="unstyled">
+                    {% block footer_links %}
+                        {{ h.build_nav_main(
             ('search', _('Datasets')),
             ('organizations_index', _('Organizations')),
             ('article_search', _('Articles')),
             ('about', _('About'))
           ) }}
-        {% endblock %}
-        </ul>
-      {% endblock %}
-    </nav>
-    <div class="attribution span3">
-      <h2>{{ _('API') }}</h2>
+                    {% endblock %}
+                    <li>
+                        <a href="http://docs.ckan.org/en/ckan-2.3/api/index.html">{{ _('API') }}</a>
+                    </li>
+                </ul>
+            {% endblock %}
+        </nav>
+        <div class="attribution span3">
+            {% block footer_attribution %}
+                <p>{% trans %}<strong>Maintained by</strong><a href='https://mac.gov.pl/en'><img src="/logo/mac.png"
+                                                                                                 alt="Ministry of Administration and Digitalization"></a>{% endtrans %}
+                </p>
+                <p>{% trans %}<strong>Powered by</strong>
+                    <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}</p>
+            {% endblock %}
 
-      <p>{{ _("All datasets and resources on this site, as well as content of most of the flat files, are accessible through ") }}
-        <a class="btn btn-link" href="http://docs.ckan.org/en/ckan-2.3/api/index.html" target="_self">JSON API</a>.
-      </p>
+        </div>
+        <div class="attribution span5">
+            <h2>{{ _("You haven\'t find here what you were looking for?") }}</h2>
+            <a class="btn btn-link" data-toggle="collapse" data-target=".new_dataset_feedback">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjA0RkI4RDAyRTgwRTExRTQ5NjZCQkY0OThCNzdDQjNGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjA0RkI4RDAzRTgwRTExRTQ5NjZCQkY0OThCNzdDQjNGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDRGQjhEMDBFODBFMTFFNDk2NkJCRjQ5OEI3N0NCM0YiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDRGQjhEMDFFODBFMTFFNDk2NkJCRjQ5OEI3N0NCM0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6JLtOJAAABUElEQVR42pSUz0pCQRTGryBBBGkJIoWQm1q16gX6s3bvO/gGLn0B961dS4FvUEQRCqKm4CKQQkQrFW3Rott3cS59HGbmjgd+4Mw538eZmeP1fN/3FLvggtaunIOTcM2JCliAzIaGc/AEYmxY8P/jC+w7mrVJV2bDLHik5AwcRpj1qP4Z7MkjB7SoaG7ptEN1Tc7pih+oeKq50xfKd6TedJwmiZa036X9nk5ru6N7IeZ136TzIuaQOw1jCLZc5rAoL1hxR2avIC7yDVCVhnkStTSmY5XbFvs10pXY8Ey9KJvGSHiphp/Nbql+Ak7lkRNq9sJoWx7shuo+Qcr0ykkwouKGxow7W6jHtI5NUPBBoq6hs29w4DqHwV/uncR1cC2GPb3pYCdEp2H8giOXwTZ1+kZmPyBn06w/ivbYAUv1+xgMbMVxLzpW4Aqko8yC+BNgANKKsCj8q89GAAAAAElFTkSuQmCC"/>
+                {{ _('Propose new dataset') }}
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjA0RkI4RDAyRTgwRTExRTQ5NjZCQkY0OThCNzdDQjNGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjA0RkI4RDAzRTgwRTExRTQ5NjZCQkY0OThCNzdDQjNGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDRGQjhEMDBFODBFMTFFNDk2NkJCRjQ5OEI3N0NCM0YiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDRGQjhEMDFFODBFMTFFNDk2NkJCRjQ5OEI3N0NCM0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6JLtOJAAABUElEQVR42pSUz0pCQRTGryBBBGkJIoWQm1q16gX6s3bvO/gGLn0B961dS4FvUEQRCqKm4CKQQkQrFW3Rott3cS59HGbmjgd+4Mw538eZmeP1fN/3FLvggtaunIOTcM2JCliAzIaGc/AEYmxY8P/jC+w7mrVJV2bDLHik5AwcRpj1qP4Z7MkjB7SoaG7ptEN1Tc7pih+oeKq50xfKd6TedJwmiZa036X9nk5ru6N7IeZ136TzIuaQOw1jCLZc5rAoL1hxR2avIC7yDVCVhnkStTSmY5XbFvs10pXY8Ey9KJvGSHiphp/Nbql+Ak7lkRNq9sJoWx7shuo+Qcr0ykkwouKGxow7W6jHtI5NUPBBoq6hs29w4DqHwV/uncR1cC2GPb3pYCdEp2H8giOXwTZ1+kZmPyBn06w/ivbYAUv1+xgMbMVxLzpW4Aqko8yC+BNgANKKsCj8q89GAAAAAElFTkSuQmCC"/>
+            </a>
 
-      {% block footer_attribution %}
-      <p>{% trans %}<strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}</p>
-      <p>{% trans %}<strong>Maintained by</strong> <a href='https://mac.gov.pl/en'><img src="/logo/mac.png" alt="Ministry of Administration and Digitalization"></a>{% endtrans %}</p>
-      {% endblock %}
-
+            <div class="new_dataset_feedback collapse">
+                {% snippet 'snippets/new_dataset_feedback_form.html' %}
+            </div>
+        </div>
     </div>
-    <div class="attribution span5">
-      <h2>{{ _('You haven\'t find here what you were looking for?') + ' ' + _('Propose new dataset') + '!' }}</h2>
-      <div class="new_dataset_feedback">
-      {% snippet 'snippets/new_dataset_feedback_form.html' %}
-      </div>
-    </div>
-  </div>
 {% endblock %}
