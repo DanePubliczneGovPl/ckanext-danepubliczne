@@ -181,11 +181,13 @@
 
 .homepage .articlesBox .articles .article.box {
     height: 100%;
+    min-height: 150px;
     border: none;
 }
 
 .homepage .articlesBox .articles .article.box a {
     height: 100%;
+    min-height: 150px;
     display: block;
     position: relative;
 }
