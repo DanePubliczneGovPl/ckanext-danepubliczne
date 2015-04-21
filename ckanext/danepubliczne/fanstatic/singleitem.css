@@ -25,6 +25,10 @@
     padding: 0 25px 0 0;
 }
 
+.singleitem .dataset-info .module-content .feedback-form-wrapper {
+    margin-top: 10px;
+}
+
 .singleitem .dataset-info p {
     font-size: 18px;
     font-weight: normal;
