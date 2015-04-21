@@ -333,6 +333,7 @@
     line-height: 1.2em;
     float: left;
     display: inline;
+    width: 100%;
 }
 
 .wrapper .dataset-result .dataset-list .dataset-content h3,
