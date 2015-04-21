@@ -104,11 +104,12 @@
     font-weight: normal;
 }
 
-@media (min-width: 768px) {
-    .wrapper {
-        margin: 0 -20px;
-    }
+.form-actions {
+    background: none;
+    border: 0;
+}
 
+@media (min-width: 768px) {
     .organization .page-header .search-input {
         width: auto;
     }

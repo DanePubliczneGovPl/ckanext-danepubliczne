@@ -140,6 +140,10 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
 }
 
+.control-full input, .control-full select, .control-full textarea {
+    min-height: 30px;
+}
+
 .site-footer {
     margin: 0 -20px;
 }

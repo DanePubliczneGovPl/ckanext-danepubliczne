@@ -2,8 +2,12 @@
 
 {% block styles %}
     {{ super() }}
+
+    {% resource 'dane_publiczne/organization.css' %}
     {% resource 'dane_publiczne/forms.css' %}
 {% endblock %}
+
+{% block wrapper_class %} organization{% endblock %}
 
 {% block breadcrumb_content %}
   <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
@@ -13,8 +17,7 @@
   {% endblock %}
 {% endblock %}
 
-{% block secondary_content %}
-{% endblock %}
+{% block secondary %}{% endblock %}
 
 {% block page_heading_class %}hide-heading{% endblock %}
 {% block page_heading %}{{ _('Edit Organization') }}{% endblock %}
