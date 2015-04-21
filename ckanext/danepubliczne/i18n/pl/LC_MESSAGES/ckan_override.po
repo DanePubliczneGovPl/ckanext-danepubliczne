@@ -4191,7 +4191,7 @@ msgstr "Trackback URL"
 
 #: ckan/templates/snippets/facet_list.html:72
 msgid "Show More {facet_type}"
-msgstr "Pokaż więcej {facet_type}"
+msgstr "{facet_type} - Pokaż więcej"
 
 #: ckan/templates/snippets/facet_list.html:74
 msgid "Show Only Popular {facet_type}"
