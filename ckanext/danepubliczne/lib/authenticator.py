@@ -15,7 +15,7 @@ class EmailPasswordAuthenticator(object):
         if not ('login' in identity and 'password' in identity):
             return None
 
-        login = identity['login']
+        login = identity['login'].lower()
         user_list = User.by_email(login)
 
         if not user_list:

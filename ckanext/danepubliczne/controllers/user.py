@@ -289,7 +289,7 @@ class UserController(base_user.UserController):
             abort(401, _('Unauthorized to request reset password.'))
 
         if request.method == 'POST':
-            email = request.params.get('email')
+            email = request.params.get('email').lower()
             users = model.User.by_email(email)
 
             if not users:
@@ -372,7 +372,8 @@ def email_unique_validator(key, data, errors, context):
 
     '''
     model = context['model']
-    new_email = data[key]
+    new_email = data[key].lower()
+    data[key] = new_email
 
     # if not isinstance(new_email, basestring):
     #     raise df.Invalid(_('User names must be strings'))
