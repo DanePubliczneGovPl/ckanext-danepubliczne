@@ -230,7 +230,7 @@ msgid "Knowledge base"
 msgstr "Baza wiedzy"
 
 msgid "Jump to content"
-msgstr "Przejdż do treści"
+msgstr "Przejdź do treści"
 
 msgid "Back to home page"
 msgstr "Przejdź do strony głównej"
