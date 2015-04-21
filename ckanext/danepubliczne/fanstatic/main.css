@@ -382,6 +382,27 @@ body {
     color: #157abe;
 }
 
+.btn-large {
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33;
+    padding: 10px 16px;
+}
+
+.btn-small {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 5px 10px;
+}
+
+.btn-mini {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;
+}
+
 .js .image-upload .btn,
 .js .image-upload .btn:hover,
 .js .image-upload .btn:active {

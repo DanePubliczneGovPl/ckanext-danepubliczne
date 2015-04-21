@@ -5,6 +5,8 @@
 
 .newdataset {
     border: 4px solid #e3e3e3;
+    margin-left: -2px;
+    margin-right: -2px;
     background: #ffffff;
     display: inline-block;
 }
@@ -123,8 +125,26 @@ select {
     margin-bottom: 0;
 }
 
+.control-group .btn {
+    top: 0;
+}
+
 .form-horizontal .control-group.control-full {
     margin-top: 15px;
+}
+
+.form-horizontal .control-label {
+    font-size: 14px;
+}
+
+.form-horizontal .control-group.control-large .control-label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.form-horizontal .control-group.control-large .controls input {
+    min-height: 34px;
+    font-size: 1.1em;
 }
 
 .radio input[type="radio"], .checkbox input[type="checkbox"] {
@@ -164,12 +184,7 @@ select {
 
 .newdataset .dataset-result .form-actions .btn {
     float: right;
-}
-
-@media (min-width: 768px) {
-    .wrapper {
-        margin: 0 -25px;
-    }
+    margin-left: 10px;
 }
 
 @media (min-width: 1200px) {
