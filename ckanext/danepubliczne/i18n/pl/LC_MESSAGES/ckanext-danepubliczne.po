@@ -367,7 +367,7 @@ msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
 
 #: ckanext/danepubliczne/templates/home/snippets/search.html:2
 msgid "Enter word or phrase that you are looking at"
-msgstr "Wpisz słowo bądź fraze, którą chcesz odszukać"
+msgstr "Wpisz słowo bądź fraze, którąchcesz odszukać"
 
 msgid "eg. Gold Prices"
 msgstr "np. Baza teleadresowa"
