@@ -300,11 +300,13 @@ body {
 .toolbar .home span {
     display: inline-block;
     text-indent: -9999px;
+    width: 0;
 }
 
 .simple-input label {
     visibility: hidden;
     text-indent: -9999px;
+    width: 0;
 }
 
 /* ===========================================
