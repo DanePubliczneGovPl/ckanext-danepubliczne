@@ -463,6 +463,20 @@ input[type=checkbox]:checked + .checkbox:before {
     line-height: 18px;
 }
 
+.wrapper .page-header {
+    padding-bottom: 0;
+    border-bottom: 1px solid #DDD;
+    background: none;
+}
+
+.wrapper .page-header .nav-tabs {
+    border-bottom: none;
+}
+
+.wrapper .page-header .nav > li > a:hover {
+    border-bottom-color: #ffffff;
+}
+
 /* ====================================
    The footer at the bottom of the site
    ==================================== */
