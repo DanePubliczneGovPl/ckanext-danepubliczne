@@ -27,7 +27,7 @@
                   {% snippet 'snippets/home_breadcrumb_item.html' %}
                   {% block breadcrumb_content %}
                     <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
-                    <li class="active">{% link_for organization.display_name|truncate(35), controller='organization', action='read', id=organization.name %}</li>
+                    <li class="active">{% link_for organization.display_name|truncate(60), controller='organization', action='read', id=organization.name %}</li>
                   {% endblock %}
                 </ol>
               {% endif %}
