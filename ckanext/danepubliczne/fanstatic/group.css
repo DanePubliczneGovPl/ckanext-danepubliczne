@@ -1,0 +1,11 @@
+.newgroup .primary > .module > .module-content {
+    padding-bottom: 0;
+}
+
+.newgroup .dataset-form .slug-preview {
+    margin-left: 115px;
+}
+
+.newgroup .primary > .module > .module-content .form-horizontal .form-actions {
+    margin-bottom: 0;
+}

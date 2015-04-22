@@ -46,7 +46,7 @@ overriding the form blocks depending on the current context
       <input type="radio" id="color-{{ cl }}" name="color" value="{{ cl }}" {% if data.color %}checked="checked"{% endif %}>
       <label for="color-{{ cl }}" class="radio">
         <div class="sample" style="background-color: {{ cl }}; display: inline-block; width: 19px">&nbsp;</div>
-        <span>(#4b77be)</span>
+          <span>({{ cl }})</span>
       </label>
       <br/>
       {% endfor %}
