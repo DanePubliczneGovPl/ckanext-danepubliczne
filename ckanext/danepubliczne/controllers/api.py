@@ -3,7 +3,8 @@ import ckan.lib.base as base
 import ckan.model as model
 import ckan.logic as logic
 
-from ckan.common import _, c, request, response
+from ckan.common import c, request
+
 
 class UtilExtension(base.BaseController):
     @jsonp.jsonpify

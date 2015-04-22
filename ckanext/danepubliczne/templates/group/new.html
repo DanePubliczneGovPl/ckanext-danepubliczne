@@ -1,9 +1,9 @@
 {% ckan_extends %}
 
 {% block styles %}
-    {{ super() }}
-    {% resource 'dane_publiczne/newdataset.css' %}
-    {% resource 'dane_publiczne/group.css' %}
+  {{ super() }}
+  {% resource 'dane_publiczne/newdataset.css' %}
+  {% resource 'dane_publiczne/group.css' %}
 {% endblock %}
 
 {% block wrapper_class %} newdataset newgroup{% endblock %}
@@ -11,7 +11,7 @@
 {% block subtitle %}{{ _('Create Category') }}{% endblock %}
 
 {% block breadcrumb_link %}
-    {{ h.nav_link(_('Create Category'), controller='group', action='edit', id=c.group.name) }}{% endblock %}
+  {{ h.nav_link(_('Create Category'), controller='group', action='edit', id=c.group.name) }}{% endblock %}
 
 {% block page_heading %}{{ _('Create Category') }}{% endblock %}
 

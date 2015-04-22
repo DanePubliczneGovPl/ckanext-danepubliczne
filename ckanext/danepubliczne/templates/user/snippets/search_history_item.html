@@ -14,14 +14,14 @@ Example:
 {% block search_history_item %}
   <li class="{{ item_class or "search_history-item" }}">
     {% block content %}
-      <a href="{{item.display.url}}">"{{ item.display.q }}" {% if item.display.facets %}(
+      <a href="{{ item.display.url }}">"{{ item.display.q }}" {% if item.display.facets %}(
         {%- for (name, value) in item.display.facets.iteritems() -%}
           {{ h.get_facet_title(name) }}: {{ value }}
-        {%- if not loop.last %}, {% endif -%}
-        {# {{ h.get_facet_items_dict(name) }} needs c.search_facets #}
+          {%- if not loop.last %}, {% endif -%}
+          {# {{ h.get_facet_items_dict(name) }} needs c.search_facets #}
         {%- endfor -%}
         )
-        {%- endif -%}
+      {%- endif -%}
       </a>
     {% endblock %}
   </li>

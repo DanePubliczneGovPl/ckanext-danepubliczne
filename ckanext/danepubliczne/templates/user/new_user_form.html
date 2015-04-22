@@ -1,19 +1,19 @@
 {% import "macros/form.html" as form %}
 
 <form class="form-horizontal" action="" method="post">
-    {{ form.errors(error_summary) }}
-    {{ form.input("email", id="field-email", label=_("Email"), type="email", placeholder=_("joe@example.com"), value=data.email, error=errors.email, classes=["control-medium"]) }}
-    {{ form.input("password1", id="field-password", label=_("Password"), type="password", placeholder="••••••••", value=data.password1, error=errors.password1, classes=["control-medium"]) }}
-    {{ form.info(_('Your password must be 4 characters or longer')) }}
-    {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", placeholder="••••••••", value=data.password2, error=errors.password1, classes=["control-medium"]) }}
+  {{ form.errors(error_summary) }}
+  {{ form.input("email", id="field-email", label=_("Email"), type="email", placeholder=_("joe@example.com"), value=data.email, error=errors.email, classes=["control-medium"]) }}
+  {{ form.input("password1", id="field-password", label=_("Password"), type="password", placeholder="••••••••", value=data.password1, error=errors.password1, classes=["control-medium"]) }}
+  {{ form.info(_('Your password must be 4 characters or longer')) }}
+  {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", placeholder="••••••••", value=data.password2, error=errors.password1, classes=["control-medium"]) }}
 
-    {% if g.recaptcha_publickey %}
-        {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
-    {% endif %}
+  {% if g.recaptcha_publickey %}
+    {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
+  {% endif %}
 
-    <div class="form-actions">
-        {% block form_actions %}
-            <button class="btn btn-primary" type="submit" name="save">{{ _("Create Account") }}</button>
-        {% endblock %}
-    </div>
+  <div class="form-actions">
+    {% block form_actions %}
+      <button class="btn btn-primary" type="submit" name="save">{{ _("Create Account") }}</button>
+    {% endblock %}
+  </div>
 </form>

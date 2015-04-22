@@ -4,9 +4,8 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.helpers as h
 import ckan.lib.navl.dictization_functions as df
-from ckan.common import _
-from __builtin__ import True
 from ckanext.fluent.validators import fluent_text, fluent_text_output
+
 
 class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     '''
@@ -18,25 +17,25 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
         return {'dp_categories': self.h_categories,
                 'dp_category_colors': self.h_colors,
                 'dp_default_locale': self.h_default_locale
-            }
+                }
 
     def h_default_locale(self):
         return h.get_available_locales()[0].language
 
-    def h_categories(self, exclude_empty = False):
+    def h_categories(self, exclude_empty=False):
         categories = tk.get_action('group_list')(data_dict={'all_fields': True, 'include_extras': True})
-        
+
         categories2 = []
         for c in categories:
             if c['package_count'] == 0 and exclude_empty:
                 continue
-            
+
             for extra in c['extras']:
                 if extra['key'] == 'color':
                     c['color'] = extra['value']
                 if extra['key'] == 'title_i18n':
                     c['title_i18n'] = fluent_text_output_backcompat(extra['value'])
-        
+
             categories2.append(c)
 
             if c.get('title_i18n'):
@@ -58,11 +57,12 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             '#2574a9',
             '#138435'
         ]
-        
+
     p.implements(p.IGroupForm)
+
     def is_fallback(self):
         return True
-    
+
     def group_types(self):
         return ['group']
 
@@ -96,12 +96,12 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             'description': [optional, fluent_text_output_backcompat]
         })
         return schema
-    
+
     def form_to_db_schema(self):
         schema = super(Category, self).form_to_db_schema()
         schema = self._form_to_db_schema(schema)
         return schema
-    
+
     form_to_db_schema_api_create = form_to_db_schema_api_update = form_to_db_schema
 
 

@@ -11,12 +11,12 @@
       </ul>
     {% else %}
       {% if h.check_access('resource_create', {'package_id': pkg['id']}) %}
-          {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
-            <p class="empty">This dataset has no data, <a href="{{ url }}">why not add some?</a></p>
-          {% endtrans %}
+        {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
+          <p class="empty">This dataset has no data, <a href="{{ url }}">why not add some?</a></p>
+        {% endtrans %}
       {% else %}
-          <p class="empty">{{ _('This dataset has no data') }}</p>
+        <p class="empty">{{ _('This dataset has no data') }}</p>
       {% endif %}
     {% endif %}
-    {% endblock %}
+  {% endblock %}
 </section>

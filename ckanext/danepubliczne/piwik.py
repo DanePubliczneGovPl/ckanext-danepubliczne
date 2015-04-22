@@ -44,7 +44,7 @@ class PiwikPlugin(plugins.SingletonPlugin):
         config.update(conv.check(conv.struct({
             'piwik.site_id': conv.input_to_int,
             'piwik.url': conv.make_input_to_url(full=True, error_if_fragment=True, error_if_path=True,
-                error_if_query=True),
+                                                error_if_query=True),
             'piwik.in_debug': conv.pipe(conv.guess_bool, conv.default(False)),
             'piwik.domain': conv.default(False),
             'piwik.cookies_disabled': conv.default(False),

@@ -14,9 +14,12 @@ Example:
   <span>{{ _('Openess Score') }}:</span>
   <span>{{ h.qa_stars_rating(stars, reason) }}</span>
   {% if stars > 0 %}
-  <p class="rating-info-toggle module-content module-border-top"><a href="#" data-toggle="ratings" data-target=".rating-info-wrapper" data-hide-text="{{ _('Hide rating info') }}">{{ _('What these stars mean') }}…</a></p>
-  <div class="rating-info-wrapper js-hide module-border-top">
-    {{ h.qa_stars_info(stars) }}
-  </div>
+    <p class="rating-info-toggle module-content module-border-top"><a href="#" data-toggle="ratings"
+                                                                      data-target=".rating-info-wrapper"
+                                                                      data-hide-text="{{ _('Hide rating info') }}">{{ _('What these stars mean') }}…</a>
+    </p>
+    <div class="rating-info-wrapper js-hide module-border-top">
+      {{ h.qa_stars_info(stars) }}
+    </div>
   {% endif %}
 </section>

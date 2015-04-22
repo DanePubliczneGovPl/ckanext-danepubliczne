@@ -2,25 +2,20 @@
 
 import paste.fixture
 import pylons.test
-import pylons.config as config
-import webtest
 
 import nose.tools
 
 assert_equals = nose.tools.assert_equals
 assert_raises = nose.tools.assert_raises
 
-import ckan.model as model
 import ckan.tests as tests
 import ckan.logic as logic
 import ckan.plugins
 import ckan.new_tests.factories as factories
 import ckan.new_tests.helpers as helpers
 
-import ckan.logic.auth.create as auth_create
 
-
-def _make_article(apikey = None):
+def _make_article(apikey=None):
     article = {
         'title': u'Article title',
         'name': 'article_name',
@@ -52,7 +47,7 @@ class TestAuth(helpers.FunctionalTestBase):
 
     # @classmethod
     # def teardown_class(cls):
-    #     super(TestAuth, cls).teardown_class()
+    # super(TestAuth, cls).teardown_class()
     #
     #     ckan.plugins.unload(*plugins_to_load)
 

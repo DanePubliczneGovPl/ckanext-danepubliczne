@@ -3,12 +3,12 @@
 {% block dashboard_activity_stream_context %}{% endblock %}
 
 {% block primary_content_inner %}
-  <h2 class="hide-heading">{{ _('Search History') }}</h2>
-  {% if c.search_history %}
-    {% snippet 'user/snippets/search_history.html', search_history=c.search_history %}
-  {% else %}
-    <p class="empty">
-      {{ _('You haven\'t performed any searches yet.') }}
+<h2 class="hide-heading">{{ _('Search History') }}</h2>
+{% if c.search_history %}
+{% snippet 'user/snippets/search_history.html', search_history=c.search_history %}
+{% else %}
+<p class="empty">
+{{ _('You haven\'t performed any searches yet.') }}
     </p>
   {% endif %}
 {% endblock %}

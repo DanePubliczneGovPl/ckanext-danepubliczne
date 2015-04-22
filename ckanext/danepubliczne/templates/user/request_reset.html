@@ -14,14 +14,15 @@
         <form action="" method="post" class="form-horizontal">
           <div class="control-group control-medium">
             <label class="control-label" for="field-email">{{ _('Email') }}</label>
+
             <div class="controls">
-                <input id="field-email" name="email" value="" type="text" />
+              <input id="field-email" name="email" value="" type="text"/>
             </div>
           </div>
           {% block form_button %}
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit" name="reset">{{ _("Request reset") }}</button>
-          </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit" name="reset">{{ _("Request reset") }}</button>
+            </div>
           {% endblock %}
         </form>
       {% endblock %}
@@ -31,13 +32,13 @@
 
 {% block secondary_content %}
   {% block help %}
-  <section class="module module-narrow module-shallow">
-    {% block help_inner %}
-    <h2 class="module-heading">{{ _('How does this work?') }}</h2>
-    <div class="module-content">
-      <p>{% trans %}We will send you an email with a link to enter a new password.{% endtrans %}</p>
-    </div>
-    {% endblock %}
-  </section>
+    <section class="module module-narrow module-shallow">
+      {% block help_inner %}
+        <h2 class="module-heading">{{ _('How does this work?') }}</h2>
+        <div class="module-content">
+          <p>{% trans %}We will send you an email with a link to enter a new password.{% endtrans %}</p>
+        </div>
+      {% endblock %}
+    </section>
   {% endblock %}
 {% endblock %}

@@ -1,30 +1,21 @@
-from pylons import config
-
-import ckan.lib.base as base
-import ckan.lib.helpers as h
-import ckan.lib.app_globals as app_globals
-import ckan.lib.mailer as mailer
-import ckan.model as model
-import ckan.logic as logic
-import ckan.new_authz
-
 import smtplib
 import logging
-import uuid
 from time import time
 from email.mime.text import MIMEText
 from email.header import Header
 from email import Utils
-from urlparse import urljoin
 
 from pylons import config
+import ckan.lib.base as base
+import ckan.lib.app_globals as app_globals
+import ckan.lib.mailer as mailer
+import ckan.logic as logic
+from pylons import config
 import paste.deploy.converters
-
 import ckan
-import ckan.model as model
 import ckan.lib.helpers as h
-
 from ckan.common import _, g
+
 
 log = logging.getLogger(__name__)
 
@@ -32,13 +23,15 @@ c = base.c
 request = base.request
 _ = base._
 
-class FeedbackController(base.BaseController):
 
+class FeedbackController(base.BaseController):
     @classmethod
     def get_form_items(cls):
         items = [
-            {'name': 'feedback', 'control': 'textarea', 'label': _('Your feedback'), 'placeholder': _('What is your feedback on this dataset?'), 'required':True},
-            {'name': 'email', 'control': 'input', 'label': _('Email'), 'placeholder': _('Leave email if we should get back to you')},
+            {'name': 'feedback', 'control': 'textarea', 'label': _('Your feedback'),
+             'placeholder': _('What is your feedback on this dataset?'), 'required': True},
+            {'name': 'email', 'control': 'input', 'label': _('Email'),
+             'placeholder': _('Leave email if we should get back to you')},
         ]
         return items
 
@@ -69,13 +62,14 @@ class FeedbackController(base.BaseController):
         rev = logic.get_action('revision_show')({}, {'id': pkg['revision_id']})
         # pkg.organization.name
 
-        author = logic.get_action('user_show')({'user': g.site_id }, {'id': rev['author']})
+        author = logic.get_action('user_show')({'user': g.site_id}, {'id': rev['author']})
         # pkg.creator_user_id
         # pkg.maintainer_email
         mail_from = config.get('smtp.mail_from')
 
-        _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg, cc={mail_from: None})
-        #mailer.mail_recipient(author['display_name'], author['email'], subject, msg)
+        _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg,
+                        cc={mail_from: None})
+        # mailer.mail_recipient(author['display_name'], author['email'], subject, msg)
 
         h.flash_success(_('Thank you for your feedback!'))
         h.redirect_to(source_url)
@@ -139,28 +133,30 @@ class FeedbackController(base.BaseController):
 
         vars = {'data': data, 'errors': {}, 'form_items': items}
         return base.render('admin/config.html',
-                           extra_vars = vars)
+                           extra_vars=vars)
+
 
 def get_new_dataset_feedback_body(feedback, email=''):
     body = _(
-    "User {email} has sent proposition for a new dataset:\n"
-    "\n"
-    "{feedback}\n"
+        "User {email} has sent proposition for a new dataset:\n"
+        "\n"
+        "{feedback}\n"
     )
 
     d = {
         'feedback': feedback,
         'email': email
-        }
+    }
     return body.format(**d)
+
 
 def get_feedback_body(feedback, pkg_dict, source_url, email=''):
     body = _(
-    "User {email} has sent feedback concerning {display_name}[{url}].\n"
-    "\n"
-    "Feedback:\n"
-    "\n"
-    "{feedback}\n"
+        "User {email} has sent feedback concerning {display_name}[{url}].\n"
+        "\n"
+        "Feedback:\n"
+        "\n"
+        "{feedback}\n"
     )
 
     d = {
@@ -168,14 +164,15 @@ def get_feedback_body(feedback, pkg_dict, source_url, email=''):
         'display_name': pkg_dict['title'],
         'url': source_url,
         'email': email
-        }
+    }
     return body.format(**d)
 
+
 def _mail_recipient(recipient_name, recipient_email,
-        sender_name, sender_url, subject,
-        body, headers={}, cc={}):
+                    sender_name, sender_url, subject,
+                    body, headers={}, cc={}):
     mail_from = config.get('smtp.mail_from')
-    #body = add_msg_niceties(recipient_name, body, sender_name, sender_url)
+    # body = add_msg_niceties(recipient_name, body, sender_name, sender_url)
 
     msg = MIMEText(body.encode('utf-8'), 'plain', 'utf-8')
     for k, v in headers.items(): msg[k] = v
@@ -208,7 +205,7 @@ def _mail_recipient(recipient_name, recipient_email,
     else:
         smtp_server = config.get('smtp.server', 'localhost')
         smtp_starttls = paste.deploy.converters.asbool(
-                config.get('smtp.starttls'))
+            config.get('smtp.starttls'))
         smtp_user = config.get('smtp.user')
         smtp_password = config.get('smtp.password')
     smtp_connection.connect(smtp_server)
@@ -231,7 +228,7 @@ def _mail_recipient(recipient_name, recipient_email,
         # If 'smtp.user' is in CKAN config, try to login to SMTP server.
         if smtp_user:
             assert smtp_password, ("If smtp.user is configured then "
-                    "smtp.password must be configured as well.")
+                                   "smtp.password must be configured as well.")
             smtp_connection.login(smtp_user, smtp_password)
 
         smtp_connection.sendmail(mail_from, [recipient_email], msg.as_string())

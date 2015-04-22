@@ -25,12 +25,12 @@
       {% endif %}
 
       {% if package.type == 'article' %}
-          <small>{{ h.render_datetime(h.date_str_to_datetime(package.metadata_created)) }}</small>
-          <p>{{ h.dp_shorten_article(notes, 200) }}</p>
+        <small>{{ h.render_datetime(h.date_str_to_datetime(package.metadata_created)) }}</small>
+        <p>{{ h.dp_shorten_article(notes, 200) }}</p>
       {% else %}
-      {% if notes %}
-        <div class="notes">{{ notes|urlize }}</div>
-      {% endif %}
+        {% if notes %}
+          <div class="notes">{{ notes|urlize }}</div>
+        {% endif %}
       {% endif %}
     </div>
     {% if package.resources and not hide_resources %}

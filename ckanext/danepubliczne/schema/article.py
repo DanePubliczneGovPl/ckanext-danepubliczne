@@ -5,6 +5,7 @@ import ckan.plugins.toolkit as tk
 import ckan.logic.auth as auth
 from ckan.common import _
 
+
 class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Dataset type handling articles
@@ -43,7 +44,6 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             paragraph = paragraph[0:(length - len(trail))] + trail
 
         return paragraph
-
 
 
     p.implements(p.IDatasetForm)
@@ -107,30 +107,34 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def search_template(self):
         return 'article/search.html'
+
     #
     # def history_template(self):
-    #     return 'article/history.html'
+    # return 'article/history.html'
     #
     def package_form(self):
         return 'article/new_package_form.html'
 
 
     p.implements(p.IAuthFunctions)
+
     def get_auth_functions(self):
         return {
-            'package_create': _package_create,   # new = context.get('package') == None
+            'package_create': _package_create,  # new = context.get('package') == None
             'package_delete': _package_delete,  # data_dict['id]
-            'package_update': _package_update, # context['package'].type
+            'package_update': _package_update,  # context['package'].type
         }
+
 
 def _package_create(context, data_dict=None):
     user = context['user']
-    package = context.get('package') # None for new
+    package = context.get('package')  # None for new
 
     if package and package['type'] == 'article':
         return {'success': False, 'msg': _('User %s not authorized to create articles') % user}
 
     return auth.create.package_create(context, data_dict)
+
 
 def _package_delete(context, data_dict=None):
     user = context['user']
@@ -140,6 +144,7 @@ def _package_delete(context, data_dict=None):
         return {'success': False, 'msg': _('User %s not authorized to delete articles') % user}
 
     return auth.delete.package_delete(context, data_dict)
+
 
 def _package_update(context, data_dict=None):
     user = context['user']

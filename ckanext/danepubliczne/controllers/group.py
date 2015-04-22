@@ -13,6 +13,7 @@ import ckan.lib.plugins
 import ckan.plugins as plugins
 from ckan.common import OrderedDict, c, g, request, _
 
+
 log = logging.getLogger(__name__)
 
 render = base.render
@@ -31,8 +32,8 @@ lookup_group_plugin = ckan.lib.plugins.lookup_group_plugin
 
 import ckan.controllers.group as base_group
 
-class GroupController(base_group.GroupController):
 
+class GroupController(base_group.GroupController):
     def _read(self, id, limit):
         ''' This is common code used by both read and bulk_process'''
         group_type = self._get_group_type(id.split('@')[0])
@@ -81,7 +82,7 @@ class GroupController(base_group.GroupController):
             else:
                 url = self._url_for(controller='group', action='read', id=id)
             params = [(k, v.encode('utf-8') if isinstance(v, basestring)
-                       else str(v)) for k, v in params]
+            else str(v)) for k, v in params]
             return url + u'?' + urlencode(params)
 
         def drill_down_url(**by):
@@ -148,7 +149,7 @@ class GroupController(base_group.GroupController):
                         facets, self.group_type, None)
 
             if 'capacity' in facets and (self.group_type != 'organization' or
-                                         not user_member_of_orgs):
+                                             not user_member_of_orgs):
                 del facets['capacity']
 
             c.facet_titles = facets
@@ -195,14 +196,14 @@ class GroupController(base_group.GroupController):
             c.facets = {}
             c.page = h.Page(collection=[])
 
-        self._setup_template_variables(context, {'id':id},
-            group_type=group_type)
+        self._setup_template_variables(context, {'id': id},
+                                       group_type=group_type)
 
     def member_new(self, id):
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author}
 
-        #self._check_access('group_delete', context, {'id': id})
+        # self._check_access('group_delete', context, {'id': id})
         try:
             data_dict = {'id': id}
             data_dict['include_datasets'] = False
@@ -216,7 +217,7 @@ class GroupController(base_group.GroupController):
                 data_dict = clean_dict(df.unflatten(
                     tuplize_dict(parse_params(request.params))))
                 data_dict['id'] = id
-                data_dict['role'] = 'editor' # fixed
+                data_dict['role'] = 'editor'  # fixed
 
                 email = data_dict.get('email')
 
@@ -234,7 +235,7 @@ class GroupController(base_group.GroupController):
                         }
                         del data_dict['email']
                         user_dict = self._action('user_invite')(context,
-                                user_data_dict)
+                                                                user_data_dict)
                         data_dict['username'] = user_dict['name']
 
                 c.group_dict = self._action('group_member_create')(context, data_dict)

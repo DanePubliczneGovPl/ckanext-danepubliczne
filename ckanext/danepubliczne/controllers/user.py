@@ -1,21 +1,19 @@
-from pylons import config
-
 import re
 import json
+
+from pylons import config
 import ckan.lib.navl.dictization_functions as df
-import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.base as base
 import ckan.lib.helpers as h
-import ckan.lib.app_globals as app_globals
 import ckan.model as model
 import ckan.logic.schema as schema
 import ckan.plugins.toolkit as tk
-import ckan.plugins as p
 import ckan.lib.captcha as captcha
 import ckan.logic as logic
 import ckan.lib.mailer as mailer
 import ckan.new_authz as new_authz
-from ckan.common import _, c, g, request, response
+from ckan.common import _, c, request, response
+
 
 abort = base.abort
 render = base.render
@@ -28,8 +26,8 @@ ValidationError = logic.ValidationError
 
 import ckan.controllers.user as base_user
 
-class UserController(base_user.UserController):
 
+class UserController(base_user.UserController):
     def logged_in(self):
         # redirect if needed
         came_from = request.params.get('came_from', '')
@@ -46,7 +44,7 @@ class UserController(base_user.UserController):
                 return h.redirect_to(str(came_from))
 
             h.redirect_to(locale=None, controller='user', action='dashboard_datasets',
-                      id=user_ref)
+                          id=user_ref)
         else:
             err = _('Login failed. Wrong email or password.')
             if h.asbool(config.get('ckan.legacy_templates', 'false')):
@@ -59,7 +57,7 @@ class UserController(base_user.UserController):
     def logged_out(self):
         # came_from = request.params.get('came_from', '')
         # if h.url_is_local(came_from):
-        #     return h.redirect_to(str(came_from))
+        # return h.redirect_to(str(came_from))
 
         h.redirect_to('/')
 
@@ -139,7 +137,7 @@ class UserController(base_user.UserController):
             # #1799 User has managed to register whilst logged in - warn user
             # they are not re-logged in as new user.
             h.flash_success(_('User "%s" is now registered but you are still '
-                            'logged in as "%s" from before') %
+                              'logged in as "%s" from before') %
                             (data_dict['name'], c.user))
             return render('user/logout_first.html')
 
@@ -299,7 +297,7 @@ class UserController(base_user.UserController):
                 try:
                     mailer.send_reset_link(users[0])
                     h.flash_success(_('Please check your inbox for '
-                                    'a reset code.'))
+                                      'a reset code.'))
                     h.redirect_to('/')
                 except mailer.MailerException, e:
                     h.flash_error(_('Could not send reset link: %s') %
@@ -337,6 +335,7 @@ class UserController(base_user.UserController):
             of = json.loads(about)
             c.user_dict.update(of)
 
+
 def convert_to_json(field):
     def f(key, data, errors, context):
         j = data.get((field,), {})
@@ -347,7 +346,9 @@ def convert_to_json(field):
         j[key[0]] = data.pop(key)
 
         data[(field,)] = json.dumps(j)
+
     return f
+
 
 def convert_from_json(field):
     def f(key, data, errors, context):
@@ -359,6 +360,7 @@ def convert_from_json(field):
                 data[key] = j[key[0]]
 
     return f
+
 
 def email_unique_validator(key, data, errors, context):
     '''Validates a new email
@@ -376,7 +378,7 @@ def email_unique_validator(key, data, errors, context):
     data[key] = new_email
 
     # if not isinstance(new_email, basestring):
-    #     raise df.Invalid(_('User names must be strings'))
+    # raise df.Invalid(_('User names must be strings'))
 
     session = context['session']
     user = session.query(model.User).filter_by(email=new_email, state='active').first()

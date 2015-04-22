@@ -1,31 +1,31 @@
 .. You should enable this project on travis-ci.org and coveralls.io to make
-   these badges work. The necessary Travis and Coverage config files have been
-   generated for you.
+these badges work. The necessary Travis and Coverage config files have been
+generated for you.
 
 .. image:: https://travis-ci.org/github/ckanext-danepubliczne.svg?branch=master
-    :target: https://travis-ci.org/github/ckanext-danepubliczne
+:target: https://travis-ci.org/github/ckanext-danepubliczne
 
 .. image:: https://coveralls.io/repos/github/ckanext-danepubliczne/badge.png?branch=master
-  :target: https://coveralls.io/r/github/ckanext-danepubliczne?branch=master
+:target: https://coveralls.io/r/github/ckanext-danepubliczne?branch=master
 
 .. image:: https://pypip.in/download/ckanext-danepubliczne/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-danepubliczne/
+:target: https://pypi.python.org/pypi//ckanext-danepubliczne/
     :alt: Downloads
 
 .. image:: https://pypip.in/version/ckanext-danepubliczne/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
+:target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Latest Version
 
 .. image:: https://pypip.in/py_versions/ckanext-danepubliczne/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
+:target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Supported Python versions
 
 .. image:: https://pypip.in/status/ckanext-danepubliczne/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
+:target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: Development Status
 
 .. image:: https://pypip.in/license/ckanext-danepubliczne/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-danepubliczne/
+:target: https://pypi.python.org/pypi/ckanext-danepubliczne/
     :alt: License
 
 =============
@@ -33,8 +33,8 @@ ckanext-danepubliczne
 =============
 
 .. Put a description of your extension here:
-   What does it do? What features does it have?
-   Consider including some screenshots or embedding a video!
+What does it do? What features does it have?
+Consider including some screenshots or embedding a video!
 
 
 ------------
@@ -50,8 +50,8 @@ Installation
 ------------
 
 .. Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
+For example installing any non-Python dependencies or adding any required
+config settings.
 
 To install ckanext-danepubliczne:
 

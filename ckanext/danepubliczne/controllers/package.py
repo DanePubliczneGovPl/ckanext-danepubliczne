@@ -11,9 +11,9 @@ import ckan.lib.plugins
 import ckan.plugins as p
 import ckan.lib.render
 from feedback import FeedbackController
-
 from paste.deploy.converters import asbool
 from ckan.common import OrderedDict, _, json, request, c, g, response
+
 
 log = logging.getLogger(__name__)
 
@@ -52,11 +52,10 @@ def search_url(params, package_type=None):
     return url_with_params(url, params)
 
 
-
 import ckan.controllers.package as base_package
 
-class PackageController(base_package.PackageController):
 
+class PackageController(base_package.PackageController):
     def read(self, id, format='html'):
         if not format == 'html':
             ctype, extension = \
@@ -113,9 +112,9 @@ class PackageController(base_package.PackageController):
         # If it is needed it needs to be cached!
         # I had memory crashes when dataset contained multiple resources
         for resource in c.pkg_dict['resources']:
-        #     # Backwards compatibility with preview interface
-        #     resource['can_be_previewed'] = self._resource_preview(
-        #         {'resource': resource, 'package': c.pkg_dict})
+            # # Backwards compatibility with preview interface
+            # resource['can_be_previewed'] = self._resource_preview(
+            #         {'resource': resource, 'package': c.pkg_dict})
 
             resource_views = get_action('resource_view_list')(
                 context, {'id': resource['id']})
@@ -140,7 +139,7 @@ class PackageController(base_package.PackageController):
         except ckan.lib.render.TemplateNotFound:
             msg = _("Viewing {package_type} datasets in {format} format is "
                     "not supported (template file {file} not found).".format(
-                    package_type=package_type, format=format, file=template))
+                package_type=package_type, format=format, file=template))
             abort(404, msg)
 
         assert False, "We should never get here"
@@ -188,7 +187,7 @@ class PackageController(base_package.PackageController):
 
         def remove_field(key, value=None, replace=None):
             return h.remove_url_param(key, value=value, replace=replace,
-                                  controller='package', action='search')
+                                      controller='package', action='search')
 
         c.remove_field = remove_field
 
@@ -263,12 +262,12 @@ class PackageController(base_package.PackageController):
             facets = OrderedDict()
 
             default_facet_titles = {
-                    'organization': _('Organizations'),
-                    'groups': _('Groups'),
-                    'tags': _('Tags'),
-                    'res_format': _('Formats'),
-                    'license_id': _('Licenses'),
-                    }
+                'organization': _('Organizations'),
+                'groups': _('Groups'),
+                'tags': _('Tags'),
+                'res_format': _('Formats'),
+                'license_id': _('Licenses'),
+            }
 
             for facet in g.facets:
                 if facet in default_facet_titles:
@@ -303,9 +302,9 @@ class PackageController(base_package.PackageController):
             if sort_by:
                 api_url_params['sort'] = sort_by
             if facets.keys():
-                 api_url_params['facet.field'] = json.dumps(facets.keys())
+                api_url_params['facet.field'] = json.dumps(facets.keys())
             # if search_extras:
-            #      api_url_params['extras'] = ','.join(search_extras)
+            # api_url_params['extras'] = ','.join(search_extras)
 
             api_search_url_params = urlencode(_encode_params(api_url_params.items()))
             ##### EXTENDING ORIGINAL >>>>>>>>>>>>>>
@@ -337,13 +336,13 @@ class PackageController(base_package.PackageController):
             except ValueError:
                 abort(400, _('Parameter "{parameter_name}" is not '
                              'an integer').format(
-                                 parameter_name='_%s_limit' % facet
-                             ))
+                    parameter_name='_%s_limit' % facet
+                ))
             c.search_facets_limits[facet] = limit
 
         maintain.deprecate_context_item(
-          'facets',
-          'Use `c.search_facets` instead.')
+            'facets',
+            'Use `c.search_facets` instead.')
 
         self._setup_template_variables(context, {},
                                        package_type=package_type)

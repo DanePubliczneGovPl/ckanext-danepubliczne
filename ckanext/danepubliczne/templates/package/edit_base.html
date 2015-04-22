@@ -1,20 +1,20 @@
 {% ckan_extends %}
 
 {% block styles %}
-    {{ super() }}
+  {{ super() }}
 
-    {% resource 'dane_publiczne/newdataset.css' %}
+  {% resource 'dane_publiczne/newdataset.css' %}
 {% endblock %}
 
 {% block wrapper_class %} newdataset{% endblock %}
 
 {% block content_action %}
-    {% link_for _('View dataset'), controller='package', action='read', id=pkg.name, class_='btn', icon='eye-open' %}
+  {% link_for _('View dataset'), controller='package', action='read', id=pkg.name, class_='btn', icon='eye-open' %}
 {% endblock %}
 
 {% block content_primary_nav %}
-    {{ h.build_nav_icon('dataset_edit', _('Edit metadata'), id=pkg.name) }}
-    {{ h.build_nav_icon('dataset_resources', _('Resources'), id=pkg.name) }}
+  {{ h.build_nav_icon('dataset_edit', _('Edit metadata'), id=pkg.name) }}
+  {{ h.build_nav_icon('dataset_resources', _('Resources'), id=pkg.name) }}
 {% endblock %}
 
 {% block secondary_content %}

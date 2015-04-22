@@ -1,4 +1,6 @@
 import mimetypes
+import sys
+import logging
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as toolkit
@@ -10,15 +12,15 @@ import ckan.logic
 import ckan.model as model
 from ckan.common import _
 from webhelpers.html import literal
-
 import paste.deploy.converters
 from pylons import config
 from pylons.util import class_name_from_module_name
 from routes.mapper import SubMapper
 import ckan.lib.app_globals as app_globals
-import sys, logging
+
 
 log = logging.getLogger(__name__)
+
 
 class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IConfigurer)
@@ -44,14 +46,14 @@ class DanePubliczne(p.SingletonPlugin):
         # don't show user names in activity stream
         def get_snippet_actor_org(activity, detail):
             return literal('''<span class="actor">%s</span>'''
-            % (linked_org_for(activity['user_id'], 0, 30))
-            )
+                           % (linked_org_for(activity['user_id'], 0, 30))
+                           )
 
         activity_streams.activity_snippet_functions['actor'] = get_snippet_actor_org
 
 
-
     p.implements(p.IMiddleware, inherit=True)
+
     def make_middleware(self, app, config):
         # Hack it so our controllers pretend they are original ones! Buahahhaha!
         overriden_controlers = ['package', 'user', 'admin', 'group', 'organization']
@@ -59,7 +61,7 @@ class DanePubliczne(p.SingletonPlugin):
         for controller in overriden_controlers:
             # Pull the controllers class name, import controller
             full_module_name = 'ckanext.danepubliczne.controllers.' \
-                + controller.replace('/', '.')
+                               + controller.replace('/', '.')
 
             # Hide the traceback here if the import fails (bad syntax and such)
             __traceback_hide__ = 'before_and_this'
@@ -67,7 +69,7 @@ class DanePubliczne(p.SingletonPlugin):
             __import__(full_module_name)
             if hasattr(sys.modules[full_module_name], '__controller__'):
                 mycontroller = getattr(sys.modules[full_module_name],
-                    sys.modules[full_module_name].__controller__)
+                                       sys.modules[full_module_name].__controller__)
             else:
                 module_name = controller.split('/')[-1]
                 class_name = class_name_from_module_name(module_name) + 'Controller'
@@ -81,7 +83,6 @@ class DanePubliczne(p.SingletonPlugin):
         return app
 
 
-
     p.implements(p.IRoutes, inherit=True)
 
     def before_map(self, map):
@@ -90,35 +91,41 @@ class DanePubliczne(p.SingletonPlugin):
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
-                     action='dashboard_search_history', ckan_icon='list')
+                      action='dashboard_search_history', ckan_icon='list')
             m.connect('user_dashboard_account', '/dashboard/account',
-                     action='read', ckan_icon='user_grey')
+                      action='read', ckan_icon='user_grey')
 
         with SubMapper(map, controller='package') as m:
             m.connect('dataset_search', '/dataset', action='search',
-                  highlight_actions='index search')
+                      highlight_actions='index search')
 
-        map.connect('data_feedback_submit', '/feedback_data', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
-        map.connect('new_dataset_feedback_submit', '/new_dataset_feedback', controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='new_dataset_feedback')
+        map.connect('data_feedback_submit', '/feedback_data',
+                    controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
+        map.connect('new_dataset_feedback_submit', '/new_dataset_feedback',
+                    controller='ckanext.danepubliczne.controllers.feedback:FeedbackController',
+                    action='new_dataset_feedback')
 
-        with SubMapper(map, controller='ckanext.danepubliczne.controllers.api:UtilExtension', path_prefix='/api{ver:/1|/2|}',
-                   ver='/1') as m:
+        with SubMapper(map, controller='ckanext.danepubliczne.controllers.api:UtilExtension',
+                       path_prefix='/api{ver:/1|/2|}',
+                       ver='/1') as m:
             m.connect('/util/user/autocomplete_email', action='user_autocomplete_email')
 
         return map
 
 
     p.implements(p.ITemplateHelpers)
+
     def get_helpers(self):
         return {'dp_check_maintenance': self.h_check_maintenance,
                 'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs,
                 'dp_organization_image': self.h_organization_image}
 
-    def h_organization_image(self, org, show_placeholder_by_default = True):
+    def h_organization_image(self, org, show_placeholder_by_default=True):
         if org.get('image_display_url', None):
             return org.get('image_display_url')
 
-        if paste.deploy.converters.asbool(config.get('dp.show_organization_placeholder_image', show_placeholder_by_default)):
+        if paste.deploy.converters.asbool(
+                config.get('dp.show_organization_placeholder_image', show_placeholder_by_default)):
             return h.url_for_static('/base/images/placeholder-organization.png')
 
         return None
@@ -131,18 +138,19 @@ class DanePubliczne(p.SingletonPlugin):
 
     def h_if_show_gradient_with_tabs(self):
         return base.request.urlvars['controller'] == 'admin' \
-            or (base.request.urlvars['controller'] == 'user' and base.request.urlvars['action'][:9] == 'dashboard')
+               or (base.request.urlvars['controller'] == 'user' and base.request.urlvars['action'][:9] == 'dashboard')
 
     # TODO ckan-dev What is the preferred way to make multilingual groups / datasets /tags: fluent or multilingual?
 
 
     p.implements(p.IAuthenticator, inherit=True)
+
     def login(self):
         h.flash_notice(_('We use cookies to handle logged-in users'))
 
 
-
     p.implements(p.IActions)
+
     def get_actions(self):
         return {
             'user_autocomplete_email': user_autocomplete_email,
@@ -151,6 +159,7 @@ class DanePubliczne(p.SingletonPlugin):
 
 
     p.implements(p.IAuthFunctions)
+
     def get_auth_functions(self):
         return {
             # Only sysadmins can list users
@@ -158,6 +167,7 @@ class DanePubliczne(p.SingletonPlugin):
             'member_list': ckan.logic.auth.get.sysadmin,
             'user_show': auth_user_show
         }
+
 
 @ckan.logic.validate(ckan.logic.schema.default_autocomplete_schema)
 def user_autocomplete_email(context, data_dict):
@@ -197,6 +207,7 @@ def user_autocomplete_email(context, data_dict):
 
     return user_list
 
+
 # Only sysadmins can list members
 def member_list(context, data_dict=None):
     '''Return the members of a group.
@@ -229,8 +240,8 @@ def member_list(context, data_dict=None):
 
     ckan.logic.check_access('member_list', context, data_dict)
 
-    q = model.Session.query(model.Member).\
-        filter(model.Member.group_id == group.id).\
+    q = model.Session.query(model.Member). \
+        filter(model.Member.group_id == group.id). \
         filter(model.Member.state == "active")
 
     if obj_type:
@@ -260,6 +271,7 @@ def auth_user_show(context, data_dict):
 
     return {'success': success}
 
+
 def linked_org_for(user, maxlength=0, avatar=20):
     if user in [model.PSEUDO_USER__LOGGED_IN, model.PSEUDO_USER__VISITOR]:
         return user
@@ -274,7 +286,7 @@ def linked_org_for(user, maxlength=0, avatar=20):
         if not groups or len(groups) > 1:
             return user.name if model.User.VALID_NAME.match(user.name) else user.id
 
-        org = groups[0] # Assuming user only in one org
+        org = groups[0]  # Assuming user only in one org
         displayname = org.display_name
         if maxlength and len(displayname) > maxlength:
             displayname = displayname[:maxlength] + '...'
