@@ -132,6 +132,7 @@ html {
     display: inline-block;
     width: 0;
     height: 0;
+    float: left;
 }
 
 body {
@@ -298,6 +299,11 @@ body {
 
 .toolbar .home span {
     display: inline-block;
+    text-indent: -9999px;
+}
+
+.simple-input label {
+    visibility: hidden;
     text-indent: -9999px;
 }
 
