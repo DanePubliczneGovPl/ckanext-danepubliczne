@@ -24,7 +24,7 @@
       {{ form.checkbox('license_condition_original', label=_('One should publish a copy of originally accessed data when publishing reused information'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
       {{ form.checkbox('license_condition_modification', label=_('One should inform about modifications to originally accessed information'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
       {{ form.textarea('license_condition_responsibilities', label=_('Restriction of data provider liability'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
-      {{ form.textarea('license_condition_db_or_copyrighted', label=_('Restrictions for reuse of copyrighted material or databases (art. 23b ust. 3 ustawy o dostępie do informacji publicznej)'), id='field-license_condition_db_or_copyrighted', value=data.license_condition_db_or_copyrighted, error=errors.license_condition_db_or_copyrighted) }}
+      {{ form.textarea('license_condition_db_or_copyrighted', label=_('Restrictions on reuse of copyrighted material or databases (art. 23b ust. 3 ustawy o dostępie do informacji publicznej)'), id='field-license_condition_db_or_copyrighted', value=data.license_condition_db_or_copyrighted, error=errors.license_condition_db_or_copyrighted) }}
     </div>
   </div>
 

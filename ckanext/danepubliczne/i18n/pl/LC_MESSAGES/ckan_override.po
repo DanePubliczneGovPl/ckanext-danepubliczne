@@ -1216,21 +1216,6 @@ msgstr ""
 "       %(reset_link)s\n"
 "    "
 
-msgid ""
-"You have been invited to {site_title}. A user has already been createdto you "
-"with the username {user_name}. You can change it later.\n"
-"\n"
-"To accept this invite, please reset your password at:\n"
-"\n"
-"   {reset_link}\n"
-msgstr ""
-"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
-"\n"
-"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
-"\n"
-"       %(reset_link)s\n"
-"    "
-
 #: ckan/lib/mailer.py:145 ckan/templates_legacy/user/perform_reset.html:6
 #: ckan/templates_legacy/user/perform_reset.html:14
 msgid "Reset your password"

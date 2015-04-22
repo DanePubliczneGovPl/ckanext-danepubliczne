@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-04-07 16:59+0200\n"
+"POT-Creation-Date: 2015-04-22 15:05+0200\n"
 "PO-Revision-Date: 2015-03-30 11:07+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -22,58 +22,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: ckanext/danepubliczne/plugin.py:141
+#: ckanext/danepubliczne/plugin.py:149
 msgid "We use cookies to handle logged-in users"
 msgstr "Używamy plików cookies, aby obsłużyć zalogowanych użytkowników"
 
-#: ckanext/danepubliczne/controllers/admin.py:26
+#: ckanext/danepubliczne/controllers/admin.py:20
 msgid "Maintenance alert"
 msgstr "Informacja o planowanej przerwie technicznej"
 
-#: ckanext/danepubliczne/controllers/admin.py:26
+#: ckanext/danepubliczne/controllers/admin.py:21
 msgid "Fill if there is planned maintenance break"
 msgstr ""
 "Wypełnij, aby użytkownicy zobaczyli informację o planowanej przerwie "
 "technicznej"
 
-#: ckanext/danepubliczne/controllers/feedback.py:40
+#: ckanext/danepubliczne/controllers/feedback.py:31
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:4
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid "Your feedback"
 msgstr "Twoja opinia"
 
-#: ckanext/danepubliczne/controllers/feedback.py:40
+#: ckanext/danepubliczne/controllers/feedback.py:32
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:4
 msgid "What is your feedback on this dataset?"
 msgstr ""
 "Jakie masz uwagi do tego zbioru danych? Zostaną one przesłane do osoby za"
 " niego odpowiedzialnej."
 
-#: ckanext/danepubliczne/controllers/feedback.py:41
+#: ckanext/danepubliczne/controllers/feedback.py:34
 #: ckanext/danepubliczne/templates/package/snippets/feedback_form.html:5
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:5
 msgid "Leave email if we should get back to you"
 msgstr "Zostaw email, jeżeli mamy odpisać "
 
-#: ckanext/danepubliczne/controllers/feedback.py:58
-#: ckanext/danepubliczne/controllers/feedback.py:94
+#: ckanext/danepubliczne/controllers/feedback.py:51
+#: ckanext/danepubliczne/controllers/feedback.py:88
 msgid "Please provide your feedback"
 msgstr "Prosimy o uzupełnienie uwag przed wysłaniem"
 
-#: ckanext/danepubliczne/controllers/feedback.py:67
+#: ckanext/danepubliczne/controllers/feedback.py:60
 msgid "User feedback concerning"
 msgstr "Uwagi użytkownika do zbioru"
 
-#: ckanext/danepubliczne/controllers/feedback.py:80
-#: ckanext/danepubliczne/controllers/feedback.py:104
+#: ckanext/danepubliczne/controllers/feedback.py:74
+#: ckanext/danepubliczne/controllers/feedback.py:98
 msgid "Thank you for your feedback!"
 msgstr "Dziękujemy za przesłane uwagi!"
 
-#: ckanext/danepubliczne/controllers/feedback.py:98
+#: ckanext/danepubliczne/controllers/feedback.py:92
 msgid "Proposition for new dataaset"
 msgstr "Propozycja dodania nowego zbioru danych"
 
-#: ckanext/danepubliczne/controllers/feedback.py:145
+#: ckanext/danepubliczne/controllers/feedback.py:140
 msgid ""
 "User {email} has sent proposition for a new dataset:\n"
 "\n"
@@ -84,7 +84,7 @@ msgstr ""
 "\n"
 "{feedback}\n"
 
-#: ckanext/danepubliczne/controllers/feedback.py:158
+#: ckanext/danepubliczne/controllers/feedback.py:154
 msgid ""
 "User {email} has sent feedback concerning {display_name}[{url}].\n"
 "\n"
@@ -107,73 +107,86 @@ msgstr "Niepoprawne dane logowania. Błędny email lub hasło."
 msgid "Email not registered: %s"
 msgstr "Brak konta o adresie email: %s"
 
-#: ckanext/danepubliczne/controllers/user.py:392
+#: ckanext/danepubliczne/controllers/user.py:397
 msgid "That email is not available."
 msgstr "Podany adres email jest zajęty."
 
-#: ckanext/danepubliczne/schema/article.py:131
+#: ckanext/danepubliczne/schema/article.py:134
 #, python-format
 msgid "User %s not authorized to create articles"
 msgstr "Użytkownik %s nie może tworzyć artykułów"
 
-#: ckanext/danepubliczne/schema/article.py:140
+#: ckanext/danepubliczne/schema/article.py:144
 #, python-format
 msgid "User %s not authorized to delete articles"
 msgstr "Użytkownik %s nie może kasować artykułów"
 
-#: ckanext/danepubliczne/schema/article.py:149
+#: ckanext/danepubliczne/schema/article.py:154
 #, python-format
 msgid "User %s not authorized to update articles"
 msgstr "Użytkownik %s nie może aktualizować artykułów"
 
-#: ckanext/danepubliczne/schema/dataset.py:51
+#: ckanext/danepubliczne/schema/dataset.py:65
 msgid "Missing QA information"
 msgstr "Brak informacji o stopniu otwartości zasobu"
 
-#: ckanext/danepubliczne/schema/dataset.py:200
+#: ckanext/danepubliczne/schema/dataset.py:224
 #: ckanext/danepubliczne/templates/package/snippets/resource_form.html:12
 msgid "Resource types"
 msgstr "Typy zasobów"
 
-#: ckanext/danepubliczne/schema/dataset.py:201
+#: ckanext/danepubliczne/schema/dataset.py:225
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:66
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:9
+msgid "Update frequency"
+msgstr "Częstotliwość aktualizacji"
+
+#: ckanext/danepubliczne/schema/dataset.py:226
 #: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:14
 msgid "Openess Score"
 msgstr "Otwartość zasobu"
 
-#: ckanext/danepubliczne/schema/dataset.py:202
+#: ckanext/danepubliczne/schema/dataset.py:227
 msgid "Restrictions on reuse"
 msgstr "Warunki ponownego wykorzystywania informacji"
 
-#: ckanext/danepubliczne/schema/dataset.py:209
-#: ckanext/danepubliczne/schema/dataset.py:232
+#: ckanext/danepubliczne/schema/dataset.py:234
+#: ckanext/danepubliczne/schema/dataset.py:261
 msgid "No restrictions"
 msgstr "Bez warunków"
 
-#: ckanext/danepubliczne/schema/dataset.py:210
+#: ckanext/danepubliczne/schema/dataset.py:235
 msgid "Inform about modifications"
 msgstr "Informuj, gdy modyfikujesz dane"
 
-#: ckanext/danepubliczne/schema/dataset.py:211
+#: ckanext/danepubliczne/schema/dataset.py:236
 msgid "Publish original copy"
 msgstr "Opublikuj kopię oryginalnych danych"
 
-#: ckanext/danepubliczne/schema/dataset.py:212
+#: ckanext/danepubliczne/schema/dataset.py:237
 msgid "Inform about source"
 msgstr "Informuj, skąd pobrałeś dane"
 
-#: ckanext/danepubliczne/schema/dataset.py:213
+#: ckanext/danepubliczne/schema/dataset.py:238
 msgid "Inform about creation & access time"
 msgstr "Informuj o czasie stworzenia danych oraz ich pobrania z serwisu"
 
-#: ckanext/danepubliczne/schema/dataset.py:214
+#: ckanext/danepubliczne/schema/dataset.py:239
 msgid "Provider restricts liability"
 msgstr "Dostawca danych ogranicza odpowiedzialność"
 
-#: ckanext/danepubliczne/schema/dataset.py:230
+#: ckanext/danepubliczne/schema/dataset.py:240
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:24
+#, fuzzy
+#| msgid "Restriction of data provider liability"
+msgid "Restrictions on databases and copyrighted material"
+msgstr "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+
+#: ckanext/danepubliczne/schema/dataset.py:259
 msgid "Restrictions set"
 msgstr "Warunki określone"
 
-#: ckanext/danepubliczne/schema/dataset.py:320
+#: ckanext/danepubliczne/schema/dataset.py:350
 msgid "Category '{0}' doesn't exist"
 msgstr "Kategoria '{0}' nie istnieje"
 
@@ -186,41 +199,50 @@ msgstr "Dodatkowe informacje o serwisie"
 msgid "Articles"
 msgstr "Baza wiedzy"
 
-msgid "Show all articles"
-msgstr "Pokaż wszystkie artykuły"
-
-#: ckanext/danepubliczne/templates/footer.html:23
+#: ckanext/danepubliczne/templates/footer.html:25
 msgid ""
-"All datasets and resources on this site, as well as content of most of "
-"the flat files, are accessible through "
-msgstr ""
-"Wszystkie zbiory danych oraz zasoby w tym serwisie, a także zawartość "
-"wielu zasobów tabelarycznych jest dostępna poprzez "
-
-#: ckanext/danepubliczne/templates/footer.html:29
-msgid ""
-"<strong>Maintained by</strong> <a href='https://mac.gov.pl/en'><img "
-"src=\"/logo/mac.png\" alt=\"Ministry of Administration and "
-"Digitalization\"></a>"
+"<strong>Maintained by</strong><a href='https://mac.gov.pl/en'><img "
+"src=\"/logo/mac.png\"\n"
+""
+"                                                                                         "
+"alt=\"Ministry of Administration and Digitalization\"></a>"
 msgstr ""
 "<strong>Serwis prowadzony przez</strong> <a "
-"href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo Administracji "
-"i Cyfryzacji\"></a>"
+"href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo "
+"Administracji i Cyfryzacji\"></a>"
+
+#: ckanext/danepubliczne/templates/footer.html:28
+msgid ""
+"<strong>Powered by</strong>\n"
+"          <a class=\"hide-text ckan-footer-logo\" "
+"href=\"http://ckan.org\">CKAN</a>"
+msgstr ""
+"<strong>Oprogramowanie open-source</strong>\n"
+"          <a class=\"hide-text ckan-footer-logo\" "
+"href=\"http://ckan.org\">CKAN</a>"
 
 #: ckanext/danepubliczne/templates/footer.html:34
 msgid "You haven't find here what you were looking for?"
 msgstr "Nie znalazłeś zbiorów, których szukałeś?"
 
-#: ckanext/danepubliczne/templates/footer.html:34
+#: ckanext/danepubliczne/templates/footer.html:37
 msgid "Propose new dataset"
 msgstr "Zaproponuj nowy zbiór danych"
 
-#: ckanext/danepubliczne/templates/header.html:14
+#: ckanext/danepubliczne/templates/header.html:6
+msgid "Back to home page"
+msgstr "Przejdź do strony głównej"
+
+#: ckanext/danepubliczne/templates/header.html:26
 #: ckanext/danepubliczne/templates/user/dashboard.html:13
 msgid "My account"
 msgstr "Moje konto"
 
-#: ckanext/danepubliczne/templates/header.html:57
+#: ckanext/danepubliczne/templates/header.html:44
+msgid "Jump to content"
+msgstr "Przejdź do treści"
+
+#: ckanext/danepubliczne/templates/header.html:72
 #: ckanext/danepubliczne/templates/article/base.html:7
 #: ckanext/danepubliczne/templates/article/base.html:17
 #: ckanext/danepubliczne/templates/article/base.html:21
@@ -229,18 +251,12 @@ msgstr "Moje konto"
 msgid "Knowledge base"
 msgstr "Baza wiedzy"
 
-msgid "Jump to content"
-msgstr "Przejdź do treści"
-
-msgid "Back to home page"
-msgstr "Przejdź do strony głównej"
-
-#: ckanext/danepubliczne/templates/admin/base.html:10
+#: ckanext/danepubliczne/templates/admin/base.html:16
 msgid "Quality Assurance"
 msgstr "Raporty jakości"
 
 #: ckanext/danepubliczne/templates/article/base.html:22
-#: ckanext/danepubliczne/templates/package/search.html:106
+#: ckanext/danepubliczne/templates/package/search.html:109
 msgid "Add Article"
 msgstr "Dodaj artykuł"
 
@@ -287,14 +303,18 @@ msgstr ""
 msgid "This article is licensed under a "
 msgstr "Ten artykuł jest objęty licencją"
 
-#: ckanext/danepubliczne/templates/article/snippets/package_basic_fields.html:44
+#: ckanext/danepubliczne/templates/article/snippets/package_basic_fields.html:46
 msgid ""
 "\n"
-"        License definitions and additional information can be found\n"
-"        at <a "
+"          License definitions and additional information can be found\n"
+"          at <a "
 "href=\"http://opendefinition.org/licenses/\">opendefinition.org</a>\n"
-"      "
+"        "
 msgstr ""
+"\n"
+"          Opisy licencji można znaleźć na <a "
+"href=\"http://opendefinition.org/licenses/\">opendefinition.org</a>\n"
+"        "
 
 #: ckanext/danepubliczne/templates/article/snippets/package_form.html:18
 msgid "Are you sure you want to delete this article?"
@@ -316,6 +336,13 @@ msgstr "Kategorie"
 msgid "Edit Category"
 msgstr "Edytuj Kategorię"
 
+#: ckanext/danepubliczne/templates/group/new.html:11
+#: ckanext/danepubliczne/templates/group/new.html:14
+#: ckanext/danepubliczne/templates/group/new.html:16
+#: ckanext/danepubliczne/templates/group/new_group_form.html:63
+msgid "Create Category"
+msgstr "Stwórz Kategorię"
+
 #: ckanext/danepubliczne/templates/group/new_group_form.html:16
 msgid "Name of category"
 msgstr "Nazwa kategorii"
@@ -328,23 +355,26 @@ msgstr "Opis kategorii"
 msgid "Color"
 msgstr "Kolor"
 
-#: ckanext/danepubliczne/templates/group/new_group_form.html:59
+#: ckanext/danepubliczne/templates/group/new_group_form.html:61
 msgid "Update Category"
 msgstr "Zaktualizuj Kategorię"
 
-#: ckanext/danepubliczne/templates/group/new_group_form.html:61
-msgid "Create Category"
-msgstr "Stwórz Kategorię"
+#: ckanext/danepubliczne/templates/group/read_base.html:95
+#: ckanext/danepubliczne/templates/organization/read_base.html:109
+#: ckanext/danepubliczne/templates/package/search.html:46
+msgid "Choose filter and value to narrow results"
+msgstr "Wybierz filtr i wartość, aby zawęzić wyniki"
 
-#: ckanext/danepubliczne/templates/group/read_base.html:132
-#: ckanext/danepubliczne/templates/organization/read_base.html:136
-#: ckanext/danepubliczne/templates/package/search.html:89
-msgid " <p class=\"extra\">Please try another search.</p>"
-msgstr " <p class=\"extra\">Spróbuj ustawić inne parametry wyszukiwania.</p>"
+#: ckanext/danepubliczne/templates/group/read_base.html:135
+#: ckanext/danepubliczne/templates/package/search.html:91
+msgid ""
+"\n"
+"                            <p class=\"extra\">Please try another "
+"search.</p>"
+msgstr "\n <p class=\"extra\">Spróbuj ustawić inne parametry wyszukiwania.</p>"
 
-#: ckanext/danepubliczne/templates/group/read_base.html:138
-#: ckanext/danepubliczne/templates/organization/read_base.html:142
-#: ckanext/danepubliczne/templates/package/search.html:95
+#: ckanext/danepubliczne/templates/group/read_base.html:142
+#: ckanext/danepubliczne/templates/package/search.html:98
 msgid ""
 "\n"
 "                            <p><strong>There was an error while "
@@ -357,18 +387,19 @@ msgstr ""
 "<p><strong>Wystąpił błąd podczas wyszukiwania.</strong> Proszę spróbować "
 "później lub zgłosić nam błąd, jeżeli będzie się on powtarzał</p>"
 
-#: ckanext/danepubliczne/templates/group/read_base.html:149
+#: ckanext/danepubliczne/templates/group/read_base.html:153
 msgid "Add Category"
 msgstr "Dodaj Kategorię"
+
+#: ckanext/danepubliczne/templates/home/snippets/articles.html:18
+msgid "Show all articles"
+msgstr "Pokaż wszystkie artykuły"
 
 #: ckanext/danepubliczne/templates/home/snippets/categories.html:3
 msgid "Choose a category of data that interests you"
 msgstr "Wybierz interesujący Cię dział zasobów informacyjnych"
 
 #: ckanext/danepubliczne/templates/home/snippets/search.html:2
-msgid "Enter word or phrase that you are looking at"
-msgstr "Wpisz słowo bądź fraze, którą chcesz odszukać"
-
 msgid "eg. Gold Prices"
 msgstr "np. Baza teleadresowa"
 
@@ -380,7 +411,25 @@ msgid ""
 "        "
 msgstr "Witamy w serwisie Dane Publiczne"
 
-#: ckanext/danepubliczne/templates/macros/form.html:233
+#: ckanext/danepubliczne/templates/home/snippets/search.html:23
+#: ckanext/danepubliczne/templates/snippets/search_form.html:10
+msgid "Enter word or phrase that you are looking at"
+msgstr "Wpisz słowo bądź fraze, którą chcesz odszukać"
+
+#: ckanext/danepubliczne/templates/macros/form.html:132
+#, python-format
+msgid ""
+"You can use\n"
+"      <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
+"target=\"popover\" data-content=\"%(markdown_tooltip)s\"\n"
+"         data-html=\"true\">Markdown formatting</a> here"
+msgstr ""
+"W tym polu możesz wykorzystać składnię\n"
+"      <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
+"target=\"popover\" data-content=\"%(markdown_tooltip)s\"\n"
+"         data-html=\"true\">formatowania Markdown</a>"
+
+#: ckanext/danepubliczne/templates/macros/form.html:241
 msgid "Key"
 msgstr "Nazwa"
 
@@ -392,34 +441,54 @@ msgstr "Imię, nazwisko lub email użytkownika"
 msgid "Invite User"
 msgstr "Zaproś pracownika"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:44
+#: ckanext/danepubliczne/templates/organization/read_base.html:47
 msgid "Address"
 msgstr "Adres"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:46
+#: ckanext/danepubliczne/templates/organization/read_base.html:51
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:11
 msgid "E-mail"
 msgstr "E-mail"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:47
+#: ckanext/danepubliczne/templates/organization/read_base.html:54
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:12
 msgid "Telephone"
 msgstr "Telefon"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:48
+#: ckanext/danepubliczne/templates/organization/read_base.html:56
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:13
 msgid "Fax"
 msgstr "Fax"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:49
+#: ckanext/danepubliczne/templates/organization/read_base.html:58
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:14
 msgid "REGON number"
 msgstr "Numer REGON"
 
-#: ckanext/danepubliczne/templates/organization/read_base.html:50
+#: ckanext/danepubliczne/templates/organization/read_base.html:61
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:15
 msgid "ePUAP account"
 msgstr "Adres skrzynki ePUAP"
+
+#: ckanext/danepubliczne/templates/organization/read_base.html:149
+msgid ""
+"\n"
+"                          <p class=\"extra\">Please try another "
+"search.</p>"
+msgstr "\n <p class=\"extra\">Spróbuj ustawić inne parametry wyszukiwania.</p>"
+
+#: ckanext/danepubliczne/templates/organization/read_base.html:156
+msgid ""
+"\n"
+"                          <p><strong>There was an error while "
+"searching.</strong> Please\n"
+"                            try\n"
+"                            again.</p>\n"
+"                        "
+msgstr ""
+"\n"
+"<p><strong>Wystąpił błąd podczas wyszukiwania.</strong> Proszę spróbować "
+"później lub zgłosić nam błąd, jeżeli będzie się on powtarzał</p>"
 
 #: ckanext/danepubliczne/templates/organization/snippets/organization_form.html:6
 msgid "Street address"
@@ -453,30 +522,49 @@ msgstr "Adres skrzynki podawczej w serwisie ePUAP"
 msgid "Create new datasets"
 msgstr "Stwórz nowe zbiory danych"
 
-#: ckanext/danepubliczne/templates/package/base_form_page.html:23
-#: ckanext/danepubliczne/templates/package/edit_base.html:26
+#: ckanext/danepubliczne/templates/package/base_form_page.html:24
 msgid ""
 "\n"
-"          A CKAN Dataset is a collection of data resources (such as "
+"            A CKAN Dataset is a collection of data resources (such as "
 "files),\n"
-"          together with a description and other information, at a fixed "
-"URL.\n"
-"          Datasets are what users see when searching for data.\n"
+"            together with a description and other information, at a fixed"
+" URL.\n"
+"            Datasets are what users see when searching for data.\n"
 "          "
 msgstr ""
 "\n"
 "Zbiory danych są osią tego serwisu. Użytkownicy wyszukują zbiory danych, "
-"a następnie nawigują to plików powiązanych z poszukiwanym zbiorem."
+"a następnie nawigują do plików powiązanych z poszukiwanym zbiorem."
+
+#: ckanext/danepubliczne/templates/package/read_base.html:48
+msgid ""
+"This is an old revision of this dataset, as edited at %(timestamp)s.\n"
+"            It may differ significantly from the <a "
+"href=\"%(url)s\">current revision</a>."
+msgstr ""
+"Oglądasz starą wersję tego zasobu, zaktualizowana\n"
+"              %(timestamp)s. Może się ona różnić znacząco <a "
+"href=\"%(url)s\">od aktualnej wersji</a>.\n"
+"            "
+
+#: ckanext/danepubliczne/templates/package/resource_read.html:100
+#, python-format
+msgid ""
+"\n"
+"                  Dataset: <a href=\"%(url)s\">%(dataset)s</a>"
+msgstr ""
+"\n"
+"                  Zbiór danych: <a href=\"%(url)s\">%(dataset)s</a>"
 
 #: ckanext/danepubliczne/templates/package/search.html:33
 msgid "Search articles..."
 msgstr "Wyszukuj artykuły..."
 
-#: ckanext/danepubliczne/templates/package/search.html:59
+#: ckanext/danepubliczne/templates/package/search.html:60
 msgid "See results via"
 msgstr "Zobacz wyniki poprzez"
 
-#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:57
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:60
 #: ckanext/danepubliczne/templates/package/snippets/package_basic_fields.html:5
 msgid "Category"
 msgstr "Kategoria"
@@ -507,12 +595,12 @@ msgstr ""
 "wykorzystywany pod poniższymi warunkami"
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:7
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:23
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:22
 msgid "One should inform about the source of this data"
 msgstr "Odbiorca powinien poinformować o źródle pozyskania informacji"
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:8
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:24
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:23
 msgid ""
 "One should inform about the creation time of reused information as well "
 "as time of access to it"
@@ -521,7 +609,7 @@ msgstr ""
 "informacji od dostawcy"
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:12
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:25
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:24
 msgid ""
 "One should publish a copy of originally accessed data when publishing "
 "reused information"
@@ -530,13 +618,18 @@ msgstr ""
 " udostępniając przetworzoną informację"
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:16
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:26
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:25
 msgid "One should inform about modifications to originally accessed information"
 msgstr ""
 "Odbiorca powinien poinformować o przetworzeniu informacji, gdy ją "
 "jakkolwiek modyfikuje"
 
-#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:26
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:20
+#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:26
+msgid "Restriction of data provider liability"
+msgstr "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+
+#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:30
 msgid ""
 "This dataset is considered public data and can be used without any "
 "restrictions"
@@ -544,20 +637,16 @@ msgstr ""
 "Ten zbiór danych jest informacją publiczną, może być ponownie "
 "wykorzystywany bez ograniczeń"
 
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:9
-msgid "Update frequency"
-msgstr "Częstotliwość aktualizacji"
-
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:16
 msgid "Specify data reuse conditions"
 msgstr "Warunki ponownego wykorzystywania informacji w tym zbiorze"
 
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:19
 msgid ""
-"We publish public data so they can be reused freely and unrestricted.\n"
-"      There are exceptions from this rule mentioned below, but we "
-"encourage not to restrict them if there is no clear case for that.\n"
-"      "
+"We publish public data so they can be reused freely and unrestricted. "
+"There are exceptions from this\n"
+"        rule mentioned below, but we encourage not to restrict them if "
+"there is no clear case for that."
 msgstr ""
 "Informacje publiczne są udostępniane w celu ich ponownego wykorzystywania"
 " bez ograniczeń warunkami i bezpłatnie.      Istnieją od tej zasady "
@@ -565,8 +654,12 @@ msgstr ""
 " nie      przemawiają za tym mocne racje."
 
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:27
-msgid "Restriction of data provider liability"
-msgstr "Zakres odpowiedzialności dostawcy za przekazywane informacje"
+msgid ""
+"Restrictions on reuse of copyrighted material or databases (art. 23b "
+"ust. 3 ustawy o dostępie do informacji publicznej)"
+msgstr ""
+"Warunki korzystania z informacji publicznych spełniających cechy utworu "
+"lub stanowiących bazę danych (art. 23b ust. 3 ustawy o dostępie do informacji publicznej)"
 
 #: ckanext/danepubliczne/templates/package/snippets/resource_form.html:12
 msgid "eg. text, audio, video, presentation, report, motion"
@@ -575,36 +668,42 @@ msgstr ""
 " wpisywania"
 
 #: ckanext/danepubliczne/templates/package/snippets/resources_list.html:14
-#, python-format
 msgid ""
 "\n"
-"            <p class=\"empty\">This dataset has no data, <a "
+"          <p class=\"empty\">This dataset has no data, <a "
 "href=\"%(url)s\">why not add some?</a></p>\n"
-"          "
+"        "
 msgstr ""
 "\n"
 "            <p class=\"empty\">Ten zbiór danych nie posiada żadnych "
 "danych, <a href=\"%(url)s\">dodaj do niego zasoby!</a></p>\n"
 "          "
 
-#: ckanext/danepubliczne/templates/package/snippets/tags.html:3
-msgid "Tags"
-msgstr "Słowa kluczowe"
-
-msgid "Resources"
-msgstr "Zasoby"
-
 #: ckanext/danepubliczne/templates/qa/snippets/stars.html:13
 msgid "Not Rated"
 msgstr "Brak informacji"
 
-#: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:17
+#: ckanext/danepubliczne/templates/qa/snippets/stars.html:24
+#: ckanext/danepubliczne/templates/snippets/facet_list.html:53
+msgid "{0} out of {1}"
+msgstr "{0} na {1}"
+
+#: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:19
 msgid "Hide rating info"
 msgstr "Ukryj opis badania otwartości"
 
-#: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:17
+#: ckanext/danepubliczne/templates/qa/snippets/stars_module.html:19
 msgid "What these stars mean"
 msgstr "Dowiedz się, co oznaczają te gwiazdki"
+
+#: ckanext/danepubliczne/templates/snippets/facet_list.html:32
+#, python-format
+msgid "(%d<span class=\"visibility-hidden\"> matching datasets</span>)"
+msgstr "(%d<span class=\"visibility-hidden\"> matching datasets</span>)"
+
+#: ckanext/danepubliczne/templates/snippets/facet_list.html:37
+msgid "Filter selected - press again to deselect"
+msgstr "Filtr ustawiony - kliknij ponownie aby usunąć"
 
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid "What data would you like to see on our site?"
@@ -640,15 +739,15 @@ msgstr "Nie znaleziono artykułów"
 msgid "Search History"
 msgstr "Historia Wyszukiwania"
 
-#: ckanext/danepubliczne/templates/user/dashboard_account.html:69
+#: ckanext/danepubliczne/templates/user/dashboard_account.html:70
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:28
-#: ckanext/danepubliczne/templates/user/read_base.html:27
+#: ckanext/danepubliczne/templates/user/read_base.html:28
 msgid "Position"
 msgstr "Stanowisko"
 
-#: ckanext/danepubliczne/templates/user/dashboard_account.html:76
+#: ckanext/danepubliczne/templates/user/dashboard_account.html:77
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:30
-#: ckanext/danepubliczne/templates/user/read_base.html:34
+#: ckanext/danepubliczne/templates/user/read_base.html:35
 msgid "Phone number"
 msgstr "Służbowy numer telefonu"
 
@@ -660,14 +759,17 @@ msgstr "Nie wyszukiwałeś jeszcze nic w serwisie."
 msgid "Official details"
 msgstr "Dane służbowe"
 
-#: ckanext/danepubliczne/templates/user/request_reset.html:38
-msgid ""
-"We will send you\n"
-"      an email with a link to enter a new password."
+#: ckanext/danepubliczne/templates/user/request_reset.html:39
+msgid "We will send you an email with a link to enter a new password."
 msgstr ""
 "Wpisz swój adres e-mail,\n"
 "aby otrzymać instrukcje resetowania hasła."
 
+msgid "Tags"
+msgstr "Słowa kluczowe"
+
+msgid "Resources"
+msgstr "Zasoby"
 
 # Częstotliwość aktualizacji
 msgid "Daily"
