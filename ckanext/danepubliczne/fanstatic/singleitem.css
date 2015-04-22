@@ -340,6 +340,10 @@
     border: 0;
 }
 
+.wrapper .dataset-result .activity .item .date {
+    color: #757575;
+}
+
 @media (min-width: 768px) {
     .singleitem .dataset-info {
         margin-bottom: 45px;

@@ -9,6 +9,11 @@
     padding: 0;
 }
 
+.module-narrow .module-content.empty {
+    padding: 7px 15px;
+    color: #757575;
+}
+
 .list .dataset-info {
     margin-bottom: 0;
 }
@@ -226,8 +231,8 @@
 
 }
 
-.nav-item.active > a span, .nav-aside li.active a span{
-    white-space:normal;
+.nav-item.active > a span, .nav-aside li.active a span {
+    white-space: normal;
     overflow: visible;
     display: inline-block;
 }
@@ -266,8 +271,8 @@
 }
 
 .wrapper .dataset-result,
-.wrapper .dataset-result [class*="span"]{
-    margin-left:0;
+.wrapper .dataset-result [class*="span"] {
+    margin-left: 0;
 }
 
 .wrapper .dataset-result .module {
