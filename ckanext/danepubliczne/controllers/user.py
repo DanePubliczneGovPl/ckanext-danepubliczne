@@ -270,7 +270,7 @@ class UserController(base_user.UserController):
             abort(401, _('Unauthorized to edit user %s') % id)
         except NotFound, e:
             abort(404, _('User not found'))
-        except logic.DataError:
+        except df.DataError:
             abort(400, _(u'Integrity Error'))
         except ValidationError, e:
             errors = e.error_dict
