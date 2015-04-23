@@ -44,22 +44,29 @@
                 {% endblock %}
                 {% block description %}
                   <p>
-                    <strong>{{ _('Address') }}: </strong>{{ organization.address_street }}, {{ organization.postal_code }} {{ organization.address_city }}
+                    {{ organization.address_street }}, {{ organization.postal_code }} {{ organization.address_city }}
                   </p>
-                  <p><strong>{{ _('Website') }}: </strong><a
-                          href="{{ organization.website }}">{{ organization.website }}</a></p>
-                  <p><strong>{{ _('E-mail') }}: </strong><a href="mailto:{{ organization.email }}"
-                                                            title="Napisz na {{ organization.email }}">{{ organization.email }}</a>
+                  <p>
+                    <a href="{{ organization.website }}">{{ organization.website }}</a>
                   </p>
-                  <p><strong>{{ _('Telephone') }}. </strong>{{ organization.tel }}</p>
-                  {% if organization.fax %}
-                    <p><strong>{{ _('Fax') }}. </strong>{{ organization.fax }}</p>{% endif %}
-                  {% if organization.regon %}
-                    <p><strong>{{ _('REGON number') }}: </strong>{{ organization.regon }}</p>
-                  {% endif %}
-                  {% if organization.epuap %}<p><a href="{{ organization.epuap }}"
+                  <p>
+                    <a href="mailto:{{ organization.email }}"
+                       title="Napisz na {{ organization.email }}">{{ organization.email }}</a>
+                  </p>
+                  {% if organization.epuap %}
+                  <p><a href="{{ organization.epuap }}"
                                                    title="{{ _('ePUAP account') }}">{{ _('ePUAP account') }}</a>
-                  </p>{% endif %}
+                  </p>
+                {% endif %}
+                  <p>
+                    <strong>{{ _('Tel') }}. </strong>{{ organization.tel }}
+                    {% if organization.fax %}
+                    <strong>{{ _('Fax') }}. </strong>{{ organization.fax }}
+                    {% endif %}
+                  </p>
+                  {% if organization.regon %}
+                    <p><strong>{{ _('REGON') }}: </strong>{{ organization.regon }}</p>
+                  {% endif %}
                 {% endblock %}
                 {#{% block nums %}
                   <div class="nums">

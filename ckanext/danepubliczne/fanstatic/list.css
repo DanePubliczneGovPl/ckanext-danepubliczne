@@ -27,7 +27,7 @@
     font-weight: bold;
     color: #4b77be;
     margin-top: 0;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     line-height: 1.1em;
 }
 
@@ -431,7 +431,7 @@
     }
 
     .list .dataset-info {
-        margin-bottom: 45px;
+        margin-bottom: 25px;
     }
 
     .list .dataset-info .image {
