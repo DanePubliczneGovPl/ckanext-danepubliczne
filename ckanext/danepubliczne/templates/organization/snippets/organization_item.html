@@ -26,11 +26,7 @@
         {% endif %}
       {% endblock %}
       {% block link %}
-        <a href="{{ url }}"
-           title="{{ _('View {organization_name}').format(organization_name=organization.display_name) }}"
-           class="media-view">
-          <span>{{ _('View {organization_name}').format(organization_name=organization.display_name) }}</span>
-        </a>
+        <a href="{{ url }}" title="{{ _('See information about this organization') }}" class="media-view"></a>
       {% endblock %}
     {% endblock %}
   </li>
