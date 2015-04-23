@@ -379,7 +379,7 @@
     border-right: none;
 }
 
-.wrapper .dataset-result .dataset-list .dataset-resources li a {
+.wrapper .dataset-result .dataset-list .dataset-resources li {
     background: none;
     font-size: 18px;
     font-weight: bold;
