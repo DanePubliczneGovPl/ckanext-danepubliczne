@@ -974,3 +974,24 @@ msgstr "Utwórz zbiór danych"
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
 msgstr "Utwórz zbiór danych"
+
+#: ckan/lib/mailer.py:119
+#, python-format
+msgid ""
+"You have been invited to {site_title}. A user has already been created "
+"to you with the username {user_name}. You can change it later.\n"
+"\n"
+"To accept this invite, please reset your password at:\n"
+"\n"
+"   {reset_link}\n"
+msgstr ""
+"W portalu {site_title} zostało dla Ciebie utworzone konto.\n"
+"\n"
+"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
+"\n"
+"       {reset_link}\n"
+
+#: ckan/lib/mailer.py:25
+#, python-format
+msgid "Dear %s,"
+msgstr "Witaj%.0s,"
