@@ -1854,6 +1854,22 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
     background-color: #c4e3f3
 }
 
+.table .table,
+.table .table tbody th,
+.table .table tbody td {
+    background: none !important;
+}
+
+.table .table tbody th:first-child,
+.table .table tbody td:first-child {
+    border-left: none !important;
+}
+
+.table .table tbody th:last-child,
+.table .table tbody td:last-child {
+    border-right: none !important;
+}
+
 .dropup, .dropdown {
     position: relative
 }

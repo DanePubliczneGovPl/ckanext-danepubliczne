@@ -193,7 +193,8 @@
     transform: rotate(-90deg);
 }
 
-.wrapper .dataset-filters .read-more-button {
+.wrapper .dataset-filters .read-more-button,
+.wrapper .dataset-filters .read-less-button {
     font-size: 12px;
     font-weight: normal;
     line-height: 1em;

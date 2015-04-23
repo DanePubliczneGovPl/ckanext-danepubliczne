@@ -67,6 +67,9 @@
 }
 
 .organization .media-grid .media-item {
+    width: 29.4%;
+    min-width: 189px;
+    min-height: 220px;
     margin: 15px 7px 0;
 
     -webkit-border-radius: 0;
@@ -97,6 +100,7 @@
     color: #157ABE;
     line-height: 1em;
     margin: 10px 0 5px;
+    word-break: normal;
 }
 
 .organization .media-grid .count {

@@ -207,12 +207,22 @@
     margin-bottom: 20px;
 }
 
-.wrapper .dataset-result .additional-info .list {
+.wrapper .dataset-result .additional-info td, .wrapper .dataset-result .additional-info th {
     width: auto;
+}
+
+.wrapper .dataset-result .additional-info .list {
     font-size: 12px;
     font-weight: normal;
     color: #000000;
-    margin-right: 18px;
+}
+
+.wrapper .dataset-result .additional-info .list:first-child > td {
+    border-top: none;
+}
+
+.wrapper .dataset-result .additional-info .list .dataset-label {
+    font-weight: bold;
 }
 
 .wrapper .dataset-result .additional-info .list .dataset-label:after {
@@ -224,6 +234,10 @@
     border: none;
     padding: 0;
     -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
 }
 
 .wrapper .dataset-result .tags .tag-list li a {
