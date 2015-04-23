@@ -286,12 +286,13 @@ class UserController(base_user.UserController):
         except NotAuthorized:
             abort(401, _('Unauthorized to request reset password.'))
 
+        error = None
         if request.method == 'POST':
             email = request.params.get('email').lower()
             users = model.User.by_email(email)
 
             if not users:
-                h.flash_error(_('Email not registered: %s') % email)
+                error = _('Email not registered: %s') % email
 
             else:
                 try:
@@ -303,7 +304,7 @@ class UserController(base_user.UserController):
                     h.flash_error(_('Could not send reset link: %s') %
                                   unicode(e))
 
-        return render('user/request_reset.html')
+        return render('user/request_reset.html', extra_vars={'error': error})
 
     def read(self, id=None):
         context = {'model': model, 'session': model.Session,

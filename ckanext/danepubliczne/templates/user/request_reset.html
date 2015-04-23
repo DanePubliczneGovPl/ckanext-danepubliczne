@@ -12,7 +12,12 @@
       <h1 class="page-heading">{{ _('Reset your password') }}</h1>
       {% block form %}
         <form action="" method="post" class="form-horizontal">
-          <div class="control-group control-medium">
+          {% if error %}
+          <div class="error-explanation alert alert-error ">
+            {{ error }}
+          </div>
+          {% endif %}
+          <div class="control-group {% if error %}error{% endif %} control-medium">
             <label class="control-label" for="field-email">{{ _('Email') }}</label>
 
             <div class="controls">
