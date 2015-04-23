@@ -3754,6 +3754,12 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     color: #999
 }
 
+.module-content .pagination {
+  margin-left: -25px;
+  margin-right: -25px;
+  margin-bottom: 15px;
+}
+
 .pagination {
     margin: 20px 0
 }
