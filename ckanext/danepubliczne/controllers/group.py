@@ -219,11 +219,11 @@ class GroupController(base_group.GroupController):
                 data_dict['id'] = id
                 data_dict['role'] = 'editor'  # fixed
 
-                email = data_dict.get('email')
+                email = data_dict.get('email').lower()
 
                 if email:
                     # check if user exists
-                    user = context['session'].query(model.User).filter_by(email=email, state='active').first()
+                    user = context['session'].query(model.User).filter_by(email=email).first()
                     if user:
                         data_dict['username'] = user.name
 
