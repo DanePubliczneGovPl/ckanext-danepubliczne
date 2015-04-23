@@ -146,6 +146,10 @@
     width: 100%;
 }
 
+.homepage .articlesBox .articles ul {
+    list-style: none;
+}
+
 .homepage .articlesBox .articles .article {
     font-size: 14px;
     font-weight: normal;

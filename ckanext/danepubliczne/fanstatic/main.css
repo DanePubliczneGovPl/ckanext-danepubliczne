@@ -126,13 +126,23 @@ html {
     position: relative;
 }
 
-.visibility-hidden {
+/*.visibility-hidden {
     visibility: hidden;
     text-indent: -9999px;
     display: inline-block;
     width: 0;
     height: 0;
     float: left;
+}*/
+
+.visibility-hidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
 }
 
 body {
