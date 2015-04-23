@@ -223,6 +223,8 @@
 
 .wrapper .dataset-result .additional-info .list .dataset-label {
     font-weight: bold;
+    text-align: right;
+    width: 25%;
 }
 
 .wrapper .dataset-result .additional-info .list .dataset-label:after {
