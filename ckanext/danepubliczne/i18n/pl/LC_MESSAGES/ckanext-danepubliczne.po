@@ -365,6 +365,9 @@ msgstr "Zaktualizuj Kategorię"
 msgid "Choose filter and value to narrow results"
 msgstr "Wybierz filtr i wartość, aby zawęzić wyniki"
 
+msgid "Clicking on tag will show all datasets tagged liked that"
+msgstr "Kliknięcie na słowo kluczowe wyświetli wszystkie zbiory opisane tym słowem"
+
 #: ckanext/danepubliczne/templates/group/read_base.html:135
 #: ckanext/danepubliczne/templates/package/search.html:91
 msgid ""
