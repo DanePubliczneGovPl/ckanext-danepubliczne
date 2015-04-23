@@ -2,14 +2,7 @@
 {% block item %}
   <li class="media-item">
     {% block item_inner %}
-      {% block image %}
-        {% set image_url = h.dp_organization_image(organization) %}
-        {% if image_url %}
-          <div class="image-handler">
-            <img src="{{ image_url }}" alt="" class="media-image">
-          </div>
-        {% endif %}
-      {% endblock %}
+      <div>
       {% block title %}
         <h3 class="media-heading">{{ organization.display_name }}</h3>
       {% endblock %}
@@ -27,6 +20,15 @@
       {% endblock %}
       {% block link %}
         <a href="{{ url }}" title="{{ _('See information about this organization') }}" class="media-view"></a>
+      {% endblock %}
+      </div>
+      {% block image %}
+        {% set image_url = h.dp_organization_image(organization) %}
+        {% if image_url %}
+          <div class="image-handler">
+            <img src="{{ image_url }}" alt="" class="media-image">
+          </div>
+        {% endif %}
       {% endblock %}
     {% endblock %}
   </li>

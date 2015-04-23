@@ -67,9 +67,7 @@
 }
 
 .organization .media-grid .media-item {
-    width: 29.4%;
-    min-width: 189px;
-    min-height: 220px;
+    width: 100%;
     margin: 15px 7px 0;
 
     -webkit-border-radius: 0;
@@ -77,23 +75,24 @@
     border-radius: 0;
 }
 
-.organization .media-grid .media-item .image-handler {
+.organization .media-grid .media-item > div {
     width: 100%;
-    height: 115px;
+    float: left;
+}
+
+@media (min-width: 992px) {
+.organization .media-grid .media-item > div {
+    width: 50%;
+    margin-bottom: 10px;
+}
+}
+
+.organization .media-grid .media-item .image-handler {
     position: relative;
 }
 
 .organization .media-grid .media-item .image-handler .media-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
     max-height: 115px;
-
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 .organization .media-grid .media-item h3 {
