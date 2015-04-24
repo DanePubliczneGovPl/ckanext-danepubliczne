@@ -202,10 +202,8 @@ msgstr "Baza wiedzy"
 #: ckanext/danepubliczne/templates/footer.html:25
 msgid ""
 "<strong>Maintained by</strong><a href='https://mac.gov.pl/en'><img "
-"src=\"/logo/mac.png\"\n"
-""
-"                                                                                         "
-"alt=\"Ministry of Administration and Digitalization\"></a>"
+"src=\"/logo/mac.png\" alt=\"Ministry of Administration and "
+"Digitalization\"></a>"
 msgstr ""
 "<strong>Serwis prowadzony przez</strong> <a "
 "href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo "
@@ -213,13 +211,16 @@ msgstr ""
 
 #: ckanext/danepubliczne/templates/footer.html:28
 msgid ""
-"<strong>Powered by</strong>\n"
-"          <a class=\"hide-text ckan-footer-logo\" "
+"<strong>Powered by</strong><a class=\"hide-text ckan-footer-logo\" "
 "href=\"http://ckan.org\">CKAN</a>"
 msgstr ""
-"<strong>Oprogramowanie open-source</strong>\n"
+"<strong>Na oprogramowaniu</strong>\n"
 "          <a class=\"hide-text ckan-footer-logo\" "
 "href=\"http://ckan.org\">CKAN</a>"
+
+#: ckanext/danepubliczne/templates/footer.html:28
+msgid "Source code"
+msgstr "Kod źródłowy"
 
 #: ckanext/danepubliczne/templates/footer.html:34
 msgid "You haven't find here what you were looking for?"
