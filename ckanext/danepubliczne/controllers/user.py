@@ -95,7 +95,7 @@ class UserController(base_user.UserController):
             captcha.check_recaptcha(request)
 
             # Extra: Create username from email
-            email = data_dict.get('email', '')
+            email = data_dict.get('email', '').lower()
             email_user = email.split('@')[0]
             name = re.sub('[^a-z0-9_\-]', '_', email_user)
 
