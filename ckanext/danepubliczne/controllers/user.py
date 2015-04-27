@@ -200,7 +200,7 @@ class UserController(base_user.UserController):
         # Custom handling if user in organization
         action_ctx = context.copy()
         action_ctx['user'] = id
-        c.in_organization = bool(logic.get_action('organization_list_for_user')(action_ctx, {}))
+        c.in_organization = bool(logic.get_action('organization_list_for_user')(action_ctx, {'permission': 'create_dataset'}))
 
         to_json = convert_to_json('about')
         not_empty = tk.get_validator('not_empty')
