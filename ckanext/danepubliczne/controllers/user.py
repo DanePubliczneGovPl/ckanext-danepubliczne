@@ -204,10 +204,12 @@ class UserController(base_user.UserController):
 
         to_json = convert_to_json('about')
         not_empty = tk.get_validator('not_empty')
-        context['schema'].update({
-            'official_position': [not_empty, to_json],
-            'official_phone': [not_empty, to_json]
-        })
+        if c.in_organization:
+            context['schema'].update({
+                'fullname': [not_empty, unicode],
+                'official_position': [not_empty, to_json],
+                'official_phone': [not_empty, to_json]
+            })
 
         # End of custom handling
 
