@@ -267,7 +267,7 @@ class UserController(base_user.UserController):
 
             user = get_action('user_update')(context, data_dict)
             h.flash_success(_('Profile updated'))
-            h.redirect_to('user_dashboard_account', id=user['name'])
+            h.redirect_to('user_datasets', id=user['name'])
         except NotAuthorized:
             abort(401, _('Unauthorized to edit user %s') % id)
         except NotFound, e:

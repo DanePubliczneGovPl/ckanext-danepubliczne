@@ -13,6 +13,9 @@
 
         {% block user_heading %}
           <h1 class="heading">{{ userd.display_name }}</h1>
+          {% if c.userobj.sysadmin %}
+          {% link_for _('Edit') + ' ' + userd.display_name, controller='user', action='edit', id=userd.name, class_='btn', icon='cog' %}
+          {% endif %}
         {% endblock %}
 
         {% block user_about %}
