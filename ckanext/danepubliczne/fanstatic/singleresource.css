@@ -31,7 +31,6 @@
     font-size: 14px;
     font-weight: normal;
     color: #000;
-    margin-bottom: 25px;
     width: 100%;
     display: inline-block;
 }
@@ -65,6 +64,7 @@
 .singleresource .notes {
     font-size: 14px;
     font-weight: normal;
+    margin-top: 25px;
     color: #000000;
 }
 

@@ -82,10 +82,10 @@
 
             {% block resource_read_url %}
               {% if res.url and h.is_url(res.url) %}
-                <p class="muted ellipsis">{{ _('URL:') }} <a href="{{ res.url }}"
+                <p class="muted ellipsis">{{ _('URL') }}: <a href="{{ res.url }}"
                                                              title="{{ res.url }}">{{ res.url }}</a></p>
               {% elif res.url %}
-                <p class="muted ellipsis">{{ _('URL:') }} {{ res.url }}</p>
+                <p class="muted ellipsis">{{ _('URL') }}: {{ res.url }}</p>
               {% endif %}
             {% endblock %}
 
@@ -95,10 +95,11 @@
               {% endif %}
 
               {% if not res.description and c.package.notes %}
-                <p>{{ h.markdown_extract(c.package.get('notes')) }}</p>
                 <p>
-                {% trans dataset=c.package.title, url=h.url_for(controller='package', action='read', id=c.package['name']) %}
-                  Dataset: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}
+                {% set dataset_url=h.url_for(controller='package', action='read', id=c.package['name']) %}
+                  {{ _('Dataset') }}: <a href="{{ dataset_url }}">{{ c.package.title }}</a>
+                </p>
+                <p>{{ h.markdown_extract(c.package.get('notes')) }}</p>
               {% endif %}
             </div>
           {% endblock %}
