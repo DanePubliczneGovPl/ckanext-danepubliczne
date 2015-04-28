@@ -201,7 +201,7 @@ def user_autocomplete_email(context, data_dict):
         for k in ['id', 'name', 'fullname', 'email']:
             result_dict[k] = getattr(user, k)
 
-        result_dict['fullname_with_email'] = "%s <%s>" % (user.fullname, user.email)
+        result_dict['fullname_with_email'] = "%s &lt;%s&gt;" % (user.fullname or '', user.email)
 
         user_list.append(result_dict)
 
