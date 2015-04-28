@@ -333,7 +333,6 @@ class UserController(base_user.UserController):
         super(UserController, self)._setup_template_variables(context, data_dict)
 
         about = c.user_dict['about']
-        print about
         if about:
             of = json.loads(about)
             c.user_dict.update(of)
