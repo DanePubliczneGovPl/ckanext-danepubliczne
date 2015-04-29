@@ -30,7 +30,7 @@
                   <span class="visibility-hidden">{{ openess_info }}</span>
                   <span class="star-rating-stars">
                   {%- for index in range(5) -%}
-                    {%- if index <= openess_score -%}
+                    {%- if index < openess_score -%}
                       <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16"
                            alt=""/>
                     {%- else -%}
@@ -38,7 +38,7 @@
                            alt=""/>
                     {%- endif -%}
                   {%- endfor -%}
-                    <span class="visibility-hidden">{{ _("{0} out of {1}").format(openess_score + 1, 5) }}</span>
+                    <span class="visibility-hidden">{{ _("{0} out of {1}").format(openess_score, 5) }}</span>
                   </span>
                   {{ count|safe }}
                 </span>
