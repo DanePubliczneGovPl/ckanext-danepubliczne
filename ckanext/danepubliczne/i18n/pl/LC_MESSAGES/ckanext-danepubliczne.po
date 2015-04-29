@@ -22,6 +22,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
+msgid "Contact"
+msgstr "Kontakt"
+
 #: ckanext/danepubliczne/plugin.py:149
 msgid "We use cookies to handle logged-in users"
 msgstr "Używamy plików cookies, aby obsłużyć zalogowanych użytkowników"
