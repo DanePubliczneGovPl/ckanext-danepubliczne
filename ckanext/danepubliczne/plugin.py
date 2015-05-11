@@ -143,12 +143,6 @@ class DanePubliczne(p.SingletonPlugin):
     # TODO ckan-dev What is the preferred way to make multilingual groups / datasets /tags: fluent or multilingual?
 
 
-    p.implements(p.IAuthenticator, inherit=True)
-
-    def login(self):
-        h.flash_notice(_('We use cookies to handle logged-in users'))
-
-
     p.implements(p.IActions)
 
     def get_actions(self):
