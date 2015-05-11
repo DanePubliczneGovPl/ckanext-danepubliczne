@@ -28,6 +28,7 @@
   <a class="btn" href="/api/3/action/package_show?id={{ pkg.name }}">{{ _('API') }}</a>
 {% endblock %}
 
+{% block content_primary_nav_wrapper %}
 {% block content_primary_nav %}
   {#
   {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
@@ -35,6 +36,7 @@
   {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name) }}
   {{ h.build_nav_icon('related_list', _('Related'), id=pkg.name) }}
 #}
+{% endblock %}
 {% endblock %}
 
 {% block primary_content_inner %}

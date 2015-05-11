@@ -56,9 +56,11 @@
                           {% block content_action %}{% endblock %}
                         </div>
                       {% endif %}
+                      {% block content_primary_nav_wrapper %}
                       <ul class="nav nav-tabs">
                         {% block content_primary_nav %}{% endblock %}
                       </ul>
+                      {% endblock %}
                     </header>
                   {% endblock %}
                   <div class="module-content">
