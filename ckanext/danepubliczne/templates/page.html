@@ -121,7 +121,9 @@
   {% if g.tracking_enabled %}
     {% resource 'base/tracking.js' %}
   {% endif %}
+
+  {{ super() }}
+
   {% resource 'dane_publiczne/js-cookie-1.5.1-min.js' %}
   {% resource 'dane_publiczne/danepubliczne.js' %}
-  {{ super() }}
 {% endblock -%}

@@ -1,3 +1,4 @@
+// cookies
 if (!Cookies.get('kukiz_accept_cookies')) {
   $(function() {
     $('.alert.cookie.notice').css('display', 'block');
@@ -8,3 +9,14 @@ if (!Cookies.get('kukiz_accept_cookies')) {
   });
 }
 
+// initilize fileupload
+$(function() {
+  $('.fileupload').fileupload({
+    done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                //$('<p/>').text(file.name).appendTo(document.body);
+                window.alert(file.name);
+            });
+        }
+  });
+});

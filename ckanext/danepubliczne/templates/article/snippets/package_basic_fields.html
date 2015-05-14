@@ -20,7 +20,11 @@
 {% block package_basic_fields_custom %}{% endblock %}
 
 {% block package_basic_fields_description %}
+  {% if c.action == 'edit' %}
+  {{ form.markdown_with_upload('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the article'), value=data.notes, error=errors.notes, is_required=true, attrs={'rows': 30}) }}
+  {% else %}
   {{ form.markdown('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the article'), value=data.notes, error=errors.notes, is_required=true, attrs={'rows': 30}) }}
+  {% endif %}
 {% endblock %}
 
 {% block package_basic_fields_tags %}

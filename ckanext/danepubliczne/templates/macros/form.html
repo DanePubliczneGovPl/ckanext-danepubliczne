@@ -135,6 +135,40 @@ Examples:
   {% endcall %}
 {% endmacro %}
 
+{% macro markdown_with_upload(name, id='', label='', value='', placeholder='', error="", classes=[], attrs={}, is_required=false) %}
+  {% set attrsf = {'rows': 4, 'cols': 20} %}
+  {% do attrsf.update(attrs) %}
+  {% set classes = (classes|list) %}
+  {% do classes.append('control-full') %}
+  {% set markdown_tooltip = "<pre><p>__Bold text__ or _italic text_</p><p># title<br>## secondary title<br>### etc</p><p>* list<br>* of<br>* items</p><p>http://auto.link.ed/</p></pre><p><b><a href='http://daringfireball.net/projects/markdown/syntax' target='_blank'>Full markdown syntax</a></b></p><p class='muted'><b>Please note:</b> HTML tags are stripped out for security reasons</p>" %}
+
+  {%- set extra_html = caller() if caller -%}
+  {% call input_block(id or name, label or name, error, classes, control_classes=["editor markdown_with_upload"], extra_html=extra_html, is_required=is_required) %}
+    <div class="textarea">
+      <textarea id="{{ id or name }}" name="{{ name }}" placeholder="{{ placeholder }}" {{ attributes(attrs) }}>{{ value | empty_and_escape }}</textarea>
+      <span class="editor-info-block">{% trans %}You can use <a href="#markdown" title="Markdown quick reference" data-target="popover" data-content="{{ markdown_tooltip }}" data-html="true">Markdown formatting</a> here{% endtrans %}</span>
+    </div>
+    <div class="upload-panel">
+
+        <span class="btn btn-primary fileinput-button ">
+          Upload file
+          <input class="fileupload" type="file" name="files[]" data-url="server/php/" multiple/>
+        </span>
+        <div class="files">
+          Files:
+          <ul>
+            <li>Plik1.jpg - <a class="article-add-image">Wklej jako obraz</a></li>
+            <a class="article-add-image">
+            </a></ul>
+          <a class="article-add-image">
+          </a></div>
+        <a class="article-add-image">
+          <div></div>
+        </a>
+    </div>
+  {% endcall %}
+{% endmacro %}
+
 {#
 Creates all the markup required for a plain textarea element. Handles
 matching labels to inputs, selected item and error messages.
