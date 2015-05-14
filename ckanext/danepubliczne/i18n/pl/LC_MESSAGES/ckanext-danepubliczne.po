@@ -798,6 +798,12 @@ msgstr "Tygodniowa"
 msgid "Yearly"
 msgstr "Coroczna"
 
+msgid "Content"
+msgstr "Treść"
+
+msgid "Text of the article"
+msgstr "Treść artykułu"
+
 # ##########################################################################
 # Overriding CKAN
 msgid "Organizations"
