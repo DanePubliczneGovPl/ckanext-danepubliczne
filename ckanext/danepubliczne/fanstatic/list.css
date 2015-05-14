@@ -364,14 +364,6 @@
     margin-top: 15px;
 }
 
-.wrapper .dataset-result .dataset-list .dataset-resources li {
-    border-left: none;
-    border-right: 1px solid #4B77BE;
-    float: left;
-    width: auto;
-    padding: 8px 16px;
-}
-
 .wrapper .dataset-result .dataset-list .dataset-resources li:first-child {
     padding-left: 0;
 }
@@ -381,10 +373,16 @@
 }
 
 .wrapper .dataset-result .dataset-list .dataset-resources li {
+  border-left: none;
+    border-right: 1px solid #a3a3a3;
+    float: left;
+    width: auto;
+    padding: 8px 16px;
+
     background: none;
     font-size: 18px;
     font-weight: bold;
-    color: #157abe;
+    color: #a3a3a3;
 }
 
 .wrapper .dataset-result .pagination {
