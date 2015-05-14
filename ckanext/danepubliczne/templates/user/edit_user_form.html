@@ -25,9 +25,9 @@
     <fieldset>
       <legend>{{ _('Official details') }}</legend>
 
-      {{ form.input('official_position', label=_('Position'), id='field-official_position', value=data.official_position, error=errors.official_position, classes=['control-medium'], is_required=true) }}
+      {{ form.input('official_position', label=_('Official position'), id='field-official_position', value=data.official_position, error=errors.official_position, classes=['control-medium'], is_required=true) }}
 
-      {{ form.input('official_phone', label=_('Phone number'), id='field-official_phone', value=data.official_phone, error=errors.official_phone, classes=['control-medium'], is_required=true) }}
+      {{ form.input('official_phone', label=_('Official phone'), id='field-official_phone', value=data.official_phone, error=errors.official_phone, classes=['control-medium'], is_required=true) }}
 
     </fieldset>
   {% endif %}

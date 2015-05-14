@@ -435,6 +435,23 @@ msgstr ""
 "target=\"popover\" data-content=\"%(markdown_tooltip)s\"\n"
 "         data-html=\"true\">formatowania Markdown</a>"
 
+#: ckanext/danepubliczne/templates/macros/form.html:126
+#: ckanext/danepubliczne/templates/macros/form.html:143
+msgid ""
+"<pre><p>__Bold text__ or _italic text_</p><p># title<br>## secondary "
+"title<br>### etc</p><p>* list<br>* of<br>* "
+"items</p><p>http://auto.link.ed/</p></pre><p><b><a "
+"href='http://daringfireball.net/projects/markdown/syntax' "
+"target='_blank'>Full markdown syntax</a></b></p><p class='muted'><b>Please "
+"note:</b> HTML tags are stripped out for security reasons</p>"
+msgstr ""
+"<pre><p>__Pogrubiony tekst__ or _tekst w italikach_</p><p># Tytuł - pierwszy poziom<br>## Tytuł - drugi poziom "
+"<br>### itd.</p><p>* lista<br>* elementow"
+"</p><p>http://linki.tworza.sie.automatycznie/</p></pre><p><b><a "
+"href='http://daringfireball.net/projects/markdown/syntax' "
+"target='_blank'>Pełna składnia markdown</a></b></p><p class='muted'><b>Uwaga:"
+"</b> Tagi HTML są usuwane ze względów bezpieczeństwa</p>"
+
 #: ckanext/danepubliczne/templates/macros/form.html:241
 msgid "Key"
 msgstr "Nazwa"
@@ -702,9 +719,8 @@ msgid "What these stars mean"
 msgstr "Dowiedz się, co oznaczają te gwiazdki"
 
 #: ckanext/danepubliczne/templates/snippets/facet_list.html:32
-#, python-format
 msgid "(%d<span class=\"visibility-hidden\"> matching datasets</span>)"
-msgstr "(%d<span class=\"visibility-hidden\"> matching datasets</span>)"
+msgstr "(%d<span class=\"visibility-hidden\"> znalezionych wyników</span>)"
 
 #: ckanext/danepubliczne/templates/snippets/facet_list.html:37
 msgid "Filter selected - press again to deselect"
@@ -747,13 +763,16 @@ msgstr "Historia Wyszukiwania"
 #: ckanext/danepubliczne/templates/user/dashboard_account.html:70
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:28
 #: ckanext/danepubliczne/templates/user/read_base.html:28
-msgid "Position"
+msgid "Official position"
 msgstr "Stanowisko"
+
+msgid "Fullname"
+msgstr "Imię i nazwisko"
 
 #: ckanext/danepubliczne/templates/user/dashboard_account.html:77
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:30
 #: ckanext/danepubliczne/templates/user/read_base.html:35
-msgid "Phone number"
+msgid "Official phone"
 msgstr "Służbowy numer telefonu"
 
 #: ckanext/danepubliczne/templates/user/dashboard_search_history.html:11
