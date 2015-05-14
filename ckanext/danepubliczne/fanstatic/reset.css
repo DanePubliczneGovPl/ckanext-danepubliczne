@@ -624,7 +624,7 @@ a.muted:hover, a.muted:focus {
 }
 
 .text-warning {
-    color: #c09853
+    color: #955E00
 }
 
 a.text-warning:hover, a.text-warning:focus {
@@ -632,7 +632,7 @@ a.text-warning:hover, a.text-warning:focus {
 }
 
 .text-error {
-    color: #b94a48
+    color: #ba0300
 }
 
 a.text-error:hover, a.text-error:focus {
@@ -1225,15 +1225,15 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 }
 
 .control-group.warning .control-label, .control-group.warning .help-block, .control-group.warning .help-inline {
-    color: #c09853
+    color: #955E00
 }
 
 .control-group.warning .checkbox, .control-group.warning .radio, .control-group.warning input, .control-group.warning select, .control-group.warning textarea {
-    color: #c09853
+    color: #955E00
 }
 
 .control-group.warning input, .control-group.warning select, .control-group.warning textarea {
-    border-color: #c09853;
+    border-color: #955E00;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
@@ -1247,21 +1247,21 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 }
 
 .control-group.warning .input-prepend .add-on, .control-group.warning .input-append .add-on {
-    color: #c09853;
+    color: #955E00;
     background-color: #fcf8e3;
-    border-color: #c09853
+    border-color: #955E00
 }
 
 .control-group.error .control-label, .control-group.error .help-block, .control-group.error .help-inline {
-    color: #b94a48
+    color: #ba0300
 }
 
 .control-group.error .checkbox, .control-group.error .radio, .control-group.error input, .control-group.error select, .control-group.error textarea {
-    color: #b94a48
+    color: #ba0300
 }
 
 .control-group.error input, .control-group.error select, .control-group.error textarea {
-    border-color: #b94a48;
+    border-color: #ba0300;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
@@ -1275,9 +1275,9 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 }
 
 .control-group.error .input-prepend .add-on, .control-group.error .input-append .add-on {
-    color: #b94a48;
+    color: #ba0300;
     background-color: #f2dede;
-    border-color: #b94a48
+    border-color: #ba0300
 }
 
 .control-group.success .control-label, .control-group.success .help-block, .control-group.success .help-inline {
@@ -1337,7 +1337,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 }
 
 input:focus:invalid, textarea:focus:invalid, select:focus:invalid {
-    color: #b94a48;
+    color: #ba0300;
     border-color: #ee5f5b
 }
 
@@ -2784,7 +2784,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert, .alert h4 {
-    color: #c09853
+    color: #955E00
 }
 
 .alert h4 {
@@ -2809,13 +2809,13 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert-danger, .alert-error {
-    color: #b94a48;
+    color: #ba0300;
     background-color: #f2dede;
     border-color: #eed3d7
 }
 
 .alert-danger h4, .alert-error h4 {
-    color: #b94a48
+    color: #ba0300
 }
 
 .alert-info {
@@ -4418,7 +4418,7 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 }
 
 .label-important, .badge-important {
-    background-color: #b94a48
+    background-color: #ba0300
 }
 
 .label-important[href], .badge-important[href] {
