@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-  <h2 class="hide-heading">{{ _('My Organizations') }}</h2>
+  <h1 class="visibility-hidden">{{ _('My Organizations') }}</h1>
   {% set organizations = h.organizations_available(permission='create_dataset') %}
   {% if organizations %}
     <div class="wide organization">

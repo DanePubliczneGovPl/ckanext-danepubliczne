@@ -3,7 +3,7 @@
 {% block dashboard_activity_stream_context %}{% endblock %}
 
 {% block primary_content_inner %}
-<h2 class="hide-heading">{{ _('Search History') }}</h2>
+<h1 class="visibility-hidden">{{ _('Search History') }}</h1>
 {% if c.search_history %}
 {% snippet 'user/snippets/search_history.html', search_history=c.search_history %}
 {% else %}
