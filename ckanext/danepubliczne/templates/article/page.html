@@ -111,4 +111,10 @@
     {% resource 'base/tracking.js' %}
   {% endif %}
   {{ super() }}
+
+  {% resource 'dane_publiczne/js-cookie-1.5.1-min.js' %}
+{% resource 'vendor/jquery.ui.widget.js' %}
+{% resource 'vendor/jquery-fileupload/jquery.fileupload.js' %}
+{#{% resource 'dane_publiczne/jquery-fileupload.js' %}#}
+  {% resource 'dane_publiczne/danepubliczne.js' %}
 {% endblock -%}

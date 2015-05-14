@@ -687,6 +687,7 @@ input[type=checkbox]:checked + .checkbox:before {
 .editor.markdown_with_upload .upload-panel {
     margin-left: 10px;
     float: left;
+    width: 38%;
 }
 
 .editor.markdown_with_upload .files {

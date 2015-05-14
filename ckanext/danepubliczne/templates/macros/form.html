@@ -135,7 +135,7 @@ Examples:
   {% endcall %}
 {% endmacro %}
 
-{% macro markdown_with_upload(name, id='', label='', value='', placeholder='', error="", classes=[], attrs={}, is_required=false) %}
+{% macro markdown_with_upload(name, id='', label='', value='', placeholder='', error="", classes=[], attrs={}, jupload_options={}, resources=[], is_required=false) %}
   {% set attrsf = {'rows': 4, 'cols': 20} %}
   {% do attrsf.update(attrs) %}
   {% set classes = (classes|list) %}
@@ -151,20 +151,22 @@ Examples:
     <div class="upload-panel">
 
         <span class="btn btn-primary fileinput-button ">
-          Upload file
-          <input class="fileupload" type="file" name="files[]" data-url="server/php/" multiple/>
+          {{ _('Upload a file') }}
+          <input class="fileupload" type="file" name="file" {{ attributes(jupload_options) }}/>
         </span>
         <div class="files">
-          Files:
+          {{ _('Resources') }}:
           <ul>
-            <li>Plik1.jpg - <a class="article-add-image">Wklej jako obraz</a></li>
-            <a class="article-add-image">
-            </a></ul>
-          <a class="article-add-image">
-          </a></div>
-        <a class="article-add-image">
-          <div></div>
-        </a>
+            {% for r in resources %}
+            <li>
+              <span class="filename">{{ r.name }}</span>
+              <span style="display:none" class="url">{{ r.url }}</span><br/>
+              <a class="article-add-image">Wstaw obraz</a>
+              , <a class="article-add-link">Wstaw link</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
     </div>
   {% endcall %}
 {% endmacro %}

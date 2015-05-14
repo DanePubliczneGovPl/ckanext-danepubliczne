@@ -1,10 +1,13 @@
 import logging
+import cgi
 from urllib import urlencode
 
 from pylons import config
 import ckan.logic as logic
 import ckan.lib.base as base
+import ckan.lib.jsonp as jsonp
 import ckan.lib.maintain as maintain
+import ckan.lib.navl.dictization_functions as df
 import ckan.lib.helpers as h
 import ckan.model as model
 import ckan.lib.plugins
@@ -349,3 +352,53 @@ class PackageController(base_package.PackageController):
 
         return render(self._search_template(package_type),
                       extra_vars={'dataset_type': package_type, 'api_search_url_params': api_search_url_params})
+
+    @jsonp.jsonpify
+    def jupload_resource(self, id):
+        if not request.method == 'POST':
+            abort(400, _('Only POST is supported'))
+
+        data = clean_dict(df.unflatten(tuplize_dict(parse_params(
+            request.POST))))
+
+        package_name = data.get('name')
+        file = data.get('file')
+
+        if package_name == None or file == None:
+            abort(400, _('Missing dataset name or file.'))
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'auth_user_obj': c.userobj}
+
+        try:
+            package_dict = get_action('package_show')(context, {'id': package_name})
+        except NotAuthorized:
+            abort(401, _('Unauthorized to update dataset'))
+        except NotFound:
+            abort(404,
+              _('The dataset {id} could not be found.').format(id=package_name))
+
+        resource_dict = {
+            'package_id': package_name,
+            'upload': file,
+            'name': file.filename
+        }
+        try:
+            resource = get_action('resource_create')(context, resource_dict)
+        except ValidationError, e:
+            errors = e.error_dict
+            error_summary = e.error_summary
+            return self.new_resource(id, data, errors, error_summary)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to create a resource'))
+        except NotFound:
+            abort(404,
+                _('The dataset {id} could not be found.').format(id=id))
+
+
+        return {"files": [
+            {
+                "name": file.filename,
+                "url": resource['url'],
+            }
+        ]}

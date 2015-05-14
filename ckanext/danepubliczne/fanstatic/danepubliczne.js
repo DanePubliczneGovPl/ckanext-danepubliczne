@@ -14,9 +14,37 @@ $(function() {
   $('.fileupload').fileupload({
     done: function (e, data) {
             $.each(data.result.files, function (index, file) {
-                //$('<p/>').text(file.name).appendTo(document.body);
-                window.alert(file.name);
+                entry = '<span class="filename">'+ file.name +'</span>'
+                  + '<span style="display:none" class="url">' + file.url + '</span><br/>'
+                  + '<a class="article-add-image">Wstaw obraz</a>'
+                  + ', <a class="article-add-link">Wstaw link</a>';
+
+                list = $(e.target).closest('.upload-panel').find('.files ul');
+                $('<li/>').html(entry).appendTo(list);
             });
         }
   });
+});
+
+function article_insert(link_elem, text) {
+  textarea = $(link_elem).closest('.markdown_with_upload').find('textarea');
+  pos = textarea.prop("selectionStart");
+
+  val = textarea.val();
+  val_new = val.substring(0, pos) + text + val.substring(pos);
+  textarea.val(val_new);
+}
+
+$('body').on('click', '.article-add-image', function(e) {
+  url = $(e.target).siblings('.url').text();
+  filename = $(e.target).siblings('.filename').text();
+
+  article_insert(e.target, '<img src="' + url + '" alt="" title="'+ filename +'"/>');
+});
+
+$('body').on('click', '.article-add-link', function(e) {
+  url = $(e.target).siblings('.url').text();
+  filename = $(e.target).siblings('.filename').text();
+
+  article_insert(e.target, '[' + filename +']('+ url + ')');
 });

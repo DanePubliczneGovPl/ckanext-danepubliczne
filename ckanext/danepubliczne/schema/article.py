@@ -72,7 +72,8 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
             'license_id': [not_empty, unicode],
-            'tag_string': schema['tag_string']
+            'tag_string': schema['tag_string'],
+            'resources': schema['resources']
         }
 
         return schema
