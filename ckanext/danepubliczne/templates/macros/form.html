@@ -345,8 +345,8 @@ Example:
       <p>{{ _('The form contains invalid entries:') }}</p>
       <ul>
         {% for key, error in errors.items() %}
-          # TODO ckan-dev translate keys, be sure they are included in translation (field names titleized)
-          # It helps if labels and field names are identical (except titleization)
+          {# TODO ckan-dev translate keys, be sure they are included in translation (field names titleized)
+          # It helps if labels and field names are identical (except titleization) #}
           <li data-field-label="{{ key }}">{% if key %}{{ _(key) }}: {% endif %}{{ error }}</li>
         {% endfor %}
       </ul>
