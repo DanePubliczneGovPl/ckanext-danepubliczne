@@ -57,12 +57,14 @@
       {% endif %}
       #}
 
+    {% if pkg_dict.category %}
     <tr class="list">
       <td class="dataset-label">{{ _("Category") }}</td>
       <td class="dataset-details"><a
               href="{{ h.url_for('group_read', id=pkg_dict.category) }}">{{ h.dp_translate_facet(pkg_dict.category, 'groups') }}</a>
       </td>
     </tr>
+    {% endif %}
 
     <tr class="list">
       <td class="dataset-label">{{ _('Update frequency') }}</td>

@@ -91,10 +91,10 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 return False
 
             is_admin_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'admin')
-            is_editor_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'editor')
+            can_create_dataset_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'create_dataset')
 
             # Allow organization admins & editors to add and remove packages from groups (categories)
-            if (is_admin_somewhere or is_editor_somewhere) and group.type == 'group':
+            if (is_admin_somewhere or can_create_dataset_somewhere) and group.type == 'group':
                 return True
             return False
 
