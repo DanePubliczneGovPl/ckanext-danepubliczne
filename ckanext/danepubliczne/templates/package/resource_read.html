@@ -29,7 +29,7 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <li class="active"><a href="javascript:void(0);">{{ h.resource_display_name(res) }}</a></li>
+  <li class="active"><a href="javascript:void(0);">{{ h.resource_display_name(res)|truncate(60) }}</a></li>
 {% endblock %}
 
 {% block pre_primary %}
@@ -102,6 +102,21 @@
                 <p>{{ h.markdown_extract(c.package.get('notes')) }}</p>
               {% endif %}
             </div>
+
+            {% block resource_types %}
+            {% if res.resource_type %}
+            <div class="tags">
+              <h2>{{ _('Resource types') }}</h2>
+              <ul class="tag-list">
+                {% for type in res.resource_type.split(',') %}
+                  <li>
+                    <span class="tag">{{ type }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% endblock %}
           {% endblock %}
         </div>
 

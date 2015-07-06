@@ -19,12 +19,35 @@
     display: none;
 }
 
+.singleresource .tags .tag-list li .tag {
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+    background: none;
+    padding: 4px 10px;
+    margin-right: 4px;
+    margin-bottom: 10px;
+
+    border: 1px solid #000000;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+}
+
 .singleresource h1 {
     font-size: 24px;
     font-weight: bold;
     color: #000000;
     line-height: 1.1em;
     margin-bottom: 12px;
+}
+
+.singleresource h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0px;
 }
 
 .singleresource .qa-ratings {

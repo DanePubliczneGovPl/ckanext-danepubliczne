@@ -138,6 +138,10 @@ msgstr "Brak informacji o stopniu otwartości zasobu"
 msgid "Resource types"
 msgstr "Typy zasobów"
 
+# For field error description
+msgid "Resource type"
+msgstr "Typy zasobów"
+
 #: ckanext/danepubliczne/schema/dataset.py:225
 #: ckanext/danepubliczne/templates/package/snippets/additional_info.html:66
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:9

@@ -297,6 +297,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def _modify_package_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
         optional = tk.get_validator('ignore_missing')
+        not_empty = tk.get_validator('not_empty')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
         # License is fixed to Open (Public Domain)
@@ -317,10 +318,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'license_condition_responsibilities': [optional, to_extras],
             'license_condition_db_or_copyrighted': [optional, to_extras]
         })
-        # Add our custom_resource_text metadata field to the schema
-        # schema['resources'].update({
-        # 'custom_resource_text' : [ tk.get_validator('ignore_missing') ]
-        # })
+
+        # Name of the resource and its type is obligatory
+        schema['resources'].update({
+            'name' : [not_empty, unicode],
+            'resource_type': [not_empty, unicode]
+        })
 
         return schema
 
