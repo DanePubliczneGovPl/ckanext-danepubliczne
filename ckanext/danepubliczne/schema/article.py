@@ -58,6 +58,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         to_extras = tk.get_converter('convert_to_extras')
         to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
+        boolean_validator = tk.get_validator('boolean_validator')
         not_empty = tk.get_validator('not_empty')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
@@ -71,6 +72,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
+            'private': [optional, boolean_validator],
             'license_id': [not_empty, unicode],
             'tag_string': schema['tag_string'],
             'resources': schema['resources']
