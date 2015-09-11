@@ -157,9 +157,10 @@ class DanePubliczne(p.SingletonPlugin):
 
     def get_auth_functions(self):
         return {
-            # Only sysadmins can list users
+            # Only sysadmins can list users and create related items
             'user_list': ckan.logic.auth.get.sysadmin,
             'member_list': ckan.logic.auth.get.sysadmin,
+            'related_create': ckan.logic.auth.get.sysadmin,
             'user_show': auth_user_show
         }
 
