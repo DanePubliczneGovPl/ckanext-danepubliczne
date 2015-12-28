@@ -306,8 +306,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'category': [category_exists, category_to_group],
-            'update_frequency': [to_extras],
-
+            'update_frequency': [not_empty, update_frequency_vocab, to_extras],
             'license_id': [fixed_license, unicode],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
@@ -353,6 +352,11 @@ def category_exists(value, context):
         raise df.Invalid(_("Category '{0}' doesn't exist").format(value))
     return value
 
+def update_frequency_vocab(value, context):
+    if not value in DatasetForm.UPDATE_FREQUENCIES:
+        raise df.Invalid(_('update_frequency should be set to one of following values: ' + ', '.join(DatasetForm.UPDATE_FREQUENCIES)))
+
+    return value
 
 def category_from_group(key, data, errors, context):
     category = None
