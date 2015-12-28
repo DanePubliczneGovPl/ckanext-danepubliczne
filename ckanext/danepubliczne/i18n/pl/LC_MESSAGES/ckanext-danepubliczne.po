@@ -208,13 +208,11 @@ msgstr "Baza wiedzy"
 
 #: ckanext/danepubliczne/templates/footer.html:25
 msgid ""
-"<strong>Maintained by</strong><a href='https://mac.gov.pl/en'><img "
-"src=\"/logo/mac.png\" alt=\"Ministry of Administration and "
-"Digitalization\"></a>"
+"<strong>Maintained by</strong><a href='https://mc.gov.pl/en/'>Ministry of "
+"Digital Affairs</a>"
 msgstr ""
 "<strong>Serwis prowadzony przez</strong> <a "
-"href='https://mac.gov.pl'><img src=\"/logo/mac.png\" alt=\"Ministerstwo "
-"Administracji i Cyfryzacji\"></a>"
+"href='https://mc.gov.pl'>Ministerstwo Cyfryzacji</a>"
 
 #: ckanext/danepubliczne/templates/footer.html:28
 msgid ""
