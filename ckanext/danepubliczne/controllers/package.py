@@ -147,6 +147,10 @@ class PackageController(base_package.PackageController):
 
         assert False, "We should never get here"
 
+    def _resource_preview(self, data_dict):
+        '''Deprecated in 2.3, we don't use it functions so get rid of it'''
+        return False
+
     def _resource_tag_string_to_list(self, tag_string):
         ''' This is used to change tags from a sting to a list of dicts '''
         out = []
