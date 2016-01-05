@@ -291,7 +291,7 @@ class UserController(base_user.UserController):
         error = None
         if request.method == 'POST':
             email = request.params.get('email').lower()
-            users = model.User.by_email(email)
+            users = model.Session.query(model.User).filter_by(email=email, state='active').all()
 
             if not users:
                 error = _('Email not registered: %s') % email

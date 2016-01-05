@@ -16,7 +16,7 @@ class EmailPasswordAuthenticator(object):
             return None
 
         login = identity['login'].lower()
-        user_list = User.by_email(login)
+        user_list = User.Session.query(User).filter_by(email=login, state='active').all()
 
         if not user_list:
             log.debug('Login failed - email %r not found', login)
