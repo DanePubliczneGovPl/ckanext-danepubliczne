@@ -56,20 +56,21 @@ class FeedbackController(base.BaseController):
         else:
             base.abort(400)
 
-        msg = get_feedback_body(feedback, pkg, source_url, email)
-        subject = _('User feedback concerning') + ' ' + pkg['title']
+        if not data.get('miut'):
+            msg = get_feedback_body(feedback, pkg, source_url, email)
+            subject = _('User feedback concerning') + ' ' + pkg['title']
 
-        rev = logic.get_action('revision_show')({}, {'id': pkg['revision_id']})
-        # pkg.organization.name
+            rev = logic.get_action('revision_show')({}, {'id': pkg['revision_id']})
+            # pkg.organization.name
 
-        author = logic.get_action('user_show')({'user': g.site_id}, {'id': rev['author']})
-        # pkg.creator_user_id
-        # pkg.maintainer_email
-        mail_from = config.get('smtp.mail_from')
+            author = logic.get_action('user_show')({'user': g.site_id}, {'id': rev['author']})
+            # pkg.creator_user_id
+            # pkg.maintainer_email
+            mail_from = config.get('smtp.mail_from')
 
-        _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg,
-                        cc={mail_from: None})
-        # mailer.mail_recipient(author['display_name'], author['email'], subject, msg)
+            _mail_recipient(author['fullname'], author['email'], g.site_title, g.site_url, subject, msg,
+                            cc={mail_from: None})
+            # mailer.mail_recipient(author['display_name'], author['email'], subject, msg)
 
         h.flash_success(_('Thank you for your feedback!'))
         h.redirect_to(source_url)
@@ -88,12 +89,13 @@ class FeedbackController(base.BaseController):
             h.flash_error(_('Please provide your feedback'))
             h.redirect_to(str(source_url))
 
-        msg = get_new_dataset_feedback_body(feedback, email)
-        subject = _('Proposition for new dataaset')
+        if not data.get('miut'):
+            msg = get_new_dataset_feedback_body(feedback, email)
+            subject = _('Proposition for new dataaset')
 
-        mail_from = config.get('smtp.mail_from')
+            mail_from = config.get('smtp.mail_from')
 
-        _mail_recipient(g.site_title, mail_from, g.site_title, g.site_url, subject, msg)
+            _mail_recipient(g.site_title, mail_from, g.site_title, g.site_url, subject, msg)
 
         h.flash_success(_('Thank you for your feedback!'))
         h.redirect_to(str(source_url))

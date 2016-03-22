@@ -1,6 +1,7 @@
 {% import 'macros/form.html' as form %}
 
 <form method='post' action='{{ h.url_for("new_dataset_feedback_submit") }}' class='feedback-form'>
+  {% include 'snippets/honeypot_field.html' %}
   {{ form.textarea('feedback', label=_('Your feedback'), placeholder=_('What data would you like to see on our site?')) }}
   {{ form.input('email', label=_('Email'), placeholder = _('Leave email if we should get back to you')) }}
   {{ form.hidden('came_from', value=h.full_current_url()) }}
