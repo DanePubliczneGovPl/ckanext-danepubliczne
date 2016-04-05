@@ -3,4 +3,4 @@ import group
 
 
 class OrganizationController(group.GroupController, base_organization.OrganizationController):
-    pass
+    default_sort_by = 'metadata_modified desc'

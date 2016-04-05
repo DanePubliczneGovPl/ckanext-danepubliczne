@@ -67,7 +67,8 @@ class GroupController(base_group.GroupController):
         # most search operations should reset the page counter:
         params_nopage = [(k, v) for k, v in request.params.items()
                          if k != 'page']
-        sort_by = request.params.get('sort', None)
+        default_sort_by = getattr(self, 'default_sort_by', None)
+        sort_by = request.params.get('sort', default_sort_by)
 
         def search_url(params):
             if group_type == 'organization':
