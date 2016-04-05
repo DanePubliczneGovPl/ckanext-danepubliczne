@@ -1030,3 +1030,6 @@ msgstr "Edytuj"
 
 msgid "Your password must be {num} characters or longer"
 msgstr "Twoje hasło musi posiadać co najmniej {num} znaków"
+
+msgid "Creation Date"
+msgstr "Data utworzenia"

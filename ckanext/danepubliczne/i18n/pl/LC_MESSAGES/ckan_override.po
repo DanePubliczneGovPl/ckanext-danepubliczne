@@ -2696,7 +2696,7 @@ msgstr "Aktualnie nie ma utworzonej żadnej grupy"
 #: ckan/templates/group/index.html:31
 #: ckan/templates/organization/index.html:31
 msgid "How about creating one?"
-msgstr "Jak utworzyć ?"
+msgstr "Możesz jakąś dodać"
 
 #: ckan/templates/group/member_new.html:8
 #: ckan/templates/organization/member_new.html:10
@@ -3255,7 +3255,7 @@ msgstr "Szukanie organizacji"
 
 #: ckan/templates/organization/index.html:29
 msgid "There are currently no organizations for this site"
-msgstr "Nie występuję, żadna organizacja dla tego strony"
+msgstr "Aktualnie nie ma żadnych organizacji dla tej strony"
 
 #: ckan/templates/organization/member_new.html:58
 msgid "Update Member"

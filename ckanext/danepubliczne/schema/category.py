@@ -41,7 +41,7 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             if c.get('title_i18n'):
                 c['title'] = c['title_i18n'][h.lang()]
             else:
-                c['title'] = c['display_name    ']
+                c['title'] = c['display_name']
 
         return categories2
 
