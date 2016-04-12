@@ -2475,7 +2475,7 @@ msgstr "Kliknij tutaj, aby uzyskać więcej informacji"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:18
 msgid "Download resource"
-msgstr "Pobierz zasób"
+msgstr "Odśwież stronę"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:23
 msgid "Your browser does not support iframes."
@@ -3532,7 +3532,7 @@ msgstr "url API"
 #: ckan/templates/package/resource_read.html:40
 #: ckan/templates/package/snippets/resource_item.html:47
 msgid "Go to resource"
-msgstr "Obejrzyj zasób"
+msgstr "Pobierz zasób"
 
 #: ckan/templates/package/resource_read.html:42
 #: ckan/templates/package/snippets/resource_item.html:44
