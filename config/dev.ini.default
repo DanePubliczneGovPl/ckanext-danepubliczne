@@ -27,43 +27,28 @@ full_stack = true
 cache_dir = /tmp/%(ckan.site_id)s/
 beaker.session.key = ckan
 
-# This is the secret token that the beaker library uses to hash the cookie sent
-# to the client. `paster make-config` generates a unique value for this each
-# time it generates a config file.
-beaker.session.secret = 5235pE2cQKf+tEz50bBINRD3Z
-
-# `paster make-config` generates a unique value for this each time it generates
-# a config file.
-app_instance_uuid = {81fd5c2f-d1fe-41e2-af17-b884db45083d}
-
 # repoze.who config
-who.config_file = %(here)s/who.ini
+who.config_file = /etc/ckan/who.ini
 who.log_level = warning
-who.log_file = %(cache_dir)s/who_log.ini
+who.log_file = /var/log/ckan/who_log.ini
+
 # Session timeout (user logged out after period of inactivity, in seconds).
 # Inactive by default, so the session doesn't expire.
 # who.timeout = 86400
 
 ## Database Settings
-sqlalchemy.url = postgresql://ckan_default:ckan_default@localhost/ckan_dev
+sqlalchemy.url = postgresql://ckan:ckan@localhost/ckan
 
-ckan.datastore.write_url = postgresql://ckan_default:ckan_default@localhost/datastore_default
-ckan.datastore.read_url = postgresql://datastore_default:datastore_default@localhost/datastore_default
+ckan.datastore.write_url = postgresql://ckan:ckan@localhost/datastore
+ckan.datastore.read_url = postgresql://datastore:datastore@localhost/datastore
 
 # PostgreSQL' full-text search parameters
 ckan.datastore.default_fts_lang = english
 ckan.datastore.default_fts_index_method = gist
 
-# Remember to prefix with scheme (http:// or https://)
-ckan.site_url = http://localhost:5000
-
 # Statistics
 
 ckan.tracking_enabled = true
-
-piwik.site_id = <piwik.site_id>
-piwik.url = <piwik.url>
-piwik.domain = <piwik.domain>
 piwik.cookies_disabled = true
 
 # Custom Dane Publiczne site settings
@@ -96,20 +81,21 @@ solr_url = http://127.0.0.1:8983/solr
 
 # If cors.origin_allow_all is true, all origins are allowed.
 # If false, the cors.origin_whitelist is used.
-# ckan.cors.origin_allow_all = true
+ckan.cors.origin_allow_all = true
+
 # cors.origin_whitelist is a space separated list of allowed domains.
 # ckan.cors.origin_whitelist = http://example1.com http://example2.com
 
 
 ## Plugins Settings
-ckan.plugins = stats text_view recline_view datastore resource_proxy archiver qa datapusher piwik search_history dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories
+ckan.plugins = stats text_view datastore resource_proxy archiver datapusher piwik search_history dane_publiczne dane_publiczne_organization dane_publiczne_dataset dane_publiczne_articles dane_publiczne_categories recline_view qa fluent
 
 ckan.views.default_views = recline_view text_view
 
-ckanext-archiver.archive_dir = '/tmp/ckan-archive'
-ckanext-archiver.data_formats = 'all'
+ckanext-archiver.archive_dir = /home/ckan/data/archiver
+ckanext-archiver.data_formats = all
 
-ckan.extra_resource_fields=openness_score
+ckan.extra_resource_fields = openness_score
 
 ## Front-End Settings
 ckan.site_title = Dane Publiczne
@@ -117,7 +103,7 @@ ckan.site_logo = /logo/logo.png
 ckan.site_description =
 ckan.favicon = /logo/fav.ico
 ckan.gravatar_default = identicon
-ckan.preview.direct = png jpg gif
+ckan.preview.direct = png jpg jpeg gif
 ckan.preview.loadable = html htm rdf+xml owl+xml xml n3 n-triples turtle plain atom csv tsv rss txt json
 
 # package_hide_extras = for_search_index_only
@@ -128,12 +114,14 @@ ckan.preview.loadable = html htm rdf+xml owl+xml xml n3 n-triples turtle plain a
 #licenses_group_url = http://licenses.opendefinition.org/licenses/groups/ckan.json
 # ckan.template_footer_end =
 
+dp.show_organization_placeholder_image = False
 
 ## Internationalisation Settings
-ckan.locale_default = en
+ckan.locale_default = pl
 ckan.locale_order = pl en de ru es fr cs_CZ sk pt_BR ja it ca el sv sr sr@latin no fi nl bg ko_KR hu sa sl lv
-ckan.locales_offered =
-ckan.locales_filtered_out = en_GB
+ckan.locales_offered = pl en
+ckan.locales_filtered_out =
+ckan.i18n_directory = /home/ckan/src/ckanext-danepubliczne/ckanext/danepubliczne
 
 ## Feeds Settings
 
@@ -144,7 +132,7 @@ ckan.feeds.author_link =
 
 ## Storage Settings
 
-ckan.storage_path = /home/krzysiek/WebServer/ckan/data
+ckan.storage_path = /home/ckan/data
 ckan.max_resource_size = 100
 ckan.max_image_size = 2
 
@@ -152,7 +140,7 @@ ckan.max_image_size = 2
 
 # Make sure you have set up the DataStore
 
-ckan.datapusher.url = http://0.0.0.0:8800/
+ckan.datapusher.url = http://127.0.0.1:8800/
 
 ## Activity Streams Settings
 
@@ -165,14 +153,9 @@ ckan.hide_activity_from_users = %(ckan.site_id)s
 
 ## Email settings
 
-email_to = you@yourdomain.com
-error_email_from = paste@localhost
-smtp.server = localhost
-smtp.starttls = False
-#smtp.user = your_username@gmail.com
-#smtp.password = your_password
-#smtp.mail_from =
-
+email_to = kontakt@danepubliczne.gov.pl
+error_email_from = kontakt@danepubliczne.gov.pl
+smtp.mail_from = kontakt@danepubliczne.gov.pl
 
 ## Logging configuration
 [loggers]
@@ -189,13 +172,13 @@ level = WARNING
 handlers = console
 
 [logger_ckan]
-level = INFO
+level = WARNING
 handlers = console
 qualname = ckan
 propagate = 0
 
 [logger_ckanext]
-level = DEBUG
+level = WARNING
 handlers = console
 qualname = ckanext
 propagate = 0
@@ -208,3 +191,18 @@ formatter = generic
 
 [formatter_generic]
 format = %(asctime)s %(levelname)-5.5s [%(name)s] %(message)s
+
+[app:main]
+ckan.site_url = http://localhost:5000
+piwik.url = http://configure_on_production
+
+# ckan.site_url = https://danepubliczne.gov.pl
+# piwik.url = http://stats.danepubliczne.gov.pl
+
+piwik.site_id = 1
+smtp.server = <smtp.server>
+smtp.starttls = True
+smtp.user = <smtp.user>
+smtp.password = <smtp.password>
+
+# Custom settings will be appended below
