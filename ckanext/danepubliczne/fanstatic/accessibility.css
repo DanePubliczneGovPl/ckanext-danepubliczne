@@ -31,8 +31,32 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
     outline-offset: 0.25em;
 }
 
+html body a:focus strong {
+
+    outline: rgb(234, 29, 29) solid 3px;
+    outline-offset: 0.25em;
+}
+
 
 html body ul.select2-choices input:focus {
     outline: rgb(234, 29, 29) solid 3px;
     outline-offset: 0.25em;
+}
+
+
+html body button:focus, html body .search-input.control-group.search-giant input:focus {
+    outline: rgb(234, 29, 29) solid 3px;
+    outline-offset: -0.25em;
+}
+
+.select2-container.select2-container-active {
+    outline: rgb(234, 29, 29) solid 3px;
+    outline-offset: 0.25em;  
+}
+
+
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+    outline: rgb(234, 29, 29) solid 2px;
+    outline-offset: 0.25em;  
 }
