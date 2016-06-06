@@ -227,6 +227,12 @@
     width: 25%;
 }
 
+/*added after changing additional info to definition list; #183*/
+dd.dataset-details { 
+   padding-left: 40px; padding-bottom: 5px;
+}
+
+
 .wrapper .dataset-result .additional-info .list .dataset-label:after {
     content: ": ";
 }
