@@ -290,14 +290,16 @@
     margin-left: 30px;
 }
 
-.wrapper .dataset-result .results-total {
+.wrapper .dataset-result .results-title {
     font-size: 30px;
     font-weight: normal;
     color: #157abe;
     line-height: 1em;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 5px;
 }
+
+
 
 .wrapper .dataset-result .control-order-by {
     margin-top: 14px;
