@@ -1033,3 +1033,12 @@ msgstr "Twoje hasło musi posiadać co najmniej {num} znaków"
 
 msgid "Creation Date"
 msgstr "Data utworzenia"
+
+
+#: ckanext/danepubliczne/templates/home/snippets/articles.html:12
+msgid "article title"
+msgstr "Tytuł artykułu:"
+
+#: ckanext/danepubliczne/templates/user/edit_user_form.html:2
+msgid "Edit user data"
+msgstr "Edycja danych użytkownika"
