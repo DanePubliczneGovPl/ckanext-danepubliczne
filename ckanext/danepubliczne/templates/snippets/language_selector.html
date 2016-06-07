@@ -5,7 +5,7 @@
     <li class="{% if locale== current_lang %}active{% endif %}">
       <a href="{% url_for current_url, locale=locale %}" target="_self">
         {{ locale.language | upper }}
-        <span class="visibility-hidden"> - {{ locale.display_name or locale.english_name }}</span>
+        <span class="wcag_hide"> - {{ locale.display_name or locale.english_name }}</span>
          </a>
     </li>
   {% endfor %}

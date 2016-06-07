@@ -13,14 +13,6 @@
 }
 
 
-.wcag_hide {
-  position:static;
-  color:red;
-  width: auto;
-  height: auto;
-}
-
-
 /*logo outline won't get covered by content container */
 .navbar .container {z-index: 100;}
 
