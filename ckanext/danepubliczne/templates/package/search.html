@@ -67,8 +67,10 @@
                           {% endif %}
                           <span class="results-total span6">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</span>
 
-                          <span class="span6 ">{{ _('See results via') }} <a class=""
-                                                                                        href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}</a></span>
+                          <span class="span6 ">{{ _('See results via') }} 
+                            <a class="" href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}
+                            </a>
+                          </span>
                         </div>
                         <div class="span3 pull-right">
                       {% else %}

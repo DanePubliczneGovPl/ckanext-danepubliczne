@@ -1042,3 +1042,7 @@ msgstr "Tytuł artykułu:"
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:2
 msgid "Edit user data"
 msgstr "Edycja danych użytkownika"
+
+#: ckanext/danepubliczne/templates/footer.html:18
+msgid "Application Programming Interface"
+msgstr "Interfejs programistyczny aplikacji"

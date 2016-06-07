@@ -8,7 +8,9 @@
           <h3><a href="/article/{{ a.name }}" target="_self">{{ a.title }}</a></h3>
           <small>{{ h.render_datetime(h.date_str_to_datetime(a.metadata_created)) }}</small>
           <p>{{ h.dp_shorten_article(a.notes, 200) }}</p>
-          <a href="/article/{{ a.name }}" target="_self" class="btn btn-primary">{{ _('read more') }}</a>
+          <a href="/article/{{ a.name }}" target="_self" class="btn btn-primary">{{ _('read more') }} 
+              <span class="wcag_hide">{{ _('article title') }} {{ a.title }}</span>
+          </a>
         </li>
       {% endfor %}
       <li class="article box span3">
