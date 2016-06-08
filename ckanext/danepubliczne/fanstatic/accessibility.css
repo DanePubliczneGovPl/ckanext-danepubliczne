@@ -12,9 +12,13 @@
     position: absolute;
 }
 
+.wcag_show_on_focus {
+    font-size: 0 !important;
+}
+
 .wcag_show_on_focus:focus {
    position:static;
-   clip: none;
+    font-size: 12px !important;
 }
 
 /*logo outline won't get covered by content container */

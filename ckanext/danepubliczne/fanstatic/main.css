@@ -517,6 +517,12 @@ input[type=checkbox]:checked + .checkbox:before {
     margin-bottom: 10px;
 }
 
+.footer-links ul li abbr {
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+
 .site-footer a {
     font-size: 14px;
     font-weight: normal;

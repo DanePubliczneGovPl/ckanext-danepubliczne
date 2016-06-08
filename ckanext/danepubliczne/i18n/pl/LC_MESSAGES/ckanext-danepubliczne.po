@@ -1046,3 +1046,11 @@ msgstr "Edycja danych użytkownika"
 #: ckanext/danepubliczne/templates/footer.html:18
 msgid "Application Programming Interface"
 msgstr "Interfejs programistyczny aplikacji"
+
+#: ckanext/danepubliczne/templates/package/snippets/resource_item.html:53
+msgid "Edit_resource"
+msgstr "Edytuj zasób"
+
+#: ckanext/danepubliczne/templates/package/snippets/resource_item.html:33
+msgid "View_resource"
+msgstr "Zobacz zasób"
