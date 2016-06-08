@@ -311,6 +311,7 @@ body {
     display: inline-block;
     text-indent: -9999px;
     width: 0;
+    line-height: 1;
 }
 
 .simple-input label,

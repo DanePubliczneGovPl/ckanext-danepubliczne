@@ -14,6 +14,7 @@
 
 {% block header_account_logged %}
   {% if c.userobj.sysadmin %}
+    <li><a class="wcag_hide2 wcag_show_on_focus" href="#content">{{ _('Jump to content') }}</a></li>
     <li>
       <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
         <i class="icon-legal"></i>
@@ -40,9 +41,6 @@
 {% endblock %}
 
 {% block header_debug %}
-  <ul id="Accessibility" class="visibility-hidden">
-    <li><a href="#content">{{ _('Jump to content') }}</a></li>
-  </ul>
   {% block flash %}
     {% do h.dp_check_maintenance() %}
     {% set flash_messages = h.flash.pop_messages() | list %}

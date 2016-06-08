@@ -12,6 +12,10 @@
     position: absolute;
 }
 
+.wcag_show_on_focus:focus {
+   position:static;
+   clip: none;
+}
 
 /*logo outline won't get covered by content container */
 .navbar .container {z-index: 100;}
