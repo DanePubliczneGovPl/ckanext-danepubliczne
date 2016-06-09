@@ -1060,3 +1060,8 @@ msgstr "Edytuj zasób"
 #: ckanext/danepubliczne/templates/package/snippets/resource_item.html:33
 msgid "View_resource"
 msgstr "Zobacz zasób"
+
+#: ckanext/danepubliczne/templates/footer.html:38
+#: ckanext/danepubliczne/templates/footer.html:40
+msgid "Expand"
+msgstr "Rozwiń"
