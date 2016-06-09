@@ -248,6 +248,12 @@ msgstr "Moje konto"
 msgid "Jump to content"
 msgstr "Przejdź do treści"
 
+#: ckanext/danepubliczne/templates/header.html:18
+#: ckanext/danepubliczne/templates/header.html:43
+msgid "Jump to search"
+msgstr "Przejdź do wyszukiwania"
+
+
 #: ckanext/danepubliczne/templates/header.html:72
 #: ckanext/danepubliczne/templates/article/base.html:7
 #: ckanext/danepubliczne/templates/article/base.html:17

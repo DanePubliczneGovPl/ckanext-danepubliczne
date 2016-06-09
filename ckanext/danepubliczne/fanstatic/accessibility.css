@@ -17,7 +17,6 @@
 }
 
 .wcag_show_on_focus:focus {
-   position:static;
     font-size: 12px !important;
 }
 
@@ -92,3 +91,25 @@ a.category:focus h3 {
    width:1px; 
    height:1px; 
 }
+
+
+ html body p a {
+  text-decoration: underline;
+}
+ html body p a:hover {
+  text-decoration: underline;
+}
+
+ html body .site-footer a {
+  text-decoration: none;
+}
+ html body .site-footer a:hover {
+  text-decoration: none;
+}
+
+.left-absolute {
+  position: absolute;
+  left:0;
+}
+
+.account-masthead>.container {position: relative;}
