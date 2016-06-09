@@ -601,7 +601,7 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .new_dataset_feedback .btn:hover {
-    background-color: #AEAEAE;
+    background-color: #333333;
 }
 
 .add-member-form .control-label {

@@ -220,8 +220,8 @@
 
 .wrapper .dataset-filters .nav-item > a:hover,
 .wrapper .dataset-filters .nav-aside li a:hover {
-    background: #d1d9e2;
-    color: #157abe;
+    background: #eff2f5;
+    color: black;
 }
 
 .wrapper .dataset-filters .nav-item.active > a,
@@ -384,7 +384,7 @@
     background: none;
     font-size: 18px;
     font-weight: bold;
-    color: #a3a3a3;
+    color: #888888;
 }
 
 .wrapper .dataset-result .pagination {
