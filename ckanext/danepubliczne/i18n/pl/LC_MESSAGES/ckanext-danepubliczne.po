@@ -1037,7 +1037,7 @@ msgstr "Data utworzenia"
 
 #: ckanext/danepubliczne/templates/home/snippets/articles.html:12
 msgid "article title"
-msgstr "Tytuł artykułu:"
+msgstr "artykułu pod tytułem"
 
 #: ckanext/danepubliczne/templates/user/edit_user_form.html:2
 msgid "Edit user data"

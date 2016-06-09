@@ -2932,7 +2932,7 @@ msgstr "Porównaj"
 #: ckan/templates/package/snippets/package_context.html:7
 #: ckan/templates/snippets/organization.html:34
 msgid "read more"
-msgstr "czytaj więcej"
+msgstr "czytaj całość"
 
 #: ckan/templates/group/snippets/revisions_table.html:7
 #: ckan/templates/package/snippets/revisions_table.html:7
