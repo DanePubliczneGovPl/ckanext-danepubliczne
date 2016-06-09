@@ -113,3 +113,8 @@ a.category:focus h3 {
 }
 
 .account-masthead>.container {position: relative;}
+
+
+.feedback-form-wrapper.collapse:not(.in) input,
+.feedback-form-wrapper.collapse:not(.in) textarea,
+.feedback-form-wrapper.collapse:not(.in) button { display:none;}
