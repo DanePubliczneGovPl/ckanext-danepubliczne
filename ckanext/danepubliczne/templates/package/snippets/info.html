@@ -21,10 +21,10 @@
 
         <div class="feedback">
           <div class="feedback_button feedback-form-toggle">
-            <a data-toggle="collapse" data-target=".feedback-form-wrapper"
-               data-hide-text="{{ _('Hide feedback form') }}" class="btn" tabindex="0">{{ _('Send feedback') }}</a>
+            <a data-toggle="collapse"
+               data-hide-text="{{ _('Hide feedback form') }}" class="btn" href="#feedback-form-collapse">{{ _('Send feedback') }}</a>
           </div>
-          <div class="feedback-form-wrapper collapse">
+          <div class="feedback-form-wrapper collapse" id="feedback-form-collapse">
             {% snippet 'package/snippets/feedback_form.html', pkg=pkg, feedback_form_items=feedback_form_items %}
           </div>
         </div>

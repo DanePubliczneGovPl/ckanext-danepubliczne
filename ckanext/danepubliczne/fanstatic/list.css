@@ -220,8 +220,8 @@
 
 .wrapper .dataset-filters .nav-item > a:hover,
 .wrapper .dataset-filters .nav-aside li a:hover {
-    background: #d1d9e2;
-    color: #157abe;
+    background: #eff2f5;
+    color: black;
 }
 
 .wrapper .dataset-filters .nav-item.active > a,
@@ -290,14 +290,16 @@
     margin-left: 30px;
 }
 
-.wrapper .dataset-result .results-total {
+.wrapper .dataset-result .results-title {
     font-size: 30px;
     font-weight: normal;
     color: #157abe;
     line-height: 1em;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 5px;
 }
+
+
 
 .wrapper .dataset-result .control-order-by {
     margin-top: 14px;
@@ -382,7 +384,7 @@
     background: none;
     font-size: 18px;
     font-weight: bold;
-    color: #a3a3a3;
+    color: #888888;
 }
 
 .wrapper .dataset-result .pagination {

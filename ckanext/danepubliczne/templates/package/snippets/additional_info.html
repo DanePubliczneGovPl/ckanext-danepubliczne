@@ -1,99 +1,76 @@
 <section class="additional-info">
-  <table class="table table-condensed">
+  <dl class="dl-horizontal list">
+
   {% block package_additional_info %}
     {% if pkg_dict.url %}
-      <tr class="list" style="clear: both; float: none;">
-        <td class="dataset-label">{{ _('Source') }}</td>
+        <dt class="dataset-label">{{ _('Source') }}</dt>
         {% if h.is_url(pkg_dict.url) %}
-          <td class="dataset-details"
-              property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</td>
+          <dd class="dataset-details"
+              property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</dd>
         {% else %}
-          <td class="dataset-details" property="foaf:homepage">{{ pkg_dict.url }}</td>
+          <dd class="dataset-details" property="foaf:homepage">{{ pkg_dict.url }}</dd>
         {% endif %}
-      </tr>
     {% endif %}
 
     {% if pkg_dict.author_email %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("Author Email") }}</td>
-        <td class="dataset-details"
-            property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _("Author Email") }}</dt>
+        <dd class="dataset-details"
+            property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</dd>
     {% elif pkg_dict.author %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("Author") }}</td>
-        <td class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _("Author") }}</dt>
+        <dd class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</dd>
     {% endif %}
 
     {% if pkg_dict.maintainer_email %}
-      <tr class="list">
-        <td class="dataset-label">{{ _('Maintainer Email') }}</td>
-        <td class="dataset-details"
-            property="dc:contributor">{{ h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer) }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _('Maintainer Email') }}</dt>
+        <dd class="dataset-details"
+            property="dc:contributor">{{ h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer) }}</dd>
     {% elif pkg_dict.maintainer %}
-      <tr class="list">
-        <td class="dataset-label">{{ _('Maintainer') }}</td>
-        <td class="dataset-details" property="dc:contributor">{{ pkg_dict.maintainer }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _('Maintainer') }}</dd>
+        <dd class="dataset-details" property="dc:contributor">{{ pkg_dict.maintainer }}</dd>
     {% endif %}
 
     {#
       {% if pkg_dict.version %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("Version") }}</td>
-        <td class="dataset-details">{{ pkg_dict.version }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _("Version") }}</dt>
+        <dd class="dataset-details">{{ pkg_dict.version }}</dd>
       {% endif %}
       #}
 
     {#
       {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("State") }}</td>
-        <td class="dataset-details">{{ _(pkg_dict.state) }}</td>
-        </tr>
+        <dt class="dataset-label">{{ _("State") }}</dt>
+        <dd class="dataset-details">{{ _(pkg_dict.state) }}</dd>
       {% endif %}
       #}
 
     {% if pkg_dict.category %}
-    <tr class="list">
-      <td class="dataset-label">{{ _("Category") }}</td>
-      <td class="dataset-details"><a
+      <dt class="dataset-label">{{ _("Category") }}</dt>
+      <dd class="dataset-details"><a
               href="{{ h.url_for('group_read', id=pkg_dict.category) }}">{{ h.dp_translate_facet(pkg_dict.category, 'groups') }}</a>
-      </td>
-    </tr>
+      </dd>
     {% endif %}
 
-    <tr class="list">
-      <td class="dataset-label">{{ _('Update frequency') }}</td>
-      <td class="dataset-details">{{ h.dp_translate_facet(pkg_dict.update_frequency, 'update_frequency') }}</td>
-    </tr>
+      <dt class="dataset-label">{{ _('Update frequency') }}</dt>
+      <dd class="dataset-details">{{ h.dp_translate_facet(pkg_dict.update_frequency, 'update_frequency') }}</dd>
 
     {% if pkg_dict.metadata_modified %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("Last Updated") }}</td>
-        <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified, with_hours=True) }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _("Last Updated") }}</dt>
+        <dd class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified, with_hours=True) }}</dd>
     {% endif %}
 
     {% if pkg_dict.metadata_created %}
-      <tr class="list">
-        <td class="dataset-label">{{ _("Created") }}</td>
-        <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</td>
-      </tr>
+        <dt class="dataset-label">{{ _("Created") }}</dt>
+        <dd class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</dd>
     {% endif %}
 
     {% block extras scoped %}
       {% for extra in h.sorted_extras(pkg_dict.extras) %}
         {% set key, value = extra %}
-        <tr class="list">
-          <td class="dataset-label">{{ key|title }}</td>
-          <td class="dataset-details">{{ value }}</td>
-        </tr>
+          <dt class="dataset-label">{{ key|title }}</dt>
+          <dd class="dataset-details">{{ value }}</dd>
       {% endfor %}
     {% endblock %}
   {% endblock %}
-  </table>
+  </dl>
 </section>

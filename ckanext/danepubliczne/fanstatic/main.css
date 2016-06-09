@@ -311,6 +311,7 @@ body {
     display: inline-block;
     text-indent: -9999px;
     width: 0;
+    line-height: 1;
 }
 
 .simple-input label,
@@ -516,6 +517,12 @@ input[type=checkbox]:checked + .checkbox:before {
     margin-bottom: 10px;
 }
 
+.footer-links ul li abbr {
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+
 .site-footer a {
     font-size: 14px;
     font-weight: normal;
@@ -577,10 +584,7 @@ input[type=checkbox]:checked + .checkbox:before {
     width: 96.5%;
 }
 
-.site-footer .new_dataset_feedback label {
-    visibility: hidden;
-    height: 0px;
-}
+
 
 .site-footer .new_dataset_feedback .btn,
 .site-footer .new_dataset_feedback .btn:focus,
@@ -594,7 +598,7 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .new_dataset_feedback .btn:hover {
-    background-color: #AEAEAE;
+    background-color: #333333;
 }
 
 .add-member-form .control-label {

@@ -30,7 +30,7 @@
             <li>
               <a href="{{ url }}">
                 <i class="icon-bar-chart"></i>
-                {{ _('View') }}
+                {{ _('View_resource') }}
               </a>
             </li>
             {% if res.url and h.is_url(res.url) %}
@@ -50,7 +50,7 @@
               <li>
                 <a href="{{ h.url_for(controller='package', action='resource_edit', id=pkg.name, resource_id=res.id) }}">
                   <i class="icon-edit"></i>
-                  {{ _('Edit') }}
+                  {{ _('Edit_resource') }}
                 </a>
               </li>
             {% endif %}

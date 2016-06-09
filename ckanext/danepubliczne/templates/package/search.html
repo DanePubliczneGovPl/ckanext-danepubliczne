@@ -56,9 +56,21 @@
                     {% block page_primary_action %}
                       {% if not no_title %}
                         <div class="span5">
-                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</h2>
-                                                    <span>{{ _('See results via') }} <a class=""
-                                                                                        href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}</a></span>
+                          {% if dataset_type == 'dataset' %}
+                          <h1 class="results-title span3">{{_('Datasets')}}</h1>
+                          {% elif dataset_type == 'group' %}
+                          <h1 class="results-title span3">{{_('Groups')}}</h1>
+                          {% elif dataset_type == 'organization' %}
+                          <h1 class="results-title span3">{{_('Organizations')}}</h1>
+                          {% elif dataset_type == 'article' %}
+                          <h1 class="results-title span3">{{_('Articles')}}</h1>
+                          {% endif %}
+                          <span class="results-total span6">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</span>
+
+                          <span class="span6 ">{{ _('See results via') }} 
+                            <a class="" href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}
+                            </a>
+                          </span>
                         </div>
                         <div class="span3 pull-right">
                       {% else %}
