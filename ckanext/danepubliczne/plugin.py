@@ -86,6 +86,7 @@ class DanePubliczne(p.SingletonPlugin):
     p.implements(p.IRoutes, inherit=True)
 
     def before_map(self, map):
+        map.connect('sitemap', '/sitemap', controller='ckanext.danepubliczne.controllers.home:HomeController', action='sitemap')
         map.connect('ckanadmin_config', '/ckan-admin/config', controller='admin', action='config', ckan_icon='check')
         map.connect('qa_index', '/qa', controller='ckanext.qa.controller:QAController', action='index')
 

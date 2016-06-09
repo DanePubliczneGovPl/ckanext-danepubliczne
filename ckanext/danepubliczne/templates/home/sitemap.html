@@ -1,0 +1,20 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Sitemap') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Sitemap'), controller='home', action='sitemap' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{{ _('Sitemap') }}</h1>
+      {% block sitemap %}
+      TODO
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
