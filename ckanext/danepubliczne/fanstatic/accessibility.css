@@ -92,6 +92,14 @@ a.category:focus h3 {
    height:1px; 
 }
 
+.feedback-form label {
+   position:absolute; 
+   top:0; 
+   left:-10000px; 
+   width:1px; 
+   height:1px; 
+}
+
 
  html body p a {
   text-decoration: underline;
