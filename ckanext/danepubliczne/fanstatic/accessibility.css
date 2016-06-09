@@ -82,3 +82,13 @@ a.category:focus h3 {
     outline-offset: 0.25em;  
 }
 
+
+
+
+.site-footer .new_dataset_feedback label {
+   position:absolute; 
+   top:0; 
+   left:-10000px; 
+   width:1px; 
+   height:1px; 
+}
