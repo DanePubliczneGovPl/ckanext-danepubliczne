@@ -228,12 +228,16 @@ msgid "Source code"
 msgstr "Kod źródłowy"
 
 #: ckanext/danepubliczne/templates/footer.html:34
-msgid "You haven't find here what you were looking for?"
-msgstr "Nie znalazłeś zbiorów, których szukałeś?"
+msgid ""
+"You haven't found data you were looking for? You have an idea how to make the"
+" portal better?"
+msgstr ""
+"Nie znalazłeś zbiorów, których szukałeś lub chcesz pomóc "
+"udoskonalić portal?"
 
-#: ckanext/danepubliczne/templates/footer.html:37
-msgid "Propose new dataset"
-msgstr "Zaproponuj nowy zbiór danych"
+#: ckanext/danepubliczne/templates/footer.html:40
+msgid "Write to us"
+msgstr "Napisz do nas"
 
 #: ckanext/danepubliczne/templates/header.html:6
 msgid "Back to home page"
@@ -735,11 +739,14 @@ msgid "Filter selected - press again to deselect"
 msgstr "Filtr ustawiony - kliknij ponownie aby usunąć"
 
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
-msgid "What data would you like to see on our site?"
+msgid ""
+"What data would you like to see on our site? What is your idea for an "
+"improvement?"
 msgstr ""
 "Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w "
 "portalu. Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi "
-"dostawcami możliwość ich udostępnienia."
+"dostawcami możliwość ich udostępnienia. Tutaj też jest miejsce na Twoje "
+"propozycje ulepszenia portalu (lub serwisu) danepubliczne.gov.pl."
 
 #: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
 msgid "{number} article found for \"{query}\""
