@@ -11,7 +11,23 @@
     <div class="module-content">
       <h1 class="page-heading">{{ _('Sitemap') }}</h1>
       {% block sitemap %}
-      TODO
+
+      <h2><a href="{{ h.url('home') }}">{{ _('Homepage') }}</a></h2>
+      <h2><a href="{{ h.url('dataset_search') }}">{{ _('Datasets') }}</a></h2>
+      <h2>{{ _('Groups')}}</h2>
+      <ul class="list">
+      {% for c in h.dp_categories(exclude_empty=True) %}
+        <li>
+          <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self" class="category"
+             title="{{ c.title }}"><span class="wcag_hide">{{ _('Group')}} </span>{{ c.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+
+      <h2><a href="{{ h.url('organizations_index') }}">{{ _('Organizations') }}</a></h2>
+      <h2><a href="{{ h.url('article_search') }}">{{ _('Knowledge base') }}</a></h2>
+      <h2><a href="{{ h.url('about') }}">{{ _('About') }}</a></h2>
+
       {% endblock %}
     </div>
   </article>

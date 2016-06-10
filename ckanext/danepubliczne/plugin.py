@@ -56,7 +56,7 @@ class DanePubliczne(p.SingletonPlugin):
 
     def make_middleware(self, app, config):
         # Hack it so our controllers pretend they are original ones! Buahahhaha!
-        overriden_controlers = ['package', 'user', 'admin', 'group', 'organization']
+        overriden_controlers = ['package', 'user', 'admin', 'group', 'organization', 'home']
 
         for controller in overriden_controlers:
             # Pull the controllers class name, import controller

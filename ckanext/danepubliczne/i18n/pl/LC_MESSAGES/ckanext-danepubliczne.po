@@ -974,6 +974,9 @@ msgstr[2] "Znaleziono {number} dostawców"
 msgid "Groups"
 msgstr "Kategorie"
 
+msgid "Group"
+msgstr "Kategoria"
+
 msgid "Website"
 msgstr "Strona internetowa"
 
@@ -1065,3 +1068,6 @@ msgstr "Zobacz zasób"
 #: ckanext/danepubliczne/templates/footer.html:40
 msgid "Expand"
 msgstr "Rozwiń"
+
+msgid "Sitemap"
+msgstr "Mapa strony"
