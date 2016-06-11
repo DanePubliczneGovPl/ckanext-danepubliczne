@@ -62,7 +62,14 @@ html body ul.select2-choices input:focus,
 }
 
 /*inset outline for several controls that can't be style consistently because of overflow:hidden containers */
-html body button:focus, html body .search-input.control-group.search-giant input:focus {
+html body button:focus, 
+.search-input.control-group.search-giant input:focus,
+.search-input.control-group.search-giant button.btn-search:focus,
+#dataset-feedback-collapse textarea:focus, 
+#dataset-feedback-collapse input:focus,
+#dataset-feedback-collapse button:focus,
+#feedback-form-collapse textarea:focus, 
+#feedback-form-collapse input:focus {
     outline: rgb(234, 29, 29) solid 3px;
     outline-offset: -0.25em;
 }
@@ -126,3 +133,9 @@ a.category:focus h3 {
 .feedback-form-wrapper.collapse:not(.in) input,
 .feedback-form-wrapper.collapse:not(.in) textarea,
 .feedback-form-wrapper.collapse:not(.in) button { display:none;}
+
+
+.attribution a.ckan-footer-logo {text-indent: 0em;}
+
+
+ol.breadcrumb a span {overflow: hidden;}
