@@ -147,8 +147,9 @@ ol.breadcrumb a span {overflow: hidden;}
 
 .checkbox-fieldset-override .checkbox:before  {display: none;}
  
-.checkbox-fieldset-override .checkbox input[type="checkbox"]   {margin-top: -4px;}
-
+.checkbox-fieldset-override .checkbox input[type="checkbox"]   { position: static;}
+fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top: -4px;}
+ 
 .checkbox-fieldset-override legend {
     font-size: inherit;
     line-height: inherit;

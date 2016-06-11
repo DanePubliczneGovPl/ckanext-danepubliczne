@@ -11,9 +11,11 @@
   {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"]) }}
 
   <div class="control-group ">
-    <div class="controls">
-      <input id="field-remember" type="checkbox" name="remember" value="63072000" checked="checked">
-      <label class="checkbox" for="field-remember">{{ _("Remember me") }}</label>
+    <div class="controls checkbox-fieldset-override">
+      
+      <label class="checkbox" for="field-remember">
+        <input id="field-remember" type="checkbox" name="remember" value="63072000" checked="checked">
+        {{ _("Remember me") }}</label>
     </div>
   </div>
 
