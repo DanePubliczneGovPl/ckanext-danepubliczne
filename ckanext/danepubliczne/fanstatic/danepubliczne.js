@@ -50,3 +50,10 @@ $('body').on('click', '.article-add-link', function(e) {
 
   article_insert(e.target, '[' + filename +']('+ url + ')');
 });
+
+$('a[href="#field-sitewide-search"]').click(function(e){
+    e.preventDefault();
+    window.location = '#field-sitewide-search';
+    document.getElementById("field-sitewide-search").focus();
+    return false;
+})
