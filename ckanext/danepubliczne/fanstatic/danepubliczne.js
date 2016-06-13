@@ -11,19 +11,21 @@ if (!Cookies.get('kukiz_accept_cookies')) {
 
 // initilize fileupload
 $(function() {
-  $('.fileupload').fileupload({
-    done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                entry = '<span class="filename">'+ file.name +'</span>'
-                  + '<span style="display:none" class="url">' + file.url + '</span><br/>'
-                  + '<a class="article-add-image">Wstaw obraz</a>'
-                  + ', <a class="article-add-link">Wstaw link</a>';
+  if ($('.fileupload').length) {
+    $('.fileupload').fileupload({
+      done: function (e, data) {
+              $.each(data.result.files, function (index, file) {
+                  entry = '<span class="filename">'+ file.name +'</span>'
+                    + '<span style="display:none" class="url">' + file.url + '</span><br/>'
+                    + '<a class="article-add-image">Wstaw obraz</a>'
+                    + ', <a class="article-add-link">Wstaw link</a>';
 
-                list = $(e.target).closest('.upload-panel').find('.files ul');
-                $('<li/>').html(entry).appendTo(list);
-            });
-        }
-  });
+                  list = $(e.target).closest('.upload-panel').find('.files ul');
+                  $('<li/>').html(entry).appendTo(list);
+              });
+          }
+    });
+  }
 });
 
 function article_insert(link_elem, text) {
