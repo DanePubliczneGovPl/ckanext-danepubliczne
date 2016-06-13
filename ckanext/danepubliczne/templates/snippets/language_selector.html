@@ -4,7 +4,7 @@
   {% for locale in h.get_available_locales() %}
     <li class="{% if locale== current_lang %}active{% endif %}">
       <a href="{% url_for current_url, locale=locale %}" target="_self">
-        {{ locale.language | upper }}
+        <span aria-hidden="true">{{ locale.language | upper }}</span>
         <span class="wcag_hide"> - {{ locale.display_name or locale.english_name }}</span>
          </a>
     </li>

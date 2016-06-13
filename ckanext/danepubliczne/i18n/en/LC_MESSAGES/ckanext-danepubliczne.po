@@ -1,0 +1,3 @@
+#: ckanext/danepubliczne/templates/home/snippets/articles.html:12
+msgid "article title"
+msgstr "article of title"

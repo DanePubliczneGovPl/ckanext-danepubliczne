@@ -55,3 +55,10 @@ msgstr ""
 
 msgid "Dear %s,"
 msgstr "Hi%.0s,"
+
+
+#: ckan/templates/group/snippets/info.html:12
+#: ckan/templates/package/snippets/package_context.html:7
+#: ckan/templates/snippets/organization.html:34
+msgid "read more"
+msgstr "read full"
