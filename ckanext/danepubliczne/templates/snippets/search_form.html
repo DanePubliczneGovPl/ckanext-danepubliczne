@@ -7,13 +7,13 @@
 {% block search_input %}
   <div class="search-input control-group {{ search_class }}">
     <label for="global-search"
-           class="visibility-hidden">{{ _('Enter word or phrase that you are looking at') }}</label>
+           class="wcag_hide">{{ _('Enter word or phrase that you are looking at') }}</label>
     <input id="global-search" type="text" class="search" name="q" value="{{ query }}" autocomplete="off"
            placeholder="{{ placeholder }}">
     {% block search_input_button %}
       <button type="submit" value="search" class="btn-search">
         <i class="icon-search"></i>
-        <span class="visibility-hidden">{{ _('Search') }}</span>
+        <span class="wcag_hide">{{ _('Search') }}</span>
       </button>
     {% endblock %}
   </div>

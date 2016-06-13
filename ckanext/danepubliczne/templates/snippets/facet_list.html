@@ -17,17 +17,17 @@
 
             {% set label = label_function(item) if label_function else item.display_name %}
             {% set label = h.dp_translate_facet(label, name) %}
-            {% set count = count_label(item['count']) if count_label else (_('(%d<span class="visibility-hidden"> matching datasets</span>)') % item['count']) %}
+            {% set count = count_label(item['count']) if count_label else (_('(%d<span class="wcag_hide"> matching datasets</span>)') % item['count']) %}
             <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
               <a href="{{ href }}"
                  title="{{ label }}">
                 {% if item.active %}
-                  <span class="visibility-hidden">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
+                  <span class="wcag_hide">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
                 {% if name == 'res_extras_openness_score' %}
                   {% set openess_score = item.name|int %}
                   {% set openess_info = h.dp_openess_info(openess_score) %}
                   <span>
-                  <span class="visibility-hidden">{{ openess_info }}</span>
+                  <span class="wcag_hide">{{ openess_info }}</span>
                   <span class="star-rating-stars">
                   {%- for index in range(5) -%}
                     {%- if index < openess_score -%}
@@ -38,7 +38,7 @@
                            alt=""/>
                     {%- endif -%}
                   {%- endfor -%}
-                    <span class="visibility-hidden">{{ _("{0} out of {1}").format(openess_score, 5) }}</span>
+                    <span class="wcag_hide">{{ _("{0} out of {1}").format(openess_score, 5) }}</span>
                   </span>
                   {{ count|safe }}
                 </span>

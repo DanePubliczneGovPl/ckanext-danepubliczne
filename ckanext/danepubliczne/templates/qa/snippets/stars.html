@@ -21,7 +21,7 @@ reason - A reason why the dataset doesn't have a rating.
           <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" alt=""/>
         {%- endif -%}
       {%- endfor -%}
-      <span class="visibility-hidden">{{ _("{0} out of {1}").format(stars, 5) }}</span>
+      <span class="wcag_hide">{{ _("{0} out of {1}").format(stars, 5) }}</span>
     </span>
     </a>
   {%- endif -%}

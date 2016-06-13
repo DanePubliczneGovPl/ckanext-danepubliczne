@@ -1,7 +1,7 @@
 {% if tags %}
   <section class="tags">
     <h2>{{ _('Tags') }}</h2>
-    <span class="visibility-hidden">{{ _('Clicking on tag will show all datasets tagged liked that') }}</span>
+    <span class="wcag_hide">{{ _('Clicking on tag will show all datasets tagged liked that') }}</span>
     {% snippet 'snippets/tag_list.html', tags=tags, _class='tag-list well' %}
   </section>
 {% endif %}

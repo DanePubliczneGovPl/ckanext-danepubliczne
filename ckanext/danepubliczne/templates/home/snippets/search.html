@@ -20,12 +20,12 @@
           action="{% url_for controller='package', action='search' %}">
       <div class="search-input control-group search-giant">
         <label for="global-search"
-               class="visibility-hidden">{{ _('Enter word or phrase that you are looking at') }}</label>
+               class="wcag_hide">{{ _('Enter word or phrase that you are looking at') }}</label>
         <input id="global-search" type="text" class="search" name="q" value="" autocomplete="off"
                placeholder="{{ placeholder }}"/>
         <button type="submit">
           <i class="icon-search"></i>
-          <span class="visibility-hidden">{{ _('Search') }}</span>
+          <span class="wcag_hide">{{ _('Search') }}</span>
         </button>
       </div>
     </form>
