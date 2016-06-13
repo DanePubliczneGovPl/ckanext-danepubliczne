@@ -731,8 +731,8 @@ msgid "What these stars mean"
 msgstr "Dowiedz się, co oznaczają te gwiazdki"
 
 #: ckanext/danepubliczne/templates/snippets/facet_list.html:32
-msgid "(%d<span class=\"visibility-hidden\"> matching datasets</span>)"
-msgstr "(%d<span class=\"visibility-hidden\"> znalezionych wyników</span>)"
+msgid "(%d<span class=\"wcag_hide\"> matching datasets</span>)"
+msgstr "(%d<span class=\"wcag_hide\"> znalezionych wyników</span>)"
 
 #: ckanext/danepubliczne/templates/snippets/facet_list.html:37
 msgid "Filter selected - press again to deselect"
