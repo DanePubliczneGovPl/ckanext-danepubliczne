@@ -1064,11 +1064,11 @@ msgid "Application Programming Interface"
 msgstr "Interfejs programistyczny aplikacji"
 
 #: ckanext/danepubliczne/templates/package/snippets/resource_item.html:53
-msgid "Edit_resource"
+msgid "Edit resource"
 msgstr "Edytuj zasób"
 
 #: ckanext/danepubliczne/templates/package/snippets/resource_item.html:33
-msgid "View_resource"
+msgid "View resource"
 msgstr "Zobacz zasób"
 
 #: ckanext/danepubliczne/templates/footer.html:38
@@ -1078,3 +1078,9 @@ msgstr "Rozwiń"
 
 msgid "Sitemap"
 msgstr "Mapa strony"
+
+
+#: ckanext/danepubliczne/templates/package/snippets/resource_item.html:41
+#: ckanext/danepubliczne/templates/package/snippets/resource_view.html:34
+msgid "Download resource"
+msgstr "Pobierz zasób"
