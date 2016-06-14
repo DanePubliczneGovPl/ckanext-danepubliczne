@@ -1097,3 +1097,11 @@ msgstr "Zobacz dane kontaktowe i zbiory danych tej organizacji"
 #: ckanext/danepubliczne/templates/header.html:78
 msgid "Expand menu"
 msgstr "Rozwiń menu"
+
+#: ckanext/danepubliczne/templates/error_document_template.html:6
+msgid "Server error has occurred"
+msgstr "Wystąpił błąd serwera"
+
+#: ckanext/danepubliczne/templates/error_document_template.html:7
+msgid "If you would like to report this problem please file an issue on"
+msgstr "Zapraszamy do zgłoszenia wystąpienia błędu w serwisie"
