@@ -198,7 +198,8 @@ class PackageController(base_package.PackageController):
 
         c.remove_field = remove_field
 
-        sort_by = request.params.get('sort', None)
+        default_sort_by = 'views_recent desc' if g.tracking_enabled else None
+        sort_by = request.params.get('sort', default_sort_by)
         params_nosort = [(k, v) for k, v in params_nopage if k != 'sort']
 
         def _sort_by(fields):
