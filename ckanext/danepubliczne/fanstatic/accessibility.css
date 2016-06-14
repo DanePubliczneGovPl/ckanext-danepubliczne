@@ -163,3 +163,11 @@ fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top
     margin-top: -15px;
     width: 15px;
 }
+
+.search-giant button span.wcag_hide2 {
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+    margin-top: -15px;
+    width: 15px;
+}

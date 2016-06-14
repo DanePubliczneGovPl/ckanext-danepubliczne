@@ -17,7 +17,7 @@
 
             {% set label = label_function(item) if label_function else item.display_name %}
             {% set label = h.dp_translate_facet(label, name) %}
-            {% set count = count_label(item['count']) if count_label else (_('(%d<span class="wcag_hide"> matching datasets</span>)') % item['count']) %}
+            {% set count = count_label(item['count']) if count_label else (_('(%d<span class="wcag_hide2"> matching datasets</span>)') % item['count']) %}
             <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
               <a href="{{ href }}"
                  title="{{ label }}">
