@@ -1466,7 +1466,7 @@ msgstr "Hasło musi być ciągiem znaków"
 
 #: ckan/logic/validators.py:561
 msgid "Your password must be 4 characters or longer"
-msgstr "Hasło musi zawierać co najmniej 4 znaki"
+msgstr "Hasło musi zawierać co najmniej 8 znaków"
 
 #: ckan/logic/validators.py:569
 msgid "The passwords you entered do not match"
