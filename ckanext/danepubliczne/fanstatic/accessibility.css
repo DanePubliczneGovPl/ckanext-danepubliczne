@@ -178,3 +178,24 @@ fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top
   border-bottom-width: 0; 
   cursor: pointer;
 }
+
+
+.box-shadow-menu {
+ width:1.5em; height: 1.5em;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  top: 0.5em;
+  width: 1.5em;
+  height: 0.20em;
+  background: #157abe;
+  box-shadow: 
+    0 0.4em 0 0 #157abe,
+    0 0.8em 0 0 #157abe;
+}
+
+.btn.btn-navbar.hamburger {width:2em; height: 2em; background-color: transparent; background-image:none;  position: relative;
+  padding:0.25em; margin-right: 10px;
+}
