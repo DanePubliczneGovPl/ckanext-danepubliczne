@@ -171,3 +171,10 @@ fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top
     margin-top: -15px;
     width: 15px;
 }
+
+
+ html body .btn abbr {
+  text-decoration: none;
+  border-bottom-width: 0; 
+  cursor: pointer;
+}

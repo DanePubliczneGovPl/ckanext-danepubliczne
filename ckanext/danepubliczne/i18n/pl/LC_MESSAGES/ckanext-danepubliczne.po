@@ -1084,3 +1084,8 @@ msgstr "Mapa strony"
 #: ckanext/danepubliczne/templates/package/snippets/resource_view.html:34
 msgid "Download resource"
 msgstr "Pobierz zasób"
+
+
+#: ckanext/danepubliczne/templates/package/read_base.html:28
+msgid "API_link"
+msgstr "API"

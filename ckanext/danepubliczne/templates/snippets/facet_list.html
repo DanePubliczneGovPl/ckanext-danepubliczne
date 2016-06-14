@@ -22,7 +22,7 @@
               <a href="{{ href }}"
                  title="{{ label }}">
                 {% if item.active %}
-                  <span class="wcag_hide">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
+                  <span class="wcag_hide2">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
                 {% if name == 'res_extras_openness_score' %}
                   {% set openess_score = item.name|int %}
                   {% set openess_info = h.dp_openess_info(openess_score) %}

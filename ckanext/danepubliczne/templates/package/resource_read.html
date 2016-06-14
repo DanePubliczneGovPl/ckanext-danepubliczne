@@ -66,7 +66,7 @@
                     <li>{% snippet 'package/snippets/data_api_button.html', resource=res, datastore_root_url=c.datastore_api %}</li>
                   {% endif %}
 
-                  <li><a class="btn btn-primary" href="/api/3/action/resource_show?id={{ res.id }}">{{ _('API') }}</a>
+                  <li><a class="btn btn-primary" href="/api/3/action/resource_show?id={{ res.id }}"><abbr title='{{ _('Application Programming Interface') }}'>{{ _('API') }}</abbr></a>
                   </li>
                 {% endblock %}
               </ul>

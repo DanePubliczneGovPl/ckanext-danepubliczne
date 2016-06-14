@@ -25,7 +25,7 @@
   {% if h.check_access('package_update', {'id':pkg.id }) %}
     {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
   {% endif %}
-  <a class="btn" href="/api/3/action/package_show?id={{ pkg.name }}">{{ _('API') }}</a>
+  <a class="btn" href="/api/3/action/package_show?id={{ pkg.name }}"><abbr title='{{ _('Application Programming Interface') }}'>{{ _('API') }}</abbr></a>
 {% endblock %}
 
 {% block content_primary_nav_wrapper %}
