@@ -1089,3 +1089,7 @@ msgstr "Pobierz zasób"
 #: ckanext/danepubliczne/templates/package/read_base.html:28
 msgid "API_link"
 msgstr "API"
+
+#: ckanext/danepubliczne/templates/header.html:78
+msgid "Expand menu"
+msgstr "Rozwiń menu"
