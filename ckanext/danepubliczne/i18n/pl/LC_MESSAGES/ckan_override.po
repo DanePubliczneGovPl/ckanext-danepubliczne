@@ -2098,10 +2098,6 @@ msgstr "Usuń"
 msgid "Image"
 msgstr "Obraz"
 
-#: ckan/public/base/javascript/modules/image-upload.js:19
-msgid "Upload a file on your computer"
-msgstr "Prześlij plik na swój komputer"
-
 #: ckan/public/base/javascript/modules/image-upload.js:20
 msgid "Link to a URL on the internet (you can also link to an API)"
 msgstr "Link do adresu URL w internecie (można również odwoływać się do API)"
@@ -2224,7 +2220,7 @@ msgstr "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
 
 #: ckan/templates/header.html:12
 msgid "Sysadmin settings"
-msgstr "Ustawienia administratora"
+msgstr "Panel administratora"
 
 #: ckan/templates/header.html:18
 msgid "View profile"
@@ -2398,80 +2394,6 @@ msgstr "Opis CKAN API"
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
 msgstr "Dostęp do zbiorów danych poprzez API ze wsparciem dla mechanizmów wyszukiwania"
-
-#: ckan/templates/ajax_snippets/api_info.html:24
-msgid ""
-" Further information in the <a       "
-"href=\"http://docs.ckan.org/en/latest/datastore.html\" "
-"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
-msgstr " Dalsze informacje <a       "
-"href=\"http://docs.ckan.org/en/latest/datastore.html\" "
-"target=\"_blank\">Dokumentacja  CKAN Data API i DataStore API</a>.</p> "
-
-
-#: ckan/templates/ajax_snippets/api_info.html:33
-msgid "Endpoints"
-msgstr "Dostępne URL"
-
-#: ckan/templates/ajax_snippets/api_info.html:37
-msgid ""
-"The Data API can be accessed via the following actions of the CKAN action "
-"API."
-msgstr "Dostęp do danych można uzyskac poprzez API z uzyciem następujących akcji"
-
-
-#: ckan/templates/ajax_snippets/api_info.html:42
-#: ckan/templates/related/edit_form.html:7
-msgid "Create"
-msgstr "Utwórz"
-
-#: ckan/templates/ajax_snippets/api_info.html:46
-msgid "Update / Insert"
-msgstr "Aktualizuj / Wstaw"
-
-#: ckan/templates/ajax_snippets/api_info.html:50
-msgid "Query"
-msgstr "Zapytanie"
-
-#: ckan/templates/ajax_snippets/api_info.html:54
-msgid "Query (via SQL)"
-msgstr "Zapytanie (poprzez SQL)"
-
-#: ckan/templates/ajax_snippets/api_info.html:66
-msgid "Querying"
-msgstr "Przykładowe zapytania"
-
-#: ckan/templates/ajax_snippets/api_info.html:70
-msgid "Query example (first 5 results)"
-msgstr "Przykładowe zapytanie (zwraca pierwszych 5 wyników)"
-
-#: ckan/templates/ajax_snippets/api_info.html:75
-msgid "Query example (results containing 'jones')"
-msgstr "Przykładowe zapytanie (zwraca wyniki zawierające 'x')"
-
-#: ckan/templates/ajax_snippets/api_info.html:81
-msgid "Query example (via SQL statement)"
-msgstr "Przykładowe zapytanie (z użyciem SQL)"
-
-#: ckan/templates/ajax_snippets/api_info.html:93
-msgid "Example: Javascript"
-msgstr "Przykład dla Javascript"
-
-#: ckan/templates/ajax_snippets/api_info.html:97
-msgid "A simple ajax (JSONP) request to the data API using jQuery."
-msgstr "Proste żądanie ajax (JSONP) przy użyciu jQuery. "
-
-#: ckan/templates/ajax_snippets/api_info.html:118
-msgid "Example: Python"
-msgstr "Przykład dla Python"
-
-#: ckan/templates/dataviewer/snippets/data_preview.html:9
-msgid "This resource can not be previewed at the moment."
-msgstr "Ten zasób w tym  momencie nie może być przeglądany."
-
-#: ckan/templates/dataviewer/snippets/data_preview.html:11
-msgid "Click here for more information."
-msgstr "Kliknij tutaj, aby uzyskać więcej informacji"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:18
 msgid "Download resource"
@@ -3103,12 +3025,6 @@ msgstr "powiązany element"
 msgid "related items"
 msgstr "powiązane elementy"
 
-#: ckan/templates/macros/form.html:125
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">Markdown formatting</a> here"
-msgstr ""
-"Możesz tutaj używać <a href=\"#markdown\" title=\"formatowanie Markdown - przewodnik\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">formatowania Markdown</a> here"
-
 #: ckan/templates/macros/form.html:264
 msgid "This field is required"
 msgstr "To pole jest wymagane"
@@ -3460,14 +3376,6 @@ msgstr "Brak powiązanych elementów"
 msgid "Add Related Item"
 msgstr "Dodaj powiązany element"
 
-#: ckan/templates/package/resource_data.html:12
-msgid "Upload to DataStore"
-msgstr "Upload do DataStore"
-
-#: ckan/templates/package/resource_data.html:19
-msgid "Upload error:"
-msgstr "Błąd w trakcie kopiowania"
-
 #: ckan/templates/package/resource_data.html:24
 #: ckan/templates_legacy/group/history.html:24
 #: ckan/templates_legacy/importer/importer.html:11
@@ -3478,129 +3386,15 @@ msgstr "Błąd w trakcie kopiowania"
 msgid "Error:"
 msgstr "Błąd:"
 
-#: ckan/templates/package/resource_data.html:34
-msgid "Status"
-msgstr "Status"
-
-#: ckan/templates/package/resource_data.html:38
-#: ckan/templates/package/resource_read.html:97
-#: ckan/templates_legacy/package/resource_read.html:100
-msgid "Last updated"
-msgstr "Ostatnia modyfikacja"
-
-msgid "Last Updated"
-msgstr "Ostatnia Modyfikacja"
-
-#: ckan/templates/package/resource_data.html:42
-msgid "Never"
-msgstr "Nigdy"
-
-#: ckan/templates/package/resource_data.html:48
-msgid "Upload Log"
-msgstr "Aktualizacja logu"
-
-#: ckan/templates/package/resource_data.html:60
-msgid "Details"
-msgstr "Szczegóły"
-
-#: ckan/templates/package/resource_data.html:67
-msgid "End of log"
-msgstr "Koniec logu"
-
-#: ckan/templates/package/resource_edit_base.html:15
-msgid "All resources"
-msgstr "Wszystkie zasoby"
-
-#: ckan/templates/package/resource_edit_base.html:17
-msgid "View resource"
-msgstr "Zobacz zasób"
-
-#: ckan/templates/package/resource_edit_base.html:22
-#: ckan/templates/package/resource_edit_base.html:29
-msgid "Edit resource"
-msgstr "Edytuj zasób"
-
-#: ckan/templates/package/resource_edit_base.html:24
-msgid "DataStore"
-msgstr "DataStore"
-
-#: ckan/templates/package/resource_read.html:38
-#: ckan/templates_legacy/package/resource_read.html:73
-msgid "API Endpoint"
-msgstr "url API"
 
 #: ckan/templates/package/resource_read.html:40
 #: ckan/templates/package/snippets/resource_item.html:47
 msgid "Go to resource"
 msgstr "Pobierz zasób"
 
-#: ckan/templates/package/resource_read.html:42
-#: ckan/templates/package/snippets/resource_item.html:44
-#: ckan/templates_legacy/package/resource_read.html:76
-msgid "Download"
-msgstr "Pobierz"
-
-#: ckan/templates/package/resource_read.html:58
-msgid "URL:"
-msgstr "Adres URL"
-
 #: ckan/templates/package/resource_read.html:65
 msgid "There is no description for this resource"
 msgstr "Brak opisu dla tego zasobu"
-
-#: ckan/templates/package/resource_read.html:68
-msgid "From the dataset abstract"
-msgstr "Od abstrakcjnego zbioru danych"
-
-#: ckan/templates/package/resource_read.html:70
-#, python-format
-msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
-msgstr "Źródło: <a href=\"%(url)s\">%(dataset)s</a>"
-
-#: ckan/templates/package/resource_read.html:87
-#: ckan/templates_legacy/package/new_package_form.html:230
-#: ckan/templates_legacy/package/read_core.html:49
-#: ckan/templates_legacy/package/resource_read.html:158
-msgid "Additional Information"
-msgstr "Dodatkowe informacje"
-
-#: ckan/templates/package/resource_read.html:91
-#: ckan/templates/package/snippets/additional_info.html:6
-#: ckan/templates/revision/diff.html:43
-#: ckan/templates/snippets/additional_info.html:11
-#: ckan/templates_legacy/package/read_core.html:57
-#: ckan/templates_legacy/package/resource_read.html:162
-#: ckan/templates_legacy/revision/diff.html:32
-msgid "Field"
-msgstr "Pole"
-
-#: ckan/templates/package/resource_read.html:92
-#: ckan/templates/package/snippets/additional_info.html:7
-#: ckan/templates/snippets/additional_info.html:12
-#: ckan/templates_legacy/js_strings.html:16
-#: ckan/templates_legacy/package/read_core.html:58
-#: ckan/templates_legacy/package/resource_read.html:163
-msgid "Value"
-msgstr "Wartość"
-
-#: ckan/templates/package/resource_read.html:98
-#: ckan/templates/package/resource_read.html:102
-#: ckan/templates/package/resource_read.html:106
-msgid "unknown"
-msgstr "nieznane"
-
-#: ckan/templates/package/resource_read.html:101
-#: ckan/templates_legacy/js_strings.html:16
-msgid "Created"
-msgstr "Utworzono"
-
-#: ckan/templates/package/resource_read.html:105
-#: ckan/templates/package/snippets/resource_form.html:37
-#: ckan/templates/package/snippets/resource_info.html:16
-#: ckan/templates_legacy/js_strings.html:16
-#: ckan/templates_legacy/package/resource_read.html:102
-msgid "Format"
-msgstr "Format"
 
 #: ckan/templates/package/resources.html:8
 msgid "Add new resource"
@@ -6812,14 +6606,6 @@ msgstr "Np. środowisko"
 #: ckan/templates/home/snippets/search.html:16
 msgid "Popular tags"
 msgstr "Popularne słowa kluczowe"
-
-#: ckan/templates/macros/form.html:126
-#, python-format
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
-"target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true"
-"\">Markdown formatting</a> here"
-msgstr ""
 
 #: ckan/templates/organization/member_new.html:82
 msgid ""
