@@ -181,7 +181,7 @@ fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top
 
 
 .box-shadow-menu {
- width:1.5em; height: 1.5em;
+ width:1.5em; height: 1.5em; display: block;
 }
 .box-shadow-menu:before {
   content: "";
