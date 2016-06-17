@@ -50,12 +50,10 @@
                     <a href="{{ organization.website }}">{{ organization.website }}</a>
                   </p>
                   <p>
-                    <a href="mailto:{{ organization.email }}"
-                       title="Napisz na {{ organization.email }}">{{ organization.email }}</a>
+                    <a href="mailto:{{ organization.email }}">{{ organization.email }}</a>
                   </p>
                   {% if organization.epuap %}
-                  <p><a href="{{ organization.epuap }}"
-                                                   title="{{ _('ePUAP account') }}">{{ _('ePUAP account') }}</a>
+                  <p><a href="{{ organization.epuap }}">{{ _('ePUAP account') }}</a>
                   </p>
                 {% endif %}
                   <p>

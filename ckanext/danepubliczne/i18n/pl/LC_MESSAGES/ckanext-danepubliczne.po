@@ -1097,3 +1097,6 @@ msgstr "Zapraszamy do zgłoszenia wystąpienia błędu w serwisie"
 #: ckanext/danepubliczne/templates/package/snippets/resource_view.html:34
 msgid "Refresh page"
 msgstr "Odśwież stronę"
+
+msgid "Resource available at"
+msgstr "Pobierz zasób pod adresem"

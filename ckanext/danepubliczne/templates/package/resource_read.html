@@ -80,8 +80,7 @@
 
             {% block resource_read_url %}
               {% if res.url and h.is_url(res.url) %}
-                <p class="muted ellipsis">{{ _('URL') }}: <a href="{{ res.url }}"
-                                                             title="{{ res.url }}">{{ res.url }}</a></p>
+                <p class="muted ellipsis">{{ _('URL') }}: <a href="{{ res.url }}"><span class="wcag_hide">{{ _('Resource available at') }}</span>{{ res.url }}</a></p>
               {% elif res.url %}
                 <p class="muted ellipsis">{{ _('URL') }}: {{ res.url }}</p>
               {% endif %}
