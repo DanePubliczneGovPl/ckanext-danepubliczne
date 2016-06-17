@@ -53,10 +53,8 @@
                           {{ _('View') }}
                         {% elif res.resource_type == 'api' %}
                           {{ _('API Endpoint') }}
-                        {% elif not res.has_views or not res.can_be_previewed %}
-                          {{ _('Go to resource') }}
                         {% else %}
-                          {{ _('Download') }}
+                          {{ _('Download resource') }}
                         {% endif %}
                       </a>
                     </li>

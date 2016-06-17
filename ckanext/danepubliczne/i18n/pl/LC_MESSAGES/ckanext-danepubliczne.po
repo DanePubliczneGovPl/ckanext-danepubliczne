@@ -729,12 +729,12 @@ msgstr "Filtr ustawiony - kliknij ponownie aby usunąć"
 #: ckanext/danepubliczne/templates/snippets/new_dataset_feedback_form.html:4
 msgid ""
 "What data would you like to see on our site? What is your idea for an "
-"improvement?"
+"improvement in publicdata.gov.pl portal?"
 msgstr ""
 "Opisz dokładnie, jakie dane powinniśmy udostępnić Twoim zdaniem w "
 "portalu. Przeanalizujemy przesłane propozycje i omówimy z potencjalnymi "
 "dostawcami możliwość ich udostępnienia. Tutaj też jest miejsce na Twoje "
-"propozycje ulepszenia portalu (lub serwisu) danepubliczne.gov.pl."
+"propozycje ulepszenia portalu danepubliczne.gov.pl."
 
 #: ckanext/danepubliczne/templates/snippets/search_result_text.html:33
 msgid "{number} article found for \"{query}\""

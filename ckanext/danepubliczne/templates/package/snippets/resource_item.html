@@ -36,13 +36,8 @@
             {% if res.url and h.is_url(res.url) %}
               <li>
                 <a href="{{ res.url }}" class="resource-url-analytics" target="_blank">
-                  {% if res.has_views %}
                     <i class="icon-download"></i>
                     {{ _('Download resource') }}
-                  {% else %}
-                    <i class="icon-external-link"></i>
-                    {{ _('Go to resource') }}
-                  {% endif %}
                 </a>
               </li>
             {% endif %}

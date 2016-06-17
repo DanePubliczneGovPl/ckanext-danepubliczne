@@ -2395,10 +2395,6 @@ msgstr "Opis CKAN API"
 msgid "Access resource data via a web API with powerful query support"
 msgstr "Dostęp do zbiorów danych poprzez API ze wsparciem dla mechanizmów wyszukiwania"
 
-#: ckan/templates/dataviewer/snippets/data_preview.html:18
-msgid "Download resource"
-msgstr "Odśwież stronę"
-
 #: ckan/templates/dataviewer/snippets/data_preview.html:23
 msgid "Your browser does not support iframes."
 msgstr "Twoja przeglądarka nie wspiera iframes"
