@@ -6739,7 +6739,7 @@ msgstr "To pole zostanie ustawione automatycznie. Możesz pozostawić je puste"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr "Widok danych nie jest dostępny w tym momencie."
+msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku „Pobierz dane”."
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
