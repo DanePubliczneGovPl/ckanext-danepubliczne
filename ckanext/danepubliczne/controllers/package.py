@@ -190,7 +190,7 @@ class PackageController(base_package.PackageController):
             context, {'id': resource_id})
 
         # filter out recline views if not in dataproxy
-        if not c.resource['datastore_active']:
+        if not c.resource.get('datastore_active', False):
             resource_views = [view for view in resource_views if not view['view_type'] == 'recline_view']
 
         c.resource['has_views'] = len(resource_views) > 0
