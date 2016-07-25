@@ -51,7 +51,7 @@
                          href="{{ res.url }}">
                         {% if res.resource_type in ('listing', 'service') %}
                           {{ _('View') }}
-                        {% elif res.resource_type == 'api' %}
+                        {% elif 'api' in res.resource_type.split(',') %}
                           {{ _('API Endpoint') }}
                         {% else %}
                           {{ _('Download resource') }}
