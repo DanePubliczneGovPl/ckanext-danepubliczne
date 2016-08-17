@@ -14,8 +14,6 @@
       {% block datasets %}
         {% if organization.packages %}
           <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.packages).format(num=organization.packages) }}</strong>
-        {% else %}
-          <span class="count">{{ _('0 Datasets') }}</span>
         {% endif %}
       {% endblock %}
       {% block link %}
