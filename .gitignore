@@ -60,3 +60,6 @@ target/
 .project
 .pydevproject
 .idea
+
+# CONFIG
+config/dev.ini

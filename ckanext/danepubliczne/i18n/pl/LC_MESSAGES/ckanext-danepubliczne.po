@@ -1100,3 +1100,13 @@ msgstr "Odśwież stronę"
 
 msgid "Resource available at"
 msgstr "Pobierz zasób pod adresem"
+
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46
+msgid "Views count"
+msgstr "Liczba wyświetleń"
+
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46
+msgid "Downloads count"
+msgstr "Liczba pobrań"

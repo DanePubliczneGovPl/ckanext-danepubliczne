@@ -42,5 +42,9 @@
         {% endfor %}
       </ul>
     {% endif %}
+    <div class="dataset-tracking">
+	    <span title="{{ _('Views count') }}" class="view">{{ package.tracking_summary.total }}</span>
+	    {# <span title="{{ _('Downloads count') }}" class="download">{{ package.tracking_summary.total }}</span> #}
+    </div>
   {% endblock %}
 </li>

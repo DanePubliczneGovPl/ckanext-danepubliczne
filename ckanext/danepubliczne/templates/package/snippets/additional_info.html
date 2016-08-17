@@ -71,6 +71,15 @@
           <dd class="dataset-details">{{ value }}</dd>
       {% endfor %}
     {% endblock %}
+    
+    <dt class="dataset-label">{{ _("Views count") }}</dt>
+	<dd class="dataset-details">{{ pkg_dict.tracking_summary.total }}</dd>
+	
+	{#
+	<dt class="dataset-label">{{ _("Downloads count") }}</dt>
+	<dd class="dataset-details">{{ pkg_dict.tracking_summary.total }}</dd>
+	#}
+    
   {% endblock %}
   </dl>
 </section>
