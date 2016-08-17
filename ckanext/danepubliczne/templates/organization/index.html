@@ -30,7 +30,10 @@
       {% endblock %}
     </form>
   </div>
-
+  
+  {% block page_pagination_top %}
+    {{ c.page.pager(q=c.q or '', sort=c.sort_by_selected or '') }}
+  {% endblock %}
   {% block organizations_list %}
     {% if c.page.items or request.params %}
       {% if c.page.items %}
