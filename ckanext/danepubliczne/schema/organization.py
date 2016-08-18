@@ -2,13 +2,31 @@ import ckan.lib
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.logic.schema
-
+from ckan.common import _
 
 class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationForm):
     '''
     Modifies fields and appearance of organizations 
     '''
+
+    PROVIDERS_TYPES = [
+        ["state", "State administration"],
+        ["local", "Local administration"],
+    ]
+
     p.implements(p.IGroupForm)
+    p.implements(p.ITemplateHelpers)  # Helpers for templates
+
+    def get_helpers(self):
+        return {'dp_update_types_options': OrganizationForm.h_update_providers_types_options}
+
+    @classmethod
+    def h_update_providers_types_options(cls):
+        return ({'value': val[0], 'text': cls.h_translate_facet(val[1])} for val in cls.PROVIDERS_TYPES)
+
+    @classmethod
+    def h_translate_facet(cls, label):
+        return _(label)
 
     def _form_to_db_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
@@ -17,6 +35,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
 
         default_validators = [not_empty, to_extras]
         schema.update({
+            'type': default_validators,
             'address_city': default_validators,
             'address_postal_code': default_validators,
             'address_street': default_validators,

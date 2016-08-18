@@ -1110,3 +1110,9 @@ msgstr "Liczba wyświetleń"
 #: ckanext/danepubliczne/templates/snippets/package_item.html:46
 msgid "Downloads count"
 msgstr "Liczba pobrań"
+
+msgid "State administration"
+msgstr "Administracja państwowa"
+
+msgid "Local administration"
+msgstr "Administracja samorządowa"
