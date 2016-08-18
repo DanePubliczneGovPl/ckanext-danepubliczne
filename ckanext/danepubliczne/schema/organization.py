@@ -35,7 +35,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
 
         default_validators = [not_empty, to_extras]
         schema.update({
-            'type': default_validators,
+            'institution_type': default_validators,
             'address_city': default_validators,
             'address_postal_code': default_validators,
             'address_street': default_validators,
@@ -93,7 +93,8 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
             'tel': default_validators,
             'fax': default_validators,
             'regon': default_validators,
-            'epuap': default_validators
+            'epuap': default_validators,
+            'institution_type': default_validators
         })
         return schema
 

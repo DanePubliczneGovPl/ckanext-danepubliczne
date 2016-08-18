@@ -2,7 +2,7 @@
 
 {% block basic_fields %}
 
-  {{ form.select('type', label=_('Type'), selected=data.type, id='field-type', error=errors.type, options=h.dp_update_types_options()) }}
+  {{ form.select('institution_type', label=_('Type'), selected=data.institution_type, id='field-institution_type', error=errors.institution_type, options=h.dp_update_types_options()) }}
 
   {{ super() }}
 
