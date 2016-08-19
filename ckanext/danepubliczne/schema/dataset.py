@@ -13,7 +13,7 @@ from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g, c, request
 from ckan import logic
 from ckanext.fluent.validators import fluent_text_output
-
+import collections
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -141,6 +141,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.IPackageController, inherit=True)
 
     def before_index(self, pkg_dict):
+
         # Resource type is multivalue field
         types = []
         for tag_string in pkg_dict.get('res_type', []):
@@ -149,6 +150,25 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['res_type'] = types
 
+        if( pkg_dict.get('type')=='dataset' ):
+            try:
+                org_dict = logic.action.get.organization_show({
+                    'model': model,
+                    'ignore_auth': True,
+                    'validate': False,
+                    'use_cache': False
+                }, {
+                    'id': pkg_dict.get('organization'),
+                    'include_datasets': False,
+                    'include_extras': False,
+                    'include_users': False,
+                    'include_groups': False,
+                    'include_tags': False,
+                    'include_followers': False
+                })
+                pkg_dict['institution_type'] = org_dict.get('institution_type') if org_dict.get('institution_type') else "state"
+            except:
+                pass
 
         # Resuse conditions
         from paste.deploy.converters import asbool
@@ -219,14 +239,17 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 'tags': _('Tags'),
             }
 
-        facets_dict.pop('license_id', None)
-
-        facets_dict['res_type'] = _('Resource types')
-        facets_dict['update_frequency'] = _('Update frequency')
-        facets_dict['res_extras_openness_score'] = _('Openess Score')
-        facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
-
-        return facets_dict
+        ordered_facets_dict = collections.OrderedDict()
+        ordered_facets_dict['organization'] = _('Organizations')
+        ordered_facets_dict['institution_type'] = _('Organization type')
+        ordered_facets_dict['groups'] = _('Groups')
+        ordered_facets_dict['tags'] = _('Tags')
+        ordered_facets_dict['res_format'] = _('Formats')
+        ordered_facets_dict['res_type'] = _('Resource types')
+        ordered_facets_dict['update_frequency'] = _('Update frequency')
+        ordered_facets_dict['res_extras_openness_score'] = _('Openess Score')
+        ordered_facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
+        return ordered_facets_dict
 
     @classmethod
     def h_vocab_reuse_conditions_captions(cls):
@@ -259,6 +282,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 return _('Restrictions set')
             else:
                 return _('No restrictions')
+        
+        elif facet == 'institution_type':
+            return _(label.capitalize() + ' administration')
 
         return label
 

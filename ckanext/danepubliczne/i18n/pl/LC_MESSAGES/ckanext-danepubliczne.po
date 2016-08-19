@@ -1111,6 +1111,9 @@ msgstr "Liczba wyświetleń"
 msgid "Downloads count"
 msgstr "Liczba pobrań"
 
+msgid "Organization type"
+msgstr "Typ dostawcy"
+
 msgid "State administration"
 msgstr "Administracja państwowa"
 
