@@ -120,7 +120,37 @@ class DanePubliczne(p.SingletonPlugin):
     def get_helpers(self):
         return {'dp_check_maintenance': self.h_check_maintenance,
                 'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs,
-                'dp_organization_image': self.h_organization_image}
+                'dp_organization_image': self.h_organization_image,
+                'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable}
+
+    @classmethod
+    def h_get_facet_items_dict_sortable(self, facet, limit=None, exclude_active=False):
+        ''' code for this function is copied from lib/helpers.py get_facet_items_dict function
+        exepct it allows custom facets sorting '''
+
+        from ckan.common import request, c
+
+        sort_field = 'name' if (facet == 'res_extras_openness_score') else 'count'
+
+        if not c.search_facets or \
+                not c.search_facets.get(facet) or \
+                not c.search_facets.get(facet).get('items'):
+            return []
+        facets = []
+        for facet_item in c.search_facets.get(facet)['items']:
+            if not len(facet_item['name'].strip()):
+                continue
+            if not (facet, facet_item['name']) in request.params.items():
+                facets.append(dict(active=False, **facet_item))
+            elif not exclude_active:
+                facets.append(dict(active=True, **facet_item))
+        facets = sorted(facets, key=lambda item: item[sort_field], reverse=True)
+        if c.search_facets_limits and limit is None:
+            limit = c.search_facets_limits.get(facet)
+        # zero treated as infinite for hysterical raisins
+        if limit is not None and limit > 0:
+            return facets[:limit]
+        return facets
 
     def h_organization_image(self, org, show_placeholder_by_default=True):
         if org.get('image_display_url', None):

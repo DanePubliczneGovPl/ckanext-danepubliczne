@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block facet_list_items %}
-  {% with items = items or h.get_facet_items_dict(name) %}
+  {% with items = items or h.dp_get_facet_items_dict_sortable(name) %}
     {% if items %}
       <nav>
         <ul class="{{ nav_class or 'unstyled nav nav-simple nav-facet' }}">
