@@ -21,21 +21,21 @@ Example:
 		            
 		            <li class="nav-item{% if not c.type %} active{% endif %}">
 						{% if not c.type %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
-						<a href="?q={{c.q or ''}}&sort={{c.sort_by_selected or ''}}">                
+						<a href="{{ h.url('organization', q=c.q or '', sort=c.sort_by_selected or '') }}">                
 							<span>{{ _('All institutions') }}</span>
 						</a>
 					</li>
 					
 					<li class="nav-item{% if c.type == 'state' %} active{% endif %}">
 						{% if c.type == 'state' %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
-						<a href="?q={{c.q or ''}}&sort={{c.sort_by_selected or ''}}&type=state">
+						<a href="{{ h.url('organization', q=c.q or '', sort=c.sort_by_selected or '', type='state') }}">
 							<span>{{ _('State administration institutions') }}</span>
 						</a>
 					</li>
 					
 					<li class="nav-item{% if c.type == 'local' %} active{% endif %}">
 						{% if c.type == 'local' %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
-						<a href="?q={{c.q or ''}}&sort={{c.sort_by_selected or ''}}&type=local">
+						<a href="{{ h.url('organization', q=c.q or '', sort=c.sort_by_selected or '', type='local') }}">
 							<span>{{ _('Local administration institutions') }}</span>
 						</a>
 					</li>
