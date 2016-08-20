@@ -12,8 +12,8 @@ import ckan.new_authz as new_authz
 import ckan.lib.plugins
 import ckan.plugins as plugins
 from ckan.common import OrderedDict, c, g, request, _
-
-
+import ckanext.danepubliczne.plugin as dp
+logic.action.get._group_or_org_list = dp._group_or_org_list_filtered
 log = logging.getLogger(__name__)
 
 render = base.render
@@ -29,6 +29,7 @@ clean_dict = logic.clean_dict
 parse_params = logic.parse_params
 
 lookup_group_plugin = ckan.lib.plugins.lookup_group_plugin
+
 
 import ckan.controllers.group as base_group
 

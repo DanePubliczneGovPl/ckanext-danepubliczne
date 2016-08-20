@@ -122,3 +122,177 @@
         width: auto;
     }
 }
+
+.organization .module {
+	padding-top: 0;
+}
+
+.organization .module .module-content {
+	padding-top: 0;
+}
+
+.organization .module .module-content .page-header {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.wrapper .organization-result {
+	margin: -10px 30px 20px 0;
+	padding: 0;
+}
+
+.wrapper .organization-result .pagination_container .pagination {
+	border-top: none;
+}
+
+.wrapper .organization-result .pagination_container {
+	min-height: 10px;
+}
+
+.wrapper .organization-filters {
+    font-size: 14px;
+    font-weight: normal;
+    color: #1d1d1d;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+.wrapper .organization-filters > section {
+	padding-right: 20px;
+}
+
+.wrapper .organization-filters h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1d1d1d;
+    padding: 50px 15px 0;
+    margin: 0;
+}
+
+.wrapper .organization-filters .module-heading {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    color: #1d1d1d;
+    border-color: #d1d9e2;
+    border-bottom-width: 0;
+    padding: 20px 15px;
+    margin: 0;
+    background: none;
+}
+
+.wrapper .organization-filters .read-more,
+.wrapper .organization-filters .read-less {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    text-decoration: none;
+
+    -moz-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.wrapper .organization-filters .read-more:before,
+.wrapper .organization-filters .read-less:before {
+    font-size: 18px;
+    font-weight: normal;
+    color: #b2b2b2;
+}
+
+.wrapper .organization-filters .read-more:before {
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.wrapper .organization-filters .read-less:before {
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.wrapper .organization-filters .read-more-button,
+.wrapper .organization-filters .read-less-button {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1em;
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+.wrapper .organization-filters .nav-item,
+.wrapper .organization-filters .nav-aside li {
+    padding: 0;
+    border: 0;
+}
+
+.wrapper .organization-filters .nav-item > a,
+.wrapper .organization-filters .nav-aside li a {
+    margin: 5px -4px 5px 0;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #1d1d1d;
+    line-height: 1.1em;
+}
+
+.wrapper .organization-filters .nav-item > a:hover,
+.wrapper .organization-filters .nav-aside li a:hover {
+    background: #eff2f5;
+    color: black;
+}
+
+.wrapper .organization-filters .nav-item.active > a,
+.wrapper .organization-filters .nav-aside li.active a {
+    background-color: #157abe;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.nav-item.active > a span, .nav-aside li.active a span {
+    white-space: normal;
+    overflow: visible;
+    display: inline-block;
+}
+
+.wrapper .organization-filters .nav-item.active > a:before,
+.wrapper .organization-filters .nav-aside li.active a:before {
+    display: none;
+}
+
+.wrapper .organization-filters .nav-item > a:hover:after,
+.wrapper .organization-filters .nav-aside li a:hover:after,
+.wrapper .organization-filters .nav-item.active > a:after,
+.wrapper .organization-filters .nav-item.active > a:hover:after,
+.wrapper .organization-filters .nav-aside li.active a:after,
+.wrapper .organization-filters .nav-aside li.active a:hover:after {
+    font-family: 'ckan';
+    font-size: 16px;
+    font-weight: normal;
+    background: none;
+    right: 14px;
+    margin-top: -9px;
+    display: none;
+}
+
+.wrapper .organization-filters .nav-item > a:hover:after,
+.wrapper .organization-filters .nav-aside li a:hover:after {
+    color: #157abe;
+    content: "\e900";
+}
+
+.wrapper .organization-filters .nav-item.active > a:after,
+.wrapper .organization-filters .nav-item.active > a:hover:after,
+.wrapper .organization-filters .nav-aside li.active a:after,
+.wrapper .organization-filters .nav-aside li.active a:hover:after {
+    color: #ffffff;
+    content: "\e901";
+}

@@ -1114,8 +1114,20 @@ msgstr "Liczba pobrań"
 msgid "Organization type"
 msgstr "Typ dostawcy"
 
+msgid "All institutions"
+msgstr "Wszystkie instytucje"
+
+msgid "State administration institutions"
+msgstr "Instytucje administracji państwowej"
+
+msgid "Local administration institutions"
+msgstr "Instytucje administracji samorządowej"
+
 msgid "State administration"
 msgstr "Administracja państwowa"
 
 msgid "Local administration"
 msgstr "Administracja samorządowa"
+
+msgid "Filter selected"
+msgstr "Filtr ustawiony"

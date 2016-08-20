@@ -17,7 +17,7 @@ from pylons import config
 from pylons.util import class_name_from_module_name
 from routes.mapper import SubMapper
 import ckan.lib.app_globals as app_globals
-
+import ckan.lib.dictization.model_dictize as model_dictize
 
 log = logging.getLogger(__name__)
 
@@ -180,7 +180,8 @@ class DanePubliczne(p.SingletonPlugin):
     def get_actions(self):
         return {
             'user_autocomplete_email': user_autocomplete_email,
-            'member_list': member_list
+            'member_list': member_list,
+            '_group_or_org_list_filtered': _group_or_org_list_filtered
         }
 
 
@@ -318,3 +319,89 @@ def linked_org_for(user, maxlength=0, avatar=20):
         if maxlength and len(displayname) > maxlength:
             displayname = displayname[:maxlength] + '...'
         return h.link_to(displayname, h.url_for(controller='organization', action='read', id=org.name))
+
+def _group_or_org_list_filtered(context, data_dict, is_org=False):
+
+    from paste.deploy.converters import asbool
+    import ckan.lib.dictization.model_dictize as model_dictize
+    import sqlalchemy
+
+    model = context['model']
+    api = context.get('api_version')
+    groups = data_dict.get('groups')
+    group_type = data_dict.get('type', 'group')
+    ref_group_by = 'id' if api == 2 else 'name'
+
+    sort = data_dict.get('sort', 'name')
+    q = data_dict.get('q')
+    extra_conditions = data_dict.get('extra_conditions')
+
+    # order_by deprecated in ckan 1.8
+    # if it is supplied and sort isn't use order_by and raise a warning
+    order_by = data_dict.get('order_by', '')
+    if order_by:
+        log.warn('`order_by` deprecated please use `sort`')
+        if not data_dict.get('sort'):
+            sort = order_by
+    # if the sort is packages and no sort direction is supplied we want to do a
+    # reverse sort to maintain compatibility.
+    if sort.strip() in ('packages', 'package_count'):
+        sort = 'package_count desc'
+
+    sort_info = ckan.logic.action.get._unpick_search(sort,
+                               allowed_fields=['name', 'packages',
+                                               'package_count', 'title'],
+                               total=1)
+
+    all_fields = data_dict.get('all_fields', None)
+    include_extras = all_fields and \
+                     asbool(data_dict.get('include_extras', False))
+
+    query = model.Session.query(model.Group)
+    if include_extras:
+        # this does an eager load of the extras, avoiding an sql query every
+        # time group_list_dictize accesses a group's extra.
+        query = query.options(sqlalchemy.orm.joinedload(model.Group._extras))
+    query = query.filter(model.Group.state == 'active')
+    if groups:
+        query = query.filter(model.Group.name.in_(groups))
+    if q:
+        q = u'%{0}%'.format(q)
+        query = query.filter(sqlalchemy.or_(
+            model.Group.name.ilike(q),
+            model.Group.title.ilike(q),
+            model.Group.description.ilike(q),
+        ))
+
+    if extra_conditions:
+        query = query.join(model.GroupExtra)
+        for cond in extra_conditions:
+            if cond[1] == '==':
+                query = query.filter(model.GroupExtra.key == cond[0], model.GroupExtra.value == cond[2])
+
+    query = query.filter(model.Group.is_organization == is_org)
+    if not is_org:
+        query = query.filter(model.Group.type == group_type)
+
+    groups = query.all()
+    if all_fields:
+        include_tags = asbool(data_dict.get('include_tags', False))
+    else:
+        include_tags = False
+    # even if we are not going to return all_fields, we need to dictize all the
+    # groups so that we can sort by any field.
+    group_list = model_dictize.group_list_dictize(
+        groups, context,
+        sort_key=lambda x: x[sort_info[0][0]],
+        reverse=sort_info[0][1] == 'desc',
+        with_package_counts=all_fields or
+        sort_info[0][0] in ('packages', 'package_count'),
+        include_groups=asbool(data_dict.get('include_groups', False)),
+        include_tags=include_tags,
+        include_extras=include_extras,
+        )
+
+    if not all_fields:
+        group_list = [group[ref_group_by] for group in group_list]
+
+    return group_list
