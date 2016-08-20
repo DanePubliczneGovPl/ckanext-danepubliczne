@@ -78,6 +78,7 @@ dane_publiczne_organization=ckanext.danepubliczne.schema.organization:Organizati
 dane_publiczne_dataset=ckanext.danepubliczne.schema.dataset:DatasetForm
 dane_publiczne_categories=ckanext.danepubliczne.schema.category:Category
 dane_publiczne_articles=ckanext.danepubliczne.schema.article:Article
+dane_publiczne_applications=ckanext.danepubliczne.schema.application:Application
 piwik=ckanext.danepubliczne.piwik:PiwikPlugin
 
 [babel.extractors]
