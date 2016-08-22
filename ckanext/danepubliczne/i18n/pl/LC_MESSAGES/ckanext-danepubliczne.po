@@ -1131,3 +1131,11 @@ msgstr "Administracja samorządowa"
 
 msgid "Filter selected"
 msgstr "Filtr ustawiony"
+
+#: ckanext/danepubliczne/templates/home/snippets/datasets.html:3
+msgid "Recent resources"
+msgstr "Ostatnio aktualizowane zasoby"
+
+#: ckanext/danepubliczne/templates/home/snippets/datasets.html:15
+msgid "Show all datasets"
+msgstr "Pokaż wszystkie zbiory danych"

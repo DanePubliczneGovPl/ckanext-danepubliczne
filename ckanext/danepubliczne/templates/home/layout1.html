@@ -15,6 +15,13 @@
     {% snippet "home/snippets/categories.html" %}
   </div>
 </div>
+{% if c.datasets %}
+  <div role="main" class="datasetsBox">
+    <div class="container">
+      {% snippet "home/snippets/datasets.html" %}
+    </div>
+  </div>
+{% endif %}
 {% if h.dp_recent_articles() %}
   <div role="main" class="articlesBox">
     <div class="container">

@@ -265,3 +265,151 @@
         width: 25%;
     }
 }
+
+.homepage .datasetsBox {
+    border-top: 5px solid #009ae0;
+    background: #ffffff;
+    padding: 55px 0;
+}
+
+.homepage .datasetsBox .datasets {
+    padding: 0;
+	margin: 0;
+	overflow: auto;
+}
+
+.homepage .datasetsBox .datasets-more {
+	text-align: center;
+	margin-top: 25px;
+	padding-bottom: 7px;
+}
+
+.homepage .datasetsBox .datasets-more a {
+	padding: 0 10px;
+}
+
+.homepage .datasetsBox .datasets-more h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.homepage .datasetsBox .datasets h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #434343;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.homepage .datasetsBox .datasets .dataset-item-container {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+	width: 50%;
+}
+
+.homepage .datasetsBox .datasets .dataset-item {
+    border: none;
+    border-left: 4px solid #4b77be;
+    padding: 5px 20px;
+    margin: 15px 0;
+    color: #000000;
+    line-height: 1.2em;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-content h3,
+.homepage .datasetsBox .datasets .dataset-item .dataset-content h3 a {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.1em;
+    color: #157abe;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-content .notes {
+    font-size: 18px;
+    font-weight: normal;
+    color: #000000;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list {
+	margin-top: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list .resource-item:hover {
+	background: none;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list .resource-item a {
+	color: #157abe;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking {
+	font-size: 12px;
+	color: #888;
+	margin: 0 -5px 0 -8px;
+	clear: both;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span {
+	margin: 0 5px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span:before {
+	font-family: "ckan";
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 3px;
+    position: relative;
+    top: 2px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span.view:before {
+	content: "\e902";
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span.download:before {
+	content: "\e903";
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info td, .wrapper .dataset-result .additional-info th {
+    width: auto;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list {
+    font-size: 12px;
+    font-weight: normal;
+    color: #000000;
+    margin: 0;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list:first-child > td {
+    border-top: none;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list .dataset-label {
+    font-weight: bold;
+    text-align: right;
+    width: 30%;
+}
+
+.homepage .datasetsBox .datasets .dataset-item dd.dataset-details { 
+   padding-left: 40px;
+   padding-bottom: 5px;
+   margin-left: 135px;
+}
+
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list .dataset-label:after {
+    content: ": ";
+}
