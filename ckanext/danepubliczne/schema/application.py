@@ -1,10 +1,9 @@
 import re
-
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.logic.auth as auth
 from ckan.common import _
-
+import ckanext.danepubliczne.plugin as dp
 
 class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -16,11 +15,11 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
-            'dp_recent_article': self.h_recent_articles,
-            'dp_shorten_article': self.h_shorten_article
+            'dp_recent_application': self.h_recent_applications,
+            'dp_shorten_application': self.h_shorten_applications
         }
 
-    def h_recent_articles(self, count=4):
+    def h_recent_applications(self, count=4):
         search = tk.get_action('package_search')(data_dict={
             'rows': count,
             'sort': 'metadata_created desc',
@@ -33,7 +32,7 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         return search['results']
 
-    def h_shorten_article(self, markdown, length=140, trail='...'):
+    def h_shorten_applications(self, markdown, length=140, trail='...'):
         # Try to return first paragraph (two consecutive \n disregarding white characters)
         paragraph = markdown
         m = re.search('([ \t\r\f\v]*\n){2}', markdown)
@@ -57,6 +56,7 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
     def _modify_package_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
         to_tags = tk.get_converter('convert_to_tags')
+        to_dataset_name = dp.convert_to_dataset_name
         optional = tk.get_validator('ignore_missing')
         boolean_validator = tk.get_validator('boolean_validator')
         not_empty = tk.get_validator('not_empty')
@@ -73,18 +73,24 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
             'private': [optional, boolean_validator],
-            'license_id': [not_empty, unicode],
+            'status': [to_extras],
+            'dataset_name': [optional, to_dataset_name, to_extras],
             'tag_string': schema['tag_string'],
-            'resources': schema['resources']
+            'resources': schema['resources'],
+            'image_url': [to_extras]
         }
 
         return schema
 
     def show_package_schema(self):
         not_empty = tk.get_validator('not_empty')
-
+        from_extras = tk.get_converter('convert_from_extras')
+        
         schema = super(Application, self).show_package_schema()
         schema.update({
+            'status': [from_extras],
+            'dataset_name': [from_extras],
+            'image_url': [from_extras],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
         })
         return schema
@@ -113,48 +119,9 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     #
     # def history_template(self):
-    # return 'article/history.html'
+    # return 'application/history.html'
     #
     def package_form(self):
         return 'application/new_package_form.html'
 
-
-    p.implements(p.IAuthFunctions)
-
-    def get_auth_functions(self):
-        return {
-            'package_create': _package_create,  # new = context.get('package') == None
-            'package_delete': _package_delete,  # data_dict['id]
-            'package_update': _package_update,  # context['package'].type
-        }
-
-
-def _package_create(context, data_dict=None):
-    user = context['user']
-    package = context.get('package')  # None for new
-
-    if package and package['type'] == 'application':
-        return {'success': False, 'msg': _('User %s not authorized to create applications') % user}
-
-    return auth.create.package_create(context, data_dict)
-
-
-def _package_delete(context, data_dict=None):
-    user = context['user']
-    package = auth.get_package_object(context, data_dict)
-
-    if package and package.type == 'application':
-        return {'success': False, 'msg': _('User %s not authorized to delete applications') % user}
-
-    return auth.delete.package_delete(context, data_dict)
-
-
-def _package_update(context, data_dict=None):
-    user = context['user']
-    package = auth.get_package_object(context, data_dict)
-
-    if package and package.type == 'application':
-        return {'success': False, 'msg': _('User %s not authorized to update applications') % user}
-
-    return auth.update.package_update(context, data_dict)
 

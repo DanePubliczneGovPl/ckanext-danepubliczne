@@ -29,10 +29,9 @@ class HomeController(base_home.HomeController):
                 'rows': 2,
                 'start': 0,
                 'sort': 'metadata_modified desc',
-                'fq': 'capacity:"public", type:dataset'
+                'fq': 'capacity:"public" +type:dataset'
             }
-            query = logic.get_action('package_search')(
-                context, data_dict)
+            query = logic.get_action('package_search')(context, data_dict)
             c.package_count = query['count']
             c.datasets = query['results']
 
@@ -48,6 +47,23 @@ class HomeController(base_home.HomeController):
         except search.SearchError:
             c.package_count = 0
             c.groups = []
+
+        try:
+            # app search
+            context = {'model': model, 'session': model.Session,
+                       'user': c.user or c.author, 'auth_user_obj': c.userobj}
+            data_dict = {
+                'q': '*:*',
+                'facet': 'false',
+                'rows': 3,
+                'start': 0,
+                'sort': 'metadata_created desc',
+                'fq': 'capacity:"public" +type:application +status:verified'
+            }
+            query = logic.get_action('package_search')(context, data_dict)
+            c.apps = query['results']
+        except:
+            pass
 
         if c.userobj is not None:
             msg = None

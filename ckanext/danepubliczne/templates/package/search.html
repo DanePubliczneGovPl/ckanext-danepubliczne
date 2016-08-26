@@ -30,7 +30,7 @@
           {% block form %}
             <div class="dataset-search">
               <div class="container">
-                {% snippet 'snippets/search_form.html', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...') if dataset_type == 'dataset' else _('Search articles...'), show_empty=request.params, fields=c.fields %}
+                {% snippet 'snippets/search_form.html', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search ' + dataset_type + 's...'), show_empty=request.params, fields=c.fields %}
               </div>
             </div>
           {% endblock %}
@@ -64,6 +64,8 @@
                           <h1 class="results-title span3">{{_('Organizations')}}</h1>
                           {% elif dataset_type == 'article' %}
                           <h1 class="results-title span3">{{_('Articles')}}</h1>
+                          {% elif dataset_type == 'application' %}
+                          <h1 class="results-title span3">{{_('Applications')}}</h1>
                           {% endif %}
                           <span class="results-total span6">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</span>
 
@@ -120,6 +122,8 @@
                         <div class="page_primary_action span9">
                           {% if dataset_type == 'article' and c.is_sysadmin %}
                             {% link_for _('Add Article'), named_route='article_new', class_='btn btn-primary', icon='plus-sign-alt' %}
+                          {% elif dataset_type == 'application' and c.is_sysadmin %}
+                            {% link_for _('Add Application'), named_route='application_new', class_='btn btn-primary', icon='plus-sign-alt' %}
                           {% else %}
                             {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
                           {% endif %}

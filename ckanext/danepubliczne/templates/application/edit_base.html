@@ -1,4 +1,4 @@
-{% extends 'article/base.html' %}
+{% extends 'application/base.html' %}
 
 {% set pkg = c.pkg_dict %}
 {% set pkg_dict = c.pkg_dict %}
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content_action %}
-  {% link_for _('View article'), controller='package', action='read', id=pkg.name, class_='btn', icon='eye-open' %}
+  {% link_for _('View application'), controller='package', action='read', id=pkg.name, class_='btn', icon='eye-open' %}
 {% endblock %}
 
 {% block content_primary_nav %}

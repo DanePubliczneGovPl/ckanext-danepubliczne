@@ -132,7 +132,6 @@
     width: 100%;
     float: left;
     padding: 0;
-
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -154,12 +153,15 @@
     font-size: 14px;
     font-weight: normal;
     color: #010101;
+	margin-bottom: 40px;
 }
 
 .homepage .articlesBox .articles .article h3 {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    line-height: 28px;
+    display: inline-block;
 }
 
 .homepage .articlesBox .articles .article h3 a {
@@ -170,6 +172,11 @@
     margin-bottom: 18px;
     display: block;
     width: 100%;
+}
+
+.homepage .articlesBox .articles .article .article-image {
+	border: 3px solid #CCC;
+	margin: -10px 0 15px;
 }
 
 .homepage .articlesBox .articles .article p {
@@ -308,7 +315,6 @@
 	padding: 0;
 	margin: 0;
 	float: left;
-	width: 50%;
 }
 
 .homepage .datasetsBox .datasets .dataset-item {

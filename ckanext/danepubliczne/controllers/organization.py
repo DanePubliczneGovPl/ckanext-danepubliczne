@@ -48,6 +48,6 @@ class OrganizationController(group.GroupController, base_organization.Organizati
             collection=results,
             page = self._get_page_number(request.params),
             url=h.pager_url,
-            items_per_page=1
+            items_per_page=21
         )
         return render(self._index_template(group_type))

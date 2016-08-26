@@ -101,6 +101,7 @@
             {% block header_site_navigation_tabs %}
               {{ h.build_nav_main(
               ('dataset_search', _('Datasets')),
+              ('application_search', _('Applications')),
               ('organizations_index', _('Organizations')),
               ('article_search', _('Knowledge base')),
               ('about', _('About'))
@@ -109,8 +110,9 @@
           </ul>
         </nav>
       {% endblock %}
-
+	  
       {% block header_site_search %}
+        {#
         <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}"
               method="get">
           <div class="field">
@@ -119,6 +121,7 @@
             <button class="btn-search" type="submit"><i class="icon-search"></i><span class="wcag_hide2">{{ _('Search Datasets') }}</span></button>
           </div>
         </form>
+        #}
 
         <div class="section site-language">
           {% snippet 'snippets/language_selector.html' %}

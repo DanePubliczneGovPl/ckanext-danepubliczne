@@ -1,0 +1,10 @@
+{% if apps %}
+<section id="dataset-applications" class="applications">
+  <h2>{{ _('Applications') }}</h2>
+      <ul class="applications-list row">
+          {% for a in apps %}
+              {% snippet "package/snippets/app.html", a=a %}
+          {% endfor %}
+      </ul>
+</section>
+{% endif %}

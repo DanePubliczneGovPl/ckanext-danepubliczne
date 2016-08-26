@@ -56,4 +56,8 @@
   {% block package_resources %}
     {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
   {% endblock %}
+  
+  {% block apps %}
+    {% snippet "package/snippets/apps.html", apps=c.apps %}
+  {% endblock %}
 {% endblock %}

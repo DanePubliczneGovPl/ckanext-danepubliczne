@@ -2,7 +2,7 @@
 {% set title = package.title or package.name %}
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
 
-<li class="dataset-item-container">
+<li class="dataset-item-container span6">
 	<div class="dataset-item">
 	  {% block package_item_content %}
 	    <div class="dataset-content">

@@ -15,6 +15,9 @@ from ckan import logic
 from ckanext.fluent.validators import fluent_text_output
 import collections
 
+import logging
+log = logging.getLogger(__name__)
+
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Modifies fields and appearance of datasets
@@ -199,10 +202,10 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['vocab_reuse_conditions'] = restrictions
 
-
         # Update frequency (string instead of text solr type)
         pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
+        pkg_dict['status'] = pkg_dict.get('status')
         return pkg_dict
 
     def after_create(self, context, pkg_dict):
@@ -234,10 +237,21 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.IFacets, inherit=True)
 
     def dataset_facets(self, facets_dict, package_type):
+
         if package_type == 'article':
             return {
                 'tags': _('Tags'),
             }
+        elif package_type == 'application':
+            if( new_authz.is_sysadmin(c.user) ):
+                return {
+                    'status': _('Status'),
+                    'tags': _('Tags'),
+                }
+            else:
+                return {
+                    'tags': _('Tags'),
+                }
 
         ordered_facets_dict = collections.OrderedDict()
         ordered_facets_dict['organization'] = _('Organizations')
@@ -309,7 +323,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({
             'category': [category_from_group],
             'update_frequency': [from_extras],
-
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
             'license_condition_timestamp': checkboxes,
