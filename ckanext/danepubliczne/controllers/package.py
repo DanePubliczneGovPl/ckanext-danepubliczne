@@ -13,12 +13,15 @@ import ckan.model as model
 import ckan.lib.plugins
 import ckan.plugins as p
 import ckan.lib.render
+import random
+import string
 from feedback import FeedbackController
 from paste.deploy.converters import asbool
 from ckan.common import OrderedDict, _, json, request, c, g, response
 import ckan.lib.navl.dictization_functions as dict_fns
 import ckan.new_authz as new_authz
 import ckanext.danepubliczne.plugin as dp
+from home import CACHE_PARAMETERS
 log = logging.getLogger(__name__)
 
 render = base.render
@@ -65,6 +68,75 @@ import ckan.controllers.package as base_package
 
 
 class PackageController(base_package.PackageController):
+    
+    def new(self, data=None, errors=None, error_summary=None):
+        if data and 'type' in data:
+            package_type = data['type']
+        else:
+            package_type = self._guess_package_type(True)
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'auth_user_obj': c.userobj,
+                   'save': 'save' in request.params}
+
+        if (package_type == 'application') and (request.method == 'POST') and (request.params.get('from_users') == '1'):
+            context['ignore_auth'] = True
+
+        # Package needs to have a organization group in the call to
+        # check_access and also to save it
+        try:
+            check_access('package_create', context)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to create a package'))
+
+        if context['save'] and not data:
+            return self._save_new(context, package_type=package_type)
+
+        data = data or clean_dict(dict_fns.unflatten(tuplize_dict(parse_params(
+            request.params, ignore_keys=CACHE_PARAMETERS))))
+        c.resources_json = h.json.dumps(data.get('resources', []))
+        # convert tags if not supplied in data
+        if data and not data.get('tag_string'):
+            data['tag_string'] = ', '.join(
+                h.dict_list_reduce(data.get('tags', {}), 'name'))
+
+        errors = errors or {}
+        error_summary = error_summary or {}
+        # in the phased add dataset we need to know that
+        # we have already completed stage 1
+        stage = ['active']
+        if data.get('state', '').startswith('draft'):
+            stage = ['active', 'complete']
+
+        # if we are creating from a group then this allows the group to be
+        # set automatically
+        data['group_id'] = request.params.get('group') or \
+            request.params.get('groups__0__id')
+
+        form_snippet = self._package_form(package_type=package_type)
+        form_vars = {'data': data, 'errors': errors,
+                     'error_summary': error_summary,
+                     'action': 'new', 'stage': stage,
+                     'dataset_type': package_type,
+                    }
+        c.errors_json = h.json.dumps(errors)
+
+        self._setup_template_variables(context, {},
+                                       package_type=package_type)
+
+        new_template = self._new_template(package_type)
+        c.form = ckan.lib.render.deprecated_lazy_render(
+            new_template,
+            form_snippet,
+            lambda: render(form_snippet, extra_vars=form_vars),
+            'use of c.form is deprecated. please see '
+            'ckan/templates/package/base_form_page.html for an example '
+            'of the new way to include the form snippet'
+            )
+        return render(new_template,
+                      extra_vars={'form_vars': form_vars,
+                                  'form_snippet': form_snippet,
+                                  'dataset_type': package_type})
     
     def _save_new(self, context, package_type=None):
         # The staged add dataset used the new functionality when the dataset is
@@ -122,6 +194,16 @@ class PackageController(base_package.PackageController):
 
             data_dict['type'] = package_type
             context['message'] = data_dict.get('log_message', '')
+
+            try:
+                if (package_type == 'application') and data_dict['from_users']:
+                    context['ignore_auth'] = True
+                    data_dict['name'] = 'from_users_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(16))
+                    data_dict['status'] = 'unverified';
+                    data_dict['private'] = 'False';
+            except:
+                pass
+
             pkg_dict = get_action('package_create')(context, data_dict)
 
             if ckan_phase and not request.params['save'] == 'finish':
@@ -130,6 +212,10 @@ class PackageController(base_package.PackageController):
                                 action='new_resource',
                                 id=pkg_dict['name'])
                 redirect(url)
+
+            if (package_type == 'application') and data_dict['from_users']:
+                h.flash_notice(_('Application has been submitted'))
+                redirect('/application')
 
             self._form_save_redirect(pkg_dict['name'], 'new', package_type=package_type)
         except NotAuthorized:

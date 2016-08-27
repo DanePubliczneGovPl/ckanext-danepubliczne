@@ -128,14 +128,14 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'package_update': _package_update,  # context['package'].type
         }
 
-
 def _package_create(context, data_dict=None):
+    return {'success': True}
     user = context['user']
     package = context.get('package')  # None for new
 
     if package and package['type'] == 'article':
         return {'success': False, 'msg': _('User %s not authorized to create articles') % user}
-
+    return {'success': True}
     return auth.create.package_create(context, data_dict)
 
 
@@ -157,4 +157,3 @@ def _package_update(context, data_dict=None):
         return {'success': False, 'msg': _('User %s not authorized to update articles') % user}
 
     return auth.update.package_update(context, data_dict)
-

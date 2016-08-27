@@ -136,6 +136,45 @@
     color: #1d1d1d;
 }
 
+.wrapper .dataset-filters .options-list {
+    margin: -10px 0 50px 5px;
+}
+
+.wrapper .dataset-filters .options-list li {
+	list-style: none;
+	padding: 5px 10px;
+}
+
+.wrapper .dataset-filters .options-list li a {
+	display: inline-block;
+}
+
+.wrapper .dataset-filters .options-list li span.icon {
+    color: #157abe;
+    float: left;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.wrapper .dataset-filters .options-list li span.icon:after {
+    font-family: 'ckan';
+    font-size: 18px;
+}
+
+.wrapper .dataset-filters .options-list li .action.action-download-datasets span.icon:after {
+	content: "\e903";
+}
+
+.wrapper .dataset-filters .options-list li .action.action-app-propose span.icon:after {
+	content: "\e904";
+}
+
+.wrapper .dataset-filters .options-list li span.text {
+    margin-left: 24px;
+    display: block;
+}
+
 .wrapper .dataset-filters h2 {
     font-size: 20px;
     font-weight: bold;
@@ -504,4 +543,21 @@
     .wrapper .dataset-result .results-total {
         margin-top: 5px;
     }
+}
+
+.modal-app-propose {
+	display: none;
+}
+
+.modal-app-propose form {
+	margin: 0;
+	padding: 0;
+}
+
+.modal-app-propose form .form-group {
+	margin: 10px 0;
+}
+
+.modal-app-propose form .form-group input, .modal-app-propose form .form-group textarea {
+	width: 97%;
 }

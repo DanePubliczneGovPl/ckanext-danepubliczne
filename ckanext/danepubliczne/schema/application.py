@@ -77,7 +77,7 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
             'dataset_name': [optional, to_dataset_name, to_extras],
             'tag_string': schema['tag_string'],
             'resources': schema['resources'],
-            'image_url': [to_extras]
+            'image_url': [optional, to_extras]
         }
 
         return schema
@@ -123,5 +123,3 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
     #
     def package_form(self):
         return 'application/new_package_form.html'
-
-

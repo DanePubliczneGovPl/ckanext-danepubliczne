@@ -1246,3 +1246,29 @@ msgstr "Brak aplikacji"
 
 msgid "Search applications..."
 msgstr "Szukaj aplikacji..."
+
+#: ckanext/danepubliczne/controllers/package.py:219
+msgid "Application has been submitted"
+msgstr "Aplikacja została przesłana"
+
+#: ckanext/danepubliczne/templates/package/search.html:20
+#: ckanext/danepubliczne/templates/package/search.html:110
+msgid "Propose new application"
+msgstr "Zaproponuj nową aplikację"
+
+#: ckanext/danepubliczne/templates/package/search.html:100
+msgid "Options"
+msgstr "Opcje"
+
+#: ckanext/danepubliczne/templates/package/search.html:105
+msgid "Download all resources in CSV format"
+msgstr "Pobierz listę wszystkich zasobów w formacie CSV"
+
+msgid "Your email address"
+msgstr "Twój adres e-mail"
+
+msgid "Email address"
+msgstr "Adres e-mail"
+
+msgid "Close"
+msgstr "Zamknij"

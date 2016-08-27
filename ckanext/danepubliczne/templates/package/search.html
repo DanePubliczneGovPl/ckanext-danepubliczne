@@ -10,6 +10,52 @@
 {% block subtitle %}{{ _("Datasets") }}{% endblock %}
 
 {%- block content %}
+  
+  {% if dataset_type == 'application' %}
+    <div id="app-propose" class="modal modal-app-propose fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">{{ _('Propose new application') }}</h4>
+	      </div>
+	        <form action="/application/new" method="post">
+		      <div class="modal-body">
+		        
+		        <input type="hidden" name="from_users" value="1" />
+		        		        
+		        <div class="form-group">
+			      <label for="inputTitle" class="col-lg-2 control-label">{{ _("Title") }}</label>
+			      <div class="col-lg-10">
+			        <input name="title" type="text" class="form-control" id="inputTitle" placeholder="{{ _("Title") }}" required="required">
+			      </div>
+			    </div>
+		        
+		        <div class="form-group">
+			      <label for="textNotes" class="col-lg-2 control-label">{{ _("Description") }}</label>
+			      <div class="col-lg-10">
+			        <textarea name="notes" class="form-control" rows="8" id="textNotes" required="required"></textarea>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{ _("Your email address") }}</label>
+			      <div class="col-lg-10">
+			        <input name="author" type="email" class="form-control" id="inputEmail" placeholder="{{ _("Email address") }}" required="required">
+			      </div>
+			    </div>
+		        
+		      </div>
+		      <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+				<input type="submit" name="save" class="btn btn-primary" value="{{ _('Send') }}" />
+		      </div>
+	        </form>
+	    </div>
+	  </div>
+	</div>
+  {% endif %}
+  
   <form class="search-form" method="get" data-module="select-switch">
     <div id="content" class="list" role="main">
       {% block toolbar %}
@@ -47,6 +93,26 @@
                 {% for facet in c.facet_titles %}
                   {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
                 {% endfor %}
+              {% endblock %}
+              
+              {% block options %}
+                {% if dataset_type == 'dataset' or dataset_type == 'application' %}
+                <h2>{{ _('Options') }}</h2>
+                <section class="module">
+	                <ul class="options-list">
+		                {% if dataset_type == 'dataset' %}
+		                <li class="option">
+		                	<a class="action action-download-datasets" href="/dataset/download"><span class="icon"></span><span class="text">{{ _('Download all resources in CSV format') }}</span></a>
+		                </li>
+		                {% endif %}
+		                {% if dataset_type == 'application' %}
+		                <li class="option">
+		                	<a class="action action-app-propose" href="#" data-toggle="modal" data-target="#app-propose"><span class="icon"></span><span class="text">{{ _('Propose new application') }}</span></a>
+		                </li>
+		                {% endif %}
+	                </ul>
+                </section>
+                {% endif %}
               {% endblock %}
             </aside>
             <div class="dataset-result span9 pull-right">

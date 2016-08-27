@@ -181,7 +181,6 @@ class DanePubliczne(p.SingletonPlugin):
         return {
             'user_autocomplete_email': user_autocomplete_email,
             'member_list': member_list,
-            '_group_or_org_list_filtered': _group_or_org_list_filtered
         }
 
 
@@ -193,7 +192,7 @@ class DanePubliczne(p.SingletonPlugin):
             'user_list': ckan.logic.auth.get.sysadmin,
             'member_list': ckan.logic.auth.get.sysadmin,
             'related_create': ckan.logic.auth.get.sysadmin,
-            'user_show': auth_user_show
+            'user_show': auth_user_show,
         }
 
 
@@ -298,7 +297,6 @@ def auth_user_show(context, data_dict):
         success = context['user'] == data_dict['user_obj'].name
 
     return {'success': success}
-
 
 def linked_org_for(user, maxlength=0, avatar=20):
     if user in [model.PSEUDO_USER__LOGGED_IN, model.PSEUDO_USER__VISITOR]:
@@ -634,7 +632,7 @@ def logic_action_create_package_create(context, data_dict):
     import ckan.plugins as plugins
     import ckan.lib.uploader as uploader
     _check_access = ckan.logic.check_access
-
+    log.warn('logic_action_create_package_create')
     model = context['model']
     user = context['user']
 

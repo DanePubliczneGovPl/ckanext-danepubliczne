@@ -4,8 +4,9 @@ import ckan.model as model
 from ckan.common import c, request
 import ckan.lib.helpers as h
 import ckan.lib.base as base
-
+import ckan.logic as logic
 render = base.render
+NotAuthorized = logic.NotAuthorized
 
 class OrganizationController(group.GroupController, base_organization.OrganizationController):
     default_sort_by = 'metadata_modified desc'
