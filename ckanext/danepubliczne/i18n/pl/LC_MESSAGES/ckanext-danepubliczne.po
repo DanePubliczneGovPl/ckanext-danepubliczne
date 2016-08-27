@@ -1272,3 +1272,21 @@ msgstr "Adres e-mail"
 
 msgid "Close"
 msgstr "Zamknij"
+
+msgid "Dataset title"
+msgstr "Tytuł zbioru danych"
+
+msgid "Dataset notes"
+msgstr "Opis zbioru danych"
+
+msgid "Dataset category"
+msgstr "Kategoria zbioru danych"
+
+msgid "Dataset creation date"
+msgstr "Data utworzenia zbioru danych"
+
+msgid "Dataset modification date"
+msgstr "Data modyfikacji zbioru danych"
+
+msgid "Organization title"
+msgstr "Tytuł organizacji"

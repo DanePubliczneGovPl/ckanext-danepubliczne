@@ -14,7 +14,6 @@ import ckan.lib.plugins
 import ckan.plugins as p
 import ckan.lib.render
 import random
-import string
 from feedback import FeedbackController
 from paste.deploy.converters import asbool
 from ckan.common import OrderedDict, _, json, request, c, g, response
@@ -493,7 +492,10 @@ class PackageController(base_package.PackageController):
             check_access('site_read', context)
         except NotAuthorized:
             abort(401, _('Not authorized to see this page'))
-
+        
+        if request.params.get('action') == 'download_csv':
+            return self.download_csv()
+        
         # unicode format (decoded from utf8)
         q = c.q = request.params.get('q', u'')
         c.query_error = False
@@ -683,6 +685,72 @@ class PackageController(base_package.PackageController):
 
         return render(self._search_template(package_type),
                       extra_vars={'dataset_type': package_type, 'api_search_url_params': api_search_url_params})
+
+    def download_csv(self):
+        #from django.http import HttpResponse
+        #try:
+        from ckan.common import response
+        import csv
+
+        response.headers["Content-Disposition"] = "attachment; filename=resources.csv"
+        context = {'model': model, 'session': model.Session, 'user': c.user or c.author, 'auth_user_obj': c.userobj}
+        data_dict = {
+            'q': '*:*',
+            'facet': 'false',
+            'start': 0,
+            'sort': 'metadata_created desc',
+            'fq': 'capacity:"public" +type:dataset'
+        }
+        query = logic.get_action('package_search')(context, data_dict)
+        datasets = query['results']
+
+        writer = csv.writer(response)
+        writer.writerow([
+        _('ID').encode('utf-8'), 
+        _('Name').encode('utf-8'), 
+        _('Description').encode('utf-8'), 
+        _('URL').encode('utf-8'), 
+        _('Format').encode('utf-8'),
+        _('Type').encode('utf-8'),
+        _('5 Stars of Openness').encode('utf-8'),
+        _('Creation Date').encode('utf-8'),
+        _('Last Modified').encode('utf-8'),
+        _('Dataset name').encode('utf-8'),
+        _('Dataset title').encode('utf-8'),
+        _('Dataset notes').encode('utf-8'),
+        _('Dataset category').encode('utf-8'),
+        _('Dataset creation date').encode('utf-8'),
+        _('Dataset modification date').encode('utf-8'),
+        _('Organization name').encode('utf-8'),
+        _('Organization title').encode('utf-8')
+        ])
+        for dataset in datasets:
+            org = dataset.get('organization')
+            for resource in dataset.get('resources'):
+                writer.writerow([
+                resource.get('id'), 
+                resource.get('name').encode('utf-8'), 
+                resource.get('description').encode('utf-8'), 
+                resource.get('url'), 
+                resource.get('format'),
+                resource.get('resource_type'),
+                resource.get('openness_score'),
+                resource.get('created'),
+                resource.get('last_modified'),
+                dataset.get('name').encode('utf-8'), 
+                dataset.get('title').encode('utf-8'), 
+                dataset.get('notes').encode('utf-8'), 
+                dataset.get('category').encode('utf-8'), 
+                dataset.get('metadata_created'),
+                dataset.get('metadata_modified'),
+                org.get('name').encode('utf-8'),
+                org.get('title').encode('utf-8'),
+                ])
+        return response
+
+        #except:
+        #    return 'except'
+        #    pass
 
     @jsonp.jsonpify
     def jupload_resource(self, id):
