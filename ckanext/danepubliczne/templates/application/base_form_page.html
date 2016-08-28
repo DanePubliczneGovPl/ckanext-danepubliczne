@@ -2,8 +2,8 @@
 
 {% block primary_content %}
   <section class="module">
-    {% block page_header %}{% endblock %}
     <div class="module-content">
+	  {% block page_header %}{% endblock %}
       {% block primary_content_inner %}
         {% block form %}{{ c.form | safe }}{% endblock %}
       {% endblock %}

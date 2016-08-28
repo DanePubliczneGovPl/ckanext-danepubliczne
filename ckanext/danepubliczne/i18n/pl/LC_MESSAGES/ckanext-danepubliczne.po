@@ -357,7 +357,7 @@ msgstr "Edytuj Kategorię"
 #: ckanext/danepubliczne/templates/group/new.html:16
 #: ckanext/danepubliczne/templates/group/new_group_form.html:63
 msgid "Create Category"
-msgstr "Stwórz Kategorię"
+msgstr "Stwórz kategorię"
 
 #: ckanext/danepubliczne/templates/group/new_group_form.html:16
 msgid "Name of category"
@@ -930,7 +930,7 @@ msgid "Update Member"
 msgstr "Aktualizuj pracownika"
 
 msgid "Create an Organization"
-msgstr "Utwórz dostawcę"
+msgstr "Stwórz dostawcę"
 
 #: ckan/templates/organization/new_organization_form.html:19
 msgid "Create Organization"
@@ -1001,12 +1001,12 @@ msgstr "Dodaj zbiór danych"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Utwórz zbiór danych"
+msgstr "Stwórz zbiór danych"
 
 #: ckan/templates/package/snippets/stages.html:25
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
-msgstr "Utwórz zbiór danych"
+msgstr "Stwórz zbiór danych"
 
 #: ckan/lib/mailer.py:119
 #, python-format
@@ -1290,3 +1290,6 @@ msgstr "Data modyfikacji zbioru danych"
 
 msgid "Organization title"
 msgstr "Tytuł organizacji"
+
+msgid "Related datasets"
+msgstr "Powiązane zbiory danych"

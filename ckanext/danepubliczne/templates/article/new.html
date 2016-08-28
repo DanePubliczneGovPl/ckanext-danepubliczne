@@ -4,6 +4,8 @@
 
 {% block secondary %}{% endblock %}
 
+{% block page_header %}<h1 class="page-heading inner">{{ _('Create article') }}</h1>{% endblock %}
+
 {% block breadcrumb_content %}
   {% if pkg %}
     {% set dataset = pkg.title or pkg.name %}

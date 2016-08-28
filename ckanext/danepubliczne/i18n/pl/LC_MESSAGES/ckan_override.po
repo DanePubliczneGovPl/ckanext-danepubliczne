@@ -1131,7 +1131,7 @@ msgstr "Nienazwany zasób"
 
 #: ckan/lib/helpers.py:1080
 msgid "Created new dataset."
-msgstr "Utwórz nowy zbiór danych"
+msgstr "Stwórz nowy zbiór danych"
 
 #: ckan/lib/helpers.py:1082
 msgid "Edited resources."
@@ -1532,12 +1532,12 @@ msgstr "Ten obiekt może utworzyć pętlę w hierarchii"
 #: ckan/logic/action/create.py:158 ckan/logic/action/create.py:534
 #, python-format
 msgid "REST API: Create object %s"
-msgstr "REST API: Utwórz obiekt %s"
+msgstr "REST API: Stwórz obiekt %s"
 
 #: ckan/logic/action/create.py:420
 #, python-format
 msgid "REST API: Create package relationship: %s %s %s"
-msgstr "REST API: Utwórz relację pomiędzy pakietami: %s %s %s"
+msgstr "REST API: Stwórz relację pomiędzy pakietami: %s %s %s"
 
 #: ckan/logic/action/create.py:459
 #, python-format
@@ -2738,7 +2738,7 @@ msgstr ""
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
 msgid "Create a Group"
-msgstr "Utwórz grupę"
+msgstr "Stwórz grupę"
 
 #: ckan/templates/group/new_group_form.html:17
 msgid "Update Group"
@@ -3192,7 +3192,7 @@ msgstr ""
 #: ckan/templates/organization/new.html:7
 #: ckan/templates/organization/new.html:12
 msgid "Create an Organization"
-msgstr "Utwórz Organizację"
+msgstr "Stwórz Organizację"
 
 #: ckan/templates/organization/new_organization_form.html:17
 msgid "Update Organization"
@@ -3275,7 +3275,7 @@ msgstr "Zobacz {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Utwórz Zbiór Danych "
+msgstr "Stwórz Zbiór Danych "
 
 #: ckan/templates/package/base_form_page.html:17
 msgid "What are datasets?"
@@ -3701,7 +3701,7 @@ msgstr "Czytaj zestaw danych w formie %s"
 #: ckan/templates/package/snippets/stages.html:25
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
-msgstr "Utwórz zbiór danych"
+msgstr "Stwórz zbiór danych"
 
 #: ckan/templates/package/snippets/stages.html:32
 #: ckan/templates/package/snippets/stages.html:36
@@ -3833,15 +3833,15 @@ msgstr "Aktualizuj"
 
 #: ckan/templates/related/new.html:3
 msgid "Create a related item"
-msgstr "Utwórz powiązany element"
+msgstr "Stwórz powiązany element"
 
 #: ckan/templates/related/new.html:5
 msgid "Create Related"
-msgstr "Utwórz powiązanie"
+msgstr "Stwórz powiązanie"
 
 #: ckan/templates/related/new.html:7
 msgid "Create Related Item"
-msgstr "Utwórz powiązane elementy"
+msgstr "Stwórz powiązane elementy"
 
 #: ckan/templates/related/snippets/related_form.html:18
 msgid "My Related Item"
@@ -4278,7 +4278,7 @@ msgstr "Następnie zaloguj się , to trwa tylko chwilę."
 
 #: ckan/templates/user/login.html:27
 msgid "Create an Account"
-msgstr "Utwórz konto"
+msgstr "Stwórz konto"
 
 #: ckan/templates/user/login.html:34
 msgid "Forgotten your password?"
@@ -4349,7 +4349,7 @@ msgstr "Imię i nazwisko"
 
 #: ckan/templates/user/new_user_form.html:16
 msgid "Create Account"
-msgstr "Utwórz konto"
+msgstr "Stwórz konto"
 
 #: ckan/templates/user/perform_reset.html:4
 #: ckan/templates/user/perform_reset.html:13
@@ -5076,7 +5076,7 @@ msgstr ""
 
 #: ckan/templates_legacy/home/index.html:38
 msgid "Create a dataset »"
-msgstr "Utwórz zbiór danych»"
+msgstr "Stwórz zbiór danych»"
 
 #: ckan/templates_legacy/home/index.html:40
 msgid "Sign up »"

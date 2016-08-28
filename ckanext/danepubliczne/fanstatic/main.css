@@ -720,3 +720,7 @@ input[type=checkbox]:checked + .checkbox:before {
     height: 100%;
   }
 }
+
+.page-heading.inner {
+	margin-left: 10px;
+}

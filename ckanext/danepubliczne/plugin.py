@@ -115,6 +115,10 @@ class DanePubliczne(p.SingletonPlugin):
 
         return map
 
+    def after_map(self, map):
+        with SubMapper(map, controller='organization') as m:
+            m.connect('organizations_index', '/organization', action='index new read')
+        return map
 
     p.implements(p.ITemplateHelpers)
 

@@ -102,7 +102,7 @@ class OrganizationForm(p.SingletonPlugin, ckan.lib.plugins.DefaultOrganizationFo
     # Below not really interesting code
 
     def new_template(self):
-        return 'group/new.html'
+        return 'organization/new.html'
 
     def about_template(self):
         return 'group/about.html'
