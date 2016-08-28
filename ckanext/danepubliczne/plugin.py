@@ -121,8 +121,22 @@ class DanePubliczne(p.SingletonPlugin):
         return {'dp_check_maintenance': self.h_check_maintenance,
                 'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs,
                 'dp_organization_image': self.h_organization_image,
-                'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable}
+                'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable,
+                'add_url_param_unique': self.h_add_url_param_unique}
 
+    @classmethod
+    def h_add_url_param_unique(self, alternative_url=None, controller=None, action=None, extras=None, new_params=None):
+        from ckan.common import request
+        from ckan.lib import helpers as h
+        log.warn(new_params)
+        params_nopage = [(k, v) for k, v in request.params.items() if ((k != 'page') and (k not in new_params))]
+        params = set(params_nopage)
+        if new_params:
+            params |= set(new_params.items())
+        if alternative_url:
+            return h._url_with_params(alternative_url, params)
+        return h._create_url_with_params(params=params, controller=controller, action=action, extras=extras)
+    
     @classmethod
     def h_get_facet_items_dict_sortable(self, facet, limit=None, exclude_active=False):
         ''' code for this function is copied from lib/helpers.py get_facet_items_dict function
