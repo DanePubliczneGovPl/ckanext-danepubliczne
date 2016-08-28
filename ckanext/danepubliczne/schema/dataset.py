@@ -208,11 +208,36 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['status'] = pkg_dict.get('status')
         return pkg_dict
 
+    def after_(self, context, pkg_dict):
+        self._create_missing_resource_type_tags(pkg_dict)
+	    
     def after_create(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
 
     def after_update(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
+
+    def after_show(self, context, pkg_dict):
+        pkg_dict['resources_tracking_summary'] = self.calculate_resources_tracking(pkg_dict['resources'])
+
+    def after_search(self, search_results, search_params):
+        _results = []
+        for sr in search_results['results']:
+            sr['resources_tracking_summary'] = self.calculate_resources_tracking(sr['resources'])
+            _results.append(sr)
+        search_results['results'] = _results
+        return search_results
+
+    def calculate_resources_tracking(self, resources):
+        total = 0
+        recent = 0
+        try:
+            for res in resources:
+                total += res['tracking_summary']['total']
+                recent += res['tracking_summary']['recent']
+        except:
+            pass
+        return {'total': total, 'recent': recent}
 
     def _create_missing_resource_type_tags(self, pkg_dict):
         context = {'model': model, 'user': g.site_id}

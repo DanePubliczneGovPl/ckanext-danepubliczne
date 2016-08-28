@@ -46,7 +46,7 @@
     </div>
     
     {% if package.type == 'dataset' %}
-	    
+	    <div class="dataset-meta">
 	    {% if package.resources and not hide_resources %}
 	      <ul class="dataset-resources unstyled">
 	        {% for resource in h.dict_list_reduce(package.resources, 'format') %}
@@ -57,8 +57,9 @@
 	      </ul>
 	    {% endif %}
 	    <div class="dataset-tracking">
-		    <span title="{{ _('Views count') }}" class="view">{{ package.tracking_summary.total }}</span>
-		    {# <span title="{{ _('Downloads count') }}" class="download">{{ package.tracking_summary.total }}</span> #}
+		    {% if package.tracking_summary.total %}<span title="{{ _('Views count') }}" class="view">{{ package.tracking_summary.total }}</span>{% endif %}
+		    {% if package.resources_tracking_summary.total %}<span title="{{ _('Downloads count') }}" class="download">{{ package.resources_tracking_summary.total }}</span>{% endif %}
+	    </div>
 	    </div>
 	    
     {% endif %}

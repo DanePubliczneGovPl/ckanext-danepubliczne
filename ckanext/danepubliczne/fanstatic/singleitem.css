@@ -244,7 +244,11 @@
 .wrapper .dataset-result .additional-info .list .dataset-label {
     font-weight: bold;
     text-align: right;
-    width: 25%;
+    width: 35% !important;
+}
+
+.wrapper.singleitem .dataset-result .additional-info .list .dataset-label {
+    width: 25% !important;
 }
 
 /*added after changing additional info to definition list; #183*/
