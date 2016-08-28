@@ -221,11 +221,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['resources_tracking_summary'] = self.calculate_resources_tracking(pkg_dict['resources'])
 
     def after_search(self, search_results, search_params):
-        _results = []
-        for sr in search_results['results']:
+        for i, sr in enumerate(search_results['results']):
             sr['resources_tracking_summary'] = self.calculate_resources_tracking(sr['resources'])
-            _results.append(sr)
-        search_results['results'] = _results
+            search_results['results'][i] = sr
         return search_results
 
     def calculate_resources_tracking(self, resources):
