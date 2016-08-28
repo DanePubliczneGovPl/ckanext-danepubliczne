@@ -100,6 +100,7 @@ class DanePubliczne(p.SingletonPlugin):
             m.connect('dataset_search', '/dataset', action='search',
                       highlight_actions='index search')
             m.connect('jupload_resource', '/dataset/jupload_resource/{id}', action='jupload_resource')
+            m.connect('download', '/dataset/download', action='download')
 
         map.connect('data_feedback_submit', '/feedback_data',
                     controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')

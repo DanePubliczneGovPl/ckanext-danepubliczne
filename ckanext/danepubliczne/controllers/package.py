@@ -493,9 +493,6 @@ class PackageController(base_package.PackageController):
         except NotAuthorized:
             abort(401, _('Not authorized to see this page'))
         
-        if request.params.get('action') == 'download_csv':
-            return self.download_csv()
-        
         # unicode format (decoded from utf8)
         q = c.q = request.params.get('q', u'')
         c.query_error = False
@@ -692,7 +689,7 @@ class PackageController(base_package.PackageController):
         return render(self._search_template(package_type),
                       extra_vars={'dataset_type': package_type, 'api_search_url_params': api_search_url_params})
 
-    def download_csv(self):
+    def download(self):
         #from django.http import HttpResponse
         #try:
         from ckan.common import response
