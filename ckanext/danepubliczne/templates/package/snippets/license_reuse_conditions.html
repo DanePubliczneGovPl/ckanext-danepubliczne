@@ -3,9 +3,8 @@
 {% if h.dp_package_has_license_restrictions(pkg_dict) %}
   <span>{{ _("This dataset is considered public data and can be used under following restrictions") }}:</span>
   <ul>
-    {% if pkg_dict.license_condition_source or pkg_dict.license_condition_timestamp %}
-      <li>{{ _('One should inform about the source of this data') }}</li>
-      <li>{{ _('One should inform about the creation time of reused information as well as time of access to it') }}</li>
+    {% if pkg_dict.license_condition_source %}
+      <li>{{ _('One should inform about the source of this data and the creation time of reused information as well') }}</li>
     {% endif %}
 
     {% if pkg_dict.license_condition_original %}

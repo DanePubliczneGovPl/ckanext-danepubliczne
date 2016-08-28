@@ -619,17 +619,8 @@ msgstr ""
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:7
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:22
-msgid "One should inform about the source of this data"
-msgstr "Odbiorca powinien poinformować o źródle pozyskania informacji"
-
-#: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:8
-#: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:23
-msgid ""
-"One should inform about the creation time of reused information as well "
-"as time of access to it"
-msgstr ""
-"Odbiorca powinien poinformować o czasie wytworzenia i pozyskania "
-"informacji od dostawcy"
+msgid "One should inform about the source of this data and the creation time of reused information as well"
+msgstr "Odbiorca powinien poinformować o źródle, czasie wytworzenia i pozyskania informacji od podmiotu zobowiązanego"
 
 #: ckanext/danepubliczne/templates/package/snippets/license_reuse_conditions.html:12
 #: ckanext/danepubliczne/templates/package/snippets/package_metadata_fields.html:24

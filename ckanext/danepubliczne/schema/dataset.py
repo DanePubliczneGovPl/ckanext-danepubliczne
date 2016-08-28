@@ -179,7 +179,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['license_condition_modification'] = asbool(pkg_dict.get('license_condition_modification'))
         pkg_dict['license_condition_original'] = asbool(pkg_dict.get('license_condition_original'))
         pkg_dict['license_condition_source'] = asbool(pkg_dict.get('license_condition_source'))
-        pkg_dict['license_condition_timestamp'] = asbool(pkg_dict.get('license_condition_timestamp'))
         pkg_dict['license_condition_responsibilities'] = bool(
             pkg_dict.get('license_condition_responsibilities', '').strip())
         pkg_dict['license_condition_db_or_copyrighted'] = bool(

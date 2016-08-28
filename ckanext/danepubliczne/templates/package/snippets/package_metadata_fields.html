@@ -21,8 +21,7 @@
           <legend>
                 {{ _('We publish public data so they can be reused freely and unrestricted. There are exceptions from this rule mentioned below, but we encourage not to restrict them if there is no clear case for that.') }}
           </legend>
-          {% snippet 'snippets/normal_checkbox.html', name='license_condition_source', data = data.license_condition_source, label = _('One should inform about the source of this data') %}
-          {% snippet 'snippets/normal_checkbox.html', name='license_condition_timestamp', data = data.license_condition_timestamp, label = _('One should inform about the creation time of reused information as well as time of access to it') %}
+          {% snippet 'snippets/normal_checkbox.html', name='license_condition_source', data = data.license_condition_source, label = _('One should inform about the source of this data and the creation time of reused information as well') %}
           {% snippet 'snippets/normal_checkbox.html', name='license_condition_original', data = data.license_condition_original, label = _('One should publish a copy of originally accessed data when publishing reused information') %}
           {% snippet 'snippets/normal_checkbox.html', name='license_condition_modification', data = data.license_condition_modification, label = _('One should inform about modifications to originally accessed information') %}
       </fieldset>      
