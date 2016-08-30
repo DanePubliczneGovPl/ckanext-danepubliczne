@@ -53,8 +53,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 cls.h_update_frequencies())
 
     def h_package_has_license_restrictions(self, dpkg):
-        return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',
-                                                                       False) or dpkg.get('license_condition_original',
+        return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_original',
                                                                                           False) \
                or dpkg.get('license_condition_modification', False) or dpkg.get('license_condition_responsibilities',
                                                                                 False) or dpkg.get(
@@ -187,12 +186,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['has_any_reuse_conditions'] = pkg_dict['license_condition_modification'] \
                                                or pkg_dict['license_condition_original'] or pkg_dict[
                                                    'license_condition_source'] \
-                                               or pkg_dict['license_condition_timestamp'] or pkg_dict[
+                                               or pkg_dict[
                                                    'license_condition_responsibilities'] \
                                                or pkg_dict['license_condition_db_or_copyrighted']
 
         restrictions = []
-        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities', 'db_or_copyrighted']:
+        for restr in ['modification', 'original', 'source', 'responsibilities', 'db_or_copyrighted']:
             if pkg_dict['license_condition_' + restr]:
                 restrictions.append(restr)
 
@@ -347,7 +346,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'update_frequency': [from_extras],
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
-            'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
             'license_condition_responsibilities': [from_extras, optional],
@@ -372,7 +370,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
-            'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
             'license_condition_responsibilities': [optional, to_extras],
