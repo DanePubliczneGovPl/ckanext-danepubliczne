@@ -29,7 +29,7 @@
     {% endif %}{% endblock %}</h1>
 
     {% block package_notes %}
-      <small class="metadata">{{ h.render_datetime(h.date_str_to_datetime(pkg.metadata_created)) }}</small>
+      <small class="metadata">{{ h.render_datetime(h.date_str_to_datetime(pkg.date)) }}</small>
       <div class="notes_container">
 	      {% if c.pkg_notes_formatted %}
 	        <div class="notes embedded-content">

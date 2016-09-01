@@ -1,5 +1,9 @@
 {% import 'macros/form.html' as form %}
 
+{% resource 'dane_publiczne/bootstrap-datepicker.js' %}
+{% resource 'dane_publiczne/datepicker.css' %}
+{% resource 'dane_publiczne/app-form.js' %}
+
 {% block package_basic_fields_title %}
   {{ form.input('title', id='field-title', label=_('Title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}) }}
 {% endblock %}
@@ -11,6 +15,8 @@
   {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<slug>'} %}
 
   {{ form.prepend('name', id='field-name', label=_('URL'), prepend=prefix, placeholder=_('eg. my-dataset'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
+
+  {{ form.input('date', id='field-date', label=_('Date'), value=data.date, error=errors.date) }}
 
   {{ form.input('dataset_name', id='field-dataset', label=_('Related dataset'), placeholder=_('Paste URL to related dataset'), value=data.dataset_name, error=errors.dataset, classes=['control-full']) }}
 

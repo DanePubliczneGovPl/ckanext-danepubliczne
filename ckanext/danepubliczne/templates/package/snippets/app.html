@@ -1,6 +1,6 @@
 <li class="article span4">
   <h3><a href="/application/{{ a.name }}" target="_self">{{ a.title }}</a></h3>
-  <small>{{ h.render_datetime(h.date_str_to_datetime(a.metadata_created)) }}</small>
+  <small>{{ h.render_datetime(h.date_str_to_datetime(a.date)) }}</small>
   {% if a.image_url %}
     <a href="/article/{{ a.name }}" target="_self"><img class="article-image" src="/uploads/package/{{ a.image_url }}.2.jpg" /></a>
   {% endif %}

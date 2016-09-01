@@ -213,3 +213,7 @@ select {
         margin-right: -25px;
     }
 }
+
+.dropdown-menu {
+	max-width: 350px;
+}

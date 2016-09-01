@@ -77,7 +77,8 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
             'dataset_name': [optional, to_dataset_name, to_extras],
             'tag_string': schema['tag_string'],
             'resources': schema['resources'],
-            'image_url': [optional, to_extras]
+            'image_url': [optional, to_extras],
+            'date': [optional, to_extras]
         }
 
         return schema
@@ -91,6 +92,7 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
             'status': [from_extras],
             'dataset_name': [from_extras],
             'image_url': [from_extras],
+            'date': [from_extras],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
         })
         return schema

@@ -565,7 +565,7 @@ def generateThumbs(filepath):
     import os.path
     from PIL import Image, ImageOps
 
-    if os.path.isfile(filepath):
+    if filepath and os.path.isfile(filepath):
         log.warn('file_exists')
         image = Image.open(filepath)
         sizes = [('1', (600, 400)), ('2', (400, 300)), ('3', (280, 200))]
