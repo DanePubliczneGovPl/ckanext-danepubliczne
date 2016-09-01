@@ -516,6 +516,7 @@ def logic_action_update_package_update(context, data_dict):
     model.Session.refresh(pkg)
 
     upload.upload(uploader.get_max_image_size())
+    generateThumbs(upload.filepath)
     pkg = model_save.package_dict_save(data, context)
 
     context_org_update = context.copy()
@@ -559,6 +560,19 @@ def logic_action_update_package_update(context, data_dict):
             else ckan.logic.get_action('package_show')(context, {'id': data_dict['id']})
 
     return output
+
+def generateThumbs(filepath):
+    import os.path
+    from PIL import Image, ImageOps
+
+    if os.path.isfile(filepath):
+        log.warn('file_exists')
+        image = Image.open(filepath)
+        sizes = [('1', (600, 400)), ('2', (400, 300)), ('3', (280, 200))]
+
+        for size in sizes:
+            thumb = ImageOps.fit(image, size[1], Image.ANTIALIAS)
+            thumb.save(filepath + "." + size[0] + ".jpg")
 
 def logic_action_create_package_create(context, data_dict):
     '''Create a new dataset (package).
@@ -718,6 +732,7 @@ def logic_action_create_package_create(context, data_dict):
     pkg = model_save.package_dict_save(data, context)
 
     upload.upload(uploader.get_max_image_size())
+    generateThumbs(upload.filepath)
 
     model.setup_default_user_roles(pkg, admins)
     # Needed to let extensions know the package and resources ids

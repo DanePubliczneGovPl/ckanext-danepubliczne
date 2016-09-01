@@ -14,6 +14,7 @@ import ckan.lib.plugins
 import ckan.plugins as p
 import ckan.lib.render
 import random
+import string
 from feedback import FeedbackController
 from paste.deploy.converters import asbool
 from ckan.common import OrderedDict, _, json, request, c, g, response
@@ -132,6 +133,7 @@ class PackageController(base_package.PackageController):
             'ckan/templates/package/base_form_page.html for an example '
             'of the new way to include the form snippet'
             )
+        #return "done"
         return render(new_template,
                       extra_vars={'form_vars': form_vars,
                                   'form_snippet': form_snippet,

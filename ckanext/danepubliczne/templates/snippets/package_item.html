@@ -6,7 +6,7 @@
   {% block package_item_content %}
     {% if package.image_url %}
     <div class="img_container">
-	    <img src="/uploads/package/{{ package.image_url }}" />
+	    <a href="{{ h.url_for(package.type + '_read', id=package.name) }}"><img src="/uploads/package/{{ package.image_url }}.3.jpg" /></a>
     </div>
     {% endif %}
     <div class="dataset-content">
