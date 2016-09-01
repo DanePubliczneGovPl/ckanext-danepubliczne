@@ -467,7 +467,7 @@
 }
 
 .wrapper .dataset-result .dataset-list .dataset-resources li:last-child:after {
-	content: inherit;
+	content: none;
 }
 
 .wrapper .dataset-result .dataset-list .dataset-tracking {
