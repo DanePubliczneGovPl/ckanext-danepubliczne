@@ -84,6 +84,8 @@
 .organization .media-grid .media-item > div {
     width: 100%;
     float: left;
+    margin-bottom: 0;
+    min-height: 83px;
 }
 
 @media (min-width: 992px) {
