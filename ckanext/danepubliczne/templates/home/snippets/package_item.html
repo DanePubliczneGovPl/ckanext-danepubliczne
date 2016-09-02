@@ -42,7 +42,7 @@
 			    {% if package.organization.title %}
 			      <dt class="dataset-label">{{ _("Organization") }}</dt>
 			      <dd class="dataset-details"><a
-			              href="{{ h.url_for('organization', id=package.organization.name) }}">{{ package.organization.title }}</a>
+			              href="/organization/{{package.organization.name}}">{{ package.organization.title }}</a>
 			      </dd>
 			    {% endif %}
 			    
