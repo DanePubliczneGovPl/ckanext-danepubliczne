@@ -205,7 +205,6 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['status'] = pkg_dict.get('status')
         pkg_dict['api'] = 'with_api' if ('API' in types) else ''
-        print(pkg_dict['api'])
         return pkg_dict
 
     def after_(self, context, pkg_dict):
