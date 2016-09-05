@@ -1100,3 +1100,157 @@ msgstr "Odśwież stronę"
 
 msgid "Resource available at"
 msgstr "Pobierz zasób pod adresem"
+
+#: ckanext/danepubliczne/templates/header.html:104
+#: ckanext/danepubliczne/templates/application/base.html:7
+#: ckanext/danepubliczne/templates/application/new.html:15
+#: ckanext/danepubliczne/templates/application/new.html:19
+#: ckanext/danepubliczne/templates/application/search.html:4
+#: ckanext/danepubliczne/templates/application/search.html:8
+#: ckanext/danepubliczne/templates/home/snippets/apps.html:3
+#: ckanext/danepubliczne/templates/package/search.html:68
+#: ckanext/danepubliczne/templates/package/snippets/apps.html:3
+msgid "Applications"
+msgstr "Aplikacje"
+
+#: ckanext/danepubliczne/templates/application/base.html:22
+msgid "Add application"
+msgstr "Dodaj aplikację"
+
+#: ckanext/danepubliczne/templates/application/base_form_page.html:20
+msgid "An application!"
+msgstr "Aplikacja!"
+
+#: ckanext/danepubliczne/templates/application/edit_base.html:16
+msgid "View application"
+msgstr "Zobacz aplikację"
+
+#: ckanext/danepubliczne/templates/application/new.html:3
+#: ckanext/danepubliczne/templates/application/new.html:20
+msgid "Create application"
+msgstr "Stwórz aplikację"
+
+#: ckanext/danepubliczne/templates/application/new_package_form.html:23
+msgid "Update Application"
+msgstr "Zaktualizuj aplikację"
+
+#: ckanext/danepubliczne/templates/application/read.html:23
+#: ckanext/danepubliczne/templates/snippets/package_item.html:37
+msgid "This application is unverified"
+msgstr "Aplikacja niezweryfikowana"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:15
+msgid "Related dataset"
+msgstr "Zbiór danych"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:15
+msgid "Paste URL to related dataset"
+msgstr "Wklej URL do powiązanego zbioru danych"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:31
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:34
+msgid "Text of the application"
+msgstr "Opis aplikacji"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:63
+msgid "Verified"
+msgstr "Zweryfikowana"
+
+msgid "verified"
+msgstr "Zweryfikowane"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:63
+msgid "Unverified"
+msgstr "Niezweryfikowana"
+
+msgid "unverified"
+msgstr "Niezweryfikowane"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_form.html:18
+msgid "Are you sure you want to delete this application?"
+msgstr "Czy na pewno chcesz usunąć tę aplikację?"
+
+#: ckanext/danepubliczne/templates/application/snippets/package_form.html:25
+msgid "Save application"
+msgstr "Zapisz aplikację"
+
+#: ckanext/danepubliczne/templates/home/snippets/apps.html:13
+msgid "Show all applications"
+msgstr "Pokaż wszystkie aplikację"
+
+#: ckanext/danepubliczne/templates/package/search.html:126
+msgid "Add Application"
+msgstr "Dodaj aplikację"
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:39
+msgid "{number} applications found for \"{query}\""
+msgid_plural "{number} applications found for \"{query}\""
+msgstr[0] "Znaleziono {number} aplikację z frazą \"{query}\""
+msgstr[1] "Znaleziono {number} aplikacje z frazą \"{query}\""
+msgstr[2] "Znaleziono {number} aplikacji z frazą \"{query}\""
+
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:40
+msgid "No applications found for \"{query}\""
+msgstr "Brak aplikacji dla frazy \"{query}\""
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:41
+msgid "{number} application found"
+msgid_plural "{number} applications found"
+msgstr[0] "Znaleziono {number} aplikację"
+msgstr[1] "Znaleziono {number} aplikacje"
+msgstr[2] "Znaleziono {number} aplikacji"
+
+#: ckanext/danepubliczne/templates/snippets/search_result_text.html:42
+msgid "No applications found"
+msgstr "Brak aplikacji"
+
+msgid "Search applications..."
+msgstr "Szukaj aplikacji..."
+
+#: ckanext/danepubliczne/controllers/package.py:219
+msgid "Application has been submitted"
+msgstr "Aplikacja została przesłana"
+
+#: ckanext/danepubliczne/templates/package/search.html:20
+#: ckanext/danepubliczne/templates/package/search.html:110
+msgid "Propose new application"
+msgstr "Zaproponuj nową aplikację"
+
+#: ckanext/danepubliczne/templates/package/search.html:100
+msgid "Options"
+msgstr "Opcje"
+
+#: ckanext/danepubliczne/templates/package/search.html:105
+msgid "Download all resources in CSV format"
+msgstr "Pobierz listę wszystkich zasobów w formacie CSV"
+
+msgid "Your email address"
+msgstr "Twój adres e-mail"
+
+msgid "Email address"
+msgstr "Adres e-mail"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "Dataset title"
+msgstr "Tytuł zbioru danych"
+
+msgid "Dataset notes"
+msgstr "Opis zbioru danych"
+
+msgid "Dataset category"
+msgstr "Kategoria zbioru danych"
+
+msgid "Dataset creation date"
+msgstr "Data utworzenia zbioru danych"
+
+msgid "Dataset modification date"
+msgstr "Data modyfikacji zbioru danych"
+
+msgid "Organization title"
+msgstr "Tytuł organizacji"
+
+msgid "Related datasets"
+msgstr "Powiązane zbiory danych"
