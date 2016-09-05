@@ -127,7 +127,8 @@ class DanePubliczne(p.SingletonPlugin):
                 'dp_if_show_gradient_with_tabs': self.h_if_show_gradient_with_tabs,
                 'dp_organization_image': self.h_organization_image,
                 'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable,
-                'add_url_param_unique': self.h_add_url_param_unique}
+                'add_url_param_unique': self.h_add_url_param_unique,
+                'dp_join_datasets': self.h_join_datasets}
 
     @classmethod
     def h_add_url_param_unique(self, alternative_url=None, controller=None, action=None, extras=None, new_params=None):
@@ -213,6 +214,9 @@ class DanePubliczne(p.SingletonPlugin):
             'related_create': ckan.logic.auth.get.sysadmin,
             'user_show': auth_user_show,
         }
+
+    def h_join_datasets(self, datasets):
+        return '&'.join(datasets)
 
 
 @ckan.logic.validate(ckan.logic.schema.default_autocomplete_schema)
@@ -781,7 +785,7 @@ def logic_action_create_package_create(context, data_dict):
 
     return output
 
-def convert_to_dataset_name(url, context):
+def convert_to_dataset_name_string(url, context):
     from urlparse import urlparse
 
     o = urlparse(url)
@@ -795,4 +799,14 @@ def convert_to_dataset_name(url, context):
     if pos != -1:
         output = output[:pos]
     
-    return output
+    return str(output)
+
+def convert_to_dataset_name(url, context):
+    if type(url) is list:
+        url[:] = [convert_to_dataset_name_string(u, context) for u in url]
+        return '&'.join(url)
+    else:
+        return convert_to_dataset_name_string(url, context)
+
+def convert_from_dataset_name(datasets, context):
+    return datasets.split('&')

@@ -217,3 +217,63 @@ select {
 .dropdown-menu {
 	max-width: 350px;
 }
+
+.datasets_picker {
+}
+
+.datasets_picker .inp_group {
+	margin-bottom: 10px;
+	min-height: 30px;
+}
+
+.datasets_picker .inp_group .inp_cont {
+	width: 600px;
+	float: left;
+}
+
+.datasets_picker .inp_group .inp_cont input {
+}
+
+.datasets_picker .inp_group .controlls {
+	width: 60px;
+	height: 20px;
+	margin-left: 610px;
+}
+
+.datasets_picker .inp_group .controlls a {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	display: block;
+	outline: none;
+	font-family: 'ckan';
+	color: #AAA;
+	text-decoration: none;
+	margin: 6px 3px;
+	display: inline-block;
+}
+
+.datasets_picker .inp_group .controlls a.remove:hover {
+	color: #cc0000;
+}
+
+.datasets_picker .inp_group .controlls a.remove:after {
+	content: "\e906";
+}
+
+.datasets_picker > .controlls {
+	padding: 2px 0;
+}
+
+.datasets_picker > .controlls a {
+	text-decoration: none;
+}
+
+.datasets_picker > .controlls a.add:before {
+	content: "\e907";
+	font-family: 'ckan';
+	font-size: 20px;
+	position: relative;
+	top: 3px;
+	margin-right: 5px;
+}

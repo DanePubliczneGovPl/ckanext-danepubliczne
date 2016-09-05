@@ -36,7 +36,7 @@
         {% if package.status == 'unverified' %}
           <small class="status unverified">{{ _('This application is unverified') }}</small>
         {% endif %}
-        <small>{{ h.render_datetime(h.date_str_to_datetime(package.date)) }}</small>
+        {% if package.date %}<small>{{ h.render_datetime(h.date_str_to_datetime(package.date)) }}</small>{% endif %}
         <p>{{ h.dp_shorten_article(notes, 200) }}</p>
       {% else %}
         {% if notes %}

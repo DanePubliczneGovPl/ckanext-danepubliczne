@@ -17,8 +17,12 @@
   {{ form.prepend('name', id='field-name', label=_('URL'), prepend=prefix, placeholder=_('eg. my-dataset'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
 
   {{ form.input('date', id='field-date', label=_('Date'), value=data.date, error=errors.date) }}
-
-  {{ form.input('dataset_name', id='field-dataset', label=_('Related dataset'), placeholder=_('Paste URL to related dataset'), value=data.dataset_name, error=errors.dataset, classes=['control-full']) }}
+  
+  <div class="control-group control-full">
+	  <label for="field-dataset" class="control-label">{{ _('Related dataset') }}</label>
+	  <div class="datasets_picker controls" data-placeholder="{{ _('Paste URL to related dataset') }}" data-value="{{ h.dp_join_datasets(data.dataset_name) }}">
+	  </div>
+  </div>
 
 {% endblock %}
 

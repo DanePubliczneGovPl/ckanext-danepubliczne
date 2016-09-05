@@ -153,6 +153,7 @@ class PackageController(base_package.PackageController):
                 # prevent clearing of groups etc
                 context['allow_partial_update'] = True
                 # sort the tags
+                log.warn(data_dict)
                 if 'tag_string' in data_dict:
                     data_dict['tags'] = self._tag_string_to_list(
                         data_dict['tag_string'])
@@ -366,10 +367,15 @@ class PackageController(base_package.PackageController):
 
         if (c.pkg_dict.get('type') == 'application') and c.pkg_dict.get('dataset_name'):
             try:
-                dataset_data_dict = {'id': c.pkg_dict.get('dataset_name')}
-                c.dataset_pkg_dict = get_action('package_show')(context, dataset_data_dict)
-                c.dataset_pkg = context['package']
-            except :
+                data_dict = {
+                    'q': '*:*',
+                    'fq': '+type:dataset +name:("' + '" OR "'.join(c.pkg_dict.get('dataset_name')) + '")',
+                    'facet': 'false',
+                    'sort': 'metadata_modified desc',
+                }
+                query = logic.get_action('package_search')(context, data_dict)
+                c.datasets = query['results']
+            except:
                 pass
 
         if (c.pkg_dict.get('type') == 'dataset'):

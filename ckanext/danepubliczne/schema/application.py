@@ -78,7 +78,7 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
             'tag_string': schema['tag_string'],
             'resources': schema['resources'],
             'image_url': [optional, to_extras],
-            'date': [optional, to_extras]
+            'date': [to_extras]
         }
 
         return schema
@@ -86,11 +86,12 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
     def show_package_schema(self):
         not_empty = tk.get_validator('not_empty')
         from_extras = tk.get_converter('convert_from_extras')
-        
+        from_dataset_name = dp.convert_from_dataset_name
+
         schema = super(Application, self).show_package_schema()
         schema.update({
             'status': [from_extras],
-            'dataset_name': [from_extras],
+            'dataset_name': [from_extras, from_dataset_name],
             'image_url': [from_extras],
             'date': [from_extras],
             'notes': [not_empty, unicode],  # notes [content] is obligatory

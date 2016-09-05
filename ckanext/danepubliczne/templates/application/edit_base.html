@@ -5,6 +5,11 @@
 
 {% block breadcrumb_content_selected %}{% endblock %}
 
+{% block styles %}
+	{{ super() }}
+	{% resource 'dane_publiczne/newdataset.css' %}
+{% endblock %}
+
 {% block breadcrumb_content %}
   {{ super() }}
   {% if pkg %}

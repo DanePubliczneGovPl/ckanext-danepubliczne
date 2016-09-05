@@ -17,7 +17,7 @@
         {{ _('Private') }}
       </span>
     {% endif %}
-    
+        
     {% if pkg.status == 'unverified' %}
         <div class="alert alert-danger margin-top-10">
         {{ _('This application is unverified') }}
@@ -29,7 +29,7 @@
     {% endif %}{% endblock %}</h1>
 
     {% block package_notes %}
-      <small class="metadata">{{ h.render_datetime(h.date_str_to_datetime(pkg.date)) }}</small>
+      {% if pkg.date %}<small class="metadata">{{ h.render_datetime(h.date_str_to_datetime(pkg.date)) }}</small>{% endif %}
       <div class="notes_container">
 	      {% if c.pkg_notes_formatted %}
 	        <div class="notes embedded-content">
@@ -46,10 +46,12 @@
   {% endblock %}
   
   {% block datasets %}
-    {% if c.dataset_pkg_dict %}
+    {% if c.datasets %}
       <section class="app_dataset">
 	    <h2>{{ _('Related datasets') }}</h2>
-        {{ h.snippet('home/snippets/package_item.html', package = c.dataset_pkg_dict) }}
+	    {% for dataset in c.datasets %}
+        {{ h.snippet('home/snippets/package_item.html', package = dataset) }}
+        {% endfor %}
 	  </section>
     {% endif %}
   {% endblock %}
