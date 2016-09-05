@@ -809,4 +809,7 @@ def convert_to_dataset_name(url, context):
         return convert_to_dataset_name_string(url, context)
 
 def convert_from_dataset_name(datasets, context):
-    return datasets.split('&')
+    try:
+        return datasets.split('&')
+    except:
+        return [];
