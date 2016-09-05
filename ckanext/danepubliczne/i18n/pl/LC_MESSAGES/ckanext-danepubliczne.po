@@ -1254,3 +1254,7 @@ msgstr "Tytuł organizacji"
 
 msgid "Related datasets"
 msgstr "Powiązane zbiory danych"
+
+msgid "Organization type"
+msgstr "Typ dostawcy"
+ 
