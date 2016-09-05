@@ -6654,7 +6654,7 @@ msgstr "Widoki zasobu"
 
 #: ckan/templates/package/resource_read.html:112
 msgid "There are no views created for this resource yet."
-msgstr "Brak wizualizacji danych dla tego zasobu."
+msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku \"Pobierz zasób\"."
 
 #: ckan/templates/package/resource_read.html:116
 msgid "Not seeing the views you were expecting?"
@@ -6739,7 +6739,7 @@ msgstr "To pole zostanie ustawione automatycznie. Możesz pozostawić je puste"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku „Pobierz dane”."
+msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku \"Pobierz zasób\"."
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
