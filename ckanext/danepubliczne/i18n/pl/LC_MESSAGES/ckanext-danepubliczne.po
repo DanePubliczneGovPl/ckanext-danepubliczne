@@ -1141,7 +1141,7 @@ msgstr "Aplikacja niezweryfikowana"
 
 #: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:15
 msgid "Related dataset"
-msgstr "Zbiór danych"
+msgstr "Zbiory danych"
 
 #: ckanext/danepubliczne/templates/application/snippets/package_basic_fields.html:15
 msgid "Paste URL to related dataset"
