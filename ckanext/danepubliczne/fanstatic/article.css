@@ -67,6 +67,10 @@
     margin-right: 8px;
 }
 
+.app_dataset {
+	overflow: auto;
+}
+
 .app_dataset .dataset-item-container {
 	list-style: none;
 	padding: 0;
