@@ -204,6 +204,8 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
         pkg_dict['status'] = pkg_dict.get('status')
+        pkg_dict['api'] = 'with_api' if ('API' in types) else ''
+        print(pkg_dict['api'])
         return pkg_dict
 
     def after_(self, context, pkg_dict):
@@ -217,13 +219,25 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def after_show(self, context, pkg_dict):
         pkg_dict['resources_tracking_summary'] = self.calculate_resources_tracking(pkg_dict['resources'])
+        pkg_dict['api'] = self.has_api(pkg_dict['resources'])
 
     def after_search(self, search_results, search_params):
         for i, sr in enumerate(search_results['results']):
             sr['resources_tracking_summary'] = self.calculate_resources_tracking(sr['resources'])
+            sr['api'] = self.has_api(sr['resources'])
             search_results['results'][i] = sr
         return search_results
-
+    
+    def has_api(self, resources):
+        try:
+            for res in resources:
+                types = res['resource_type'].split(',')
+                if 'API' in types:
+                    return True
+        except:
+            return False
+        return False
+    
     def calculate_resources_tracking(self, resources):
         total = 0
         recent = 0
@@ -279,6 +293,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         ordered_facets_dict['institution_type'] = _('Organization type')
         ordered_facets_dict['groups'] = _('Groups')
         ordered_facets_dict['tags'] = _('Tags')
+        ordered_facets_dict['api'] = _('API provided')
         ordered_facets_dict['res_format'] = _('Formats')
         ordered_facets_dict['res_type'] = _('Resource types')
         ordered_facets_dict['update_frequency'] = _('Update frequency')
@@ -344,6 +359,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({
             'category': [category_from_group],
             'update_frequency': [from_extras],
+            'api': [from_extras],
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
             'license_condition_original': checkboxes,
@@ -366,6 +382,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({
             'category': [category_exists, category_to_group],
             'update_frequency': [not_empty, update_frequency_vocab, to_extras],
+            'api': [optional, to_extras],
             'license_id': [fixed_license, unicode],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc

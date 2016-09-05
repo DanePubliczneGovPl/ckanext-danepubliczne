@@ -432,6 +432,21 @@
     line-height: 1.2em;
 }
 
+.wrapper .dataset-result .dataset-list .dataset-meta .api {
+	float: left;
+	background-color: #77b300;
+	color: #FFF;
+	padding: 1px 3px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin-right: 15px;
+	position: relative;
+	top: 8px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
 .wrapper .dataset-result .dataset-list .dataset-meta {
 	margin-top: 10px;
 	overflow: hidden;

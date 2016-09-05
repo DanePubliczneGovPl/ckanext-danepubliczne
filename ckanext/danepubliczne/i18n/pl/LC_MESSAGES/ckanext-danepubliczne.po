@@ -1283,3 +1283,22 @@ msgstr "Ostatnio aktualizowane zasoby"
 #: ckanext/danepubliczne/templates/home/snippets/datasets.html:15		
 msgid "Show all datasets"		
 msgstr "Pokaż wszystkie zbiory danych"
+
+msgid "One should inform about the source of this data and the creation time of reused information as well"
+msgstr "Odbiorca powinien poinformować o źródle, czasie wytworzenia i pozyskania informacji od podmiotu zobowiązanego"
+
+msgid "API provided"
+msgstr "Udostępnione API"
+
+msgid "with_api"
+msgstr "Zbiory z API"
+
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75		
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46		
+msgid "Views count"		
+msgstr "Liczba wyświetleń"		
+		
+#: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75		
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46		
+msgid "Downloads count"		
+msgstr "Liczba pobrań"
