@@ -1256,5 +1256,30 @@ msgid "Related datasets"
 msgstr "Powiązane zbiory danych"
 
 msgid "Organization type"
-msgstr "Typ dostawcy"
- 
+msgstr "Typ dostawcy"		
+		
+msgid "All institutions"		
+msgstr "Wszystkie instytucje"		
+		
+msgid "State administration institutions"		
+msgstr "Instytucje administracji państwowej"		
+		
+msgid "Local administration institutions"		
+msgstr "Instytucje administracji samorządowej"		
+		
+msgid "State administration"		
+msgstr "Administracja państwowa"		
+		
+msgid "Local administration"		
+msgstr "Administracja samorządowa"		
+		
+msgid "Filter selected"		
+msgstr "Filtr ustawiony"		
+		
+#: ckanext/danepubliczne/templates/home/snippets/datasets.html:3		
+msgid "Recent resources"		
+msgstr "Ostatnio aktualizowane zasoby"		
+
+#: ckanext/danepubliczne/templates/home/snippets/datasets.html:15		
+msgid "Show all datasets"		
+msgstr "Pokaż wszystkie zbiory danych"
