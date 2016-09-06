@@ -134,7 +134,7 @@ class DanePubliczne(p.SingletonPlugin):
     def h_add_url_param_unique(self, alternative_url=None, controller=None, action=None, extras=None, new_params=None):
         from ckan.common import request
         from ckan.lib import helpers as h
-        log.warn(new_params)
+
         params_nopage = [(k, v) for k, v in request.params.items() if ((k != 'page') and (k not in new_params))]
         params = set(params_nopage)
         if new_params:
@@ -570,7 +570,6 @@ def generateThumbs(filepath):
     from PIL import Image, ImageOps
 
     if filepath and os.path.isfile(filepath):
-        log.warn('file_exists')
         image = Image.open(filepath)
         sizes = [('1', (600, 400)), ('2', (400, 300)), ('3', (280, 200))]
 
@@ -669,7 +668,6 @@ def logic_action_create_package_create(context, data_dict):
     import ckan.plugins as plugins
     import ckan.lib.uploader as uploader
     _check_access = ckan.logic.check_access
-    log.warn('logic_action_create_package_create')
     model = context['model']
     user = context['user']
 
