@@ -792,3 +792,7 @@ input[type=checkbox]:checked + .checkbox:before {
 .modal-body .datasets_picker .inp_group .controlls {
 	margin-left: 480px;
 }
+
+.upload-no-link .controls a:nth-child(3) {
+	display: none !important;
+}
