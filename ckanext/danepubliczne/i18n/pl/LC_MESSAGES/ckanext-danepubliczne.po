@@ -1128,7 +1128,7 @@ msgstr "Zobacz aplikację"
 #: ckanext/danepubliczne/templates/application/new.html:3
 #: ckanext/danepubliczne/templates/application/new.html:20
 msgid "Create application"
-msgstr "Stwórz aplikację"
+msgstr "Dodaj aplikację"
 
 #: ckanext/danepubliczne/templates/application/new_package_form.html:23
 msgid "Update Application"
