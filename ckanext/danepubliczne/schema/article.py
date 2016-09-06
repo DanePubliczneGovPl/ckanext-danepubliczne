@@ -151,7 +151,7 @@ def _package_update(context, data_dict=None):
     user = context['user']
     package = auth.get_package_object(context, data_dict)
 
-    if package and package.type == 'article':
+    if package and (package.type == 'article' or package.type == 'application'):
         return {'success': False, 'msg': _('User %s not authorized to update articles') % user}
 
     return auth.update.package_update(context, data_dict)
