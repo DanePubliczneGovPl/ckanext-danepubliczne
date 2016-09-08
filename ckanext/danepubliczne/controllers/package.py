@@ -153,7 +153,6 @@ class PackageController(base_package.PackageController):
                 # prevent clearing of groups etc
                 context['allow_partial_update'] = True
                 # sort the tags
-                log.warn(data_dict)
                 if 'tag_string' in data_dict:
                     data_dict['tags'] = self._tag_string_to_list(
                         data_dict['tag_string'])

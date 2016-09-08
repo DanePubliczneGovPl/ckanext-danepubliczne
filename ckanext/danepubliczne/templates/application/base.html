@@ -14,7 +14,7 @@
       <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
       <li>{% link_for organization|truncate(60), controller='organization', action='read', id=pkg.organization.name %}</li>
     {% else %}
-      <li>{% link_for _('Knowledge base'), named_route='application_search' %}</li>
+      <li>{% link_for _('Applications'), named_route='application_search' %}</li>
     {% endif %}
     <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset|truncate(60), named_route='application_read', id=pkg.name %}</li>
   {% else %}
