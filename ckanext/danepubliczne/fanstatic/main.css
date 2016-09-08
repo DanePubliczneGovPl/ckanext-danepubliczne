@@ -736,15 +736,16 @@ input[type=checkbox]:checked + .checkbox:before {
 .datasets_picker .inp_group .inp_cont {
 	width: 600px;
 	float: left;
+	margin-right: 5px;
 }
 
 .datasets_picker .inp_group .inp_cont input {
 }
 
 .datasets_picker .inp_group .controlls {
-	width: 60px;
+	width: 30px;
 	height: 20px;
-	margin-left: 610px;
+	float: left;
 }
 
 .datasets_picker .inp_group .controlls a {
@@ -768,8 +769,26 @@ input[type=checkbox]:checked + .checkbox:before {
 	content: "\e906";
 }
 
+.datasets_picker .inp_group .status span {
+	font-family: 'ckan';
+	font-size: 18px;
+	position: relative;
+	top: 5px;
+	display: none;
+}
+
+.datasets_picker .inp_group .status .ok:after {
+	content: "\e909";
+	color: #77b300;
+}
+
+.datasets_picker .inp_group .status .notok:after {
+	content: "\e908";
+	color: #cc0000;
+}
+
 .datasets_picker > .controlls {
-	padding: 2px 0;
+	padding: 2px 4px;
 }
 
 .datasets_picker > .controlls a {
@@ -789,10 +808,14 @@ input[type=checkbox]:checked + .checkbox:before {
 	width: 470px;
 }
 
-.modal-body .datasets_picker .inp_group .controlls {
-	margin-left: 480px;
-}
-
 .upload-no-link .controls a:nth-child(3) {
 	display: none !important;
+}
+
+.app_url {
+	font-weight: bold;
+}
+
+.app_url a {
+	font-weight: normal;
 }
