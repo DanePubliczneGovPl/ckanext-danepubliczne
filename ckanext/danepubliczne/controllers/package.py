@@ -47,7 +47,7 @@ def get_action(action):
         return logic.get_action(action)
 
 def _encode_params(params):
-    return [(k, v.encode('utf-8') if isinstance(v, basestring) else str(v))
+    return [(k, v.encode('utf-8', 'ignore') if isinstance(v, basestring) else str(v))
             for k, v in params]
 
 
@@ -717,45 +717,45 @@ class PackageController(base_package.PackageController):
 
         writer = csv.writer(response)
         writer.writerow([
-        _('ID').encode('utf-8'), 
-        _('Name').encode('utf-8'), 
-        _('Description').encode('utf-8'), 
-        _('URL').encode('utf-8'), 
-        _('Format').encode('utf-8'),
-        _('Type').encode('utf-8'),
-        _('5 Stars of Openness').encode('utf-8'),
-        _('Creation Date').encode('utf-8'),
-        _('Last Modified').encode('utf-8'),
-        _('Dataset name').encode('utf-8'),
-        _('Dataset title').encode('utf-8'),
-        _('Dataset notes').encode('utf-8'),
-        _('Dataset category').encode('utf-8'),
-        _('Dataset creation date').encode('utf-8'),
-        _('Dataset modification date').encode('utf-8'),
-        _('Organization name').encode('utf-8'),
-        _('Organization title').encode('utf-8')
+        _('ID').encode('utf-8', 'ignore'), 
+        _('Name').encode('utf-8', 'ignore'), 
+        _('Description').encode('utf-8', 'ignore'), 
+        _('URL').encode('utf-8', 'ignore'), 
+        _('Format').encode('utf-8', 'ignore'),
+        _('Type').encode('utf-8', 'ignore'),
+        _('5 Stars of Openness').encode('utf-8', 'ignore'),
+        _('Creation Date').encode('utf-8', 'ignore'),
+        _('Last Modified').encode('utf-8', 'ignore'),
+        _('Dataset name').encode('utf-8', 'ignore'),
+        _('Dataset title').encode('utf-8', 'ignore'),
+        _('Dataset notes').encode('utf-8', 'ignore'),
+        _('Dataset category').encode('utf-8', 'ignore'),
+        _('Dataset creation date').encode('utf-8', 'ignore'),
+        _('Dataset modification date').encode('utf-8', 'ignore'),
+        _('Organization name').encode('utf-8', 'ignore'),
+        _('Organization title').encode('utf-8', 'ignore')
         ])
         for dataset in datasets:
             org = dataset.get('organization')
             for resource in dataset.get('resources'):
                 writer.writerow([
                 resource.get('id'), 
-                resource.get('name').encode('utf-8'), 
-                resource.get('description').encode('utf-8'), 
+                resource.get('name').encode('utf-8', 'ignore'), 
+                resource.get('description').encode('utf-8', 'ignore'), 
                 resource.get('url'), 
                 resource.get('format'),
                 resource.get('resource_type'),
                 resource.get('openness_score'),
                 resource.get('created'),
                 resource.get('last_modified'),
-                dataset.get('name').encode('utf-8'), 
-                dataset.get('title').encode('utf-8'), 
-                dataset.get('notes').encode('utf-8'), 
-                dataset.get('category').encode('utf-8'), 
+                dataset.get('name').encode('utf-8', 'ignore'), 
+                dataset.get('title').encode('utf-8', 'ignore'), 
+                dataset.get('notes').encode('utf-8', 'ignore'), 
+                dataset.get('category').encode('utf-8', 'ignore'), 
                 dataset.get('metadata_created'),
                 dataset.get('metadata_modified'),
-                org.get('name').encode('utf-8'),
-                org.get('title').encode('utf-8'),
+                org.get('name').encode('utf-8', 'ignore'),
+                org.get('title').encode('utf-8', 'ignore'),
                 ])
         return response
 
