@@ -1176,7 +1176,7 @@ msgstr "Zapisz aplikację"
 
 #: ckanext/danepubliczne/templates/home/snippets/apps.html:13
 msgid "Show all applications"
-msgstr "Pokaż wszystkie aplikację"
+msgstr "Pokaż wszystkie aplikacje"
 
 #: ckanext/danepubliczne/templates/package/search.html:126
 msgid "Add Application"
@@ -1302,3 +1302,6 @@ msgstr "Liczba wyświetleń"
 #: ckanext/danepubliczne/templates/snippets/package_item.html:46		
 msgid "Downloads count"		
 msgstr "Liczba pobrań"
+
+msgid "Application address"
+msgstr "Adres aplikacji"

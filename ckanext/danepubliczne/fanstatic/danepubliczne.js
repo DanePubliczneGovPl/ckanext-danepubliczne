@@ -1,3 +1,16 @@
+function getLocation(href) {
+    var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
+    return match && {
+        protocol: match[1],
+        host: match[2],
+        hostname: match[3],
+        port: match[4],
+        pathname: match[5],
+        search: match[6],
+        hash: match[7]
+    }
+}
+
 var DatasetPicker = function(div) {
 	this.init(div);
 }
@@ -43,8 +56,12 @@ $.extend(DatasetPicker.prototype, {
 	},
 	addInput: function(value) {
 		
+		var that = this;
+		
 		var inp = $('<input>');
-		inp.attr('type', 'text').attr('name', 'dataset_name').attr('placeholder', this.placeholder);
+		inp.attr('type', 'text').attr('name', 'dataset_name').attr('placeholder', this.placeholder).blur(function(event){
+			that.checkInput(inp);
+		});
 		
 		if( value )
 			inp.val( value );
@@ -54,7 +71,7 @@ $.extend(DatasetPicker.prototype, {
 		var that = this;
 		
 		var controlls = $('<div>').addClass('controlls');
-		var remove_btn = $('<a>').attr('href', '#').addClass('remove').click(function(event){
+		var remove_btn = $('<a>').attr('href', '#').attr('title', 'Usuń zbiór').addClass('remove').click(function(event){
 			event.preventDefault();
 			that.removeInput(inp);
 		});
@@ -62,8 +79,9 @@ $.extend(DatasetPicker.prototype, {
 		
 		var inp_div = $('<div>').addClass('inp_group');	
 		var inp_cont = $('<div>').addClass('inp_cont').append(inp);
+		var status = $('<div>').addClass('status').html('<span class="ok" title="Zbiór istnieje na platformie danepubliczne.gov.pl"></span><span class="notok" title="Zbiór nie istnieje na platformie danepubliczne.gov.pl"></span>');
 		
-		inp_div.append(inp_cont).append(controlls);
+		inp_div.append(controlls).append(inp_cont).append(status);
 		this.inputs_div.append(inp_div);
 				
 	},
@@ -84,6 +102,42 @@ $.extend(DatasetPicker.prototype, {
 			}
 			
 		}
+		
+	},
+	checkInput: function(inp) {
+		
+		var status = inp.parents('.inp_group').find('.status');
+		status.find('span').hide();
+		
+		var v = $.trim(inp.val());
+		var l = getLocation(v);
+		var output = l ? l.pathname : v;
+		
+		console.log(output);
+		
+		var pos = output.indexOf('/dataset/')
+	    if( pos != -1 )
+	        output = output.substr(9);
+	        
+	    console.log(output);
+	        
+	    var pos = output.indexOf('/')
+	    if( pos != -1 )
+	        output = output.substr(0, pos);
+	        			
+		inp.val(output);
+		
+		$.ajax({
+	        type: 'HEAD',
+	        url: '/dataset/' + output,
+	        complete: function(xhr) {
+	            if( xhr.status == 200 ) {
+		            status.find('.ok').css({display: 'inline'});
+	            } else {
+		            status.find('.notok').css({display: 'inline'});
+	            }
+	        }
+		});
 		
 	}
 });

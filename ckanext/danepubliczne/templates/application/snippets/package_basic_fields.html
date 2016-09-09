@@ -28,7 +28,7 @@
 
 {% block package_basic_fields_author %}
   {{ form.input('author', id='field-author', label=_('Author'), value=data.author, error=errors.author, classes=['control-full']) }}
-  {{ form.input('app_url', id='field-app_url', label=_('Adres aplikacji'), value=data.app_url, error=errors.app_url, classes=['control-full']) }}
+  {{ form.input('app_url', id='field-app_url', label=_('Application address'), value=data.app_url, error=errors.app_url, classes=['control-full']) }}
 {% endblock %}
 
 {% block package_basic_fields_custom %}

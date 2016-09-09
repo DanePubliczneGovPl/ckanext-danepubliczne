@@ -32,7 +32,7 @@
 
     {% block package_notes %}
       {% if pkg.date %}<small class="metadata">{{ h.render_datetime(h.date_str_to_datetime(pkg.date)) }}</small>{% endif %}
-      {% if pkg.app_url %}<p class="app_url"><a href="{{ pkg.app_url }}" target="_blank">{{ pkg.app_url }}</a></p>{% endif %}
+      {% if pkg.app_url %}<p class="app_url">{{ _('Application address') }}: <a href="{{ pkg.app_url }}" target="_blank">{{ pkg.app_url }}</a></p>{% endif %}
       <div class="notes_container">
 	      {% if c.pkg_notes_formatted %}
 	        <div class="notes embedded-content">
