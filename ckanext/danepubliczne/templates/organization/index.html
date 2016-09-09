@@ -32,17 +32,19 @@
   </div>
   
   {% block organizations_list %}
-    {% if c.page.items or request.params %}
-      {% if c.page.items %}
+    {% if c.page.items %}
         {% snippet "organization/snippets/organization_list.html", organizations=c.page.items %}
-      {% endif %}
     {% else %}
+      {% if c.q %}
+      {% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='organization' %}
+      {% else %}
       <p class="empty">
         {{ _('There are currently no organizations for this site') }}.
         {% if h.check_access('organization_create') %}
           {% link_for _('How about creating one?'), controller='organization', action='new' %}</a>.
         {% endif %}
       </p>
+    {% endif %}
     {% endif %}
   {% endblock %}
 
