@@ -146,9 +146,13 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         # Resource type is multivalue field
         types = []
+        types_upper_case = []
         for tag_string in pkg_dict.get('res_type', []):
             if tag_string:
-                types += [tag.strip() for tag in tag_string.split(',')]
+                t = [tag.strip() for tag in tag_string.split(',')]
+                tuc = [ti.upper() for ti in t]
+                types += t
+                types_upper_case += tuc
 
         pkg_dict['res_type'] = types
 
@@ -204,7 +208,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
         pkg_dict['status'] = pkg_dict.get('status')
-        pkg_dict['api'] = 'with_api' if ('API' in types) else ''
+        pkg_dict['api'] = 'with_api' if ('API' in types_upper_case) else ''
         return pkg_dict
 
     def after_(self, context, pkg_dict):
@@ -231,6 +235,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         try:
             for res in resources:
                 types = res['resource_type'].split(',')
+                types[:] = [t.upper() for t in types]
                 if 'API' in types:
                     return True
         except:
