@@ -118,26 +118,32 @@ $.extend(DatasetPicker.prototype, {
 		var pos = output.indexOf('/dataset/')
 	    if( pos != -1 )
 	        output = output.substr(9);
-	        
-	    console.log(output);
-	        
+	        	        
 	    var pos = output.indexOf('/')
 	    if( pos != -1 )
 	        output = output.substr(0, pos);
 	        			
 		inp.val(output);
 		
-		$.ajax({
-	        type: 'HEAD',
-	        url: '/dataset/' + output,
-	        complete: function(xhr) {
-	            if( xhr.status == 200 ) {
-		            status.find('.ok').css({display: 'inline'});
-	            } else {
-		            status.find('.notok').css({display: 'inline'});
-	            }
-	        }
-		});
+		if( output ) {
+		
+			$.ajax({
+		        type: 'HEAD',
+		        url: '/dataset/' + output,
+		        complete: function(xhr) {
+		            if( xhr.status == 200 ) {
+			            status.find('.ok').css({display: 'inline'});
+		            } else {
+			            status.find('.notok').css({display: 'inline'});
+		            }
+		        }
+			});
+		
+		} else {
+			
+			status.find('.notok').css({display: 'inline'});
+			
+		}
 		
 	}
 });
