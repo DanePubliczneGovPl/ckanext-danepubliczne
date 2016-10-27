@@ -193,12 +193,15 @@
 .homepage .articlesBox .articles .article.box {
     height: 100%;
     min-height: 150px;
+    max-height: 250px;
     border: none;
+    margin-bottom: 100px;
 }
 
 .homepage .articlesBox .articles .article.box a {
     height: 100%;
     min-height: 150px;
+    max-height: 250px;
     display: block;
     position: relative;
 }
