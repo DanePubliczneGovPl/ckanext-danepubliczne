@@ -77,7 +77,7 @@
 			        {% endblock %}
 			      </ul>
 			      {% if package.resources|length > 3 %}
-		              <a class="resources-more" href="#">{{ _("Pokaż więcej zasobów") }} &raquo;</a>
+		              <a class="resources-more" href="{{ h.url_for(package.type + '_read', id=package.name) }}">{{ _("Pokaż więcej zasobów") }} &raquo;</a>
 		          {% endif %}
 			  {% endblock %}
 		  </section>
