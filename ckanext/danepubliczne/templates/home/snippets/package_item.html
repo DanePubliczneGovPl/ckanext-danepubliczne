@@ -70,10 +70,15 @@
 			      <ul class="resource-list">
 			        {% block resource_list_inner %}
 			          {% for resource in package.resources %}
-			            {% snippet 'home/snippets/resource_item.html', pkg=package, res=resource %}
+			          	{% if loop.index <= 3 %}
+				            {% snippet 'home/snippets/resource_item.html', pkg=package, res=resource %}
+			            {% endif %}
 			          {% endfor %}
 			        {% endblock %}
 			      </ul>
+			      {% if package.resources|length > 3 %}
+		              <a class="resources-more" href="#">{{ _("Pokaż więcej zasobów") }} &raquo;</a>
+		          {% endif %}
 			  {% endblock %}
 		  </section>
 		  {% endif %}
