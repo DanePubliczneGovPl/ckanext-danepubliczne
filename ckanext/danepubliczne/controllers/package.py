@@ -708,6 +708,7 @@ class PackageController(base_package.PackageController):
             'q': '*:*',
             'facet': 'false',
             'start': 0,
+            'rows': 10000000,
             'sort': 'metadata_created desc',
             'fq': 'capacity:"public" +type:dataset'
         }
