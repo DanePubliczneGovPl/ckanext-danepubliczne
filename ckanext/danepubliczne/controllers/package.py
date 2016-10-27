@@ -700,7 +700,7 @@ class PackageController(base_package.PackageController):
         #from django.http import HttpResponse
         #try:
         from ckan.common import response
-        import csv
+        import unicodecsv as csv
 
         response.headers["Content-Disposition"] = "attachment; filename=resources.csv"
         context = {'model': model, 'session': model.Session, 'user': c.user or c.author, 'auth_user_obj': c.userobj}
