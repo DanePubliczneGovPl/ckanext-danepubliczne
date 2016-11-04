@@ -11,7 +11,7 @@
   {% set organizations = h.organizations_available(permission='create_dataset') %}
   {% if organizations %}
     <div class="wide organization">
-      {% snippet "organization/snippets/organization_list.html", organizations=organizations %}
+      {% snippet "organization/snippets/my_organization_list.html", organizations=organizations %}
     </div>
   {% else %}
     <p class="empty">
