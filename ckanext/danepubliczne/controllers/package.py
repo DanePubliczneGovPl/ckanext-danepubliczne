@@ -1,5 +1,6 @@
 import logging
 import cgi
+import os
 from urllib import urlencode
 
 from pylons import config
@@ -139,6 +140,18 @@ class PackageController(base_package.PackageController):
                                   'form_snippet': form_snippet,
                                   'dataset_type': package_type})
     
+    def upload(self):
+        log.warning( request.POST['image'].filename )
+
+        newname = ''
+        if request.POST['image'].filename:
+          path = config.get('ckan.storage_path') + '/storage/uploads/package/'
+          newname = ''.join(random.choice(string.digits) for _ in range(16)) + '_' + request.POST['image'].filename
+          fn = os.path.basename(request.POST['image'].filename)
+          open(path + newname, 'w+').write(request.POST['image'].file.read())
+
+        return newname
+
     def _save_new(self, context, package_type=None):
         # The staged add dataset used the new functionality when the dataset is
         # partially created so we need to know if we actually are updating or

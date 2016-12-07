@@ -101,6 +101,7 @@ class DanePubliczne(p.SingletonPlugin):
                       highlight_actions='index search')
             m.connect('jupload_resource', '/dataset/jupload_resource/{id}', action='jupload_resource')
             m.connect('download', '/dataset/download', action='download')
+            m.connect('upload', '/application/upload', action='upload')
 
         map.connect('data_feedback_submit', '/feedback_data',
                     controller='ckanext.danepubliczne.controllers.feedback:FeedbackController', action='data_feedback')
@@ -570,7 +571,7 @@ def generateThumbs(filepath):
     from PIL import Image, ImageOps
 
     if filepath and os.path.isfile(filepath):
-        image = Image.open(filepath)
+        image = Image.open(filepath).convert('RGB')
         sizes = [('1', (600, 400)), ('2', (400, 300)), ('3', (280, 200))]
 
         for size in sizes:
@@ -731,10 +732,17 @@ def logic_action_create_package_create(context, data_dict):
             admins = [user_obj]
             data['creator_user_id'] = user_obj.id
 
-    pkg = model_save.package_dict_save(data, context)
-
     upload.upload(uploader.get_max_image_size())
     generateThumbs(upload.filepath)
+        
+    if 'raw_image_url' in data_dict:
+        data['extras'].append({'key': 'image_url', 'value': data_dict['raw_image_url']})
+        generateThumbs( config.get('ckan.storage_path') + '/storage/uploads/package/' +  data_dict['raw_image_url'] )    
+
+    log.warning('data')
+    log.warning(data)
+
+    pkg = model_save.package_dict_save(data, context)
 
     model.setup_default_user_roles(pkg, admins)
     # Needed to let extensions know the package and resources ids

@@ -1,6 +1,7 @@
 {% extends "page.html" %}
 {% import 'macros/form.html' as form %}
 
+
 {% block styles %}
   {{ super() }}
 
@@ -19,7 +20,7 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title">{{ _('Propose new application') }}</h4>
 	      </div>
-	        <form action="/application/new" method="post">
+	        <form class="dropzone" id="app-propose-form" action="/application/new" method="post" enctype="multipart/form-data">
 		      <div class="modal-body">
 		        
 		        <input type="hidden" name="from_users" value="1" />
@@ -53,6 +54,18 @@
 			    </div>
 			    
 			    <div class="form-group">
+			      <label for="img" class="col-lg-2 control-label">{{ _("Image") }}</label>
+			      <div class="col-lg-10">
+				    <input type="hidden" name="raw_image_url" value="" id="image_field" />
+				    <p class="dropzone-div-cont">
+					    <button id="dropzone-div" type="button" class="btn btn-success btn-sm">Dodaj obraz</button>
+				    </p>
+				    <div id="dropzone-previews"></div>
+				    <div id="dropzone-inputs"></div>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
 			      <label for="inputEmail" class="col-lg-2 control-label">{{ _("Your email address") }}</label>
 			      <div class="col-lg-10">
 			        <input name="author" type="email" class="form-control" id="inputEmail" placeholder="{{ _("Email address") }}" required="required">
@@ -68,6 +81,10 @@
 	    </div>
 	  </div>
 	</div>
+	
+	{% resource 'dane_publiczne/dropzone.js' %}
+    {% resource 'dane_publiczne/dropzone-init.js' %}
+	
   {% endif %}
   
   <form class="search-form" method="get" data-module="select-switch">
