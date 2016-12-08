@@ -236,7 +236,6 @@ class PackageController(base_package.PackageController):
             if (package_type == 'application') and data_dict['from_users']:
                 h.flash_notice(_('Application has been submitted'))
                 self.sendAppConfirmation()
-                return 'OK'
                 redirect('/application')
 
             self._form_save_redirect(pkg_dict['name'], 'new', package_type=package_type)
