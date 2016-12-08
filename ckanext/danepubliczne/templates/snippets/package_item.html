@@ -44,24 +44,26 @@
       {% endif %}
     </div>
     
-    {% if package.type == 'dataset' %}
+    {% if ( (package.type == 'dataset') or (package.type == 'application') ) %}
 	    <div class="dataset-meta">
-	    {% if package.api %}
-	      <span class="api">API</span>
-	    {% endif %}
-	    {% if package.resources and not hide_resources %}
-	      <ul class="dataset-resources unstyled">
-	        {% for resource in h.dict_list_reduce(package.resources, 'format') %}
-	          <li>
-	            {{ resource }}
-	          </li>
-	        {% endfor %}
-	      </ul>
-	    {% endif %}
-	    <div class="dataset-tracking">
-		    {% if package.tracking_summary.total %}<span title="{{ _('Views count') }}" class="view">{{ package.tracking_summary.total }}</span>{% endif %}
-		    {% if package.resources_tracking_summary.total %}<span title="{{ _('Downloads count') }}" class="download">{{ package.resources_tracking_summary.total }}</span>{% endif %}
-	    </div>
+		    {% if package.type == 'dataset' %}
+			    {% if package.api %}
+			      <span class="api">API</span>
+			    {% endif %}
+			    {% if package.resources and not hide_resources %}
+			      <ul class="dataset-resources unstyled">
+			        {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+			          <li>
+			            {{ resource }}
+			          </li>
+			        {% endfor %}
+			      </ul>
+			    {% endif %}
+		    {% endif %}
+		    <div class="dataset-tracking">
+			    {% if package.tracking_summary.total %}<span title="{{ _('Views count') }}" class="view">{{ package.tracking_summary.total }}</span>{% endif %}
+			    {% if package.resources_tracking_summary.total %}<span title="{{ _('Downloads count') }}" class="download">{{ package.resources_tracking_summary.total }}</span>{% endif %}
+		    </div>
 	    </div>
 	    
     {% endif %}

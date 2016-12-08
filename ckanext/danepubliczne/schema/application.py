@@ -128,3 +128,12 @@ class Application(p.SingletonPlugin, tk.DefaultDatasetForm):
     #
     def package_form(self):
         return 'application/new_package_form.html'
+
+    def after_show(self, context, pkg_dict):
+        pkg_dict['resources_tracking_summary'] = self.calculate_resources_tracking(pkg_dict['resources'])
+
+    def after_search(self, search_results, search_params):
+        for i, sr in enumerate(search_results['results']):
+            sr['resources_tracking_summary'] = self.calculate_resources_tracking(sr['resources'])
+            search_results['results'][i] = sr
+        return search_results
