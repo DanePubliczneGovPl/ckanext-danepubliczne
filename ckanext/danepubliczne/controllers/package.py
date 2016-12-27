@@ -1,6 +1,5 @@
 import logging
 import cgi
-import os
 from urllib import urlencode
 
 from pylons import config
@@ -16,11 +15,6 @@ import ckan.plugins as p
 import ckan.lib.render
 import random
 import string
-import smtplib
-import paste.deploy.converters
-from email.mime.text import MIMEText
-from email.header import Header
-from email import Utils
 from feedback import FeedbackController
 from paste.deploy.converters import asbool
 from ckan.common import OrderedDict, _, json, request, c, g, response
@@ -145,18 +139,6 @@ class PackageController(base_package.PackageController):
                                   'form_snippet': form_snippet,
                                   'dataset_type': package_type})
     
-    def upload(self):
-        log.warning( request.POST['image'].filename )
-
-        newname = ''
-        if request.POST['image'].filename:
-          path = config.get('ckan.storage_path') + '/storage/uploads/package/'
-          newname = ''.join(random.choice(string.digits) for _ in range(16)) + '_' + request.POST['image'].filename
-          fn = os.path.basename(request.POST['image'].filename)
-          open(path + newname, 'w+').write(request.POST['image'].file.read())
-
-        return newname
-
     def _save_new(self, context, package_type=None):
         # The staged add dataset used the new functionality when the dataset is
         # partially created so we need to know if we actually are updating or
@@ -220,7 +202,6 @@ class PackageController(base_package.PackageController):
                     data_dict['name'] = 'from_users_' + ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(16))
                     data_dict['status'] = 'unverified';
                     data_dict['private'] = 'False';
-                    
             except:
                 pass
 
@@ -235,7 +216,6 @@ class PackageController(base_package.PackageController):
 
             if (package_type == 'application') and data_dict['from_users']:
                 h.flash_notice(_('Application has been submitted'))
-                self.sendAppConfirmation()
                 redirect('/application')
 
             self._form_save_redirect(pkg_dict['name'], 'new', package_type=package_type)
@@ -303,85 +283,6 @@ class PackageController(base_package.PackageController):
             error_summary = e.error_summary
             return self.edit(name_or_id, data_dict, errors, error_summary)
     
-    def sendAppConfirmation(self):
-
-        body = '<p>Body</p>'
-        subject = 'App proposal'
-        sender_name = 'App proposal sender';
-        recipient_name = config.get('test_email_to')
-        recipient_email = config.get('test_email_to')
-
-        cc = {}
-        headers = {}
-        mail_from = config.get('smtp.mail_from')
-
-        msg = MIMEText(body.encode('utf-8'), 'plain', 'utf-8')
-        for k, v in headers.items(): msg[k] = v
-        subject = Header(subject.encode('utf-8'), 'utf-8')
-        msg['Subject'] = subject
-        msg['From'] = _("%s <%s>") % (sender_name, mail_from)
-        recipient = u"%s <%s>" % (recipient_name, recipient_email)
-        msg['To'] = Header(recipient, 'utf-8')
-
-        ccs = []
-        for mail, name in cc.iteritems():
-            if name:
-                ccs.append(u"%s <%s>" % (name, mail))
-            else:
-                ccs.append(mail)
-
-        if ccs:
-            msg['CC'] = Header(', '.join(ccs), 'utf-8')
-            msg['Date'] = Utils.formatdate(time())
-            msg['X-Mailer'] = "CKAN %s" % ckan.__version__
-
-        # Send the email using Python's smtplib.
-        smtp_connection = smtplib.SMTP()
-        if 'smtp.test_server' in config:
-            # If 'smtp.test_server' is configured we assume we're running tests,
-            # and don't use the smtp.server, starttls, user, password etc. options.
-            smtp_server = config['smtp.test_server']
-            smtp_starttls = False
-            smtp_user = None
-            smtp_password = None
-        else:
-            smtp_server = config.get('smtp.server', 'localhost')
-            smtp_starttls = paste.deploy.converters.asbool(config.get('smtp.starttls'))
-            smtp_user = config.get('smtp.user')
-            smtp_password = config.get('smtp.password')
-        
-        smtp_connection.connect(smtp_server)
-        try:
-            #smtp_connection.set_debuglevel(True)
-
-            # Identify ourselves and prompt the server for supported features.
-            smtp_connection.ehlo()
-
-            # If 'smtp.starttls' is on in CKAN config, try to put the SMTP
-            # connection into TLS mode.
-            if smtp_starttls:
-                if smtp_connection.has_extn('STARTTLS'):
-                    smtp_connection.starttls()
-                    # Re-identify ourselves over TLS connection.
-                    smtp_connection.ehlo()
-                else:
-                    raise mailer.MailerException("SMTP server does not support STARTTLS")
-
-            # If 'smtp.user' is in CKAN config, try to login to SMTP server.
-            if smtp_user:
-                assert smtp_password, ("If smtp.user is configured then smtp.password must be configured as well.")
-                smtp_connection.login(smtp_user, smtp_password)
-
-            smtp_connection.sendmail(mail_from, [recipient_email], msg.as_string())
-            log.info("Sent email to {0}".format(recipient_email))
-
-        except smtplib.SMTPException, e:
-            msg = '%r' % e
-            log.exception(msg)
-            raise mailer.MailerException(msg)
-        finally:
-            smtp_connection.quit()
-            return 1
 
     def read(self, id, format='html'):
         if not format == 'html':
@@ -841,11 +742,11 @@ class PackageController(base_package.PackageController):
                 resource.get('id'), 
                 resource.get('name').replace("\n", "").encode('utf-8', 'ignore'), 
                 resource.get('description').replace("\n", "").encode('utf-8', 'ignore'), 
-                resource.get('url').replace("\n", ""), 
-                resource.get('format').replace("\n", ""),
-                resource.get('resource_type').replace("\n", ""),
+                resource.get('url'), 
+                resource.get('format'),
+                resource.get('resource_type'),
                 resource.get('openness_score'),
-                resource.get('created').replace("\n", ""),
+                resource.get('created'),
                 resource.get('last_modified'),
                 dataset.get('name').replace("\n", "").encode('utf-8', 'ignore'), 
                 dataset.get('title').replace("\n", "").encode('utf-8', 'ignore'), 
