@@ -717,7 +717,7 @@ class PackageController(base_package.PackageController):
 
         writer = csv.writer(response)
         writer.writerow([
-        _('ID').encode('utf-8', 'ignore'), 
+        _('Dataset ID').encode('utf-8', 'ignore'), 
         _('Name').replace("\n", "").encode('utf-8', 'ignore'), 
         _('Description').replace("\n", "").encode('utf-8', 'ignore'), 
         _('URL').replace("\n", "").encode('utf-8', 'ignore'), 
