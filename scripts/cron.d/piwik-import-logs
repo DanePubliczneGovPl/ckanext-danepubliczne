@@ -1,0 +1,2 @@
+# must be run after daily logrotate
+0 7 * * * root python /home/ckan/piwik/stats/misc/log-analytics/import_logs.py --url=https://danepubliczne.gov.pl/stats/ --idsite=2 --enable-http-errors /var/log/ckan/archive/ckan.access.log.1 && /home/ckan/piwik/stats/console core:archive --skip-idsites=1 --url=https://danepubliczne.gov.pl/stats/

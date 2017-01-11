@@ -1,0 +1,1 @@
+5 * * * * ckan php /home/ckan/piwik/stats/console core:archive --url=https://danepubliczne.gov.pl/stats/ --skip-idsites=2

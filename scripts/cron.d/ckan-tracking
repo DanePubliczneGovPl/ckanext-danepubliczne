@@ -1,0 +1,1 @@
+@hourly ckan workon ckan && paster --plugin=ckan tracking update
