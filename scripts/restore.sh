@@ -16,6 +16,7 @@ sudo -u postgres createdb -O ckan ckan -E utf-8
 
 echo "Retrieving latest backup.."
 
+sudo -u ckan ssh $remote_user@$backup_server -C "cat /home/backup/last/$backup_user.timestamp"
 sudo -u ckan ssh $remote_user@$backup_server -C "cat /home/backup/last/$backup_user-ckan.pgdump" | sudo -u postgres pg_restore -d ckan
 
 apachectl start
