@@ -718,44 +718,44 @@ class PackageController(base_package.PackageController):
         writer = csv.writer(response)
         writer.writerow([
         _('Dataset ID').encode('utf-8', 'ignore'), 
-        _('Name').replace("\n", "").encode('utf-8', 'ignore'), 
-        _('Description').replace("\n", "").encode('utf-8', 'ignore'), 
-        _('URL').replace("\n", "").encode('utf-8', 'ignore'), 
-        _('Format').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Type').replace("\n", "").encode('utf-8', 'ignore'),
-        _('5 Stars of Openness').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Creation Date').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Last Modified').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Dataset name').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Dataset title').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Dataset notes').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Dataset category').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Dataset creation date').replace("\n", "").encode('utf-8', 'ignore'),
+        _('Name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+        _('Description').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+        _('URL').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+        _('Format').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Type').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('5 Stars of Openness').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Creation Date').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Last Modified').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Dataset name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Dataset title').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Dataset notes').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Dataset category').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Dataset creation date').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
         _('Dataset modification date').encode('utf-8', 'ignore'),
-        _('Organization name').replace("\n", "").encode('utf-8', 'ignore'),
-        _('Organization title').replace("\n", "").encode('utf-8', 'ignore')
+        _('Organization name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+        _('Organization title').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore')
         ])
         for dataset in datasets:
             org = dataset.get('organization')
             for resource in dataset.get('resources'):
                 writer.writerow([
                 resource.get('id'), 
-                resource.get('name').replace("\n", "").encode('utf-8', 'ignore'), 
-                resource.get('description').replace("\n", "").encode('utf-8', 'ignore'), 
+                resource.get('name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+                resource.get('description').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
                 resource.get('url'), 
                 resource.get('format'),
                 resource.get('resource_type'),
                 resource.get('openness_score'),
                 resource.get('created'),
                 resource.get('last_modified'),
-                dataset.get('name').replace("\n", "").encode('utf-8', 'ignore'), 
-                dataset.get('title').replace("\n", "").encode('utf-8', 'ignore'), 
-                dataset.get('notes').replace("\n", "").encode('utf-8', 'ignore'), 
-                dataset.get('category').replace("\n", "").encode('utf-8', 'ignore'), 
+                dataset.get('name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+                dataset.get('title').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+                dataset.get('notes').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
+                dataset.get('category').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'), 
                 dataset.get('metadata_created'),
                 dataset.get('metadata_modified'),
-                org.get('name').replace("\n", "").encode('utf-8', 'ignore'),
-                org.get('title').replace("\n", "").encode('utf-8', 'ignore'),
+                org.get('name').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
+                org.get('title').replace("\n", "").replace("\r", "").replace("\t", "").encode('utf-8', 'ignore'),
                 ])
         return response
 
