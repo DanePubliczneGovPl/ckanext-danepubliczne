@@ -1,1 +1,1 @@
-@hourly ckan workon ckan && paster --plugin=ckan tracking update
+@hourly ckan /home/ckan/src/ckanext-danepubliczne/scripts/ckan-tracking.sh >> /var/log/ckan/tracking.log 2>&1
