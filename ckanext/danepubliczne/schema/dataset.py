@@ -1,5 +1,6 @@
 import re
 import copy
+import json
 
 from webhelpers.html import literal
 import ckan.new_authz as new_authz
@@ -12,7 +13,6 @@ from paste.deploy.converters import asbool
 from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g, c, request
 from ckan import logic
-from ckanext.fluent.validators import fluent_text_output
 import collections
 
 import logging
@@ -213,7 +213,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def after_(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
-	    
+
     def after_create(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
 
@@ -230,7 +230,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             sr['api'] = self.has_api(sr['resources'])
             search_results['results'][i] = sr
         return search_results
-    
+
     def has_api(self, resources):
         try:
             for res in resources:
@@ -241,7 +241,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         except:
             return False
         return False
-    
+
     def calculate_resources_tracking(self, resources):
         total = 0
         recent = 0
@@ -321,7 +321,10 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def h_translate_facet(cls, label, facet):
         if facet == 'groups':
             group = model.Group.get(label)
-            title_i18n = fluent_text_output(group.extras['title_i18n'])
+
+            title_i18n = group.extras['title_i18n']
+            if isinstance(title_i18n, basestring):
+                title_i18n = json.loads(title_i18n)
 
             return title_i18n[h.lang()]
 
@@ -336,7 +339,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 return _('Restrictions set')
             else:
                 return _('No restrictions')
-        
+
         elif facet == 'institution_type':
             return _(label.capitalize() + ' administration')
 

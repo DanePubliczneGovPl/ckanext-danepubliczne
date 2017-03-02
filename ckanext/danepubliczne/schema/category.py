@@ -4,8 +4,10 @@ import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import ckan.lib.helpers as h
 import ckan.lib.navl.dictization_functions as df
-from ckanext.fluent.validators import fluent_text, fluent_text_output
+from ckan.plugins.toolkit import missing, _, get_validator, Invalid
 
+import json
+import re
 
 class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     '''
@@ -34,7 +36,7 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
                 if extra['key'] == 'color':
                     c['color'] = extra['value']
                 if extra['key'] == 'title_i18n':
-                    c['title_i18n'] = fluent_text_output_backcompat(extra['value'])
+                    c['title_i18n'] = unpack_json_or_text(extra['value'])
 
             categories2.append(c)
 
@@ -92,8 +94,8 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
             # and from_extras is cannot match ('extras', '0', 'key') and does nothing
             'extras': {'value': [], 'key': []},
             'color': default_validators,
-            'title_i18n': [from_extras, optional, fluent_text_output_backcompat],
-            'description': [optional, fluent_text_output_backcompat]
+            'title_i18n': [from_extras, optional, unpack_json_or_text],
+            'description': [optional, unpack_json_or_text]
         })
         return schema
 
@@ -105,8 +107,97 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     form_to_db_schema_api_create = form_to_db_schema_api_update = form_to_db_schema
 
 
-def fluent_text_output_backcompat(value):
-    try:
-        return fluent_text_output(value)
-    except Exception:
-        return {h.lang(): value}
+def unpack_json_or_text(value):
+    if isinstance(value, basestring):
+        try:
+            return json.loads(value)
+        except Exception:
+            return {h.lang(): value}
+
+    return value
+
+# taken from ckanext-fluent
+def fluent_text(key, data, errors, context):
+    # just in case there was an error before our validator,
+    # bail out here because our errors won't be useful
+    if errors[key]:
+        return
+
+    ISO_639_LANGUAGE = u'^[a-z][a-z][a-z]?[a-z]?$'
+    required_langs = [] # Functionality to be used one day
+
+    value = data[key]
+    # 1 or 2. dict or JSON encoded string
+    if value is not missing:
+        if isinstance(value, basestring):
+            try:
+                value = json.loads(value)
+            except ValueError:
+                errors[key].append(_('Failed to decode JSON string'))
+                return
+            except UnicodeDecodeError:
+                errors[key].append(_('Invalid encoding for JSON string'))
+                return
+        if not isinstance(value, dict):
+            errors[key].append(_('expecting JSON object'))
+            return
+
+        for lang, text in value.iteritems():
+            try:
+                m = re.match(ISO_639_LANGUAGE, lang)
+            except TypeError:
+                errors[key].append(_('invalid type for language code: %r')
+                    % lang)
+                continue
+            if not m:
+                errors[key].append(_('invalid language code: "%s"') % lang)
+                continue
+            if not isinstance(text, basestring):
+                errors[key].append(_('invalid type for "%s" value') % lang)
+                continue
+            if isinstance(text, str):
+                try:
+                    value[lang] = text.decode('utf-8')
+                except UnicodeDecodeError:
+                    errors[key]. append(_('invalid encoding for "%s" value')
+                        % lang)
+
+        for lang in required_langs:
+            if value.get(lang):
+                continue
+            errors[key].append(_('Required language "%s" missing') % lang)
+
+        if not errors[key]:
+            data[key] = json.dumps(value)
+        return
+
+    # 3. separate fields
+    output = {}
+    prefix = key[-1] + '-'
+    extras = data.get(key[:-1] + ('__extras',), {})
+
+    for name, text in extras.iteritems():
+        if not name.startswith(prefix):
+            continue
+        lang = name.split('-', 1)[1]
+        m = re.match(ISO_639_LANGUAGE, lang)
+        if not m:
+            errors[name] = [_('invalid language code: "%s"') % lang]
+            output = None
+            continue
+
+        if output is not None:
+            output[lang] = text
+
+    for lang in required_langs:
+        if extras.get(prefix + lang):
+            continue
+        errors[key[:-1] + (key[-1] + '-' + lang,)] = [_('Missing value')]
+        output = None
+
+    if output is None:
+        return
+
+    for lang in output:
+        del extras[prefix + lang]
+    data[key] = json.dumps(output)
