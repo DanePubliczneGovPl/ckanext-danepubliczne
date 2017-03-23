@@ -6,7 +6,7 @@ CURR_PLUGIN_DIRNAME=$(basename $(readlink -m $0/../../../..))
 CURR_PLUGIN=${CURR_PLUGIN_DIRNAME:8}
 
 LANGUAGES=en
-PLUGINS=$CURR_PLUGIN
+PLUGINS="danepubliczne qa archiver report"
 CKAN_I18N=$SRC_DIR/ckan/ckan/i18n/
 
 while getopts ":l:p:" opt; do
@@ -19,7 +19,6 @@ while getopts ":l:p:" opt; do
     ;;
   esac
 done
-
 
 for LANGUAGE in $LANGUAGES
 do

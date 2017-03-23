@@ -27,7 +27,7 @@
                   {% set openess_info = h.dp_openess_info(openess_score) %}
                   <span>
                   <span class="wcag_hide">{{ openess_info }}</span>
-                  <span class="star-rating-stars">
+                  <span class="star-rating-stars" title="{{ openess_info }}">
                   {%- for index in range(5) -%}
                     {%- if index < openess_score -%}
                       <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16"

@@ -870,3 +870,14 @@ input[type=checkbox]:checked + .checkbox:before {
   left: 50%;
   margin-left: -27px;
 }
+
+.qa.resource-qa {
+  margin-bottom: 10px;
+}
+
+.archiver.link-broken {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: thin red dashed;
+  padding: 11px;
+}

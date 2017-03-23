@@ -64,7 +64,14 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         if isinstance(score, str) or isinstance(score, unicode):
             score = int(score)
 
-        qa_captions = [_('Missing QA information')] + QAPlugin.get_qa_captions()
+        qa_captions = [
+            _('Missing QA information'),
+            _('Unstructured data (e.g. PDF)'),
+            _('Structured data but proprietry format (e.g. Excel)'),
+            _('Structured data in open format (e.g. CSV)'),
+            _('Linkable data - served at URIs (e.g. RDF)'),
+            _('Linked data - data URIs and linked to other data (e.g. RDF)'),
+        ]
 
         return qa_captions[max(score, 0)]
 

@@ -9,8 +9,8 @@ reason - A reason why the dataset doesn't have a rating.
 
 #}
 <span class="star-rating{% if stars <= 0 %} no-stars{% endif %}">
-  {%- if stars <= 0 -%}
-    {{ _("Not Rated") }}
+  {%- if stars == None-%}
+    {{ _("Not Rated") }} {{ reason }}
   {%- else -%}
     <a href="http://5stardata.info/">
     <span class="star-rating-stars">

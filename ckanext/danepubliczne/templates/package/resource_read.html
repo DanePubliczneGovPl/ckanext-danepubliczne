@@ -10,7 +10,6 @@
 
 {% block scripts %}
   {{ super() }}
-  {% resource 'ckanext-qa/qa.js' %}
 {% endblock %}
 
 {% block wrapper_class %} singleresource{% endblock %}
@@ -74,17 +73,17 @@
           {% block resource_content %}
             {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) }}</h1>
             {% endblock %}
-            {% block qa_stars %}
-              {{ h.qa_stars(c.resource.id) }}
-            {% endblock %}
+            {{ h.qa_openness_stars_resource_html(c.resource) }}
 
             {% block resource_read_url %}
-              {% if res.url and h.is_url(res.url) %}
-                <p class="muted ellipsis">{{ _('URL') }}: <a href="{{ res.url }}"><span class="wcag_hide">{{ _('Resource available at') }}</span>{{ res.url }}</a></p>
-              {% elif res.url %}
-                <p class="muted ellipsis">{{ _('URL') }}: {{ res.url }}</p>
-              {% endif %}
+              <p>
+                <a href="{{ res.url }}">
+                  <span class="icon icon-download-alt"></span>
+                  {{ _('Download resource') }}</a>
+              </p>
             {% endblock %}
+            {{ h.archiver_is_resource_broken_html(c.resource) }}
+            {{ h.archiver_is_resource_cached_html(c.resource) }}
 
             <div class="prose notes" property="rdfs:label">
               {% if res.description %}

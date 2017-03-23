@@ -88,7 +88,6 @@ class DanePubliczne(p.SingletonPlugin):
     def before_map(self, map):
         map.connect('sitemap', '/sitemap', controller='ckanext.danepubliczne.controllers.home:HomeController', action='sitemap')
         map.connect('ckanadmin_config', '/ckan-admin/config', controller='admin', action='config', ckan_icon='check')
-        map.connect('qa_index', '/qa', controller='ckanext.qa.controller:QAController', action='index')
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
