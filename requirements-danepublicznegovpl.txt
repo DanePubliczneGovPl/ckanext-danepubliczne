@@ -1,0 +1,79 @@
+# All requirements of all plugins that are used on production
+
+amqplib==1.0.2
+anyjson==0.3.3
+Babel==0.9.6
+Beaker==1.6.4
+Biryani==0.10.4
+celery==2.4.2
+certifi==2016.9.26
+cffi==1.9.1
+chardet==2.3.0
+cryptography==1.7.1
+decorator==3.4.0
+enum34==1.1.6
+fanstatic==0.12
+FormEncode==1.2.6
+Genshi==0.6
+html5lib==0.999999999
+idna==2.2
+ipaddress==1.0.17
+Jinja2==2.6
+json-table-schema==0.2.1
+kombu==2.1.3
+kombu-sqlalchemy==1.1.0
+lxml==3.7.2
+Mako==0.9.0
+MarkupSafe==0.18
+messytables==0.15.1
+nose==1.3.0
+ofs==0.4.1
+olefile==0.44
+Pairtree===0.7.1-T
+passlib==1.6.2
+Paste==1.7.5.1
+PasteDeploy==1.5.0
+PasteScript==1.7.5
+pbr==0.8.2
+Pillow==4.0.0
+psycopg2==2.4.5
+pyasn1==0.1.9
+pycparser==2.17
+Pygments==1.6
+Pylons==0.9.7
+pyOpenSSL==16.2.0
+python-dateutil==1.5
+python-magic==0.4.12
+pytz==2016.10
+pyutilib.component.core==4.5.3
+repoze.lru==0.6
+repoze.who==2.0
+repoze.who-friendlyform==1.0.8
+requests==2.3.0
+Routes==1.13
+simplejson==3.3.1
+six==1.7.3
+solrpy==0.9.5
+SQLAlchemy==0.9.6
+sqlalchemy-migrate==0.9.1
+sqlparse==0.1.11
+Tempita==0.5.2
+unicodecsv==0.9.4
+urllib3==1.19.1
+vdm==0.13
+webencodings==0.5
+WebError==0.10.3
+WebHelpers==1.3
+WebOb==1.0.8
+WebTest==1.4.3
+xlrd==1.0.0
+zope.interface==4.1.1
+
+-e git+https://github.com/DanePubliczneGovPl/ckan.git@f117ada3aa5e5540e520dc8100798b4659799cc2#egg=ckan
+-e git+git@github.com:DanePubliczneGovPl/ckanext-archiver@90945f87d13a1e11798d3b546f18ea3c11e7c312#egg=ckanext_archiver
+-e git+https://github.com/DanePubliczneGovPl/ckanext-danepubliczne@b34df462486a98a9f36d78f7608570c1c05b68ee#egg=ckanext_danepubliczne
+-e git+https://github.com/open-data/ckanext-fluent@d3287d50974248a71e72b8ef45c45bbd726d6127#egg=ckanext_fluent
+-e git+https://github.com/DanePubliczneGovPl/ckanext-qa@651bfabfb77096b261fb1ae98af373c03bb9f4db#egg=ckanext_qa
+-e git+https://github.com/DanePubliczneGovPl/ckanext-searchhistory@7308a1b2d576db8dcc5b5ced9641127daa403526#egg=ckanext_searchhistory
+
+-e .
