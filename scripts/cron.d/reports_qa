@@ -1,0 +1,1 @@
+@daily ckan /home/ckan/.virtualenvs/ckan/bin/paster --plugin=ckanext-report report generate

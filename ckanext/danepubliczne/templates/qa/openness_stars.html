@@ -24,11 +24,15 @@ OR the package_show's package['qa'] e.g.
     <a href="#" data-toggle="collapse" data-target=".rating-info-wrapper"
        data-hide-text="{{ _('Hide rating info') }}">{{ _('What these stars mean') }}…</a><br/>
     <span>{% trans %}Checked{% endtrans %}: {{ h.render_datetime(updated) }}</span><br/>
-    {% if c.userobj and openness_score == -1 %}
-      {% trans %}Reason{% endtrans %}: {{ openness_score_reason }}
-    {% endif %}
 
     <div class="rating-info-wrapper js-hide">
+      <p style="margin-bottom: 10px">
+      {% if openness_score >= 1 %}
+        {% trans %}Reason{% endtrans %}: {{ openness_score_reason }}
+      {% elif openness_score == 0 %}
+        {% trans %}Reason{% endtrans %}: {% trans %}File could not be downloaded.{% endtrans %}
+      {% endif %}
+      </p>
       {% snippet 'qa/stars_explained.html', openness_score=openness_score %}
     </div>
   {% else %}
