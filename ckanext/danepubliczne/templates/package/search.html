@@ -181,7 +181,9 @@
                       (_('Name Descending'), 'name desc'),
                       (_('Last Modified'), 'metadata_modified desc'),
                       (_('Creation Date'), 'metadata_created desc'),
-                      (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
+                      (_('Popular recently'), 'views_recent desc') if g.tracking_enabled else (false, false),
+                      (_('Popular'), 'views_total desc') if g.tracking_enabled else (false, false) ]
+                    %}
 
                     <div class="form-select control-group control-order-by">
                       <label for="field-order-by">{{ _('Order by') }}</label>

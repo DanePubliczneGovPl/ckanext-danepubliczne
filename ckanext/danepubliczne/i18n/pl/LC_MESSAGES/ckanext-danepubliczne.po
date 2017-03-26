@@ -105,6 +105,12 @@ msgstr ""
 msgid "Login failed. Wrong email or password."
 msgstr "Niepoprawne dane logowania. Błędny email lub hasło."
 
+#: ckanext/danepubliczne/templates/group/read_base.html:117
+#: ckanext/danepubliczne/templates/organization/read_base.html:136
+#: ckanext/danepubliczne/templates/package/search.html:184
+msgid "Popular recently"
+msgstr "Popularne ostatnio"
+
 #: ckanext/danepubliczne/controllers/user.py:294
 #, python-format
 msgid "Email not registered: %s"
