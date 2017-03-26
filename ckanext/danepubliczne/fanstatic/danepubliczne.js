@@ -155,7 +155,7 @@ if (!Cookies.get('kukiz_accept_cookies')) {
   });
 
   $('body').on('click', '.alert.cookie.notice a.close', function() {
-    Cookies.set('kukiz_accept_cookies', 'http://media.giphy.com/media/whNK1SAMSQjwQ/giphy.gif')
+    Cookies.set('kukiz_accept_cookies', 'http://media.giphy.com/media/whNK1SAMSQjwQ/giphy.gif', { expires: 365 });
   });
 }
 
@@ -206,7 +206,35 @@ $('a[href="#field-sitewide-search"]').click(function(e){
     window.location = '#field-sitewide-search';
     document.getElementById("field-sitewide-search").focus();
     return false;
-})
+});
+
+$(function() {
+    $('[data-toggle="collapse"]').on({
+        click: function(event) {
+            event.preventDefault();
+            var toggle = $(event.target);
+            var target = $(toggle.data('target'));
+
+            if (target.is(':visible')) {
+                target.hide();
+                toggle.trigger('hidden');
+            } else {
+                target.show();
+                target.height('auto');
+                toggle.trigger('shown');
+            }
+        },
+        shown: function(event) {
+            var link = jQuery(event.target);
+            link.data('showText', link.text());
+            link.text(link.data('hideText'));
+        },
+        hidden: function(event) {
+            var link = jQuery(event.target);
+            link.text(link.data('showText'));
+        }
+    });
+});
 
 $(document).ready(function(){
 	_dp = new DatasetPicker('.datasets_picker');

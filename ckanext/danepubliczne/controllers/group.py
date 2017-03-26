@@ -69,7 +69,7 @@ class GroupController(base_group.GroupController):
         params_nopage = [(k, v) for k, v in request.params.items()
                          if k != 'page']
 
-        default_sort_by = 'views_recent desc' if g.tracking_enabled else None
+        default_sort_by = 'metadata_modified desc'
         sort_by = request.params.get('sort', default_sort_by)
 
         def search_url(params):

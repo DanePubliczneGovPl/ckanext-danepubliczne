@@ -1,0 +1,86 @@
+# All requirements of all plugins that are used on production
+
+amqp==1.0.13
+amqplib==1.0.2
+anyjson==0.3.3
+asn1crypto==0.22.0  # urllib3[secure]
+Babel==0.9.6
+Beaker==1.6.4
+Biryani==0.10.4
+celery==2.4.2
+certifi==2017.1.23  # urllib3[secure]
+cffi==1.10.0        # urllib3[secure]
+chardet==2.3.0
+cryptography==1.8.1 # urllib3[secure]
+decorator==3.4.0
+enum34==1.1.6       # urllib3[secure]
+fanstatic==0.12
+FormEncode==1.2.6
+Genshi==0.6
+html5lib==0.999999999
+idna==2.5           # urllib3[secure]
+ipaddress==1.0.18   # urllib3[secure]
+Jinja2==2.8
+json-table-schema==0.2.1
+kombu==2.5.0
+kombu-sqlalchemy==1.1.0
+lxml==3.7.2
+Mako==0.9.0
+MarkupSafe==0.18
+messytables==0.15.2
+nose==1.3.0
+ofs==0.4.1
+olefile==0.44
+packaging==16.8     # urllib3[secure]
+Pairtree===0.7.1-T
+passlib==1.6.2
+Paste==1.7.5.1
+PasteDeploy==1.5.0
+PasteScript==1.7.5
+pbr==0.8.2
+Pillow==4.0.0
+pipdeptree==0.10.1
+progressbar==2.3
+psycopg2==2.4.5
+pycparser==2.17     # urllib3[secure]
+Pygments==1.6
+Pylons==0.9.7
+pyOpenSSL==16.2.0   # urllib3[secure]
+pyparsing==2.2.0    # urllib3[secure]
+python-dateutil==1.5
+python-magic==0.4.12
+pytz==2016.6.1
+pyutilib.component.core==4.5.3
+redis==2.10.5
+repoze.lru==0.6
+repoze.who==2.0
+repoze.who-friendlyform==1.0.8
+requests==2.3.0
+Routes==1.13
+simplejson==3.3.1
+six==1.10.0
+solrpy==0.9.5
+SQLAlchemy==0.9.6
+sqlalchemy-migrate==0.9.1
+sqlparse==0.1.11
+Tempita==0.5.2
+unicodecsv==0.9.4
+urllib3==1.20       # urllib3[secure]
+vdm==0.13
+webencodings==0.5
+WebError==0.10.3
+WebHelpers==1.3
+WebOb==1.0.8
+WebTest==1.4.3
+xlrd==1.0.0
+zope.interface==4.1.1
+
+
+-e git+https://github.com/DanePubliczneGovPl/ckan@release-v2.3.5#egg=ckan
+-e git+https://github.com/DanePubliczneGovPl/ckanext-archiver@danepubliczne#egg=ckanext_archiver
+-e git+https://github.com/DanePubliczneGovPl/ckanext-danepubliczne@master#egg=ckanext_danepubliczne
+-e git+https://github.com/DanePubliczneGovPl/ckanext-qa@danepubliczne#egg=ckanext_qa
+-e git+https://github.com/DanePubliczneGovPl/ckanext-report@danepubliczne#egg=ckanext_report
+-e git+https://github.com/DanePubliczneGovPl/ckanext-searchhistory@danepubliczne#egg=ckanext_searchhistory
+
+-e .

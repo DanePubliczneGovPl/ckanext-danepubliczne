@@ -88,7 +88,6 @@ class DanePubliczne(p.SingletonPlugin):
     def before_map(self, map):
         map.connect('sitemap', '/sitemap', controller='ckanext.danepubliczne.controllers.home:HomeController', action='sitemap')
         map.connect('ckanadmin_config', '/ckan-admin/config', controller='admin', action='config', ckan_icon='check')
-        map.connect('qa_index', '/qa', controller='ckanext.qa.controller:QAController', action='index')
 
         with SubMapper(map, controller='ckanext.danepubliczne.controllers.user:UserController') as m:
             m.connect('user_dashboard_search_history', '/dashboard/search_history',
@@ -129,7 +128,8 @@ class DanePubliczne(p.SingletonPlugin):
                 'dp_organization_image': self.h_organization_image,
                 'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable,
                 'add_url_param_unique': self.h_add_url_param_unique,
-                'dp_join_datasets': self.h_join_datasets}
+                'dp_join_datasets': self.h_join_datasets,
+                'render_datetime_now': self.h_render_datetime_now}
 
     @classmethod
     def h_add_url_param_unique(self, alternative_url=None, controller=None, action=None, extras=None, new_params=None):
@@ -143,6 +143,11 @@ class DanePubliczne(p.SingletonPlugin):
         if alternative_url:
             return h._url_with_params(alternative_url, params)
         return h._create_url_with_params(params=params, controller=controller, action=action, extras=extras)
+
+    @classmethod
+    def h_render_datetime_now(cls):
+        from datetime import datetime
+        return datetime.now().strftime('%b %d %H:%M:%S.%f %Y')
     
     @classmethod
     def h_get_facet_items_dict_sortable(self, facet, limit=None, exclude_active=False):
@@ -738,9 +743,6 @@ def logic_action_create_package_create(context, data_dict):
     if 'raw_image_url' in data_dict:
         data['extras'].append({'key': 'image_url', 'value': data_dict['raw_image_url']})
         generateThumbs( config.get('ckan.storage_path') + '/storage/uploads/package/' +  data_dict['raw_image_url'] )    
-
-    log.warning('data')
-    log.warning(data)
 
     pkg = model_save.package_dict_save(data, context)
 

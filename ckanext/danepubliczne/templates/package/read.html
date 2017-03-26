@@ -2,11 +2,6 @@
 
 {% set pkg = c.pkg_dict %}
 
-{% block scripts %}
-  {{ super() }}
-  {% resource 'ckanext-qa/qa.js' %}
-{% endblock %}
-
 {% block wrapper_class %} singleitem{% endblock %}
 
 {% block primary_content_inner %}

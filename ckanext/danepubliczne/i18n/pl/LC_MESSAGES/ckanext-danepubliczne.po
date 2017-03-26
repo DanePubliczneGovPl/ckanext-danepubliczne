@@ -105,6 +105,12 @@ msgstr ""
 msgid "Login failed. Wrong email or password."
 msgstr "Niepoprawne dane logowania. Błędny email lub hasło."
 
+#: ckanext/danepubliczne/templates/group/read_base.html:117
+#: ckanext/danepubliczne/templates/organization/read_base.html:136
+#: ckanext/danepubliczne/templates/package/search.html:184
+msgid "Popular recently"
+msgstr "Popularne ostatnio"
+
 #: ckanext/danepubliczne/controllers/user.py:294
 #, python-format
 msgid "Email not registered: %s"
@@ -1086,6 +1092,19 @@ msgstr "Zobacz dane kontaktowe i zbiory danych tej organizacji"
 msgid "Expand menu"
 msgstr "Rozwiń menu"
 
+#: ckanext/danepubliczne/templates/error_document_template.html:7
+msgid "Page not found"
+msgstr "Nie znaleziono strony"
+
+#: ckanext/danepubliczne/templates/error_document_template.html:8
+#, python-format
+msgid ""
+"Would you like come back to %(link1)sthe homepage%(endlink)s or "
+"%(link2)sreport an issue on Github%(endlink)s?"
+msgstr ""
+"Czy chcesz wrócić do %(link1)sstrony głównej%(endlink)s czy "
+"%(link2)szgłosić to administratorom na Github%(endlink)s?"
+
 #: ckanext/danepubliczne/templates/error_document_template.html:6
 msgid "Server error has occurred"
 msgstr "Wystąpił błąd serwera"
@@ -1299,9 +1318,17 @@ msgid "Views count"
 msgstr "Liczba wyświetleń"		
 		
 #: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75		
-#: ckanext/danepubliczne/templates/snippets/package_item.html:46		
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46
 msgid "Downloads count"		
 msgstr "Liczba pobrań"
+
+#: ckanext/danepubliczne/templates/package/resource_read.html:84
+#, python-format
+msgid "%(count)s download"
+msgid_plural "%(count)s downloads"
+msgstr[0] "%(count)s pobranie"
+msgstr[1] "%(count)s pobrania"
+msgstr[2] "%(count)s pobrań"
 
 msgid "Application address"
 msgstr "Adres aplikacji"
