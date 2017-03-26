@@ -738,9 +738,6 @@ def logic_action_create_package_create(context, data_dict):
         data['extras'].append({'key': 'image_url', 'value': data_dict['raw_image_url']})
         generateThumbs( config.get('ckan.storage_path') + '/storage/uploads/package/' +  data_dict['raw_image_url'] )    
 
-    log.warning('data')
-    log.warning(data)
-
     pkg = model_save.package_dict_save(data, context)
 
     model.setup_default_user_roles(pkg, admins)
