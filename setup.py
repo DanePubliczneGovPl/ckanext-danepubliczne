@@ -13,7 +13,7 @@ setup(
     # Versions should comply with     .  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='1.1.0',
+    version='1.2.0',
 
     description='''Extension handling DanePubliczne.gov.pl (PublicData.gov.pl) site''',
     long_description=long_description,
@@ -30,7 +30,7 @@ setup(
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 6 - Mature',
 
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
 
