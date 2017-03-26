@@ -155,7 +155,7 @@ if (!Cookies.get('kukiz_accept_cookies')) {
   });
 
   $('body').on('click', '.alert.cookie.notice a.close', function() {
-    Cookies.set('kukiz_accept_cookies', 'http://media.giphy.com/media/whNK1SAMSQjwQ/giphy.gif')
+    Cookies.set('kukiz_accept_cookies', 'http://media.giphy.com/media/whNK1SAMSQjwQ/giphy.gif', { expires: 365 });
   });
 }
 
