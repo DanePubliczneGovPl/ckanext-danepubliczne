@@ -1,0 +1,7 @@
+#: ckanext/danepubliczne/templates/home/snippets/articles.html:12
+msgid "article title"
+msgstr "article of title"
+
+#: ckanext/danepubliczne/templates/package/read_base.html:28
+msgid "API_link"
+msgstr "API"

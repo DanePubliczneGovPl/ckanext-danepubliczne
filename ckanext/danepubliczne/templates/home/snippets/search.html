@@ -19,10 +19,13 @@
     <form class="module-content search-form" method="get"
           action="{% url_for controller='package', action='search' %}">
       <div class="search-input control-group search-giant">
-        <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ placeholder }}"/>
+        <label for="global-search"
+               class="wcag_hide">{{ _('Enter word or phrase that you are looking at') }}</label>
+        <input id="global-search" type="text" class="search" name="q" value="" autocomplete="off"
+               placeholder="{{ placeholder }}"/>
         <button type="submit">
           <i class="icon-search"></i>
-          <span>{{ _('Search') }}</span>
+          <span class="wcag_hide2">{{ _('Search') }}</span>
         </button>
       </div>
     </form>

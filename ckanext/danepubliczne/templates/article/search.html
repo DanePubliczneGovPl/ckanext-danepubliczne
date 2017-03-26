@@ -7,3 +7,11 @@
 {% block breadcrumb_content %}
   <li class="active">{{ h.nav_link(_('Knowledge base'), named_route = 'article_search', highlight_actions = 'new index') }}</li>
 {% endblock %}
+
+{% block secondary_content %}
+  <h2>{{ _('Filters') }}</h2>
+  <span class="wcag_hide">{% trans %}Choose filter and value to narrow results{% endtrans %}</span>
+  {% for facet in c.facet_titles %}
+    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, alternative_url=dataset_type) }}
+  {% endfor %}
+{% endblock %}

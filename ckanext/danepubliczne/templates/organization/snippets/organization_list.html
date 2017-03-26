@@ -1,0 +1,70 @@
+{#
+Display a grid of organization items.
+
+organizations - A list of organizations.
+
+Example:
+
+    {% snippet "organization/snippets/organization_list.html" %}
+
+#}
+{% block organization_list %}
+<div>
+	
+	<aside class="organization-filters span3">	    
+        <section class="module module-narrow module-shallow">
+	        
+			<span class="wcag_hide">{{ _('Choose filter and value to narrow results') }}</span>
+	        
+			<nav>
+		        <ul class="unstyled nav nav-simple nav-facet">
+		            
+		            <li class="nav-item{% if not c.type %} active{% endif %}">
+						{% if not c.type %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
+						<a href="{{ h.url_for('organizations_index', q=c.q or '', sort=c.sort_by_selected or '') }}">
+							<span>{{ _('All institutions') }}</span>
+						</a>
+					</li>
+					
+					<li class="nav-item{% if c.type == 'state' %} active{% endif %}">
+						{% if c.type == 'state' %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
+						<a href="{{ h.url_for('organizations_index', q=c.q or '', sort=c.sort_by_selected or '', type='state') }}">
+							<span>{{ _('State administration institutions') }}</span>
+						</a>
+					</li>
+					
+					<li class="nav-item{% if c.type == 'local' %} active{% endif %}">
+						{% if c.type == 'local' %}<span class="wcag_hide2">{{ _('Filter selected') }}</span>{% endif %}
+						<a href="{{ h.url_for('organizations_index', q=c.q or '', sort=c.sort_by_selected or '', type='local') }}">
+							<span>{{ _('Local administration institutions') }}</span>
+						</a>
+					</li>
+          
+				</ul>          
+			</nav>
+    
+		</section>
+	</aside>
+	
+	<div class="organization-result span9 pull-right">
+		
+		<div class="pagination_container">
+		{{ c.page.pager(q=c.q or '', sort=c.sort_by_selected or '', type=c.type or '') }}
+		</div>
+		
+		<ul class="media-grid">
+		  {% block organization_list_inner %}
+		  {% for organization in organizations %}
+		    {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}
+		  {% endfor %}
+		   {% endblock %}
+		</ul>
+		
+		<div class="pagination_container">
+		{{ c.page.pager(q=c.q or '', sort=c.sort_by_selected or '', type=c.type or '') }}
+		</div>
+		
+	</div>
+	
+</div>
+{% endblock %}

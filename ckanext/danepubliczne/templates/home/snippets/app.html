@@ -1,0 +1,11 @@
+<li class="article span3">
+  <h3><a href="/application/{{ a.name }}" target="_self">{{ a.title }}</a></h3>
+  <small>{{ h.render_datetime(h.date_str_to_datetime(a.metadata_created)) }}</small>
+  {% if a.image_url %}
+    <a href="/article/{{ a.name }}" target="_self"><img class="article-image" src="/uploads/package/{{ a.image_url }}" /></a>
+  {% endif %}
+  <p>{{ h.dp_shorten_article(h.markdown_extract(a.notes, extract_length=200), 200) }}</p>
+  <a href="/article/{{ a.name }}" target="_self" class="btn btn-primary">{{ _('read more') }} 
+      <span class="wcag_hide">{{ _('article title') }} "{{ a.title }}"</span>
+  </a>
+</li>

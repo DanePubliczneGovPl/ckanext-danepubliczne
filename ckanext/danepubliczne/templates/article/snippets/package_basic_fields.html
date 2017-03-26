@@ -1,7 +1,7 @@
 {% import 'macros/form.html' as form %}
 
 {% block package_basic_fields_title %}
-  {{ form.input('title', id='field-title', label=_('Title'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}) }}
+  {{ form.input('title', id='field-title', label=_('Title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}) }}
 {% endblock %}
 
 {% block package_basic_fields_url %}
@@ -20,7 +20,12 @@
 {% block package_basic_fields_custom %}{% endblock %}
 
 {% block package_basic_fields_description %}
-  {{ form.markdown('notes', id='field-notes', label=_('Description'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes, is_required=true, attrs={'rows': 30}) }}
+  {% if c.action == 'edit' %}
+  {{ form.markdown_with_upload('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the article'), value=data.notes, error=errors.notes, is_required=true,
+    attrs={'rows': 30}, jupload_options={'data-url': h.url_for('jupload_resource', id=data.name)}, resources=data.resources) }}
+  {% else %}
+  {{ form.markdown('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the article'), value=data.notes, error=errors.notes, is_required=true, attrs={'rows': 30}) }}
+  {% endif %}
 {% endblock %}
 
 {% block package_basic_fields_tags %}
@@ -30,24 +35,41 @@
 
 {% block package_basic_fields_license %}
   <div class="control-group">
-  {% set error = errors.license_id %}
-  <label class="control-label" for="field-license">{{ _("License") }}</label>
-  <div class="controls">
-    <select id="field-license" name="license_id" data-module="autocomplete">
-      {% for license_desc, license_id in licenses|sort if license_desc  %}
-        <option value="{{ license_id }}" {% if data.get('license_id', 'other-pd') == license_id %}selected="selected"{% endif %}>{{ license_desc }}</option>
-      {% endfor %}
-    </select>
-    {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
-    <span class="info-block info-inline">
+    {% set error = errors.license_id %}
+    <label class="control-label" for="field-license">{{ _("License") }}</label>
+
+    <div class="controls">
+      <select id="field-license" name="license_id" data-module="autocomplete">
+        {% for license_desc, license_id in licenses|sort if license_desc %}
+          <option value="{{ license_id }}"
+                  {% if data.get('license_id', 'other-pd') == license_id %}selected="selected"{% endif %}>{{ license_desc }}</option>
+        {% endfor %}
+      </select>
+      {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+      <span class="info-block info-inline">
       <i class="icon-info-sign"></i>
-      {% trans %}
-        License definitions and additional information can be found
-        at <a href="http://opendefinition.org/licenses/">opendefinition.org</a>
-      {% endtrans %}
+        {% trans %}
+          License definitions and additional information can be found
+          at <a href="http://opendefinition.org/licenses/">opendefinition.org</a>
+        {% endtrans %}
     </span>
+    </div>
   </div>
-</div>
+{% endblock %}
+
+  {% block package_metadata_fields_visibility %}
+  <div class="control-group">
+    <label for="field-private" class="control-label">{{ _('Visibility') }}</label>
+
+    <div class="controls">
+      <select id="field-private" name="private">
+        {% for option in [('False', _('Public')), ('True', _('Draft'))] %}
+          <option value="{{ option[0] }}"
+                  {% if option[0] == data.private|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
 {% endblock %}
 
 {% block package_basic_fields_org %}

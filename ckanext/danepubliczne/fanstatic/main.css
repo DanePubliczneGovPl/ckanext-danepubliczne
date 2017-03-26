@@ -1,3 +1,7 @@
+.margin-top-10 {
+	margin-top: 10px !important;
+}
+
 /* =====================================================
    Font-face
    ===================================================== */
@@ -97,10 +101,25 @@
     content: "\e911";
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
-input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 4-18 */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+/* IE 10+ */
 
 /* =====================================================
    The general setup of the site
@@ -111,10 +130,16 @@ html {
     position: relative;
 }
 
+
+
 body {
     background: #ffffff;
     border-top: 4px solid #539ecf;
     font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.control-full input, .control-full select, .control-full textarea {
+    min-height: 30px;
 }
 
 .site-footer {
@@ -269,6 +294,22 @@ body {
     color: #060300;
 }
 
+.toolbar .home span {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 0;
+    line-height: 1;
+}
+
+.simple-input label,
+.simple-input button {
+    display: block;
+}
+
+.search-form .search-input button span {
+    display: block;
+}
+
 /* ===========================================
    The content in the middle of the front page
    =========================================== */
@@ -291,6 +332,10 @@ body {
 
 [role="main"] .primary {
     width: 75%;
+}
+
+.wrapper.no-nav .primary {
+    width: 100%;
 }
 
 [role="main"] .secondary {
@@ -354,6 +399,27 @@ body {
     color: #157abe;
 }
 
+.btn-large {
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33;
+    padding: 10px 16px;
+}
+
+.btn-small {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 5px 10px;
+}
+
+.btn-mini {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;
+}
+
 .js .image-upload .btn,
 .js .image-upload .btn:hover,
 .js .image-upload .btn:active {
@@ -406,6 +472,20 @@ input[type=checkbox]:checked + .checkbox:before {
     line-height: 18px;
 }
 
+.wrapper .page-header {
+    padding-bottom: 0;
+    border-bottom: 1px solid #DDD;
+    background: none;
+}
+
+.wrapper .page-header .nav-tabs {
+    border-bottom: none;
+}
+
+.wrapper .page-header .nav > li > a:hover {
+    border-bottom-color: #ffffff;
+}
+
 /* ====================================
    The footer at the bottom of the site
    ==================================== */
@@ -417,11 +497,17 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .attribution strong {
-  display: block;
+    display: block;
 }
 
 .footer-links ul li {
     margin-bottom: 10px;
+}
+
+.footer-links ul li abbr {
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
 }
 
 .site-footer a {
@@ -441,16 +527,35 @@ input[type=checkbox]:checked + .checkbox:before {
     font-weight: 600;
     line-height: 1.2em;
     color: #ffffff;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .site-footer .attribution p,
 .site-footer .attribution .btn-link {
     font-size: 14px;
     font-weight: normal;
-    color: #bebebe;
     padding-left: 0;
     padding-right: 0;
     text-shadow: none;
+}
+
+.site-footer .attribution .btn-link {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.site-footer .attribution .btn-link img {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.site-footer .attribution p {
+    color: #bebebe;
 }
 
 .site-footer .new_dataset_feedback textarea,
@@ -459,11 +564,15 @@ input[type=checkbox]:checked + .checkbox:before {
     color: white;
     border-color: white;
     width: 100%;
+    margin-bottom: 0;
 }
-.site-footer .new_dataset_feedback label {
-    visibility: hidden;
-    height: 0px;
+
+.site-footer .new_dataset_feedback input {
+    width: 96.5%;
 }
+
+
+
 .site-footer .new_dataset_feedback .btn,
 .site-footer .new_dataset_feedback .btn:focus,
 .site-footer .new_dataset_feedback .btn:active,
@@ -476,35 +585,39 @@ input[type=checkbox]:checked + .checkbox:before {
 }
 
 .site-footer .new_dataset_feedback .btn:hover {
-    background-color: #AEAEAE;
+    background-color: #333333;
 }
 
 .add-member-form .control-label {
-  text-align: right;
-  margin-right: 15px;
-  float: left;
+    text-align: right;
+    margin-right: 15px;
+    float: left;
 }
+
 .add-member-form .controls {
-  margin-left: auto;
-  float: left;
+    margin-left: auto;
+    float: left;
 }
+
 .add-member-or {
-  float: none;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  width: 7%;
-  text-align: center;
-  text-transform: uppercase;
-  color: #999999;
-  font-weight: bold;
+    float: none;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 7%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #999999;
+    font-weight: bold;
 }
+
 .add-member-form .row-fluid .control-group {
-  float: none;
-  width: 45%;
+    float: none;
+    width: 45%;
 }
+
 .add-member-form .row-fluid .select2-container,
 .add-member-form .row-fluid input {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 @media (max-width: 480px) {
@@ -515,7 +628,7 @@ input[type=checkbox]:checked + .checkbox:before {
 
 @media (min-width: 992px) {
     body {
-        padding-bottom: 400px;
+        padding-bottom: 490px;
     }
 
     .mobile-navbar {
@@ -539,7 +652,7 @@ input[type=checkbox]:checked + .checkbox:before {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 250px;
+        height: 350px;
         margin-right: 0;
         margin-left: 0;
     }
@@ -553,4 +666,218 @@ input[type=checkbox]:checked + .checkbox:before {
     .masthead .section.site-language {
         margin-left: 100px;
     }
+}
+
+/* File upload for resources */
+
+.editor.markdown_with_upload .textarea {
+   float: left;
+   width: 60%;
+}
+
+.editor.markdown_with_upload .upload-panel {
+    margin-left: 10px;
+    float: left;
+    width: 38%;
+}
+
+.editor.markdown_with_upload .files {
+    margin-top: 10px;
+}
+
+/*
+ * jQuery File Upload Plugin CSS 1.3.0
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
+
+.page-heading.inner {
+	margin-left: 10px;
+}
+
+.datasets_picker {
+}
+
+.datasets_picker .inp_group {
+	margin-bottom: 10px;
+	min-height: 30px;
+}
+
+.datasets_picker .inp_group .inp_cont {
+	width: 600px;
+	float: left;
+	margin-right: 5px;
+}
+
+.datasets_picker .inp_group .inp_cont input {
+}
+
+.datasets_picker .inp_group .controlls {
+	width: 30px;
+	height: 20px;
+	float: left;
+}
+
+.datasets_picker .inp_group .controlls a {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	display: block;
+	outline: none;
+	font-family: 'ckan';
+	color: #AAA;
+	text-decoration: none;
+	margin: 6px 3px;
+	display: inline-block;
+}
+
+.datasets_picker .inp_group .controlls a.remove:hover {
+	color: #cc0000;
+}
+
+.datasets_picker .inp_group .controlls a.remove:after {
+	content: "\e906";
+}
+
+.datasets_picker .inp_group .status span {
+	font-family: 'ckan';
+	font-size: 18px;
+	position: relative;
+	top: 5px;
+	display: none;
+}
+
+.datasets_picker .inp_group .status .ok:after {
+	content: "\e909";
+	color: #77b300;
+}
+
+.datasets_picker .inp_group .status .notok:after {
+	content: "\e908";
+	color: #cc0000;
+}
+
+.datasets_picker > .controlls {
+	padding: 2px 4px;
+}
+
+.datasets_picker > .controlls a {
+	text-decoration: none;
+}
+
+.datasets_picker > .controlls a.add:before {
+	content: "\e907";
+	font-family: 'ckan';
+	font-size: 20px;
+	position: relative;
+	top: 3px;
+	margin-right: 5px;
+}
+
+.modal-body .datasets_picker .inp_group .inp_cont {
+	width: 470px;
+}
+
+.upload-no-link .controls a:nth-child(3) {
+	display: none !important;
+}
+
+.app_url {
+	font-weight: bold;
+}
+
+.app_url a {
+	font-weight: normal;
+}
+
+.dropzone-div-cont {
+	padding: 7px;
+	text-align: center;
+}
+
+.dropzone-div-cont button {
+	font-size: 13px;
+	padding: 4px 8px;
+}
+
+.dropzone {
+  position: relative;
+}
+.dropzone .dz-preview {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  margin: 0.5em;
+}
+.dropzone .dz-preview .dz-progress {
+  display: block;
+  height: 15px;
+  border: 1px solid #aaa;
+}
+.dropzone .dz-preview .dz-progress .dz-upload {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: green;
+}
+.dropzone .dz-preview .dz-error-message {
+  color: red;
+  display: none;
+}
+.dropzone .dz-preview.dz-error .dz-error-message, .dropzone .dz-preview.dz-error .dz-error-mark {
+  display: block;
+}
+.dropzone .dz-preview.dz-success .dz-success-mark {
+  display: block;
+}
+.dropzone .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark {
+  position: absolute;
+  display: none;
+  left: 30px;
+  top: 30px;
+  width: 54px;
+  height: 58px;
+  left: 50%;
+  margin-left: -27px;
+}
+
+.qa.resource-qa {
+  margin-bottom: 10px;
+}
+
+.archiver.link-broken {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: thin red dashed;
+  padding: 11px;
 }

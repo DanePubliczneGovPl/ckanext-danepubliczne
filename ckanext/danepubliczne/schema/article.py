@@ -5,6 +5,7 @@ import ckan.plugins.toolkit as tk
 import ckan.logic.auth as auth
 from ckan.common import _
 
+
 class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Dataset type handling articles
@@ -45,7 +46,6 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         return paragraph
 
 
-
     p.implements(p.IDatasetForm)
 
     def package_types(self):
@@ -58,6 +58,7 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
         to_extras = tk.get_converter('convert_to_extras')
         to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
+        boolean_validator = tk.get_validator('boolean_validator')
         not_empty = tk.get_validator('not_empty')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
@@ -71,8 +72,10 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
             'author': schema['author'],
             'notes': [not_empty, unicode],  # notes [content] is obligatory
             'type': [fixed_type],
+            'private': [optional, boolean_validator],
             'license_id': [not_empty, unicode],
-            'tag_string': schema['tag_string']
+            'tag_string': schema['tag_string'],
+            'resources': schema['resources']
         }
 
         return schema
@@ -107,25 +110,27 @@ class Article(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def search_template(self):
         return 'article/search.html'
+
     #
     # def history_template(self):
-    #     return 'article/history.html'
+    # return 'article/history.html'
     #
     def package_form(self):
         return 'article/new_package_form.html'
 
 
     p.implements(p.IAuthFunctions)
+
     def get_auth_functions(self):
         return {
-            'package_create': _package_create,   # new = context.get('package') == None
+            'package_create': _package_create,  # new = context.get('package') == None
             'package_delete': _package_delete,  # data_dict['id]
-            'package_update': _package_update, # context['package'].type
+            'package_update': _package_update,  # context['package'].type
         }
 
 def _package_create(context, data_dict=None):
     user = context['user']
-    package = context.get('package') # None for new
+    package = context.get('package')  # None for new
 
     if package and package['type'] == 'article':
         return {'success': False, 'msg': _('User %s not authorized to create articles') % user}
@@ -141,12 +146,12 @@ def _package_delete(context, data_dict=None):
 
     return auth.delete.package_delete(context, data_dict)
 
+
 def _package_update(context, data_dict=None):
     user = context['user']
     package = auth.get_package_object(context, data_dict)
 
-    if package and package.type == 'article':
+    if package and (package.type == 'article' or package.type == 'application'):
         return {'success': False, 'msg': _('User %s not authorized to update articles') % user}
 
     return auth.update.package_update(context, data_dict)
-

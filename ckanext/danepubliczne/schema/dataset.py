@@ -1,5 +1,7 @@
 import re
 import copy
+import json
+
 from webhelpers.html import literal
 import ckan.new_authz as new_authz
 import ckan.plugins as p
@@ -11,56 +13,78 @@ from paste.deploy.converters import asbool
 from ckanext.qa.plugin import QAPlugin
 from ckan.common import _, g, c, request
 from ckan import logic
-from ckanext.fluent.validators import fluent_text, fluent_text_output
+import collections
+
+import logging
+log = logging.getLogger(__name__)
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
     Modifies fields and appearance of datasets
     '''
+
+    UPDATE_FREQUENCIES = [
+        "yearly",
+        "notApplicable",
+        "everyHalfYear",
+        "daily",
+        "weekly",
+        "quarterly",
+        "monthly"
+    ]
+
     p.implements(p.ITemplateHelpers)  # Helpers for templates
 
     def get_helpers(self):
-        return {'dp_update_frequencies': self.h_update_frequencies,
-                'dp_update_frequencies_options': self.h_update_frequencies_options,
+        return {'dp_update_frequencies': DatasetForm.h_update_frequencies,
+                'dp_update_frequencies_options': DatasetForm.h_update_frequencies_options,
                 'dp_package_has_license_restrictions': self.h_package_has_license_restrictions,
                 'dp_openess_info': self.h_openess_info,
                 'dp_translate_facet': self.h_translate_facet,
                 'dp_vocab_reuse_conditions_captions': self.h_vocab_reuse_conditions_captions}
 
-    def h_update_frequencies(self):
-        try:
-            tags = tk.get_action('tag_list')(
-                data_dict={'vocabulary_id': 'update_frequencies'})
+    @classmethod
+    def h_update_frequencies(cls):
+        return cls.UPDATE_FREQUENCIES
 
-            return tags
-        except tk.ObjectNotFound:
-            return []
-
-    def h_update_frequencies_options(self):
-        return ({'value': freq, 'text': _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), freq).title())} for freq in self.h_update_frequencies())
+    @classmethod
+    def h_update_frequencies_options(cls):
+        return ({'value': freq, 'text': cls.h_translate_facet(freq, 'update_frequency')} for freq in
+                cls.h_update_frequencies())
 
     def h_package_has_license_restrictions(self, dpkg):
-        return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_timestamp',False) or dpkg.get('license_condition_original',False) \
-            or dpkg.get('license_condition_modification',False) or dpkg.get('license_condition_responsibilities',False)
+        return dpkg.get('license_condition_source', False) or dpkg.get('license_condition_original',
+                                                                                          False) \
+               or dpkg.get('license_condition_modification', False) or dpkg.get('license_condition_responsibilities',
+                                                                                False) or dpkg.get(
+            'license_condition_db_or_copyrighted', False)
 
     @classmethod
     def h_openess_info(cls, score):
         if isinstance(score, str) or isinstance(score, unicode):
             score = int(score)
 
-        qa_captions = [_('Missing QA information')] + QAPlugin.get_qa_captions()
+        qa_captions = [
+            _('Missing QA information'),
+            _('Unstructured data (e.g. PDF)'),
+            _('Structured data but proprietry format (e.g. Excel)'),
+            _('Structured data in open format (e.g. CSV)'),
+            _('Linkable data - served at URIs (e.g. RDF)'),
+            _('Linked data - data URIs and linked to other data (e.g. RDF)'),
+        ]
 
         return qa_captions[max(score, 0)]
 
 
-
     p.implements(p.IConfigurer)
+
     def update_config(self, config):
         # TODO ckan-dev ckan.new_authz should be overridable by IAuthFunctions as well
         # no need to hack it like this then
 
         # Allow organizations members to add datasets to all non-org groups (categories in our case)
         import ckan.new_authz
+
         old_has_user_permission_for_group_or_org = ckan.new_authz.has_user_permission_for_group_or_org
 
         def new_has_user_permission_for_group_or_org(group_id_or_name, user_name, permission):
@@ -76,10 +100,10 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 return False
 
             is_admin_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'admin')
-            is_editor_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'editor')
+            can_create_dataset_somewhere = new_authz.has_user_permission_for_some_org(user_name, 'create_dataset')
 
             # Allow organization admins & editors to add and remove packages from groups (categories)
-            if (is_admin_somewhere or is_editor_somewhere) and group.type == 'group':
+            if (is_admin_somewhere or can_create_dataset_somewhere) and group.type == 'group':
                 return True
             return False
 
@@ -103,12 +127,12 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
                 else:
                     parts = [x for x in request.path.split('/') if x]
-                    if len(parts[0]) == 2: # is it locale? simple check
+                    if len(parts[0]) == 2:  # is it locale? simple check
                         type = parts[1]
                     else:
                         type = parts[0]
 
-                active = type == menu_item[:-7] # assuming menu_item == '<type>_search'
+                active = type == menu_item[:-7]  # assuming menu_item == '<type>_search'
 
             needed = item.pop('needed')
             for need in needed:
@@ -123,17 +147,41 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         h._make_menu_item = _make_menu_item_handling_many_package_types
 
 
-
     p.implements(p.IPackageController, inherit=True)
+
     def before_index(self, pkg_dict):
+
         # Resource type is multivalue field
         types = []
+        types_upper_case = []
         for tag_string in pkg_dict.get('res_type', []):
             if tag_string:
-                types += [tag.strip() for tag in tag_string.split(',')]
+                t = [tag.strip() for tag in tag_string.split(',')]
+                tuc = [ti.upper() for ti in t]
+                types += t
+                types_upper_case += tuc
 
         pkg_dict['res_type'] = types
 
+        if( pkg_dict.get('type')=='dataset' ):
+            try:
+                org_dict = logic.action.get.organization_show({
+                    'model': model,
+                    'ignore_auth': True,
+                    'validate': False,
+                    'use_cache': False
+                }, {
+                    'id': pkg_dict.get('organization'),
+                    'include_datasets': False,
+                    'include_extras': False,
+                    'include_users': False,
+                    'include_groups': False,
+                    'include_tags': False,
+                    'include_followers': False
+                })
+                pkg_dict['institution_type'] = org_dict.get('institution_type') if org_dict.get('institution_type') else "state"
+            except:
+                pass
 
         # Resuse conditions
         from paste.deploy.converters import asbool
@@ -141,15 +189,20 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         pkg_dict['license_condition_modification'] = asbool(pkg_dict.get('license_condition_modification'))
         pkg_dict['license_condition_original'] = asbool(pkg_dict.get('license_condition_original'))
         pkg_dict['license_condition_source'] = asbool(pkg_dict.get('license_condition_source'))
-        pkg_dict['license_condition_timestamp'] = asbool(pkg_dict.get('license_condition_timestamp'))
-        pkg_dict['license_condition_responsibilities'] = bool(pkg_dict.get('license_condition_responsibilities','').strip())
+        pkg_dict['license_condition_responsibilities'] = bool(
+            pkg_dict.get('license_condition_responsibilities', '').strip())
+        pkg_dict['license_condition_db_or_copyrighted'] = bool(
+            pkg_dict.get('license_condition_db_or_copyrighted', '').strip())
 
         pkg_dict['has_any_reuse_conditions'] = pkg_dict['license_condition_modification'] \
-            or pkg_dict['license_condition_original'] or pkg_dict['license_condition_source'] \
-            or pkg_dict['license_condition_timestamp'] or pkg_dict['license_condition_responsibilities']
+                                               or pkg_dict['license_condition_original'] or pkg_dict[
+                                                   'license_condition_source'] \
+                                               or pkg_dict[
+                                                   'license_condition_responsibilities'] \
+                                               or pkg_dict['license_condition_db_or_copyrighted']
 
         restrictions = []
-        for restr in ['modification', 'original', 'source', 'timestamp', 'responsibilities']:
+        for restr in ['modification', 'original', 'source', 'responsibilities', 'db_or_copyrighted']:
             if pkg_dict['license_condition_' + restr]:
                 restrictions.append(restr)
 
@@ -158,14 +211,54 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         pkg_dict['vocab_reuse_conditions'] = restrictions
 
+        # Update frequency (string instead of text solr type)
+        pkg_dict['update_frequency'] = pkg_dict.get('extras_update_frequency')
 
+        pkg_dict['status'] = pkg_dict.get('status')
+        pkg_dict['api'] = 'with_api' if ('API' in types_upper_case) else ''
         return pkg_dict
+
+    def after_(self, context, pkg_dict):
+        self._create_missing_resource_type_tags(pkg_dict)
 
     def after_create(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
 
     def after_update(self, context, pkg_dict):
         self._create_missing_resource_type_tags(pkg_dict)
+
+    def after_show(self, context, pkg_dict):
+        pkg_dict['resources_tracking_summary'] = self.calculate_resources_tracking(pkg_dict['resources'])
+        pkg_dict['api'] = self.has_api(pkg_dict['resources'])
+
+    def after_search(self, search_results, search_params):
+        for i, sr in enumerate(search_results['results']):
+            sr['resources_tracking_summary'] = self.calculate_resources_tracking(sr['resources'])
+            sr['api'] = self.has_api(sr['resources'])
+            search_results['results'][i] = sr
+        return search_results
+
+    def has_api(self, resources):
+        try:
+            for res in resources:
+                types = res['resource_type'].split(',')
+                types[:] = [t.upper() for t in types]
+                if 'API' in types:
+                    return True
+        except:
+            return False
+        return False
+
+    def calculate_resources_tracking(self, resources):
+        total = 0
+        recent = 0
+        try:
+            for res in resources:
+                total += res['tracking_summary']['total']
+                recent += res['tracking_summary']['recent']
+        except:
+            pass
+        return {'total': total, 'recent': recent}
 
     def _create_missing_resource_type_tags(self, pkg_dict):
         context = {'model': model, 'user': g.site_id}
@@ -187,21 +280,37 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 raise Exception("Internal error while creating tags")
 
 
-
     p.implements(p.IFacets, inherit=True)
+
     def dataset_facets(self, facets_dict, package_type):
+
         if package_type == 'article':
             return {
                 'tags': _('Tags'),
             }
+        elif package_type == 'application':
+            if( new_authz.is_sysadmin(c.user) ):
+                return {
+                    'status': _('Status'),
+                    'tags': _('Tags'),
+                }
+            else:
+                return {
+                    'tags': _('Tags'),
+                }
 
-        facets_dict.pop('license_id', None)
-
-        facets_dict['res_type'] = _('Resource types')
-        facets_dict['res_extras_openness_score'] = _('Openess Score')
-        facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
-
-        return facets_dict
+        ordered_facets_dict = collections.OrderedDict()
+        ordered_facets_dict['organization'] = _('Organizations')
+        ordered_facets_dict['institution_type'] = _('Organization type')
+        ordered_facets_dict['groups'] = _('Groups')
+        ordered_facets_dict['tags'] = _('Tags')
+        ordered_facets_dict['api'] = _('API provided')
+        ordered_facets_dict['res_format'] = _('Formats')
+        ordered_facets_dict['res_type'] = _('Resource types')
+        ordered_facets_dict['update_frequency'] = _('Update frequency')
+        ordered_facets_dict['res_extras_openness_score'] = _('Openess Score')
+        ordered_facets_dict['has_any_reuse_conditions'] = _('Restrictions on reuse')
+        return ordered_facets_dict
 
     @classmethod
     def h_vocab_reuse_conditions_captions(cls):
@@ -211,16 +320,23 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
             'original': _('Publish original copy'),
             'source': _('Inform about source'),
             'timestamp': _('Inform about creation & access time'),
-            'responsibilities': _('Provider restricts liability')
+            'responsibilities': _('Provider restricts liability'),
+            'db_or_copyrighted': _('Restrictions on databases and copyrighted material')
         }
 
     @classmethod
     def h_translate_facet(cls, label, facet):
         if facet == 'groups':
             group = model.Group.get(label)
-            title_i18n = fluent_text_output(group.extras['title_i18n'])
+
+            title_i18n = group.extras['title_i18n']
+            if isinstance(title_i18n, basestring):
+                title_i18n = json.loads(title_i18n)
 
             return title_i18n[h.lang()]
+
+        elif facet == 'update_frequency':
+            return _(re.sub('[A-Z]', lambda m: ' ' + m.group(0), label).title())
 
         elif facet == 'vocab_reuse_conditions':
             return cls.h_vocab_reuse_conditions_captions()[label]
@@ -230,6 +346,9 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
                 return _('Restrictions set')
             else:
                 return _('No restrictions')
+
+        elif facet == 'institution_type':
+            return _(label.capitalize() + ' administration')
 
         return label
 
@@ -241,34 +360,33 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         return self.dataset_facets(facets_dict, None)
 
 
-
     p.implements(p.IDatasetForm)
+
     def show_package_schema(self):
         schema = super(DatasetForm, self).show_package_schema()
 
         optional = tk.get_validator('ignore_missing')
         from_extras = tk.get_converter('convert_from_extras')
-        from_tags = tk.get_converter('convert_from_tags')
         checkboxes = [from_extras, optional, tk.get_validator('boolean_validator')]
 
         schema['tags']['__extras'].append(tk.get_converter('free_tags_only'))
         schema.update({
             'category': [category_from_group],
-            'update_frequency': [from_tags('update_frequencies')],
-
+            'update_frequency': [from_extras],
+            'api': [from_extras],
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
-            'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [from_extras, optional]
+            'license_condition_responsibilities': [from_extras, optional],
+            'license_condition_db_or_copyrighted': [from_extras, optional]
         })
         return schema
 
     def _modify_package_schema(self, schema):
         to_extras = tk.get_converter('convert_to_extras')
-        to_tags = tk.get_converter('convert_to_tags')
         optional = tk.get_validator('ignore_missing')
+        not_empty = tk.get_validator('not_empty')
         checkboxes = [optional, tk.get_validator('boolean_validator'), to_extras]
 
         # License is fixed to Open (Public Domain)
@@ -277,21 +395,23 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         schema.update({
             'category': [category_exists, category_to_group],
-            'update_frequency': [to_tags('update_frequencies')],
-
+            'update_frequency': [not_empty, update_frequency_vocab, to_extras],
+            'api': [optional, to_extras],
             'license_id': [fixed_license, unicode],
 
             # Reuse conditions specified in http://mojepanstwo.pl/dane/prawo/2007,ustawa-dostepie-informacji-publicznej/tresc
             'license_condition_source': checkboxes,
-            'license_condition_timestamp': checkboxes,
             'license_condition_original': checkboxes,
             'license_condition_modification': checkboxes,
-            'license_condition_responsibilities': [optional, to_extras]
+            'license_condition_responsibilities': [optional, to_extras],
+            'license_condition_db_or_copyrighted': [optional, to_extras]
         })
-        # Add our custom_resource_text metadata field to the schema
-        # schema['resources'].update({
-        # 'custom_resource_text' : [ tk.get_validator('ignore_missing') ]
-        # })
+
+        # Name of the resource and its type is obligatory
+        schema['resources'].update({
+            'name' : [not_empty, unicode],
+            'resource_type': [not_empty, unicode]
+        })
 
         return schema
 
@@ -312,6 +432,7 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
         schema = self._modify_package_schema(schema)
         return schema
 
+
 # TODO ckan-dev add converters and validators as IValidator? should converters have their own Interface for extending to allow tk.get_converter?
 def category_exists(value, context):
     categories = tk.get_action('group_list')(context, {})
@@ -320,15 +441,22 @@ def category_exists(value, context):
         raise df.Invalid(_("Category '{0}' doesn't exist").format(value))
     return value
 
+def update_frequency_vocab(value, context):
+    if not value in DatasetForm.UPDATE_FREQUENCIES:
+        raise df.Invalid(_('update_frequency should be set to one of following values: ' + ', '.join(DatasetForm.UPDATE_FREQUENCIES)))
+
+    return value
+
 def category_from_group(key, data, errors, context):
     category = None
     for k in data.keys():
         if k[0] == 'groups':
             if category == None and k[2] == 'name':
                 category = data[k]
-            # data.pop(k) # won't be shown in groups
+                # data.pop(k) # won't be shown in groups
 
     data[('category',)] = category
+
 
 def category_to_group(key, data, errors, context):
     category = data.pop(('category',))

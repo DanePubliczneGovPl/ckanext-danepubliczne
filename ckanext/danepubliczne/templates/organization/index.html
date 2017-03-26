@@ -25,18 +25,19 @@
     {% endif %}
 
     <form method="get">
-    {% block organizations_search_form %}
-      {% snippet 'snippets/search_form.html', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
-    {% endblock %}
+      {% block organizations_search_form %}
+        {% snippet 'snippets/search_form.html', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
+      {% endblock %}
     </form>
   </div>
-
+  
   {% block organizations_list %}
-    {% if c.page.items or request.params %}
-      {% if c.page.items %}
+    {% if c.page.items %}
         {% snippet "organization/snippets/organization_list.html", organizations=c.page.items %}
-      {% endif %}
     {% else %}
+      {% if c.q %}
+      {% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='organization' %}
+      {% else %}
       <p class="empty">
         {{ _('There are currently no organizations for this site') }}.
         {% if h.check_access('organization_create') %}
@@ -44,8 +45,7 @@
         {% endif %}
       </p>
     {% endif %}
+    {% endif %}
   {% endblock %}
-  {% block page_pagination %}
-    {{ c.page.pager(q=c.q or '', sort=c.sort_by_selected or '') }}
-  {% endblock %}
+
 {% endblock %}

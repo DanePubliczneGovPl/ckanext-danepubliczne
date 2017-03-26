@@ -9,18 +9,19 @@ reason - A reason why the dataset doesn't have a rating.
 
 #}
 <span class="star-rating{% if stars <= 0 %} no-stars{% endif %}">
-  {%- if stars <= 0 -%}
-    {{ _("Not Rated") }}
+  {%- if stars == None-%}
+    {{ _("Not Rated") }} {{ reason }}
   {%- else -%}
     <a href="http://5stardata.info/">
     <span class="star-rating-stars">
       {%- for index in range(5) -%}
         {%- if index < stars -%}
-        <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" />
+          <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" alt=""/>
         {%- else -%}
-        <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" />
+          <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" alt=""/>
         {%- endif -%}
       {%- endfor -%}
+      <span class="wcag_hide">{{ _("{0} out of {1}").format(stars, 5) }}</span>
     </span>
     </a>
   {%- endif -%}

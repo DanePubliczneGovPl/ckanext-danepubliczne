@@ -1,0 +1,22 @@
+{% block datasets_list %}
+  <div class="module-content datasets">
+    <h2>{{ _('Recent resources') }}</h2>
+	
+    <ul class="datasets">
+      {% for package in c.datasets %}
+	  	{{ h.snippet('home/snippets/package_item.html', package = package) }}
+      {% endfor %}
+    </ul>
+    
+    <div class="datasets-more">
+	    <a href="/dataset" target="_self" class="btn btn-primary">
+	      <h3>
+	        <i class="icon icon-list"></i>
+	        <span>{{ _('Show all datasets') }}</span>
+	      </h3>
+	    </a>
+    </div>
+    
+  </div>
+
+{% endblock %}

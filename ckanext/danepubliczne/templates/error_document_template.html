@@ -1,0 +1,21 @@
+{% ckan_extends %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      {% if c.code[0] == '404' %}
+      <h1>{{ _('Page not found') }}</h1>
+      <div>{% trans
+        link1=('<a href="/">')|safe,
+        link2=('<a href="https://github.com/DanePubliczneGovPl/ckanext-danepubliczne/issues/new?title=Nie znaleziono strony&body=Aktualna strona: ' + h.full_current_url() + '%0A%0AZ jakiej strony tu dotarłeś/aś: %0A%0ACzego oczekiwałeś/aś:">')|safe,
+          endlink='</a>'|safe
+        %}Would you like come back to {{ link1 }}the homepage{{ endlink }} or {{ link2 }}report an issue on Github{{ endlink }}?{% endtrans %}
+      </div>
+
+      {% else %}
+      <h1>{{ _("Server error has occurred") }}</h1>
+        <div>{{ _("If you would like to report this problem please file an issue on") }} <a href="https://github.com/DanePubliczneGovPl/ckanext-danepubliczne/issues/new?title=Błąd serwera&body=Aktualna strona: {{ h.full_current_url() }}%0AZnacznik czasu: {{ h.render_datetime_now() }}%0A%0AZ jakiej strony tu dotarłeś/aś: %0A%0ACzego oczekiwałeś/aś:">Github</a></div>
+      {% endif %}
+    </div>
+  </article>
+{% endblock %}

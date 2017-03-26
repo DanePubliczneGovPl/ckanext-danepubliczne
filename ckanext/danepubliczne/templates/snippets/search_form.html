@@ -4,19 +4,23 @@
 {% set sorting = sorting if sorting else [(_('Name Ascending'), 'name asc'), (_('Name Descending'), 'name desc')] %}
 {% set search_class = search_class if search_class else 'search-giant' %}
 {% set no_bottom_border = no_bottom_border if no_bottom_border else false %}
-  {% block search_input %}
-    <div class="search-input control-group {{ search_class }}">
-      <input type="text" class="search" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
-      {% block search_input_button %}
+{% block search_input %}
+  <div class="search-input control-group {{ search_class }}">
+    <label for="global-search"
+           class="wcag_hide">{{ _('Enter word or phrase that you are looking at') }}</label>
+    <input id="global-search" type="text" class="search" name="q" value="{{ query }}" autocomplete="off"
+           placeholder="{{ placeholder }}">
+    {% block search_input_button %}
       <button type="submit" value="search" class="btn-search">
         <i class="icon-search"></i>
+        <span class="wcag_hide2">{{ _('Search') }}</span>
       </button>
-      {% endblock %}
-    </div>
-  {% endblock %}
+    {% endblock %}
+  </div>
+{% endblock %}
 
-  {% block search_search_fields %}
-    {% if fields -%}
-      <span>{{ form.hidden_from_list(fields=fields) }}</span>
-    {%- endif %}
-  {% endblock %}
+{% block search_search_fields %}
+  {% if fields -%}
+    <span>{{ form.hidden_from_list(fields=fields) }}</span>
+  {%- endif %}
+{% endblock %}

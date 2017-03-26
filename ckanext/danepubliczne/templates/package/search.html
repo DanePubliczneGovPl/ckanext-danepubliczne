@@ -1,6 +1,7 @@
 {% extends "page.html" %}
 {% import 'macros/form.html' as form %}
 
+
 {% block styles %}
   {{ super() }}
 
@@ -10,6 +11,82 @@
 {% block subtitle %}{{ _("Datasets") }}{% endblock %}
 
 {%- block content %}
+  
+  {% if dataset_type == 'application' %}
+    <div id="app-propose" class="modal modal-app-propose fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">{{ _('Propose new application') }}</h4>
+	      </div>
+	        <form class="dropzone" id="app-propose-form" action="/application/new" method="post" enctype="multipart/form-data">
+		      <div class="modal-body">
+		        
+		        <input type="hidden" name="from_users" value="1" />
+		        		        
+		        <div class="form-group">
+			      <label for="inputTitle" class="col-lg-2 control-label">{{ _("Title") }}</label>
+			      <div class="col-lg-10">
+			        <input name="title" type="text" class="form-control" id="inputTitle" placeholder="{{ _("Title") }}" required="required">
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label for="inputURL" class="col-lg-2 control-label">{{ _("Application address") }}</label>
+			      <div class="col-lg-10">
+			        <input name="app_url" type="text" class="form-control" id="inputURL" placeholder="{{ _("Application address") }}" required="required">
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label for="inputURL" class="col-lg-2 control-label">{{ _("Zbiory danych wykorzystane z portalu danepubliczne.gov.pl") }}</label>
+			      <div class="col-lg-10">
+			        <div class="datasets_picker controls" data-placeholder="{{ _('Paste URL to related dataset') }}"></div>
+			      </div>
+			    </div>			    
+		        
+		        <div class="form-group">
+			      <label for="textNotes" class="col-lg-2 control-label">{{ _("Description") }}</label>
+			      <div class="col-lg-10">
+			        <textarea name="notes" class="form-control" rows="6" id="textNotes" required="required"></textarea>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label for="img" class="col-lg-2 control-label">{{ _("Image") }}</label>
+			      <div class="col-lg-10">
+				    <input type="hidden" name="raw_image_url" value="" id="image_field" />
+				    <p class="dropzone-div-cont">
+					    <button id="dropzone-div" type="button" class="btn btn-success btn-sm">Dodaj obraz</button>
+				    </p>
+				    <div id="dropzone-previews"></div>
+				    <div id="dropzone-inputs"></div>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label for="inputEmail" class="col-lg-2 control-label">{{ _("Your email address") }}</label>
+			      <div class="col-lg-10">
+			        <input name="author" type="email" class="form-control" id="inputEmail" placeholder="{{ _("Email address") }}" required="required">
+			      </div>
+			    </div>
+		        
+		      </div>
+		      <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+				<input type="submit" name="save" class="btn btn-primary" value="{{ _('Send') }}" />
+		      </div>
+	        </form>
+	    </div>
+	  </div>
+	</div>
+	
+	{% resource 'dane_publiczne/dropzone.js' %}
+    {% resource 'dane_publiczne/dropzone-init.js' %}
+	
+  {% endif %}
+  
   <form class="search-form" method="get" data-module="select-switch">
     <div id="content" class="list" role="main">
       {% block toolbar %}
@@ -30,7 +107,7 @@
           {% block form %}
             <div class="dataset-search">
               <div class="container">
-                {% snippet 'snippets/search_form.html', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...') if dataset_type == 'dataset' else _('Search articles...'), show_empty=request.params, fields=c.fields %}
+                {% snippet 'snippets/search_form.html', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search ' + dataset_type + 's...'), show_empty=request.params, fields=c.fields %}
               </div>
             </div>
           {% endblock %}
@@ -43,9 +120,30 @@
             <aside class="dataset-filters span3">
               {% block secondary_content %}
                 <h2>{{ _('Filters') }}</h2>
+                <span class="wcag_hide">{% trans %}Choose filter and value to narrow results{% endtrans %}</span>
                 {% for facet in c.facet_titles %}
                   {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
                 {% endfor %}
+              {% endblock %}
+              
+              {% block options %}
+                {% if dataset_type == 'dataset' or dataset_type == 'application' %}
+                <h2>{{ _('Options') }}</h2>
+                <section class="module">
+	                <ul class="options-list">
+		                {% if dataset_type == 'dataset' %}
+		                <li class="option">
+		                	<a class="action action-download-datasets" href="/dataset/download"><span class="icon"></span><span class="text">{{ _('Download all resources in CSV format') }}</span></a>
+		                </li>
+		                {% endif %}
+		                {% if dataset_type == 'application' %}
+		                <li class="option">
+		                	<a class="action action-app-propose" href="#" data-toggle="modal" data-target="#app-propose"><span class="icon"></span><span class="text">{{ _('Propose new application') }}</span></a>
+		                </li>
+		                {% endif %}
+	                </ul>
+                </section>
+                {% endif %}
               {% endblock %}
             </aside>
             <div class="dataset-result span9 pull-right">
@@ -55,10 +153,25 @@
                     {% block page_primary_action %}
                       {% if not no_title %}
                         <div class="span5">
-                          <h2 class="results-total">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</h2>
-                          <span>{{ _('See results via') }} <a class="" href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}</a></span>
+                          {% if dataset_type == 'dataset' %}
+                          <h1 class="results-title span3">{{_('Datasets')}}</h1>
+                          {% elif dataset_type == 'group' %}
+                          <h1 class="results-title span3">{{_('Groups')}}</h1>
+                          {% elif dataset_type == 'organization' %}
+                          <h1 class="results-title span3">{{_('Organizations')}}</h1>
+                          {% elif dataset_type == 'article' %}
+                          <h1 class="results-title span3">{{_('Articles')}}</h1>
+                          {% elif dataset_type == 'application' %}
+                          <h1 class="results-title span3">{{_('Applications')}}</h1>
+                          {% endif %}
+                          <span class="results-total span6">{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type=dataset_type %}</span>
+
+                          <span class="span6 ">{{ _('See results via') }} 
+                            <a class="" href="/api/3/action/package_search?{{ api_search_url_params }}">{{ _('API') }}
+                            </a>
+                          </span>
                         </div>
-                    <div class="span3 pull-right">
+                        <div class="span3 pull-right">
                       {% else %}
                         <div class="span8">
                       {% endif %}
@@ -67,7 +180,10 @@
                       (_('Name Ascending'), 'name asc'),
                       (_('Name Descending'), 'name desc'),
                       (_('Last Modified'), 'metadata_modified desc'),
-                      (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ] %}
+                      (_('Creation Date'), 'metadata_created desc'),
+                      (_('Popular recently'), 'views_recent desc') if g.tracking_enabled else (false, false),
+                      (_('Popular'), 'views_total desc') if g.tracking_enabled else (false, false) ]
+                    %}
 
                     <div class="form-select control-group control-order-by">
                       <label for="field-order-by">{{ _('Order by') }}</label>
@@ -75,7 +191,7 @@
                         {% for label, value in sorting %}
                           {% if label and value %}
                             <option value="{{ value }}"
-                                {% if c.sort_by_selected == value %}
+                                    {% if c.sort_by_selected == value %}
                                     selected="selected"{% endif %}>{{ label }}</option>
                           {% endif %}
                         {% endfor %}
@@ -86,7 +202,8 @@
 
                       {% if request.params and c.page.item_count == 0 %}
                         <div class="span9">
-                          {% trans %} <p class="extra">Please try another search.</p>{% endtrans %}
+                          {% trans %}
+                            <p class="extra">Please try another search.</p>{% endtrans %}
                         </div>
                       {% endif %}
 
@@ -104,7 +221,9 @@
                         <div class="page_primary_action span9">
                           {% if dataset_type == 'article' and c.is_sysadmin %}
                             {% link_for _('Add Article'), named_route='article_new', class_='btn btn-primary', icon='plus-sign-alt' %}
-                          {% else %}
+                          {% elif dataset_type == 'application' and c.is_sysadmin %}
+                            {% link_for _('Add Application'), named_route='application_new', class_='btn btn-primary', icon='plus-sign-alt' %}
+                          {% elif c.is_sysadmin %}
                             {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
                           {% endif %}
                         </div>

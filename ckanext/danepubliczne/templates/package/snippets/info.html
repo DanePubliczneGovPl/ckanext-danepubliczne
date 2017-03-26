@@ -2,12 +2,15 @@
   <section class="module module-narrow">
     <div class="module context-info">
       <div class="module-content">
+        {% set follow_count = h.follow_count('dataset', pkg.id) %}
+        {% if follow_count > 0 %}
         <div class="nums">
           <dl>
             <dt>{{ _('Followers') }}</dt>
-            <dd>{{ h.SI_number_span(h.get_action('dataset_follower_count', {'id': pkg.id})) }}</dd>
+            <dd>{{ h.SI_number_span(follow_count) }}</dd>
           </dl>
         </div>
+        {% endif %}
         {% if not hide_follow_button %}
           <div class="follow_button">
             {{ h.follow_button('dataset', pkg.name) }}
@@ -21,10 +24,10 @@
 
         <div class="feedback">
           <div class="feedback_button feedback-form-toggle">
-            <a href="#" data-toggle="ratings" data-target=".feedback-form-wrapper"
-                                               data-hide-text="{{ _('Hide feedback form') }}" class="btn">{{ _('Send feedback') }}</a>
+            <a data-toggle="collapse"
+               data-hide-text="{{ _('Hide feedback form') }}" class="btn" href="#feedback-form-collapse">{{ _('Send feedback') }}</a>
           </div>
-          <div class="feedback-form-wrapper js-hide">
+          <div class="feedback-form-wrapper collapse" id="feedback-form-collapse">
             {% snippet 'package/snippets/feedback_form.html', pkg=pkg, feedback_form_items=feedback_form_items %}
           </div>
         </div>

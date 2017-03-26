@@ -1,0 +1,19 @@
+{% block apps_list %}
+  <div class="module-content articles">
+    <h2>{{ _('Applications') }}</h2>
+
+    <ul class="row">
+      {% for a in c.apps %}
+        {% snippet "home/snippets/app.html", a=a %}
+      {% endfor %}
+      <li class="article box span3">
+        <a href="/application" target="_self" class="btn btn-primary">
+          <h3>
+            <i class="icon icon-list"></i>
+            <span>{{ _('Show all applications') }}</span>
+          </h3>
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

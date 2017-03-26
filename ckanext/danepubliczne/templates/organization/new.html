@@ -1,0 +1,9 @@
+{% extends "group/new.html" %}
+
+{% block breadcrumb_link %}
+  {{ h.nav_link(_('Create Organization'), controller='organization', action='new', id=c.group.name) }}
+{% endblock %}
+
+{% block subtitle %}{{ _('Create Organization') }}{% endblock %}
+
+{% block page_heading %}{{ _('Create Organization') }}{% endblock %}

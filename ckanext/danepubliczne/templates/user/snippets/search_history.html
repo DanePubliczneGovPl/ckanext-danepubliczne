@@ -13,11 +13,11 @@ Example:
 {% block search_history_list %}
   {% if search_history %}
     <ul class="{{ list_class or 'search_history-list unstyled' }}">
-    	{% block search_history_list_inner %}
-	      {% for item in search_history %}
-	        {% snippet 'user/snippets/search_history_item.html', item=item, item_class=item_class %}
-	      {% endfor %}
-	    {% endblock %}
+      {% block search_history_list_inner %}
+        {% for item in search_history %}
+          {% snippet 'user/snippets/search_history_item.html', item=item, item_class=item_class %}
+        {% endfor %}
+      {% endblock %}
     </ul>
   {% endif %}
 {% endblock %}

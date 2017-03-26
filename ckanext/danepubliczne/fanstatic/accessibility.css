@@ -1,0 +1,201 @@
+.wcag_hide { 
+   position:absolute; 
+   top:0; 
+   left:-10000px; 
+   width:1px; 
+   height:1px; 
+}
+
+.wcag_hide2 {
+    clip: rect(1px, 1px, 1px, 1px);
+    display: block;
+    position: absolute;
+}
+
+.wcag_show_on_focus {
+    font-size: 0 !important;
+}
+
+.wcag_show_on_focus:focus {
+    font-size: 12px !important;
+}
+
+/*logo outline won't get covered by content container */
+.navbar .container {z-index: 100;}
+
+
+
+
+/*focus outlines for different elements; html body selectors to override other styles without modyfing bootstrap css*/
+html body a:focus,
+html body input[type="text"]:focus,
+html body .btn:focus, select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus, 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+html body a:focus strong,
+html body ul.select2-choices input:focus,
+.select2-container.select2-container-active,
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices
+
+{
+
+    outline: rgb(234, 29, 29) solid 3px;
+    outline-offset: 0.25em;
+}
+
+/*inset outline for several controls that can't be style consistently because of overflow:hidden containers */
+html body button:focus, 
+.search-input.control-group.search-giant input:focus,
+.search-input.control-group.search-giant button.btn-search:focus,
+#dataset-feedback-collapse textarea:focus, 
+#dataset-feedback-collapse input:focus,
+#dataset-feedback-collapse button:focus,
+#feedback-form-collapse textarea:focus, 
+#feedback-form-collapse input:focus {
+    outline: rgb(234, 29, 29) solid 3px;
+    outline-offset: -0.25em;
+}
+/*and overriden for one button in search field again */
+.search-giant button:focus {
+    outline-offset: 0.25em;
+}
+
+/*outline moved to h3 for categories, according to screenshot in #176 issue*/
+a.category:focus {
+    outline: none;
+}
+
+a.category:focus h3 {
+    outline: rgb(234, 29, 29) solid 2px;
+    outline-offset: 0.25em;  
+}
+
+
+
+
+.site-footer .new_dataset_feedback label {
+   position:absolute; 
+   top:0; 
+   left:-10000px; 
+   width:1px; 
+   height:1px; 
+}
+
+.feedback-form label {
+   position:absolute; 
+   top:0; 
+   left:-10000px; 
+   width:1px; 
+   height:1px; 
+}
+
+
+ html body p a {
+  text-decoration: underline;
+}
+ html body p a:hover {
+  text-decoration: underline;
+}
+
+ html body .site-footer a {
+  text-decoration: none;
+}
+ html body .site-footer a:hover {
+  text-decoration: none;
+}
+
+.left-absolute {
+  position: absolute;
+  left:0;
+}
+
+.account-masthead>.container {position: relative;}
+
+
+.feedback-form-wrapper.collapse:not(.in) input,
+.feedback-form-wrapper.collapse:not(.in) textarea,
+.feedback-form-wrapper.collapse:not(.in) button { display:none;}
+
+
+.attribution a.ckan-footer-logo {text-indent: 0em;}
+
+
+ol.breadcrumb a span {overflow: hidden;}
+
+
+.checkbox-fieldset-override input[type="checkbox"] {
+  visibility: visible;
+}
+
+.checkbox-fieldset-override .checkbox:before  {display: none;}
+ 
+.checkbox-fieldset-override .checkbox input[type="checkbox"]   { position: static;}
+fieldset.checkbox-fieldset-override .checkbox input[type="checkbox"] {margin-top: -4px;}
+ 
+.checkbox-fieldset-override legend {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/*fix for ff outline*/
+.site-search button span.wcag_hide2 {
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+    margin-top: -15px;
+    width: 15px;
+}
+
+.search-giant button span.wcag_hide2 {
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+    margin-top: -15px;
+    width: 15px;
+}
+
+
+ html body .btn abbr {
+  text-decoration: none;
+  border-bottom-width: 0; 
+  cursor: pointer;
+}
+
+
+.box-shadow-menu {
+ width:1.5em; height: 1.5em; display: block;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0.25em;
+  top: 0.5em;
+  width: 1.5em;
+  height: 0.20em;
+  background: #157abe;
+  box-shadow: 
+    0 0.4em 0 0 #157abe,
+    0 0.8em 0 0 #157abe;
+}
+
+.btn.btn-navbar.hamburger {width:2em; height: 2em; background-color: transparent; background-image:none;  position: relative;
+  padding:0.25em; margin-right: 10px;
+}

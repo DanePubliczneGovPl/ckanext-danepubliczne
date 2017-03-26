@@ -32,47 +32,52 @@
         </div>
       {% endblock %}
 
-      <div class="wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
-          <div class="container">
-            {% block pre_primary %}{% endblock %}
+      {% block wrapper_title %}{% endblock %}
 
-            {% block secondary %}
-              <aside class="dataset-info span3">
-                {% block secondary_content %}{% endblock %}
-              </aside>
-            {% endblock %}
+      <div class="wrapper
+                    {% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+        <div class="container">
+          {% block pre_primary %}{% endblock %}
 
-            {% block primary %}
-              <div class="dataset-result {% if self.secondary()|trim == '' %}span12{% else %}span9{% endif %}">
-                {% block primary_content %}
-                  <article class="module">
-                    {% block page_header %}
-                      <header class="module-content page-header">
-                        {% if self.content_action() | trim %}
-                          <div class="content_action">
-                            {% block content_action %}{% endblock %}
-                          </div>
-                        {% endif %}
-                        <ul class="nav nav-tabs">
-                          {% block content_primary_nav %}{% endblock %}
-                        </ul>
-                      </header>
-                    {% endblock %}
-                    <div class="module-content">
-                      {% if self.page_primary_action() | trim %}
-                        <div class="page_primary_action">
-                          {% block page_primary_action %}{% endblock %}
+          {% block secondary %}
+            <aside class="dataset-info span3">
+              {% block secondary_content %}{% endblock %}
+            </aside>
+          {% endblock %}
+
+          {% block primary %}
+            <div class="dataset-result {% if self.secondary()|trim == '' %}span12{% else %}span9{% endif %}">
+              {% block primary_content %}
+                <article class="module">
+                  {% block page_header %}
+                    <header class="module-content page-header">
+                      {% if self.content_action() | trim %}
+                        <div class="content_action">
+                          {% block content_action %}{% endblock %}
                         </div>
                       {% endif %}
-                      {% block primary_content_inner %}
+                      {% block content_primary_nav_wrapper %}
+                      <ul class="nav nav-tabs">
+                        {% block content_primary_nav %}{% endblock %}
+                      </ul>
                       {% endblock %}
-                    </div>
-                  </article>
-                {% endblock %}
-              </div>
-            {% endblock %}
-          </div>
+                    </header>
+                  {% endblock %}
+                  <div class="module-content">
+                    {% if self.page_primary_action() | trim %}
+                      <div class="page_primary_action">
+                        {% block page_primary_action %}{% endblock %}
+                      </div>
+                    {% endif %}
+                    {% block primary_content_inner %}
+                    {% endblock %}
+                  </div>
+                </article>
+              {% endblock %}
+            </div>
+          {% endblock %}
         </div>
+      </div>
     {% endblock %}
   </div>
   </div>
@@ -95,4 +100,8 @@
     {% resource 'base/tracking.js' %}
   {% endif %}
   {{ super() }}
+
+  {% resource 'vendor/fileupload' %}
+  {% resource 'dane_publiczne/js-cookie-1.5.1-min.js' %}
+  {% resource 'dane_publiczne/danepubliczne.js' %}
 {% endblock -%}

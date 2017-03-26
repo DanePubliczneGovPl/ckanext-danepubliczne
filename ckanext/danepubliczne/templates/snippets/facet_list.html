@@ -4,60 +4,59 @@
   <h3 class="module-heading">
     {% set title = title or h.get_facet_title(name) %}
     {{ title }}
-
-    {% if h.get_param_int('_%s_limit' % name) %}
-      {% if h.has_more_facets(name) %}
-        <a href="{{ h.remove_url_param('_%s_limit' % name, replace=0, extras=extras, alternative_url=alternative_url) }}"
-           class="read-more ckan-ikon ckan-icon-scrollup"><span
-            class="hidden">{{ _('Show More {facet_type}').format(facet_type=title) }}</span></a>
-      {% endif %}
-    {% else %}
-      <a href="{{ h.remove_url_param('_%s_limit' % name, extras=extras, alternative_url=alternative_url) }}"
-         class="read-less ckan-ikon ckan-icon-scrolldown"><span
-          class="hidden">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</span></a>
-    {% endif %}
   </h3>
 {% endblock %}
 
 {% block facet_list_items %}
-  {% with items = items or h.get_facet_items_dict(name) %}
+  {% with items = items or h.dp_get_facet_items_dict_sortable(name) %}
     {% if items %}
       <nav>
         <ul class="{{ nav_class or 'unstyled nav nav-simple nav-facet' }}">
           {% for item in items %}
-            {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
+            {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param_unique(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
 
             {% set label = label_function(item) if label_function else item.display_name %}
             {% set label = h.dp_translate_facet(label, name) %}
-            {% set count = count_label(item['count']) if count_label else ('(%d)' % item['count']) %}
+            {% set count = count_label(item['count']) if count_label else (_('(%d<span class="wcag_hide2"> matching datasets</span>)') % item['count']) %}
             <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
-              <a href="{{ href }}"
-                 title="{{ label }}">
-
+              <a href="{{ href }}">
+                {% if item.active %}
+                  <span class="wcag_hide2">{{ _('Filter selected - press again to deselect') }}</span>{% endif %}
                 {% if name == 'res_extras_openness_score' %}
-                {% set openess_score = item.name|int %}
-                {% set openess_info = h.dp_openess_info(openess_score) %}
-                <span>
-                  <span class="hidden">{{ openess_info }}</span>
-                  <span class="star-rating-stars">
+                  {% set openess_score = item.name|int %}
+                  {% set openess_info = h.dp_openess_info(openess_score) %}
+                  <span>
+                  <span class="wcag_hide">{{ openess_info }}</span>
+                  <span class="star-rating-stars" title="{{ openess_info }}">
                   {%- for index in range(5) -%}
-                    {%- if index <= openess_score -%}
-                    <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16" />
+                    {%- if index < openess_score -%}
+                      <img class="star" src="{% url_for_static '/images/star.png' %}" width="16" height="16"
+                           alt=""/>
                     {%- else -%}
-                    <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16" />
+                      <img class="star" src="{% url_for_static '/images/star_empty.png' %}" width="16" height="16"
+                           alt=""/>
                     {%- endif -%}
                   {%- endfor -%}
+                    <span class="wcag_hide">{{ _("{0} out of {1}").format(openess_score, 5) }}</span>
                   </span>
-                  {{ count }}
+                  {{ count|safe }}
                 </span>
-
                 {% else %}
-                <span>{{ label }} {{ count }}</span>
+                  <span>{{ _(label) }} {{ count|safe }}</span>
                 {% endif %}
               </a>
             </li>
           {% endfor %}
         </ul>
+        {% if h.get_param_int('_%s_limit' % name) %}
+          {% if h.has_more_facets(name) %}
+            <a href="{{ h.remove_url_param('_%s_limit' % name, replace=0, extras=extras, alternative_url=alternative_url) }}"
+               class="read-more-button btn btn-link">{{ _('Show More {facet_type}').format(facet_type=title) }}</a>
+          {% endif %}
+        {% else %}
+          <a href="{{ h.remove_url_param('_%s_limit' % name, extras=extras, alternative_url=alternative_url) }}"
+             class="read-less-button btn btn-link">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</a>
+        {% endif %}
       </nav>
     {% else %}
       <p class="module-content empty">{{ _('There are no {facet_type} that match this search').format(facet_type=title) }}</p>

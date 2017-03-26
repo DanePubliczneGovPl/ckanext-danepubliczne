@@ -1,21 +1,19 @@
-from pylons import config
-
 import re
 import json
+
+from pylons import config
 import ckan.lib.navl.dictization_functions as df
-import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.base as base
 import ckan.lib.helpers as h
-import ckan.lib.app_globals as app_globals
 import ckan.model as model
 import ckan.logic.schema as schema
 import ckan.plugins.toolkit as tk
-import ckan.plugins as p
 import ckan.lib.captcha as captcha
 import ckan.logic as logic
 import ckan.lib.mailer as mailer
 import ckan.new_authz as new_authz
-from ckan.common import _, c, g, request, response
+from ckan.common import _, c, request, response
+
 
 abort = base.abort
 render = base.render
@@ -28,8 +26,8 @@ ValidationError = logic.ValidationError
 
 import ckan.controllers.user as base_user
 
-class UserController(base_user.UserController):
 
+class UserController(base_user.UserController):
     def logged_in(self):
         # redirect if needed
         came_from = request.params.get('came_from', '')
@@ -46,7 +44,7 @@ class UserController(base_user.UserController):
                 return h.redirect_to(str(came_from))
 
             h.redirect_to(locale=None, controller='user', action='dashboard_datasets',
-                      id=user_ref)
+                          id=user_ref)
         else:
             err = _('Login failed. Wrong email or password.')
             if h.asbool(config.get('ckan.legacy_templates', 'false')):
@@ -59,7 +57,7 @@ class UserController(base_user.UserController):
     def logged_out(self):
         # came_from = request.params.get('came_from', '')
         # if h.url_is_local(came_from):
-        #     return h.redirect_to(str(came_from))
+        # return h.redirect_to(str(came_from))
 
         h.redirect_to('/')
 
@@ -97,7 +95,7 @@ class UserController(base_user.UserController):
             captcha.check_recaptcha(request)
 
             # Extra: Create username from email
-            email = data_dict.get('email', '')
+            email = data_dict.get('email', '').lower()
             email_user = email.split('@')[0]
             name = re.sub('[^a-z0-9_\-]', '_', email_user)
 
@@ -139,7 +137,7 @@ class UserController(base_user.UserController):
             # #1799 User has managed to register whilst logged in - warn user
             # they are not re-logged in as new user.
             h.flash_success(_('User "%s" is now registered but you are still '
-                            'logged in as "%s" from before') %
+                              'logged in as "%s" from before') %
                             (data_dict['name'], c.user))
             return render('user/logout_first.html')
 
@@ -202,14 +200,16 @@ class UserController(base_user.UserController):
         # Custom handling if user in organization
         action_ctx = context.copy()
         action_ctx['user'] = id
-        c.in_organization = bool(logic.get_action('organization_list_for_user')(action_ctx, {}))
+        c.in_organization = bool(logic.get_action('organization_list_for_user')(action_ctx, {'permission': 'create_dataset'}))
 
         to_json = convert_to_json('about')
         not_empty = tk.get_validator('not_empty')
-        context['schema'].update({
-            'official_position': [not_empty, to_json],
-            'official_phone': [not_empty, to_json]
-        })
+        if c.in_organization:
+            context['schema'].update({
+                'fullname': [not_empty, unicode],
+                'official_position': [not_empty, to_json],
+                'official_phone': [not_empty, to_json]
+            })
 
         # End of custom handling
 
@@ -267,12 +267,12 @@ class UserController(base_user.UserController):
 
             user = get_action('user_update')(context, data_dict)
             h.flash_success(_('Profile updated'))
-            h.redirect_to('user_dashboard_account', id=user['name'])
+            h.redirect_to('user_datasets', id=user['name'])
         except NotAuthorized:
             abort(401, _('Unauthorized to edit user %s') % id)
         except NotFound, e:
             abort(404, _('User not found'))
-        except logic.DataError:
+        except df.DataError:
             abort(400, _(u'Integrity Error'))
         except ValidationError, e:
             errors = e.error_dict
@@ -288,24 +288,25 @@ class UserController(base_user.UserController):
         except NotAuthorized:
             abort(401, _('Unauthorized to request reset password.'))
 
+        error = None
         if request.method == 'POST':
-            email = request.params.get('email')
-            users = model.User.by_email(email)
+            email = request.params.get('email').lower()
+            users = model.Session.query(model.User).filter_by(email=email, state='active').all()
 
             if not users:
-                h.flash_error(_('Email not registered: %s') % email)
+                error = _('Email not registered: %s') % email
 
             else:
                 try:
                     mailer.send_reset_link(users[0])
                     h.flash_success(_('Please check your inbox for '
-                                    'a reset code.'))
+                                      'a reset code.'))
                     h.redirect_to('/')
                 except mailer.MailerException, e:
                     h.flash_error(_('Could not send reset link: %s') %
                                   unicode(e))
 
-        return render('user/request_reset.html')
+        return render('user/request_reset.html', extra_vars={'error': error})
 
     def read(self, id=None):
         context = {'model': model, 'session': model.Session,
@@ -332,10 +333,10 @@ class UserController(base_user.UserController):
         super(UserController, self)._setup_template_variables(context, data_dict)
 
         about = c.user_dict['about']
-        print about
         if about:
             of = json.loads(about)
             c.user_dict.update(of)
+
 
 def convert_to_json(field):
     def f(key, data, errors, context):
@@ -347,7 +348,9 @@ def convert_to_json(field):
         j[key[0]] = data.pop(key)
 
         data[(field,)] = json.dumps(j)
+
     return f
+
 
 def convert_from_json(field):
     def f(key, data, errors, context):
@@ -359,6 +362,7 @@ def convert_from_json(field):
                 data[key] = j[key[0]]
 
     return f
+
 
 def email_unique_validator(key, data, errors, context):
     '''Validates a new email
@@ -372,10 +376,11 @@ def email_unique_validator(key, data, errors, context):
 
     '''
     model = context['model']
-    new_email = data[key]
+    new_email = data[key].lower()
+    data[key] = new_email
 
     # if not isinstance(new_email, basestring):
-    #     raise df.Invalid(_('User names must be strings'))
+    # raise df.Invalid(_('User names must be strings'))
 
     session = context['session']
     user = session.query(model.User).filter_by(email=new_email, state='active').first()

@@ -1,0 +1,34 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Sitemap') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Sitemap'), named_route='sitemap' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{{ _('Sitemap') }}</h1>
+      {% block sitemap %}
+        <ol>
+          <li><a href="{{ h.url('home') }}">{{ _('Homepage') }}</a></li>
+          <li><a href="{{ h.url('dataset_search') }}">{{ _('Datasets') }}</a></li>
+          <li>{{ _('Groups')}}</li>
+            <ol class="list">
+            {% for c in h.dp_categories(exclude_empty=True) %}
+              <li>
+                <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self"><span class="wcag_hide">{{ _('Group')}} </span>{{ c.title }}</a>
+              </li>
+            {% endfor %}
+            </ol>
+        <li><a href="{{ h.url('organizations_index') }}">{{ _('Organizations') }}</a></li>
+        <li><a href="{{ h.url('article_search') }}">{{ _('Knowledge base') }}</a></li>
+        <li><a href="{{ h.url('about') }}">{{ _('About') }}</a></li>
+        </ol>
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

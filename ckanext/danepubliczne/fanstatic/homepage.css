@@ -93,19 +93,19 @@
 
 .homepage .categoriesBox .categories .category {
     display: block;
-    height: 242px;
+    height: 130px;
     padding: 30px 25px;
     text-decoration: none;
     position: relative;
 }
 
-.homepage .categoriesBox .categories .category:hover{
-    background:rgba(0,0,0,.2);
+.homepage .categoriesBox .categories .category:hover {
+    background: rgba(0, 0, 0, .2);
 }
 
 .homepage .categoriesBox .categories .category .category-img {
-    max-width: 100px;
-    max-height: 80px;
+    max-width: 80px;
+    max-height: 60px;
     opacity: 0.2;
     filter: alpha(opacity=20);
 }
@@ -118,8 +118,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    margin: 0;
-    padding: 0 25px 30px;
+    padding: 0;
+    margin: 0 25px 30px;
 }
 
 .homepage .articlesBox {
@@ -132,6 +132,9 @@
     width: 100%;
     float: left;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .homepage .articlesBox .articles h2 {
@@ -139,18 +142,26 @@
     font-weight: 300;
     color: #434343;
     margin-bottom: 20px;
+    width: 100%;
+}
+
+.homepage .articlesBox .articles ul {
+    list-style: none;
 }
 
 .homepage .articlesBox .articles .article {
     font-size: 14px;
     font-weight: normal;
     color: #010101;
+	margin-bottom: 40px;
 }
 
 .homepage .articlesBox .articles .article h3 {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    line-height: 28px;
+    display: inline-block;
 }
 
 .homepage .articlesBox .articles .article h3 a {
@@ -163,6 +174,11 @@
     width: 100%;
 }
 
+.homepage .articlesBox .articles .article .article-image {
+	border: 3px solid #CCC;
+	margin: -10px 0 15px;
+}
+
 .homepage .articlesBox .articles .article p {
     line-height: 1.2em;
     margin-bottom: 12px;
@@ -172,6 +188,53 @@
     font-size: 14px;
     font-weight: normal;
     padding: 4px 16px;
+}
+
+.homepage .articlesBox .articles .article.box {
+    height: 100%;
+    min-height: 150px;
+    max-height: 250px;
+    border: none;
+    margin-bottom: 100px;
+}
+
+.homepage .articlesBox .articles .article.box a {
+    height: 100%;
+    min-height: 150px;
+    max-height: 250px;
+    display: block;
+    position: relative;
+}
+
+.homepage .articlesBox .articles .article.box h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px;
+    width: 86%;
+    margin: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.homepage .articlesBox .articles .article.box .icon {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+.homepage .articlesBox .articles .article.box p {
+    margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -211,4 +274,151 @@
     .homepage .categoriesBox .categories .box {
         width: 25%;
     }
+}
+
+.homepage .datasetsBox {
+    border-top: 5px solid #009ae0;
+    background: #ffffff;
+    padding: 55px 0;
+}
+
+.homepage .datasetsBox .datasets {
+    padding: 0;
+	margin: 0;
+	overflow: auto;
+}
+
+.homepage .datasetsBox .datasets-more {
+	text-align: center;
+	margin-top: 25px;
+	padding-bottom: 7px;
+}
+
+.homepage .datasetsBox .datasets-more a {
+	padding: 0 10px;
+}
+
+.homepage .datasetsBox .datasets-more h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.homepage .datasetsBox .datasets h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #434343;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.homepage .datasetsBox .datasets .dataset-item-container {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+.homepage .datasetsBox .datasets .dataset-item {
+    border: none;
+    border-left: 4px solid #4b77be;
+    padding: 5px 20px;
+    margin: 15px 0;
+    color: #000000;
+    line-height: 1.2em;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-content h3,
+.homepage .datasetsBox .datasets .dataset-item .dataset-content h3 a {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.1em;
+    color: #157abe;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-content .notes {
+    font-size: 18px;
+    font-weight: normal;
+    color: #000000;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list {
+	margin-top: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list .resource-item:hover {
+	background: none;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .resource-list .resource-item a {
+	color: #157abe;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking {
+	font-size: 12px;
+	color: #888;
+	margin: 0 -5px 0 -8px;
+	clear: both;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span {
+	margin: 0 5px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span:before {
+	font-family: "ckan";
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 3px;
+    position: relative;
+    top: 2px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span.view:before {
+	content: "\e902";
+}
+
+.homepage .datasetsBox .datasets .dataset-item .dataset-tracking span.download:before {
+	content: "\e903";
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info td, .wrapper .dataset-result .additional-info th {
+    width: auto;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list {
+    font-size: 12px;
+    font-weight: normal;
+    color: #000000;
+    margin: 0;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list:first-child > td {
+    border-top: none;
+}
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list .dataset-label {
+    font-weight: bold;
+    text-align: right;
+    width: 30%;
+}
+
+.homepage .datasetsBox .datasets .dataset-item dd.dataset-details { 
+   padding-left: 40px;
+   padding-bottom: 5px;
+   margin-left: 135px;
+}
+
+
+.homepage .datasetsBox .datasets .dataset-item .additional-info .list .dataset-label:after {
+    content: ": ";
 }

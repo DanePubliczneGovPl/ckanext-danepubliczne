@@ -1,0 +1,89 @@
+{% import 'macros/form.html' as form %}
+
+{% resource 'dane_publiczne/bootstrap-datepicker.js' %}
+{% resource 'dane_publiczne/datepicker.css' %}
+{% resource 'dane_publiczne/app-form.js' %}
+
+{% block package_basic_fields_title %}
+  {{ form.input('title', id='field-title', label=_('Title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}) }}
+{% endblock %}
+
+{% block package_basic_fields_url %}
+  {% set prefix = h.url_for('application_read', id='') %}
+  {% set domain = h.url_for('application_read', id='', qualified=true) %}
+  {% set domain = domain|replace("http://", "")|replace("https://", "") %}
+  {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<slug>'} %}
+
+  {{ form.prepend('name', id='field-name', label=_('URL'), prepend=prefix, placeholder=_('eg. my-dataset'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
+
+  {{ form.input('date', id='field-date', label=_('Date'), value=data.date, error=errors.date) }}
+  
+  <div class="control-group control-full">
+	  <label for="field-dataset" class="control-label">{{ _('Related dataset') }}</label>
+	  <div class="datasets_picker controls" data-placeholder="{{ _('Paste URL to related dataset') }}" data-value="{{ h.dp_join_datasets(data.dataset_name) }}">
+	  </div>
+  </div>
+
+{% endblock %}
+
+{% block package_basic_fields_author %}
+  {{ form.input('author', id='field-author', label=_('Author'), value=data.author, error=errors.author, classes=['control-full']) }}
+  {{ form.input('app_url', id='field-app_url', label=_('Application address'), value=data.app_url, error=errors.app_url, classes=['control-full']) }}
+{% endblock %}
+
+{% block package_basic_fields_custom %}
+  {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
+  {% set is_url = data.image_url and data.image_url.startswith('http') %}
+  <div class="upload-no-link">
+  {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload) }}
+  </div>
+{% endblock %}
+
+{% block package_basic_fields_description %}
+  {% if c.action == 'edit' %}
+  {{ form.markdown_with_upload('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the application'), value=data.notes, error=errors.notes, is_required=true,
+    attrs={'rows': 30}, jupload_options={'data-url': h.url_for('jupload_resource', id=data.name)}, resources=data.resources) }}
+  {% else %}
+  {{ form.markdown('notes', id='field-notes', label=_('Content'), placeholder=_('Text of the application'), value=data.notes, error=errors.notes, is_required=true, attrs={'rows': 30}) }}
+  {% endif %}
+{% endblock %}
+
+{% block package_basic_fields_tags %}
+  {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
+  {{ form.input('tag_string', id='field-tags', label=_('Tags'), placeholder=_('eg. economy, mental health, government'), value=data.tag_string, error=errors.tags, classes=['control-full'], attrs=tag_attrs) }}
+{% endblock %}
+
+{% block package_basic_fields_license %}{% endblock %}
+
+{% block package_metadata_fields_visibility %}
+  <div class="control-group">
+    <label for="field-status" class="control-label">{{ _('Status') }}</label>
+
+    <div class="controls">
+      <select id="field-status" name="status">
+        {% for option in [('verified', _('Verified')), ('unverified', _('Unverified'))] %}
+          <option value="{{ option[0] }}"
+                  {% if option[0] == data.status|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+{% endblock %}
+
+{% block package_basic_fields_org %}
+  {% if data.id and h.check_access('package_delete', {'id': data.id}) and data.state != 'active' %}
+    <div class="control-group">
+      <label for="field-state" class="control-label">{{ _('State') }}</label>
+
+      <div class="controls">
+        <select id="field-state" name="state">
+          <option value="active" {% if data.get('state', 'none') == 'active' %}
+                  selected="selected" {% endif %}>{{ _('Active') }}</option>
+          <option value="deleted" {% if data.get('state', 'none') == 'deleted' %}
+                  selected="selected" {% endif %}>{{ _('Deleted') }}</option>
+        </select>
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}

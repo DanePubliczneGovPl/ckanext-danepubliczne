@@ -12,7 +12,8 @@ import ckan.new_authz as new_authz
 import ckan.lib.plugins
 import ckan.plugins as plugins
 from ckan.common import OrderedDict, c, g, request, _
-
+import ckanext.danepubliczne.plugin as dp
+logic.action.get._group_or_org_list = dp._group_or_org_list_filtered
 log = logging.getLogger(__name__)
 
 render = base.render
@@ -29,10 +30,11 @@ parse_params = logic.parse_params
 
 lookup_group_plugin = ckan.lib.plugins.lookup_group_plugin
 
+
 import ckan.controllers.group as base_group
 
-class GroupController(base_group.GroupController):
 
+class GroupController(base_group.GroupController):
     def _read(self, id, limit):
         ''' This is common code used by both read and bulk_process'''
         group_type = self._get_group_type(id.split('@')[0])
@@ -66,7 +68,9 @@ class GroupController(base_group.GroupController):
         # most search operations should reset the page counter:
         params_nopage = [(k, v) for k, v in request.params.items()
                          if k != 'page']
-        sort_by = request.params.get('sort', None)
+
+        default_sort_by = 'metadata_modified desc'
+        sort_by = request.params.get('sort', default_sort_by)
 
         def search_url(params):
             if group_type == 'organization':
@@ -81,7 +85,7 @@ class GroupController(base_group.GroupController):
             else:
                 url = self._url_for(controller='group', action='read', id=id)
             params = [(k, v.encode('utf-8') if isinstance(v, basestring)
-                       else str(v)) for k, v in params]
+            else str(v)) for k, v in params]
             return url + u'?' + urlencode(params)
 
         def drill_down_url(**by):
@@ -148,7 +152,7 @@ class GroupController(base_group.GroupController):
                         facets, self.group_type, None)
 
             if 'capacity' in facets and (self.group_type != 'organization' or
-                                         not user_member_of_orgs):
+                                             not user_member_of_orgs):
                 del facets['capacity']
 
             c.facet_titles = facets
@@ -181,7 +185,7 @@ class GroupController(base_group.GroupController):
 
             c.search_facets = query['search_facets']
             c.search_facets_limits = {}
-            for facet in c.facets.keys():
+            for facet in c.search_facets.keys():
                 limit = int(request.params.get('_%s_limit' % facet,
                                                g.facets_default_number))
                 c.search_facets_limits[facet] = limit
@@ -195,14 +199,14 @@ class GroupController(base_group.GroupController):
             c.facets = {}
             c.page = h.Page(collection=[])
 
-        self._setup_template_variables(context, {'id':id},
-            group_type=group_type)
+        self._setup_template_variables(context, {'id': id},
+                                       group_type=group_type)
 
     def member_new(self, id):
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author}
 
-        #self._check_access('group_delete', context, {'id': id})
+        # self._check_access('group_delete', context, {'id': id})
         try:
             data_dict = {'id': id}
             data_dict['include_datasets'] = False
@@ -216,13 +220,13 @@ class GroupController(base_group.GroupController):
                 data_dict = clean_dict(df.unflatten(
                     tuplize_dict(parse_params(request.params))))
                 data_dict['id'] = id
-                data_dict['role'] = 'editor' # fixed
+                data_dict['role'] = 'editor'  # fixed
 
-                email = data_dict.get('email')
+                email = data_dict.get('email').lower()
 
                 if email:
                     # check if user exists
-                    user = context['session'].query(model.User).filter_by(email=email, state='active').first()
+                    user = context['session'].query(model.User).filter_by(email=email).first()
                     if user:
                         data_dict['username'] = user.name
 
@@ -234,7 +238,7 @@ class GroupController(base_group.GroupController):
                         }
                         del data_dict['email']
                         user_dict = self._action('user_invite')(context,
-                                user_data_dict)
+                                                                user_data_dict)
                         data_dict['username'] = user_dict['name']
 
                 c.group_dict = self._action('group_member_create')(context, data_dict)

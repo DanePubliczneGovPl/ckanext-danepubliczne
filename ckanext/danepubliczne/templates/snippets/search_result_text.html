@@ -34,6 +34,12 @@ Example:
   {% set text_query_none = _('No articles found for "{query}"') %}
   {% set text_no_query = ungettext('{number} article found', '{number} articles found', count) %}
   {% set text_no_query_none = _('No articles found') %}
+  
+{% elif type == 'application' %}
+  {% set text_query = ungettext('{number} applications found for "{query}"', '{number} applications found for "{query}"', count) %}
+  {% set text_query_none = _('No applications found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} application found', '{number} applications found', count) %}
+  {% set text_no_query_none = _('No applications found') %}
 
 {%- endif -%}
 

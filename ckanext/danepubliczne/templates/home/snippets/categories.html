@@ -3,14 +3,15 @@
     <h2>{{ _('Choose a category of data that interests you') }}</h2>
 
     <ul class="list">
-        {% for c in h.dp_categories(exclude_empty=True) %}
-            <li class="box span3" style="background-color: {{ c.color }};">
-                <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self" class="category" title="{{ c.title }}">
-                    <img class="category-img" src="{{ c.image_display_url }}" alt=""/>
-                    <h3>{{ c.title }}</h3>
-                </a>
-            </li>
-        {% endfor %}
+      {% for c in h.dp_categories(exclude_empty=True) %}
+        <li class="box span3" style="background-color: {{ c.color }};">
+          <a href="{{ h.url_for(controller='group', action='read', id=c['name']) }}" target="_self" class="category">
+            <img class="category-img" src="{{ c.image_display_url }}" alt=""/>
+
+            <h3>{{ c.title }}</h3>
+          </a>
+        </li>
+      {% endfor %}
     </ul>
   </div>
 {% endblock %}

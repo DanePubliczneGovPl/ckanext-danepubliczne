@@ -33,6 +33,18 @@
     content: ' ';
 }
 
+.form-horizontal .info-block {
+    margin-top: -20px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+.form-horizontal .info-block [class^="icon-"] {
+    font-size: 15px;
+    width: 120px;
+    margin-top: 0;
+}
+
 .form-actions {
     margin: 0;
     border: none;

@@ -10,7 +10,8 @@
 
 {% block links -%}
   {{ super() }}
-  <link rel="alternate" type="application/rdf+xml" href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>
+  <link rel="alternate" type="application/rdf+xml"
+        href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>
 {% endblock -%}
 
 {% block head_extras -%}
@@ -24,31 +25,34 @@
   {% if h.check_access('package_update', {'id':pkg.id }) %}
     {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
   {% endif %}
-  <a class="btn" href="/api/3/action/package_show?id={{ pkg.name }}">{{ _('API') }}</a>
+  <a class="btn" href="/api/3/action/package_show?id={{ pkg.name }}"><abbr title='{{ _('Application Programming Interface') }}'>{{ _('API') }}</abbr></a>
 {% endblock %}
 
+{% block content_primary_nav_wrapper %}
 {% block content_primary_nav %}
-{#
+  {#
   {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
   {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name) }}
   {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name) }}
   {{ h.build_nav_icon('related_list', _('Related'), id=pkg.name) }}
 #}
 {% endblock %}
+{% endblock %}
 
 {% block primary_content_inner %}
-    {% block package_revision_info %}
-      {% if c.revision_date %}
-        <div class="module info alert alert-info">
-          <p class="module-content">
-            {% set timestamp = h.render_datetime(c.revision_date, with_hours=True) %}
-            {% set url = h.url(controller='package', action='read', id=pkg.name) %}
+  {% block package_revision_info %}
+    {% if c.revision_date %}
+      <div class="module info alert alert-info">
+        <p class="module-content">
+          {% set timestamp = h.render_datetime(c.revision_date, with_hours=True) %}
+          {% set url = h.url(controller='package', action='read', id=pkg.name) %}
 
-            {% trans timestamp=timestamp, url=url %}This is an old revision of this dataset, as edited at {{ timestamp }}. It may differ significantly from the <a href="{{ url }}">current revision</a>.{% endtrans %}
-          </p>
-        </div>
-      {% endif %}
-    {% endblock %}
+          {% trans timestamp=timestamp, url=url %}This is an old revision of this dataset, as edited at {{ timestamp }}.
+            It may differ significantly from the <a href="{{ url }}">current revision</a>.{% endtrans %}
+        </p>
+      </div>
+    {% endif %}
+  {% endblock %}
 {% endblock %}
 
 {% block secondary_content %}

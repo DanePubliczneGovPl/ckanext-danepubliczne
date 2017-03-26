@@ -1,6 +1,9 @@
 {% ckan_extends %}
 
 {% block basic_fields %}
+
+  {{ form.select('institution_type', label=_('Type'), selected=data.institution_type, id='field-institution_type', error=errors.institution_type, options=h.dp_update_types_options()) }}
+
   {{ super() }}
 
   {{ form.input('address_street', label=_('Street address'), id='field-address_street', placeholder=_('Street address with building no.'), value=data.address_street, error=errors.address_street, classes=['control-medium'], is_required=True) }}

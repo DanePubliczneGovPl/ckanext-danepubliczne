@@ -48,8 +48,10 @@ coverage.xml
 # Django stuff:
 *.log
 
-# Sphinx documentation
+# Documentation
 docs/_build/
+config/prod.ini
+config/template.ini
 
 # PyBuilder
 target/
@@ -58,3 +60,6 @@ target/
 .project
 .pydevproject
 .idea
+
+# CONFIG
+config/dev.ini

@@ -12,53 +12,56 @@
     {% block page_heading %}{{ _('Edit Member') if user else _('Add Member') }}{% endblock %}
   </h1>
   {% block form %}
-  <form class="dataset-form form-horizontal add-member-form" method='post'>
-    <div class="">
-      <div class="control-group control-medium">
-        {% if not user %}
-          <label class="control-label" for="username">{{ _('Existing User') }}</label>
-        {% endif %}
-        <div class="controls">
-          {% if user %}
-            <input type="hidden" name="username" value="{{ user.name }}" />
-            <input id="username" name="username" type="text" value="{{ user.name }}"
-            disabled="True" class="control-medium">
-          {% else %}
-            <input id="username" type="text" name="username" placeholder="{{ _('User name or email') }}"
-            value="" class="control-medium" data-module="autocomplete" data-module-label="fullname_with_email"
-            data-module-source="/api/2/util/user/autocomplete_email?q=?">
-          {% endif %}
-        </div>
-      </div>
-      {% if not user %}
-        <div class="add-member-or">
-          {{ _('or') }}
-        </div>
+    <form class="dataset-form form-horizontal add-member-form" method='post'>
+      <div class="">
         <div class="control-group control-medium">
-          <label class="control-label" for="email">{{ _('Invite User') }}</label>
+          {% if not user %}
+            <label class="control-label" for="username">{{ _('Existing User') }}</label>
+          {% endif %}
           <div class="controls">
-            <input id="email" type="text" name="email" placeholder="Email address">
+            {% if user %}
+              <input type="hidden" name="username" value="{{ user.name }}"/>
+              <input id="username" name="username" type="text" value="{{ user.name }}"
+                     disabled="True" class="control-medium">
+            {% else %}
+              <input id="username" type="text" name="username" placeholder="{{ _('User name or email') }}"
+                     value="" class="control-medium" data-module="autocomplete" data-module-label="fullname_with_email"
+                     data-module-source="/api/2/util/user/autocomplete_email?q=?">
+            {% endif %}
           </div>
         </div>
-      {% endif %}
-    </div>
-    <div class="form-actions">
-      {% if user %}
-        {% set locale = h.dump_json({'content': _('Are you sure you want to delete this member?')}) %}
-        <a href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user.id %}" class="btn btn-danger pull-left" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Delete') }}</a>
-        <button class="btn btn-primary" type="submit" name="submit" >
-          {{ _('Update Member') }}
-        </button>
-      {% else %}
-        <button class="btn btn-primary" type="submit" name="submit" >
-          {{ _('Add Member') }}
-        </button>
-      {% endif %}        
-    </div>
-  </form>
+        {% if not user %}
+          <div class="add-member-or">
+            {{ _('or') }}
+          </div>
+          <div class="control-group control-medium">
+            <label class="control-label" for="email">{{ _('Invite User') }}</label>
+
+            <div class="controls">
+              <input id="email" type="text" name="email" placeholder="Email address">
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="form-actions">
+        {% if user %}
+          {% set locale = h.dump_json({'content': _('Are you sure you want to delete this member?')}) %}
+          <a href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user.id %}"
+             class="btn btn-danger pull-left" data-module="confirm-action"
+             data-module-i18n="{{ locale }}">{{ _('Delete') }}</a>
+          <button class="btn btn-primary" type="submit" name="submit">
+            {{ _('Update Member') }}
+          </button>
+        {% else %}
+          <button class="btn btn-primary" type="submit" name="submit">
+            {{ _('Add Member') }}
+          </button>
+        {% endif %}
+      </div>
+    </form>
   {% endblock %}
 {% endblock %}
 
 {% block secondary_content %}
-{{ super() }}
+  {{ super() }}
 {% endblock %}

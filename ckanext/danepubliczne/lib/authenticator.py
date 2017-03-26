@@ -1,9 +1,9 @@
 import logging
-
 from zope.interface import implements
-from repoze.who.interfaces import IAuthenticator
 
+from repoze.who.interfaces import IAuthenticator
 from ckan.model import User
+
 
 log = logging.getLogger(__name__)
 
@@ -15,12 +15,12 @@ class EmailPasswordAuthenticator(object):
         if not ('login' in identity and 'password' in identity):
             return None
 
-        login = identity['login']
-        user_list = User.by_email(login)
+        login = identity['login'].lower()
+        user_list = User.Session.query(User).filter_by(email=login, state='active').all()
 
         if not user_list:
             log.debug('Login failed - email %r not found', login)
-            return  None
+            return None
 
         user = user_list[0]
         if not user.is_active():

@@ -6,7 +6,7 @@
     {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
   {% endblock %}
 
-  {{ form.select('update_frequency', label=_('Update frequency'), id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
+  {{ form.select('update_frequency', label=_('Update frequency'), selected=data.update_frequency, id='field-update_frequency', error=errors.update_frequency, options=h.dp_update_frequencies_options()) }}
 
   {% block package_metadata_fields_custom %}
     {{ super() }}
@@ -16,15 +16,20 @@
     <h3 class="panel-title">{% trans %}Specify data reuse conditions{% endtrans %}</h3>
 
     <div class="panel-body">
-      {% trans %}We publish public data so they can be reused freely and unrestricted.
-      There are exceptions from this rule mentioned below, but we encourage not to restrict them if there is no clear case for that.
-      {% endtrans %}
 
-      {{ form.checkbox('license_condition_source', label=_('One should inform about the source of this data'), id='field-license_condition_source', error=errors.license_condition_source, value='true', checked=data.license_condition_source) }}
-      {{ form.checkbox('license_condition_timestamp', label=_('One should inform about the creation time of reused information as well as time of access to it'), id='field-license_condition_timestamp', error=errors.license_condition_timestamp, value='true', checked=data.license_condition_timestamp) }}
-      {{ form.checkbox('license_condition_original', label=_('One should publish a copy of originally accessed data when publishing reused information'), id='field-license_condition_original', error=errors.license_condition_original, value='true', checked=data.license_condition_original) }}
-      {{ form.checkbox('license_condition_modification', label=_('One should inform about modifications to originally accessed information'), id='field-license_condition_modification', error=errors.license_condition_modification, value='true', checked=data.license_condition_modification) }}
+      <fieldset class="checkbox-fieldset-override">
+          <legend>
+                {{ _('We publish public data so they can be reused freely and unrestricted. There are exceptions from this rule mentioned below, but we encourage not to restrict them if there is no clear case for that.') }}
+          </legend>
+          {% snippet 'snippets/normal_checkbox.html', name='license_condition_source', data = data.license_condition_source, label = _('One should inform about the source of this data and the creation time of reused information as well') %}
+          {% snippet 'snippets/normal_checkbox.html', name='license_condition_original', data = data.license_condition_original, label = _('One should publish a copy of originally accessed data when publishing reused information') %}
+          {% snippet 'snippets/normal_checkbox.html', name='license_condition_modification', data = data.license_condition_modification, label = _('One should inform about modifications to originally accessed information') %}
+      </fieldset>      
+
       {{ form.textarea('license_condition_responsibilities', label=_('Restriction of data provider liability'), id='field-license_condition_responsibilities', value=data.license_condition_responsibilities, error=errors.license_condition_responsibilities) }}
+      {{ form.textarea('license_condition_db_or_copyrighted', label=_('Restrictions on reuse of copyrighted material or databases (art. 23b ust. 3 ustawy o dostępie do informacji publicznej)'), id='field-license_condition_db_or_copyrighted', value=data.license_condition_db_or_copyrighted, error=errors.license_condition_db_or_copyrighted) }}
+
+
     </div>
   </div>
 

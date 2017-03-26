@@ -19,7 +19,7 @@ PORT = 8800
 
 # logging
 
-#FROM_EMAIL = 'server-error@example.com'
+# FROM_EMAIL = 'server-error@example.com'
 #ADMINS = ['yourname@example.com']  # where to send emails
 
 LOG_FILE = '/var/log/ckan/datapusher.log'

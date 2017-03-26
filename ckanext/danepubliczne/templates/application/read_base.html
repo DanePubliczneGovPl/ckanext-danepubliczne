@@ -1,0 +1,59 @@
+{% extends "application/base.html" %}
+
+{% block subtitle %}{{ pkg.title or pkg.name }} - {{ super() }}{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'dane_publiczne/article.css' %}
+{% endblock %}
+
+{% block links -%}
+  {{ super() }}
+  <link rel="alternate" type="application/rdf+xml"
+        href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf', qualified=True) }}"/>
+{% endblock -%}
+
+{% block head_extras -%}
+  {{ super() }}
+  {% set description = h.markdown_extract(pkg.notes, extract_length=200)|forceescape %}
+  <meta property="og:title" content="{{ h.dataset_display_name(pkg) }} - {{ g.site_title }}">
+  <meta property="og:description" content="{{ description|forceescape }}">
+{% endblock -%}
+
+{% block content_action %}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    {#  TODO article_edit #}
+    {% link_for _('Manage'), named_route='application_edit', id=pkg.name, class_='btn', icon='wrench' %}
+  {% endif %}
+  {% block follow_button %}
+    <div class="follow_button">
+      {% if not hide_follow_button %}
+        {{ h.follow_button('dataset', pkg.name) }}
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{#  TODO primary_content override #}
+{% block primary_content_inner %}
+  {% block package_revision_info %}
+    {% if c.pkg_revision_id %}
+      <div class="module info alert alert-info">
+        <p class="module-content">
+          {% set timestamp = h.render_datetime(c.pkg_revision_timestamp, with_hours=True) %}
+          {% set url = h.url(controller='package', action='read', id=pkg.name) %}
+
+          {% if c.pkg_revision_not_latest %}
+            {% trans timestamp=timestamp, url=url %}This is an old revision of this dataset, as edited at
+              {{ timestamp }}. It may differ significantly from the <a href="{{ url }}">current revision</a>.
+            {% endtrans %}
+          {% else %}
+            {% trans timestamp=timestamp %}This is the current revision of this dataset, as edited at {{ timestamp }}.
+            {% endtrans %}
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endblock %}

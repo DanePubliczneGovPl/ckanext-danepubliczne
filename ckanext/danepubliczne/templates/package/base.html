@@ -12,11 +12,11 @@
     {% if pkg.organization %}
       {% set organization = pkg.organization.title or pkg.organization.name %}
       <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
-      <li>{% link_for organization, controller='organization', action='read', id=pkg.organization.name %}</li>
+      <li>{% link_for organization|truncate(60), controller='organization', action='read', id=pkg.organization.name %}</li>
     {% else %}
       <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
     {% endif %}
-    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset, controller='package', action='read', id=pkg.name %}</li>
+    <li{{ self.breadcrumb_content_selected() }}>{% link_for dataset|truncate(60), controller='package', action='read', id=pkg.name %}</li>
   {% else %}
     <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
     <li class="active"><a href="javascript:void(0);">{{ _('Create Dataset') }}</a></li>

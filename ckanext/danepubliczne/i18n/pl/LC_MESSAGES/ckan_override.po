@@ -1131,7 +1131,7 @@ msgstr "Nienazwany zasób"
 
 #: ckan/lib/helpers.py:1080
 msgid "Created new dataset."
-msgstr "Utwórz nowy zbiór danych"
+msgstr "Stwórz nowy zbiór danych"
 
 #: ckan/lib/helpers.py:1082
 msgid "Edited resources."
@@ -1208,21 +1208,6 @@ msgid ""
 "\n"
 "       %(reset_link)s\n"
 "    "
-msgstr ""
-"W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
-"\n"
-"Aby dokończyć proces rejestracji, kliknij w poniższy link i ustaw hasło:"
-"\n"
-"       %(reset_link)s\n"
-"    "
-
-msgid ""
-"You have been invited to {site_title}. A user has already been createdto you "
-"with the username {user_name}. You can change it later.\n"
-"\n"
-"To accept this invite, please reset your password at:\n"
-"\n"
-"   {reset_link}\n"
 msgstr ""
 "W portalu %(site_title)s zostało dla Ciebie utworzone konto z nazwą użytkownika %(user_name)s.\n"
 "\n"
@@ -1481,7 +1466,7 @@ msgstr "Hasło musi być ciągiem znaków"
 
 #: ckan/logic/validators.py:561
 msgid "Your password must be 4 characters or longer"
-msgstr "Hasło musi zawierać co najmniej 4 znaki"
+msgstr "Hasło musi zawierać co najmniej 8 znaków"
 
 #: ckan/logic/validators.py:569
 msgid "The passwords you entered do not match"
@@ -1547,12 +1532,12 @@ msgstr "Ten obiekt może utworzyć pętlę w hierarchii"
 #: ckan/logic/action/create.py:158 ckan/logic/action/create.py:534
 #, python-format
 msgid "REST API: Create object %s"
-msgstr "REST API: Utwórz obiekt %s"
+msgstr "REST API: Stwórz obiekt %s"
 
 #: ckan/logic/action/create.py:420
 #, python-format
 msgid "REST API: Create package relationship: %s %s %s"
-msgstr "REST API: Utwórz relację pomiędzy pakietami: %s %s %s"
+msgstr "REST API: Stwórz relację pomiędzy pakietami: %s %s %s"
 
 #: ckan/logic/action/create.py:459
 #, python-format
@@ -2113,10 +2098,6 @@ msgstr "Usuń"
 msgid "Image"
 msgstr "Obraz"
 
-#: ckan/public/base/javascript/modules/image-upload.js:19
-msgid "Upload a file on your computer"
-msgstr "Prześlij plik na swój komputer"
-
 #: ckan/public/base/javascript/modules/image-upload.js:20
 msgid "Link to a URL on the internet (you can also link to an API)"
 msgstr "Link do adresu URL w internecie (można również odwoływać się do API)"
@@ -2239,7 +2220,7 @@ msgstr "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
 
 #: ckan/templates/header.html:12
 msgid "Sysadmin settings"
-msgstr "Ustawienia administratora"
+msgstr "Panel administratora"
 
 #: ckan/templates/header.html:18
 msgid "View profile"
@@ -2413,84 +2394,6 @@ msgstr "Opis CKAN API"
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
 msgstr "Dostęp do zbiorów danych poprzez API ze wsparciem dla mechanizmów wyszukiwania"
-
-#: ckan/templates/ajax_snippets/api_info.html:24
-msgid ""
-" Further information in the <a       "
-"href=\"http://docs.ckan.org/en/latest/datastore.html\" "
-"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
-msgstr " Dalsze informacje <a       "
-"href=\"http://docs.ckan.org/en/latest/datastore.html\" "
-"target=\"_blank\">Dokumentacja  CKAN Data API i DataStore API</a>.</p> "
-
-
-#: ckan/templates/ajax_snippets/api_info.html:33
-msgid "Endpoints"
-msgstr "Dostępne URL"
-
-#: ckan/templates/ajax_snippets/api_info.html:37
-msgid ""
-"The Data API can be accessed via the following actions of the CKAN action "
-"API."
-msgstr "Dostęp do danych można uzyskac poprzez API z uzyciem następujących akcji"
-
-
-#: ckan/templates/ajax_snippets/api_info.html:42
-#: ckan/templates/related/edit_form.html:7
-msgid "Create"
-msgstr "Utwórz"
-
-#: ckan/templates/ajax_snippets/api_info.html:46
-msgid "Update / Insert"
-msgstr "Aktualizuj / Wstaw"
-
-#: ckan/templates/ajax_snippets/api_info.html:50
-msgid "Query"
-msgstr "Zapytanie"
-
-#: ckan/templates/ajax_snippets/api_info.html:54
-msgid "Query (via SQL)"
-msgstr "Zapytanie (poprzez SQL)"
-
-#: ckan/templates/ajax_snippets/api_info.html:66
-msgid "Querying"
-msgstr "Przykładowe zapytania"
-
-#: ckan/templates/ajax_snippets/api_info.html:70
-msgid "Query example (first 5 results)"
-msgstr "Przykładowe zapytanie (zwraca pierwszych 5 wyników)"
-
-#: ckan/templates/ajax_snippets/api_info.html:75
-msgid "Query example (results containing 'jones')"
-msgstr "Przykładowe zapytanie (zwraca wyniki zawierające 'x')"
-
-#: ckan/templates/ajax_snippets/api_info.html:81
-msgid "Query example (via SQL statement)"
-msgstr "Przykładowe zapytanie (z użyciem SQL)"
-
-#: ckan/templates/ajax_snippets/api_info.html:93
-msgid "Example: Javascript"
-msgstr "Przykład dla Javascript"
-
-#: ckan/templates/ajax_snippets/api_info.html:97
-msgid "A simple ajax (JSONP) request to the data API using jQuery."
-msgstr "Proste żądanie ajax (JSONP) przy użyciu jQuery. "
-
-#: ckan/templates/ajax_snippets/api_info.html:118
-msgid "Example: Python"
-msgstr "Przykład dla Python"
-
-#: ckan/templates/dataviewer/snippets/data_preview.html:9
-msgid "This resource can not be previewed at the moment."
-msgstr "Ten zasób w tym  momencie nie może być przeglądany."
-
-#: ckan/templates/dataviewer/snippets/data_preview.html:11
-msgid "Click here for more information."
-msgstr "Kliknij tutaj, aby uzyskać więcej informacji"
-
-#: ckan/templates/dataviewer/snippets/data_preview.html:18
-msgid "Download resource"
-msgstr "Pobierz zasób"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:23
 msgid "Your browser does not support iframes."
@@ -2711,7 +2614,7 @@ msgstr "Aktualnie nie ma utworzonej żadnej grupy"
 #: ckan/templates/group/index.html:31
 #: ckan/templates/organization/index.html:31
 msgid "How about creating one?"
-msgstr "Jak utworzyć ?"
+msgstr "Możesz jakąś dodać"
 
 #: ckan/templates/group/member_new.html:8
 #: ckan/templates/organization/member_new.html:10
@@ -2835,7 +2738,7 @@ msgstr ""
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
 msgid "Create a Group"
-msgstr "Utwórz grupę"
+msgstr "Stwórz grupę"
 
 #: ckan/templates/group/new_group_form.html:17
 msgid "Update Group"
@@ -2947,7 +2850,7 @@ msgstr "Porównaj"
 #: ckan/templates/package/snippets/package_context.html:7
 #: ckan/templates/snippets/organization.html:34
 msgid "read more"
-msgstr "czytaj więcej"
+msgstr "czytaj całość"
 
 #: ckan/templates/group/snippets/revisions_table.html:7
 #: ckan/templates/package/snippets/revisions_table.html:7
@@ -3118,12 +3021,6 @@ msgstr "powiązany element"
 msgid "related items"
 msgstr "powiązane elementy"
 
-#: ckan/templates/macros/form.html:125
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">Markdown formatting</a> here"
-msgstr ""
-"Możesz tutaj używać <a href=\"#markdown\" title=\"formatowanie Markdown - przewodnik\" data-target=\"popover\" data-content=\"{{ markdown_tooltip }}\" data-html=\"true\">formatowania Markdown</a> here"
-
 #: ckan/templates/macros/form.html:264
 msgid "This field is required"
 msgstr "To pole jest wymagane"
@@ -3270,7 +3167,7 @@ msgstr "Szukanie organizacji"
 
 #: ckan/templates/organization/index.html:29
 msgid "There are currently no organizations for this site"
-msgstr "Nie występuję, żadna organizacja dla tego strony"
+msgstr "Aktualnie nie ma żadnych organizacji dla tej strony"
 
 #: ckan/templates/organization/member_new.html:58
 msgid "Update Member"
@@ -3295,7 +3192,7 @@ msgstr ""
 #: ckan/templates/organization/new.html:7
 #: ckan/templates/organization/new.html:12
 msgid "Create an Organization"
-msgstr "Utwórz Organizację"
+msgstr "Stwórz Organizację"
 
 #: ckan/templates/organization/new_organization_form.html:17
 msgid "Update Organization"
@@ -3378,7 +3275,7 @@ msgstr "Zobacz {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Utwórz Zbiór Danych "
+msgstr "Stwórz Zbiór Danych "
 
 #: ckan/templates/package/base_form_page.html:17
 msgid "What are datasets?"
@@ -3475,14 +3372,6 @@ msgstr "Brak powiązanych elementów"
 msgid "Add Related Item"
 msgstr "Dodaj powiązany element"
 
-#: ckan/templates/package/resource_data.html:12
-msgid "Upload to DataStore"
-msgstr "Upload do DataStore"
-
-#: ckan/templates/package/resource_data.html:19
-msgid "Upload error:"
-msgstr "Błąd w trakcie kopiowania"
-
 #: ckan/templates/package/resource_data.html:24
 #: ckan/templates_legacy/group/history.html:24
 #: ckan/templates_legacy/importer/importer.html:11
@@ -3493,129 +3382,15 @@ msgstr "Błąd w trakcie kopiowania"
 msgid "Error:"
 msgstr "Błąd:"
 
-#: ckan/templates/package/resource_data.html:34
-msgid "Status"
-msgstr "Status"
-
-#: ckan/templates/package/resource_data.html:38
-#: ckan/templates/package/resource_read.html:97
-#: ckan/templates_legacy/package/resource_read.html:100
-msgid "Last updated"
-msgstr "Ostatnia modyfikacja"
-
-msgid "Last Updated"
-msgstr "Ostatnia Modyfikacja"
-
-#: ckan/templates/package/resource_data.html:42
-msgid "Never"
-msgstr "Nigdy"
-
-#: ckan/templates/package/resource_data.html:48
-msgid "Upload Log"
-msgstr "Aktualizacja logu"
-
-#: ckan/templates/package/resource_data.html:60
-msgid "Details"
-msgstr "Szczegóły"
-
-#: ckan/templates/package/resource_data.html:67
-msgid "End of log"
-msgstr "Koniec logu"
-
-#: ckan/templates/package/resource_edit_base.html:15
-msgid "All resources"
-msgstr "Wszystkie zasoby"
-
-#: ckan/templates/package/resource_edit_base.html:17
-msgid "View resource"
-msgstr "Zobacz zasób"
-
-#: ckan/templates/package/resource_edit_base.html:22
-#: ckan/templates/package/resource_edit_base.html:29
-msgid "Edit resource"
-msgstr "Edytuj zasób"
-
-#: ckan/templates/package/resource_edit_base.html:24
-msgid "DataStore"
-msgstr "DataStore"
-
-#: ckan/templates/package/resource_read.html:38
-#: ckan/templates_legacy/package/resource_read.html:73
-msgid "API Endpoint"
-msgstr "url API"
 
 #: ckan/templates/package/resource_read.html:40
 #: ckan/templates/package/snippets/resource_item.html:47
 msgid "Go to resource"
-msgstr "Idź do zasobu"
-
-#: ckan/templates/package/resource_read.html:42
-#: ckan/templates/package/snippets/resource_item.html:44
-#: ckan/templates_legacy/package/resource_read.html:76
-msgid "Download"
-msgstr "Pobierz"
-
-#: ckan/templates/package/resource_read.html:58
-msgid "URL:"
-msgstr "Adres URL"
+msgstr "Pobierz zasób"
 
 #: ckan/templates/package/resource_read.html:65
 msgid "There is no description for this resource"
 msgstr "Brak opisu dla tego zasobu"
-
-#: ckan/templates/package/resource_read.html:68
-msgid "From the dataset abstract"
-msgstr "Od abstrakcjnego zbioru danych"
-
-#: ckan/templates/package/resource_read.html:70
-#, python-format
-msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
-msgstr "Źródło: <a href=\"%(url)s\">%(dataset)s</a>"
-
-#: ckan/templates/package/resource_read.html:87
-#: ckan/templates_legacy/package/new_package_form.html:230
-#: ckan/templates_legacy/package/read_core.html:49
-#: ckan/templates_legacy/package/resource_read.html:158
-msgid "Additional Information"
-msgstr "Dodatkowe informacje"
-
-#: ckan/templates/package/resource_read.html:91
-#: ckan/templates/package/snippets/additional_info.html:6
-#: ckan/templates/revision/diff.html:43
-#: ckan/templates/snippets/additional_info.html:11
-#: ckan/templates_legacy/package/read_core.html:57
-#: ckan/templates_legacy/package/resource_read.html:162
-#: ckan/templates_legacy/revision/diff.html:32
-msgid "Field"
-msgstr "Pole"
-
-#: ckan/templates/package/resource_read.html:92
-#: ckan/templates/package/snippets/additional_info.html:7
-#: ckan/templates/snippets/additional_info.html:12
-#: ckan/templates_legacy/js_strings.html:16
-#: ckan/templates_legacy/package/read_core.html:58
-#: ckan/templates_legacy/package/resource_read.html:163
-msgid "Value"
-msgstr "Wartość"
-
-#: ckan/templates/package/resource_read.html:98
-#: ckan/templates/package/resource_read.html:102
-#: ckan/templates/package/resource_read.html:106
-msgid "unknown"
-msgstr "nieznane"
-
-#: ckan/templates/package/resource_read.html:101
-#: ckan/templates_legacy/js_strings.html:16
-msgid "Created"
-msgstr "Utworzono"
-
-#: ckan/templates/package/resource_read.html:105
-#: ckan/templates/package/snippets/resource_form.html:37
-#: ckan/templates/package/snippets/resource_info.html:16
-#: ckan/templates_legacy/js_strings.html:16
-#: ckan/templates_legacy/package/resource_read.html:102
-msgid "Format"
-msgstr "Format"
 
 #: ckan/templates/package/resources.html:8
 msgid "Add new resource"
@@ -3926,7 +3701,7 @@ msgstr "Czytaj zestaw danych w formie %s"
 #: ckan/templates/package/snippets/stages.html:25
 #: ckan/templates/package/snippets/stages.html:27
 msgid "Create dataset"
-msgstr "Utwórz zbiór danych"
+msgstr "Stwórz zbiór danych"
 
 #: ckan/templates/package/snippets/stages.html:32
 #: ckan/templates/package/snippets/stages.html:36
@@ -4058,15 +3833,15 @@ msgstr "Aktualizuj"
 
 #: ckan/templates/related/new.html:3
 msgid "Create a related item"
-msgstr "Utwórz powiązany element"
+msgstr "Stwórz powiązany element"
 
 #: ckan/templates/related/new.html:5
 msgid "Create Related"
-msgstr "Utwórz powiązanie"
+msgstr "Stwórz powiązanie"
 
 #: ckan/templates/related/new.html:7
 msgid "Create Related Item"
-msgstr "Utwórz powiązane elementy"
+msgstr "Stwórz powiązane elementy"
 
 #: ckan/templates/related/snippets/related_form.html:18
 msgid "My Related Item"
@@ -4191,7 +3966,7 @@ msgstr "Trackback URL"
 
 #: ckan/templates/snippets/facet_list.html:72
 msgid "Show More {facet_type}"
-msgstr "Pokaż więcej {facet_type}"
+msgstr "{facet_type} - Pokaż więcej"
 
 #: ckan/templates/snippets/facet_list.html:74
 msgid "Show Only Popular {facet_type}"
@@ -4503,7 +4278,7 @@ msgstr "Następnie zaloguj się , to trwa tylko chwilę."
 
 #: ckan/templates/user/login.html:27
 msgid "Create an Account"
-msgstr "Utwórz konto"
+msgstr "Stwórz konto"
 
 #: ckan/templates/user/login.html:34
 msgid "Forgotten your password?"
@@ -4574,7 +4349,7 @@ msgstr "Imię i nazwisko"
 
 #: ckan/templates/user/new_user_form.html:16
 msgid "Create Account"
-msgstr "Utwórz konto"
+msgstr "Stwórz konto"
 
 #: ckan/templates/user/perform_reset.html:4
 #: ckan/templates/user/perform_reset.html:13
@@ -5301,7 +5076,7 @@ msgstr ""
 
 #: ckan/templates_legacy/home/index.html:38
 msgid "Create a dataset »"
-msgstr "Utwórz zbiór danych»"
+msgstr "Stwórz zbiór danych»"
 
 #: ckan/templates_legacy/home/index.html:40
 msgid "Sign up »"
@@ -6828,14 +6603,6 @@ msgstr "Np. środowisko"
 msgid "Popular tags"
 msgstr "Popularne słowa kluczowe"
 
-#: ckan/templates/macros/form.html:126
-#, python-format
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
-"target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true"
-"\">Markdown formatting</a> here"
-msgstr ""
-
 #: ckan/templates/organization/member_new.html:82
 msgid ""
 " <p><strong>Admin:</strong> Can add/edit and delete datasets, as well as "
@@ -6887,7 +6654,7 @@ msgstr "Widoki zasobu"
 
 #: ckan/templates/package/resource_read.html:112
 msgid "There are no views created for this resource yet."
-msgstr "Brak wizualizacji danych dla tego zasobu."
+msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku \"Pobierz zasób\"."
 
 #: ckan/templates/package/resource_read.html:116
 msgid "Not seeing the views you were expecting?"
@@ -6972,7 +6739,7 @@ msgstr "To pole zostanie ustawione automatycznie. Możesz pozostawić je puste"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr "Widok danych nie jest dostępny w tym momencie."
+msgstr "Brak podglądu danych dla tego zasobu. Aby obejrzeć dane skorzystaj z przycisku \"Pobierz zasób\"."
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
