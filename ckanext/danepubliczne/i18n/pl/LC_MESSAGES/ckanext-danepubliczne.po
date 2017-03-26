@@ -1092,6 +1092,19 @@ msgstr "Zobacz dane kontaktowe i zbiory danych tej organizacji"
 msgid "Expand menu"
 msgstr "Rozwiń menu"
 
+#: ckanext/danepubliczne/templates/error_document_template.html:7
+msgid "Page not found"
+msgstr "Nie znaleziono strony"
+
+#: ckanext/danepubliczne/templates/error_document_template.html:8
+#, python-format
+msgid ""
+"Would you like come back to %(link1)sthe homepage%(endlink)s or "
+"%(link2)sreport an issue on Github%(endlink)s?"
+msgstr ""
+"Czy chcesz wrócić do %(link1)sstrony głównej%(endlink)s czy "
+"%(link2)szgłosić to administratorom na Github%(endlink)s?"
+
 #: ckanext/danepubliczne/templates/error_document_template.html:6
 msgid "Server error has occurred"
 msgstr "Wystąpił błąd serwera"

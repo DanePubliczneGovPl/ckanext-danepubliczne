@@ -128,7 +128,8 @@ class DanePubliczne(p.SingletonPlugin):
                 'dp_organization_image': self.h_organization_image,
                 'dp_get_facet_items_dict_sortable': self.h_get_facet_items_dict_sortable,
                 'add_url_param_unique': self.h_add_url_param_unique,
-                'dp_join_datasets': self.h_join_datasets}
+                'dp_join_datasets': self.h_join_datasets,
+                'render_datetime_now': self.h_render_datetime_now}
 
     @classmethod
     def h_add_url_param_unique(self, alternative_url=None, controller=None, action=None, extras=None, new_params=None):
@@ -142,6 +143,11 @@ class DanePubliczne(p.SingletonPlugin):
         if alternative_url:
             return h._url_with_params(alternative_url, params)
         return h._create_url_with_params(params=params, controller=controller, action=action, extras=extras)
+
+    @classmethod
+    def h_render_datetime_now(cls):
+        from datetime import datetime
+        return datetime.now().strftime('%b %d %H:%M:%S.%f %Y')
     
     @classmethod
     def h_get_facet_items_dict_sortable(self, facet, limit=None, exclude_active=False):
