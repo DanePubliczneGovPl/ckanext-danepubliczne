@@ -80,6 +80,9 @@
                 <a href="{{ res.url }}">
                   <span class="icon icon-download-alt"></span>
                   {{ _('Download resource') }}</a>
+                {% if res.tracking_summary %} <span class="muted">(
+                {%- trans count=res.tracking_summary.total %}{{count}} download{% pluralize %}{{count}} downloads{% endtrans %})</span>
+                {% endif %}
               </p>
             {% endblock %}
             {{ h.archiver_is_resource_broken_html(c.resource) }}

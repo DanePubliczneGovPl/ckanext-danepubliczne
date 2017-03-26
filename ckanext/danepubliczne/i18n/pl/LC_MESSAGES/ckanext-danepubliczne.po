@@ -1305,9 +1305,17 @@ msgid "Views count"
 msgstr "Liczba wyświetleń"		
 		
 #: ckanext/danepubliczne/templates/package/snippets/additional_info.html:75		
-#: ckanext/danepubliczne/templates/snippets/package_item.html:46		
+#: ckanext/danepubliczne/templates/snippets/package_item.html:46
 msgid "Downloads count"		
 msgstr "Liczba pobrań"
+
+#: ckanext/danepubliczne/templates/package/resource_read.html:84
+#, python-format
+msgid "%(count)s download"
+msgid_plural "%(count)s downloads"
+msgstr[0] "%(count)s pobranie"
+msgstr[1] "%(count)s pobrania"
+msgstr[2] "%(count)s pobrań"
 
 msgid "Application address"
 msgstr "Adres aplikacji"
