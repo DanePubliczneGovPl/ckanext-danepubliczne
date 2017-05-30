@@ -77,9 +77,9 @@ zope.interface==4.1.1
 
 
 -e git+https://github.com/DanePubliczneGovPl/ckan@release-v2.3.5#egg=ckan
+-e git+https://github.com/DanePubliczneGovPl/ckanext-report@danepubliczne#egg=ckanext_report
 -e git+https://github.com/DanePubliczneGovPl/ckanext-archiver@danepubliczne#egg=ckanext_archiver
 -e git+https://github.com/DanePubliczneGovPl/ckanext-qa@danepubliczne#egg=ckanext_qa
--e git+https://github.com/DanePubliczneGovPl/ckanext-report@danepubliczne#egg=ckanext_report
 -e git+https://github.com/DanePubliczneGovPl/ckanext-searchhistory@danepubliczne#egg=ckanext_searchhistory
 
 -e .
