@@ -28,7 +28,7 @@ JETTY_PORT=8983
 #JAVA_OPTIONS="-Xmx256m -Djava.awt.headless=true -Djava.library.path=/usr/lib"
 
 # Home of Java installation.
-JAVA_HOME=/opt/jdk/jdk1.8.0_31
+JAVA_HOME=/opt/jdk/jdk1.8.0_131
 
 # The first existing directory is used for JAVA_HOME (if JAVA_HOME is not
 # defined in /etc/default/jetty). Should contain a list of space separated directories.
