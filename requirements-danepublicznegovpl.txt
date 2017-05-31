@@ -81,5 +81,4 @@ zope.interface==4.1.1
 -e git+https://github.com/DanePubliczneGovPl/ckanext-archiver@danepubliczne#egg=ckanext_archiver
 -e git+https://github.com/DanePubliczneGovPl/ckanext-qa@danepubliczne#egg=ckanext_qa
 -e git+https://github.com/DanePubliczneGovPl/ckanext-searchhistory@danepubliczne#egg=ckanext_searchhistory
-
--e .
+-e git+https://github.com/DanePubliczneGovPl/ckanext-danepubliczne@master#egg=ckanext-danepubliczne
