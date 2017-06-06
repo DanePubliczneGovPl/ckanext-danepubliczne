@@ -27,7 +27,6 @@
                 <ol class="breadcrumb">
                   {% snippet 'snippets/home_breadcrumb_item.html' %}
                   {% block breadcrumb_content %}
-                    <li>{% link_for _('Categories'), controller='group', action='index' %}</li>
                     <li class="active">{% link_for category_title|truncate(60), controller='group', action='read', id=group.name %}</li>
                   {% endblock %}
                 </ol>
@@ -150,10 +149,14 @@
                       {% endif %}
 
                       {% block content_action %}
+                          {% if h.check_access('package_create') %}
+                        <div class="page_primary_action span9">
+                            {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+                        </div>
+                        {% endif %}
                         {% if h.check_access('group_update', {'id': group.id}) %}
                           <div class="page_primary_action span9">
-                            {% link_for _('Add Category'), controller='group', action='new', class_='btn' %}
-                            {% link_for _('Manage'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
+                            {% link_for _('Edytuj kategorię'), controller='group', action='edit', id=group.name, class_='btn', icon='wrench' %}
                           </div>
                         {% endif %}
                       {% endblock %}

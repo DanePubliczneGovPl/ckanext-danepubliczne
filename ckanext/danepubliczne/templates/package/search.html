@@ -223,7 +223,7 @@
                             {% link_for _('Add Article'), named_route='article_new', class_='btn btn-primary', icon='plus-sign-alt' %}
                           {% elif dataset_type == 'application' and c.is_sysadmin %}
                             {% link_for _('Add Application'), named_route='application_new', class_='btn btn-primary', icon='plus-sign-alt' %}
-                          {% elif c.is_sysadmin %}
+                          {% elif h.check_access('package_create') %}
                             {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
                           {% endif %}
                         </div>
