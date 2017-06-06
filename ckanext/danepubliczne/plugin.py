@@ -218,6 +218,7 @@ class DanePubliczne(p.SingletonPlugin):
             'user_list': ckan.logic.auth.get.sysadmin,
             'member_list': ckan.logic.auth.get.sysadmin,
             'related_create': ckan.logic.auth.get.sysadmin,
+            'package_relationship_create': ckan.logic.auth.get.sysadmin,
             'user_show': auth_user_show,
         }
 
