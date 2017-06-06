@@ -18,8 +18,16 @@ class Category(p.SingletonPlugin, ckan.lib.plugins.DefaultGroupForm):
     def get_helpers(self):
         return {'dp_categories': self.h_categories,
                 'dp_category_colors': self.h_colors,
-                'dp_default_locale': self.h_default_locale
+                'dp_default_locale': self.h_default_locale,
+                'fluent_form_languages': self.h_fluent_form_languages,
                 }
+
+    def h_fluent_form_languages(self, arg1, arg2):
+        langs = []
+        for l in h.get_available_locales():
+            if l.language not in langs:
+                langs.append(l.language)
+        return langs
 
     def h_default_locale(self):
         return h.get_available_locales()[0].language
