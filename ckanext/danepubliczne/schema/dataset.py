@@ -271,13 +271,10 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
 
         missing = set(used) - set(existing)
         for tag in missing:
-            try:
-                logic.action.create.tag_create(context, {
-                    'name': tag,
-                    'vocabulary_id': 'resource_types'
-                })
-            except Exception as e:
-                raise Exception("Internal error while creating tags")
+            logic.action.create.tag_create(context, {
+                'name': tag,
+                'vocabulary_id': 'resource_types'
+            })
 
 
     p.implements(p.IFacets, inherit=True)
