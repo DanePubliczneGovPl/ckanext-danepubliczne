@@ -77,7 +77,7 @@
 
             {% block resource_read_url %}
               <p>
-                <a href="{{ res.url }}">
+                <a href="{{ res.url }}" class="resource-url-analytics">
                   <span class="icon icon-download-alt"></span>
                   {{ _('Download resource') }}</a>
                 {% if res.tracking_summary %} <span class="muted">(
