@@ -80,6 +80,7 @@ dane_publiczne_dataset=ckanext.danepubliczne.schema.dataset:DatasetForm
 dane_publiczne_categories=ckanext.danepubliczne.schema.category:Category
 dane_publiczne_articles=ckanext.danepubliczne.schema.article:Article
 dane_publiczne_applications=ckanext.danepubliczne.schema.application:Application
+dane_publiczne_validators=ckanext.danepubliczne.validators:DataValidatorPlugin
 piwik=ckanext.danepubliczne.piwik:PiwikPlugin
 
 [babel.extractors]
