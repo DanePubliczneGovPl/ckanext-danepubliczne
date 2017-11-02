@@ -1332,3 +1332,8 @@ msgstr[2] "%(count)s pobrań"
 
 msgid "Application address"
 msgstr "Adres aplikacji"
+
+#: ckanext/danepubliczne/validators.py:45
+#, python-format
+msgid "Merged cells are disallowed. Fix following cells: %s."
+msgstr "Połączone komórki są niedozwolone. Popraw następujące komórki: %s."

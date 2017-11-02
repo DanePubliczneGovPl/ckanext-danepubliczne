@@ -42,7 +42,7 @@ class BaseSheetValidator(BaseValidator):
         merged_cells = self.merged_sheet_list(book)
         if merged_cells:
             error_dict['upload'].append(
-                _("Merged cells are disallowed. Fix following cells: {}.".format(", ".join(merged_cells))))
+                _("Merged cells are disallowed. Fix following cells: %s.") % (", ".join(merged_cells)), )
 
 
 class XLSValidator(BaseSheetValidator):
@@ -95,8 +95,9 @@ class DataValidatorPlugin(p.SingletonPlugin):
     p.implements(p.IResourceController, inherit=True)
 
     def before_update(self, context, current, resource):
-        if not resource['upload']:
+        if resource['upload'] == '':
             return
+
         for validator in self.validators:
             if any(resource['upload'].filename.lower().endswith(ext)
                    for ext in validator.extensions_list):
