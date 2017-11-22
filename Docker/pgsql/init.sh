@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+echo "creating datastore user and database.."
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+    CREATE USER "$DATASTORE_USER" WITH PASSWORD '$DATASTORE_PASSWORD';
+    CREATE DATABASE "$DATASTORE_DB";
+    GRANT ALL PRIVILEGES ON DATABASE "$DATASTORE_DB" TO "$DATASTORE_USER";
+EOSQL

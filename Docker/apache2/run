@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+
+      [ -e /var/run/apache2/apache2.pid ] && rm /var/run/apache2/apache2.pid
+	  ln -sf /dev/stderr /var/log/apache2/error.log && \
+      ln -sf /dev/stderr /var/log/apache2/error-ssl.log
+
+## Tu podmieniam zmienne z ENV i generuje pliki konfiguracyjne docelowe
+
+envsubst < /etc/apache2/sites-enabled/ckan.conf-stack > /etc/apache2/sites-enabled/ckan.conf
+envsubst < /etc/apache2/sites-enabled/piwik.conf-stack > /etc/apache2/sites-enabled/piwik.conf
+envsubst < /var/www/html/piwik/config/piwik-config.ini.php-stack > /var/www/html/piwik/config/piwik-config.ini.php
+
+
+#startuje apacha2
+
+source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND
+

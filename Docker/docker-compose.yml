@@ -1,0 +1,100 @@
+version: '2'
+services:
+
+
+#  ckan-base:
+#    build: ckan-base/
+#    image: ckan-base
+
+  ckan:
+    #build: ckan/
+    image: ckan-epf
+    container_name: ckan
+    depends_on:
+      - datapusher
+      - pgsql
+      - solr
+      - mysql
+      - redis
+#    ports:
+#      - 5000:5000
+#    volumes:
+#      - "${DATA_DIR}/.docker/mysql/db:/var/lib/mysql"
+#      - "${DATA_DIR}/.docker/mysql/conf.d:/etc/mysql/conf.d"
+    restart: always
+    env_file: .env
+
+  datapusher:
+    build: datapusher/
+    image: datapusher
+    container_name: datapusher
+    restart: always
+
+
+  pgsql:
+    build: pgsql/
+    image: pgsql
+    container_name: pgsql
+#    env_file: .env
+    volumes:
+      - pgsql:/var/lib/postgresql/data
+    restart: always
+
+
+  datastore:
+    build: datastore/
+    image: datastore
+    container_name: datastore
+#    env_file: .env
+    volumes:
+      - datastore:/var/lib/postgresql/data
+    restart: always
+
+
+  apache2:
+    build: apache2/
+    image: apache2
+    depends_on:
+      - ckan
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - ${PUBLIC_IP}:80:80
+      - ${PUBLIC_IP}:443:443
+    container_name: apache2
+    restart: always
+    env_file: .env
+
+  solr:
+    build: solr/
+    image: solr
+#    ports:
+#      - 8989:8983
+    container_name: solr-ckan
+    restart: always
+
+
+  mysql:
+    image: mariadb:latest
+    container_name: mysql
+    #ports:
+    #  - "33306:3306"
+    volumes:
+      - "mysql:/var/lib/mysql"
+    restart: always
+    #env_file: .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=piwik
+      - MYSQL_DATABASE=piwik
+      - MYSQL_USER=piwik
+      - MYSQL_PASSWORD=piwik
+
+#najkrotszy serwis ever :)
+  redis:
+    image: redis
+
+
+volumes:
+  pgsql:
+  datastore:
+  mysql:

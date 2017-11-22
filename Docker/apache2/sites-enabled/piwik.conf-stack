@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+    ServerName stats.${DOMAIN}
+
+    DocumentRoot /var/www/html/piwik
+
+    <Directory /var/www/html/piwik>
+        Options Indexes
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
+
+<VirtualHost *:443>
+    ServerName stats.${DOMAIN}
+
+    SSLEngine On
+
+        SSLCertificateFile ${CERT_FILE_STATS}
+        SSLCertificateKeyFile ${CERT_KEY_STATS}
+
+    DocumentRoot /var/www/html/piwik
+
+    <Directory /var/www/html/piwik>
+        Options Indexes
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+</VirtualHost>

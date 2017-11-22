@@ -1,0 +1,2 @@
+@daily ckan-paster --plugin=ckan tracking update -c /etc/ckan/default/ckan.ini > /proc/1/fd/1 2>&1
+@daily ckan-paster --plugin=ckanext-report report generate -c /etc/ckan/default/ckan.ini > /proc/1/fd/1 2>&1
