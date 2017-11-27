@@ -17,6 +17,7 @@ import collections
 
 import logging
 log = logging.getLogger(__name__)
+ValidationError = logic.ValidationError
 
 class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     '''
@@ -263,19 +264,33 @@ class DatasetForm(p.SingletonPlugin, tk.DefaultDatasetForm):
     def _create_missing_resource_type_tags(self, pkg_dict):
         context = {'model': model, 'user': g.site_id}
 
-        existing = logic.action.get.tag_list(context, {'vocabulary_id': 'resource_types'})
+        existing = set(logic.action.get.tag_list(context, {'vocabulary_id': 'resource_types'}))
 
-        used = []
-        for r in pkg_dict.get('resources', []):
+        resources = pkg_dict.get('resources', [])
+        resource_pos = -1
+        errors_count = 0
+        errors = [{} for i in range(len(resources))]
+
+        for r in resources:
+            used = []
+            resource_pos += 1
             used += [el.strip() for el in r.get('resource_type', '').split(',') if el.strip() != '']
 
-        missing = set(used) - set(existing)
-        for tag in missing:
-            logic.action.create.tag_create(context, {
-                'name': tag,
-                'vocabulary_id': 'resource_types'
-            })
+            missing = set(used) - existing
+            for tag in missing:
+                try:
+                    logic.action.create.tag_create(context, {
+                        'name': tag,
+                        'vocabulary_id': 'resource_types'
+                    })
+                except ValidationError, e:
+                    errors[resource_pos]['resource_type'] = errors[resource_pos].get('resource_type', []) + e.error_dict['name']
+                    errors_count += 1
+                except Exception as e:
+                    raise Exception("Internal error while creating tags: {}".format(e))
 
+        if errors_count:
+            raise ValidationError({'resources': errors})
 
     p.implements(p.IFacets, inherit=True)
 
