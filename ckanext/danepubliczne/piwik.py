@@ -36,6 +36,7 @@ class PiwikPlugin(plugins.SingletonPlugin):
     domain = None
     error = None
     cookies_disabled = None
+    googleanalytics_id = None
 
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.ITemplateHelpers)
@@ -54,6 +55,7 @@ class PiwikPlugin(plugins.SingletonPlugin):
         self.url = config['piwik.url']
         self.domain = config['piwik.domain']
         self.cookies_disabled = config['piwik.cookies_disabled']
+        self.googleanalytics_id = config.get('googleanalytics.id', None)
 
         if config['debug'] and not config.get('piwik.in_debug'):
             self.error = 'Piwik is disabled in DEBUG mode unless PIWIK_IN_DEBUG is set'
@@ -72,4 +74,4 @@ class PiwikPlugin(plugins.SingletonPlugin):
             'site_id': self.site_id,
             'domain': self.domain,
             'cookies_disabled': self.cookies_disabled
-        }))
+        }, googleanalytics_id=self.googleanalytics_id))
