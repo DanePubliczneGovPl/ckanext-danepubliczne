@@ -7,12 +7,13 @@ Dokument w trakce tworzenia.  Wersja 0.1
 
 - [CKAN STACK  - dokumentacja](#ckan-stack-dokumentacja)
 	- [1. Opis obrazów](#1-opis-obrazów)
-	- [2. Start stacka](#1-start-stacka)
-		- [2.1 katalog i źródła](#11-katalog-i-źródła)
-		- [2.2 Plik z konfiguracją](#12-plik-z-konfiguracją)
-		- [2.3 Budowa obrazu](#13-budowa-obrazu)
-		- [2.4 Uruchomienie stacka](#14-uruchomienie-stacka)
-		- [2.5 Werfyikacja stanu kontenerów](#15-werfyikacja-stanu-kontenerów)
+	- [2. Start stacka](#2-start-stacka)
+		- [2.1 katalog i źródła](#21-katalog-i-źródła)
+		- [2.2 Plik z konfiguracją](#22-plik-z-konfiguracją)
+		- [2.3 Ustalenie hasła](#23-ustalenie-has_a)
+		- [2.4 Budowa obrazu](#24-budowa-obrazu)
+		- [2.5 Uruchomienie stacka](#25-uruchomienie-stacka)
+		- [2.6 Werfyikacja stanu kontenerów](#26-werfyikacja-stanu-kontenerów)
 
 <!-- /TOC -->
 
@@ -36,7 +37,7 @@ Poniższy opis pokazuje pierwsze uruchomienie stacka. Zakładam, że masz dostę
 ####  2.1 katalog i źródła
 
 Zakładasz katalog i pobierasz źródła
-```
+```bash
 mkdir /home/ckan
 cd /home/ckan && git clone git@github.com:DanePubliczneGovPl/ckanext-danepubliczne.git ckan
 ```
@@ -45,7 +46,7 @@ cd /home/ckan && git clone git@github.com:DanePubliczneGovPl/ckanext-danepublicz
 
 Tworzysz plik /home/ckan/ckan/Docker/.env z konfiguracją stacka
 
-```
+```dotenv
 
 #### SETUP ####
 ###############
@@ -63,8 +64,8 @@ PUBLIC_IP=192.168.50.22
 
 # sciezki do certyfikatów
 
-CERT_KEY=/etc/ssl/certs/mysitename.key
-CERT_FILE=/etc/ssl/certs/mysitename.crt
+CERT_FILE=/etc/ssl/private/ssl-cert-snakeoil.key
+CERT_KEY=/etc/ssl/certs/ssl-cert-snakeoil.pem
 
 # domena pod którą będzie działa strona
 
@@ -84,18 +85,25 @@ PIWIK_TRUSTED_HOSTS=stats.dp.gov.pl
 
 # certyfikaty dla domeny piwika
 
-CERT_FILE_STATS=/etc/ssl/certs/mysitename.key
-CERT_KEY_STATS=/etc/ssl/certs/mysitename.crt
+CERT_KEY_STATS=/etc/ssl/private/ssl-cert-snakeoil.key
+CERT_FILE_STATS=/etc/ssl/certs/ssl-cert-snakeoil.pem
 ```
-#### 2.3 Budowa obrazu
+#### 2.3 Ustalenie hasła
+
+Wykonujesz:
+```bash
+htpasswd -c -b apache2/.htpasswd ckan ckan
 ```
-cd /home/ckan/ckan/Docker && docker-compose build
+
+#### 2.4 Budowa obrazu
 ```
-#### 2.4 Uruchomienie stacka
+cd /home/ckan/ckan/Docker && docker build ckan-base/ -t ckan-base && docker -docker-compose build
+```
+#### 2.5 Uruchomienie stacka
 ```
 cd /home/ckan/ckan/Docker && docker-compose up -d
 ```
-#### 2.5 Werfyikacja stanu kontenerów
+#### 2.6 Werfyikacja stanu kontenerów
 ```
 cd /home/ckan/ckan/Docker && docker-compose ps
 ```
