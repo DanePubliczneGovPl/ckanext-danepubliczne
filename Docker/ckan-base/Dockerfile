@@ -12,6 +12,8 @@ RUN apt-get -q -y update && apt-get -q -y upgrade && DEBIAN_FRONTEND=noninteract
         python-pip \
         python-virtualenv \
         libpq-dev \
+        python-virtualenv \
+        python-wheel \
         git-core \
         build-essential \
         libssl-dev \
@@ -28,7 +30,7 @@ RUN ln -s $CKAN_HOME/bin/pip /usr/local/bin/ckan-pip
 RUN ln -s $CKAN_HOME/bin/paster /usr/local/bin/ckan-paster
 
 ### DANE Z FORKA CKANA
-RUN git clone https://github.com/DanePubliczneGovPl/ckan /tmp/ckan
+RUN git clone --depth=50 https://github.com/DanePubliczneGovPl/ckan /tmp/ckan
 RUN mkdir -p $CKAN_HOME/src/ckan/ && cp -r /tmp/ckan/. $CKAN_HOME/src/ckan/ && rm -fr /tmp/ckan/
 
 # SetUp Requirements

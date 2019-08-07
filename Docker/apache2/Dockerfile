@@ -10,6 +10,7 @@ RUN apt-get update && \
       unzip \
       gettext-base \
       git \
+      curl \
       php-gd php-apcu php-mysqli php-memcached php-memcache php-xml php-soap php-zip \
       php-cli php-common php-bcmath php-curl php-gd php-geoip \
       php-imagick  php-intl php-json php-msgpack php-mcrypt php-mysql \
@@ -17,6 +18,10 @@ RUN apt-get update && \
       libapache2-mod-php \
       && rm -rf /var/lib/apt/lists/* \
       && apt-get clean -y
+
+# Download Piwik (as early as possible for avoid cache bursting)
+
+RUN curl -s http://builds.piwik.org/piwik.zip -o /var/www/html/piwik.zip
 
 
 # Enable apache2 modules
@@ -42,7 +47,6 @@ COPY memcache.ini /etc/php//mods-available/memcache.ini
 
 # Install piwik
 
-ADD http://builds.piwik.org/piwik.zip /var/www/html/
 RUN cd /var/www/html/ && unzip piwik.zip && \
     cd /var/www/html/ && rm piwik.zip && \
     chown -R www-data: /var/www/html/

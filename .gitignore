@@ -63,3 +63,5 @@ target/
 
 # CONFIG
 config/dev.ini
+Docker/.env
+Docker/apache2/.htpasswd

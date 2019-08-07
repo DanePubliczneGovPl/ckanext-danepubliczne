@@ -7,7 +7,7 @@ RUN mkdir -p /home/ckan
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 
 # Install additional packages
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y git wget curl libxml2-dev libxslt1-dev python-dev libffi-dev libjpeg-dev cron supervisor gettext-base \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y git wget curl libxml2-dev libxslt1-dev python-dev libffi-dev libjpeg-dev postgresql-client cron supervisor gettext-base \
       && rm -rf /var/lib/apt/lists/* \
       && apt-get clean -y
 

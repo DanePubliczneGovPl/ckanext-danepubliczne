@@ -1,14 +1,8 @@
 version: '2'
 services:
 
-
-#  ckan-base:
-#    build: ckan-base/
-#    image: ckan-base
-
   ckan:
-    #build: ckan/
-    image: ckan-epf
+    build: ckan/
     container_name: ckan
     depends_on:
       - datapusher
@@ -73,7 +67,6 @@ services:
     container_name: solr-ckan
     restart: always
 
-
   mysql:
     image: mariadb:latest
     container_name: mysql
@@ -89,7 +82,7 @@ services:
       - MYSQL_USER=piwik
       - MYSQL_PASSWORD=piwik
 
-#najkrotszy serwis ever :)
+
   redis:
     image: redis
 
