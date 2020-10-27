@@ -11,7 +11,7 @@ celery==2.4.2
 certifi==2017.1.23  # urllib3[secure]
 cffi==1.10.0        # urllib3[secure]
 chardet==2.3.0
-cryptography==1.8.1 # urllib3[secure]
+cryptography==3.2 # urllib3[secure]
 decorator==3.4.0
 enum34==1.1.6       # urllib3[secure]
 fanstatic==0.12
