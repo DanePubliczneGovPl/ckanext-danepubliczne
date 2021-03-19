@@ -20,7 +20,7 @@ Genshi==0.6
 html5lib==0.999999999
 idna==2.5           # urllib3[secure]
 ipaddress==1.0.18   # urllib3[secure]
-Jinja2==2.8
+Jinja2==2.11.3
 json-table-schema==0.2.1
 kombu==2.5.0
 kombu-sqlalchemy==1.1.0
