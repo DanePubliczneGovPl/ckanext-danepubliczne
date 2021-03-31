@@ -24,7 +24,7 @@ Jinja2==2.8
 json-table-schema==0.2.1
 kombu==2.5.0
 kombu-sqlalchemy==1.1.0
-lxml==3.7.2
+lxml==4.6.3
 Mako==0.9.0
 MarkupSafe==0.18
 messytables==0.15.2
