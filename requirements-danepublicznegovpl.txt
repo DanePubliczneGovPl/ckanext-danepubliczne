@@ -65,7 +65,7 @@ sqlalchemy-migrate==0.9.1
 sqlparse==0.1.11
 Tempita==0.5.2
 unicodecsv==0.9.4
-urllib3==1.20       # urllib3[secure]
+urllib3==1.26.5       # urllib3[secure]
 vdm==0.13
 webencodings==0.5
 WebError==0.10.3
