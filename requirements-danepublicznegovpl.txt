@@ -7,7 +7,7 @@ asn1crypto==0.22.0  # urllib3[secure]
 Babel==0.9.6
 Beaker==1.6.4
 Biryani==0.10.4
-celery==2.4.2
+celery==5.2.2
 certifi==2017.1.23  # urllib3[secure]
 cffi==1.10.0        # urllib3[secure]
 chardet==2.3.0
