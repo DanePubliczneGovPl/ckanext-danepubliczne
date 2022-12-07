@@ -8,7 +8,7 @@ Babel==0.9.6
 Beaker==1.6.4
 Biryani==0.10.4
 celery==2.4.2
-certifi==2017.1.23  # urllib3[secure]
+certifi==2022.12.7  # urllib3[secure]
 cffi==1.10.0        # urllib3[secure]
 chardet==2.3.0
 cryptography==1.8.1 # urllib3[secure]
